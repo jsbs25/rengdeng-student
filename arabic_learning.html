@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN" data-theme="light">
 <head><script>window.__NUR_ERR='';window.onerror=function(m,src,l){window.__NUR_ERR=String(m);try{var b=document.getElementById('nurErrBar');if(!b){b=document.createElement('div');b.id='nurErrBar';b.style.cssText='position:fixed;top:0;left:0;right:0;z-index:99999;background:#b3261e;color:#fff;font-size:12px;padding:8px 10px;word-break:break-all;line-height:1.6';document.body.appendChild(b);}b.textContent='⚠️ 页面出错（请把这句话发给管理员）：'+m+' @'+l;}catch(e){}return false;};setTimeout(function(){try{var s=document.getElementById('splash');if(s&&s.parentNode)s.parentNode.removeChild(s);try{document.body.classList.remove('locked');}catch(e){}if(!document.querySelector('.page')&&!window.__NUR_ERR){var d=document.createElement('div');d.style.cssText='position:fixed;bottom:8px;left:8px;right:8px;z-index:99998;background:#0f5132;color:#f6e7b4;font-size:12px;padding:8px;border-radius:10px;text-align:center';d.textContent='若内容没出来，请下拉刷新一次';document.body.appendChild(d);}}catch(e){}},6000);</script>
-<script>window.__NUR_VER="2026-10-15 16:17";</script><script>window.__NUR_BUILD="2026-10-15 16:17";</script>
+<script>window.__NUR_VER="2026-10-15 16:37";</script><script>window.__NUR_BUILD="2026-10-15 16:37";</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,viewport-fit=cover">
 <meta name="theme-color" content="#0f3d31">
@@ -1032,7 +1032,7 @@ button,.btn,[onclick]{ transition-duration:var(--dur-micro) !important; }
   *{ animation-duration:.01ms !important; transition-duration:.01ms !important; } }
 /* 加载中的按钮文案（skill：说明在做什么，不要"请稍候"）*/
 button[disabled]{ opacity:.55; cursor:default; }
-</style><link rel="stylesheet" href="data/upgrade2.css?v=4.1.0-20261015161730"><style></style><link rel="stylesheet" href="data/library2.css?v=4.1.0-20261015161730"><style></style><link rel="stylesheet" href="data/paper-v3.css?v=4.1.0-20261015161730"><style>
+</style><link rel="stylesheet" href="data/upgrade2.css?v=4.1.0-20261015163741"><style></style><link rel="stylesheet" href="data/library2.css?v=4.1.0-20261015163741"><style></style><link rel="stylesheet" href="data/paper-v3.css?v=4.1.0-20261015163741"><style>
 /* 顶部公告静态呈现，避免长文字被跑马灯截断 */
 .donbar{margin:0!important;padding:9px 16px!important;background:#f5f4ef!important;color:#68675f!important;border-bottom:1px solid #e9e7df!important;font-size:12px!important;font-weight:500!important;white-space:normal!important;overflow:visible!important;line-height:1.6}
 .donbar-in{display:block!important;padding:0!important;animation:none!important;text-align:center;max-width:1240px;margin:auto}
@@ -3007,11 +3007,18 @@ body,html[data-theme="light"] body,html[data-theme="dark"] body{background-image
 @media(max-width:700px){.page .pg-h{padding:18px 20px 13px!important;font-size:23px!important}.pg-wrap{width:calc(100% - 28px)!important}.library-page .m-head{min-height:64px!important}.library-page .m-head b{font-size:19px!important}.library-page .m-body{width:calc(100% - 20px)!important}.library-page .lib-tabs{top:64px!important}.study-progress{width:calc(100% - 24px)!important;gap:10px!important;padding:14px!important}.search-tools{gap:7px}.search-tools button{font-size:12px}}
 </style><style id="nour-os-pages">/* Nour OS v1 — top-level views are document pages, never floating modals. */
 :root{
-  --n-bg:#0b0e12;--n-panel:#12171d;--n-panel-2:#171e26;--n-line:rgba(238,231,206,.13);
-  --n-gold:#e7c878;--n-gold-2:#fff1b4;--n-green:#42c69c;--n-ink:#f7f2e5;--n-muted:#9aa6b2;
-  --n-shadow:0 28px 90px rgba(0,0,0,.34);--n-radius:24px;
+  --n-bg:#f6f3eb;--n-panel:#fffdf8;--n-panel-2:#efe9dd;--n-line:#e3ddcc;
+  --n-gold:#a98935;--n-gold-2:#0f5132;--n-green:#0f5132;--n-ink:#24332b;--n-muted:#5b6a60;
+  --n-shadow:0 8px 24px rgba(36,51,43,.08);--n-radius:16px;
+  --n-header:rgba(246,243,235,.85);--n-rail:rgba(255,253,248,.92);--n-scrim:rgba(0,0,0,.04);
 }
-html,body{background:var(--n-bg)!important;color:var(--n-ink)!important;color-scheme:dark}
+html[data-theme="dark"]{
+  --n-bg:#141210;--n-panel:#1c1a16;--n-panel-2:#262219;--n-line:#332e25;
+  --n-gold:#c8a74d;--n-gold-2:#e7c878;--n-green:#3a9a68;--n-ink:#ece6d8;--n-muted:#b4ac99;
+  --n-shadow:0 8px 24px rgba(0,0,0,.35);--n-radius:16px;
+  --n-header:rgba(20,18,16,.82);--n-rail:rgba(28,26,22,.92);--n-scrim:rgba(0,0,0,.2);
+}
+html,body{background:var(--n-bg)!important;color:var(--n-ink)!important;color-scheme:light dark}
 body{padding-bottom:116px!important;overflow-x:hidden!important}
 body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-3;background:radial-gradient(ellipse 70% 45% at 50% -8%,rgba(35,118,98,.26),transparent 72%),radial-gradient(circle at 90% 85%,rgba(220,170,68,.08),transparent 32%)}
 body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:-2;opacity:.24;background-image:linear-gradient(115deg,transparent 0 48%,rgba(231,200,120,.05) 49% 51%,transparent 52%),linear-gradient(25deg,transparent 0 48%,rgba(66,198,156,.045) 49% 51%,transparent 52%);background-size:120px 120px;mask-image:linear-gradient(to bottom,black,transparent 72%)}
@@ -3023,13 +3030,13 @@ html body > #mCat.page,html body > #page-search.page,html body > #page-me.page,h
 html body > .page[aria-hidden="true"]{display:none!important}
 /* Unified headers */
 html body > #mCat.page .m-head,html body > #page-search.page .pg-h,html body > #page-me.page .pg-h{
-  position:sticky!important;top:0!important;z-index:30!important;display:flex!important;align-items:center!important;min-height:78px!important;padding:18px clamp(18px,5vw,72px)!important;border:0!important;border-bottom:1px solid var(--n-line)!important;background:rgba(11,14,18,.78)!important;color:var(--n-ink)!important;backdrop-filter:blur(26px) saturate(140%)!important;-webkit-backdrop-filter:blur(26px) saturate(140%)!important
+  position:sticky!important;top:0!important;z-index:30!important;display:flex!important;align-items:center!important;min-height:78px!important;padding:18px clamp(18px,5vw,72px)!important;border:0!important;border-bottom:1px solid var(--n-line)!important;background:var(--n-header)!important;color:var(--n-ink)!important;backdrop-filter:blur(26px) saturate(140%)!important;-webkit-backdrop-filter:blur(26px) saturate(140%)!important
 }
 html body > #mCat.page .m-head b,html body > #page-search.page .pg-h,html body > #page-me.page .pg-h{font-size:clamp(22px,3vw,30px)!important;font-weight:700!important;letter-spacing:-.04em!important;color:var(--n-gold-2)!important}
 html body > #mCat.page .m-head>span{color:var(--n-gold)!important}
 html body > #mCat.page .library-back{right:clamp(18px,5vw,72px)!important;border:1px solid var(--n-line)!important;background:rgba(255,255,255,.06)!important;color:var(--n-gold-2)!important;border-radius:999px!important;padding:9px 15px!important}
 html body > #mCat.page .m-body{position:relative!important;width:min(1180px,calc(100% - 32px))!important;min-height:calc(100vh - 160px)!important;margin:0 auto!important;padding:20px 0 42px!important;background:transparent!important;color:var(--n-ink)!important;overflow:visible!important}
-html body > #mCat.page .lib-tabs{position:sticky!important;top:78px!important;z-index:20!important;padding:14px 0 18px!important;background:rgba(11,14,18,.82)!important;backdrop-filter:blur(20px)!important}
+html body > #mCat.page .lib-tabs{position:sticky!important;top:78px!important;z-index:20!important;padding:14px 0 18px!important;background:var(--n-header)!important;backdrop-filter:blur(20px)!important}
 html body > #mCat.page .lib-tabs .lt{border:1px solid var(--n-line)!important;border-radius:999px!important;background:rgba(255,255,255,.045)!important;color:var(--n-muted)!important;padding:10px 18px!important}
 html body > #mCat.page .lib-tabs .lt.on{border-color:rgba(231,200,120,.62)!important;background:rgba(231,200,120,.12)!important;color:var(--n-gold-2)!important;box-shadow:0 0 0 4px rgba(231,200,120,.05)!important}
 html body > #mCat.page .bk-wrap{display:grid!important;grid-template-columns:210px minmax(0,1fr)!important;gap:24px!important;background:transparent!important}
@@ -3059,14 +3066,14 @@ html body > #aiSec.page .ps-ai-head{position:relative!important;flex:0 0 auto!im
 html body > #aiSec.page .ps-ai-head-l{color:var(--n-gold-2)!important;font-size:18px!important}html body > #aiSec.page .ps-ai-head-l>span:first-of-type{color:var(--n-gold-2)!important}html body > #aiSec.page #aiQuota{color:var(--n-green)!important}.ps-ai-head .ps-en{color:var(--n-muted)!important}
 html body > #aiSec.page .ps-ai-msgs{width:min(840px,100%)!important;flex:1 1 0!important;height:auto!important;min-height:220px!important;max-height:none!important;margin:0 auto!important;padding:28px clamp(16px,5vw,56px)!important;background:transparent!important;overflow-y:auto!important}
 html body > #aiSec.page .ps-ai-msg{max-width:min(760px,92%)!important;border-radius:20px!important;border:1px solid var(--n-line)!important;line-height:1.8!important}.ai-page .ps-ai-msg.user{background:linear-gradient(135deg,#16795c,#0f503f)!important;color:#f5fff8!important;border-color:rgba(66,198,156,.4)!important}.ai-page .ps-ai-msg.bot{background:rgba(255,255,255,.06)!important;color:var(--n-ink)!important}
-html body > #aiSec.page .ps-ai-chips{flex:0 0 auto!important;width:min(840px,100%)!important;max-height:94px!important;overflow:auto!important;margin:0 auto!important;padding:10px clamp(16px,5vw,56px)!important;background:rgba(0,0,0,.12)!important}
+html body > #aiSec.page .ps-ai-chips{flex:0 0 auto!important;width:min(840px,100%)!important;max-height:94px!important;overflow:auto!important;margin:0 auto!important;padding:10px clamp(16px,5vw,56px)!important;background:var(--n-scrim)!important}
 html body > #aiSec.page .ps-ai-chips button{border:1px solid var(--n-line)!important;border-radius:999px!important;background:rgba(255,255,255,.055)!important;color:var(--n-muted)!important;padding:9px 13px!important;transition:all .2s ease!important}.ai-page .ps-ai-chips button:hover{border-color:rgba(231,200,120,.5)!important;color:var(--n-gold-2)!important;background:rgba(231,200,120,.1)!important}
-html body > #aiSec.page .ps-ai-input{flex:0 0 auto!important;width:min(840px,100%)!important;margin:0 auto!important;padding:16px clamp(16px,5vw,56px) 22px!important;display:flex!important;gap:9px!important;align-items:center!important;background:rgba(0,0,0,.22)!important;border-top:1px solid var(--n-line)!important}
+html body > #aiSec.page .ps-ai-input{flex:0 0 auto!important;width:min(840px,100%)!important;margin:0 auto!important;padding:16px clamp(16px,5vw,56px) 22px!important;display:flex!important;gap:9px!important;align-items:center!important;background:var(--n-scrim)!important;border-top:1px solid var(--n-line)!important}
 html body > #aiSec.page .ps-ai-input input{flex:1 1 0!important;width:0!important;min-width:0!important;height:50px!important;border:1px solid var(--n-line)!important;border-radius:16px!important;background:rgba(255,255,255,.07)!important;color:var(--n-ink)!important;padding:0 15px!important;font-size:15px!important}html body > #aiSec.page .ps-ai-input input:focus{border-color:rgba(231,200,120,.62)!important;box-shadow:0 0 0 4px rgba(231,200,120,.1)!important}
 html body > #aiSec.page .ps-ai-input button{width:auto!important;min-width:48px!important;height:50px!important;padding:0 17px!important;border:0!important;border-radius:16px!important;background:linear-gradient(135deg,#e7c878,#bd8e2d)!important;color:#17221d!important;font-weight:800!important}.ai-page .nour-close{position:absolute!important;z-index:10!important;top:20px!important;right:clamp(18px,5vw,56px)!important;border:1px solid var(--n-line)!important;border-radius:999px!important;background:rgba(255,255,255,.07)!important;color:var(--n-gold-2)!important;padding:9px 14px!important}
 /* Bottom navigation remains a premium persistent app rail. */
-html body > .tabbar{position:fixed!important;z-index:12000!important;left:50%!important;right:auto!important;bottom:calc(14px + env(safe-area-inset-bottom,0px))!important;width:min(520px,calc(100% - 28px))!important;transform:translateX(-50%)!important;display:flex!important;padding:8px!important;border:1px solid var(--n-line)!important;border-radius:24px!important;background:rgba(18,24,30,.78)!important;box-shadow:0 18px 60px rgba(0,0,0,.44),inset 0 1px rgba(255,255,255,.10)!important;backdrop-filter:blur(28px) saturate(160%)!important;-webkit-backdrop-filter:blur(28px) saturate(160%)!important}
-html body > .tabbar .tb{min-height:50px!important;border-radius:17px!important;color:rgba(235,239,244,.6)!important;transition:background .2s ease,color .2s ease,transform .2s ease!important}.tabbar .tb.on{color:var(--n-gold-2)!important;background:rgba(231,200,120,.11)!important}.tabbar .tb.on .t-nm{color:var(--n-gold-2)!important}.tabbar .tb:hover{color:var(--n-ink)!important;transform:translateY(-1px)!important}
+html body > .tabbar{position:fixed!important;z-index:12000!important;left:50%!important;right:auto!important;bottom:calc(14px + env(safe-area-inset-bottom,0px))!important;width:min(520px,calc(100% - 28px))!important;transform:translateX(-50%)!important;display:flex!important;padding:8px!important;border:1px solid var(--n-line)!important;border-radius:24px!important;background:var(--n-rail)!important;box-shadow:0 18px 60px rgba(0,0,0,.14),inset 0 1px rgba(255,255,255,.10)!important;backdrop-filter:blur(28px) saturate(160%)!important;-webkit-backdrop-filter:blur(28px) saturate(160%)!important}
+html body > .tabbar .tb{min-height:50px!important;border-radius:17px!important;color:var(--n-muted)!important;transition:background .2s ease,color .2s ease,transform .2s ease!important}.tabbar .tb.on{color:var(--n-gold-2)!important;background:rgba(231,200,120,.11)!important}.tabbar .tb.on .t-nm{color:var(--n-gold-2)!important}.tabbar .tb:hover{color:var(--n-ink)!important;transform:translateY(-1px)!important}
 button:focus-visible,input:focus-visible,a:focus-visible{outline:2px solid var(--n-gold)!important;outline-offset:3px!important}
 @media(max-width:760px){html body > #mCat.page .bk-wrap{display:block!important}html body > #mCat.page .bk-side{position:relative!important;top:auto!important;margin-bottom:14px!important}html body > #mCat.page .bk-top{display:block!important}html body > #mCat.page .bk-q{margin-top:10px!important;width:100%!important}html body > #mCat.page .m-head,html body > #page-search.page .pg-h,html body > #page-me.page .pg-h{min-height:66px!important;padding:15px 18px!important}html body > #mCat.page .lib-tabs{top:66px!important}html body > #aiSec.page .ps-ai-card{height:calc(100dvh - 126px)!important;min-height:0!important}html body > #aiSec.page .ps-ai-head{min-height:72px!important;padding:17px 90px 17px 16px!important}.ai-page .ps-ai-head-l{font-size:16px!important}html body > #aiSec.page .ps-ai-msgs{padding:20px 12px!important}.ai-page .ps-ai-msg{max-width:94%!important}html body > #aiSec.page .ps-ai-input{padding:11px 10px 14px!important}.ai-page .ps-ai-input input{height:48px!important;font-size:15px!important}.ai-page .ps-ai-input button{height:48px!important;padding:0 14px!important}.ai-page .nour-close{top:15px!important;right:12px!important}.tabbar{bottom:calc(9px + env(safe-area-inset-bottom,0px))!important}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.001ms!important;transition-duration:.001ms!important}}
@@ -3484,6 +3491,21 @@ html body > .tabbar .tb{border-radius:16px!important}
 button[onclick="lockContact()"],button[onclick="freeEnter()"]{border-radius:12px!important}
 </style><style id="nour-product-shell">/* NOUR product shell: new information architecture over the existing feature layer. */
 :root{
+  --nour-ink:#f6f3eb;
+  --nour-ink-soft:#17211c;
+  --nour-paper:#fffdf8;
+  --nour-paper-2:#efe9dd;
+  --nour-line:#e3ddcc;
+  --nour-line-light:rgba(21,45,35,.14);
+  --nour-text:#24332b;
+  --nour-muted:#5b6a60;
+  --nour-gold:#a98935;
+  --nour-gold-soft:#0f5132;
+  --nour-green:#1e5b43;
+  --nour-green-bright:#3f936d;
+  --nour-radius:8px;
+}
+html[data-theme="dark"]{
   --nour-ink:#101512;
   --nour-ink-soft:#17211c;
   --nour-paper:#f3efe5;
@@ -3496,7 +3518,6 @@ button[onclick="lockContact()"],button[onclick="freeEnter()"]{border-radius:12px
   --nour-gold-soft:#e7d4a0;
   --nour-green:#1e5b43;
   --nour-green-bright:#3f936d;
-  --nour-radius:8px;
 }
 html,body{background:var(--nour-ink)!important;color:var(--nour-text)!important}
 body{overflow-x:hidden!important}
@@ -3544,7 +3565,7 @@ html body > #page-home.page,html body > #mCat.page,html body > #page-search.page
 .nour-tool-index button{display:flex;justify-content:space-between;align-items:center;padding:13px 14px;border:0;border-bottom:1px solid var(--nour-line);background:rgba(255,255,255,.035);color:var(--nour-text);text-align:left;font:inherit;cursor:pointer}.nour-tool-index button:last-child{border-bottom:0}.nour-tool-index button:hover{background:rgba(255,255,255,.075)}
 .nour-tool-index strong{font-size:12px;font-weight:600}.nour-tool-index small{display:block;margin-top:3px;color:var(--nour-muted);font-size:10px}.nour-tool-index i{font-style:normal;color:var(--nour-gold-soft);font-size:16px}
 /* Five-item primary navigation. Keep the old selector as a cache-safe fallback. */
-.tabbar.nour-primary-nav,.tabbar.nour-four-nav{display:flex!important;position:fixed!important;z-index:12000!important;left:50%!important;right:auto!important;bottom:calc(14px + env(safe-area-inset-bottom,0px))!important;transform:translateX(-50%)!important;width:min(480px,calc(100% - 28px))!important;background:rgba(16,21,18,.94)!important;border:1px solid rgba(231,212,160,.18)!important;border-radius:var(--nour-radius)!important;box-shadow:0 12px 30px rgba(0,0,0,.28)!important;backdrop-filter:blur(18px)!important}
+.tabbar.nour-primary-nav,.tabbar.nour-four-nav{display:flex!important;position:fixed!important;z-index:12000!important;left:50%!important;right:auto!important;bottom:calc(14px + env(safe-area-inset-bottom,0px))!important;transform:translateX(-50%)!important;width:min(480px,calc(100% - 28px))!important;background:var(--nour-ink)!important;border:1px solid var(--nour-line)!important;border-radius:var(--nour-radius)!important;box-shadow:0 12px 30px rgba(0,0,0,.12)!important;backdrop-filter:blur(18px)!important}
 .tabbar.nour-primary-nav .tb,.tabbar.nour-four-nav .tb{flex:1!important;min-width:0!important;min-height:54px!important;border-radius:4px!important;color:rgba(243,239,229,.55)!important}
 .tabbar.nour-primary-nav .tb.on,.tabbar.nour-primary-nav .tb.nour-active,.tabbar.nour-four-nav .tb.on,.tabbar.nour-four-nav .tb.nour-active{background:rgba(231,212,160,.11)!important;color:var(--nour-gold-soft)!important}
 .tabbar.nour-primary-nav .tb .t-nm,.tabbar.nour-four-nav .tb .t-nm{font-size:10px!important;color:inherit!important}.tabbar.nour-primary-nav .tb .t-ic,.tabbar.nour-four-nav .tb .t-ic{height:22px!important}.tabbar.nour-primary-nav .tb svg,.tabbar.nour-four-nav .tb svg{width:19px!important;height:19px!important;fill:none!important;stroke:currentColor!important;stroke-width:1.45!important}
@@ -3564,7 +3585,7 @@ html body > #page-home.page,html body > #mCat.page,html body > #page-search.page
 html body > #aiSec.page.nour-ai-workspace .ps-ai-card{height:auto!important;min-height:0!important;flex:none!important;overflow:visible!important}
 html body > #aiSec.page.nour-ai-workspace .ps-ai-msgs{flex:0 0 340px!important;height:340px!important;max-height:340px!important;min-height:220px!important}
 #aiSec.nour-ai-workspace .ps-ai-input{background:rgba(0,0,0,.22)!important}
-.nour-shell-toast{position:fixed;left:50%;bottom:108px;z-index:13000;transform:translate(-50%,8px);opacity:0;pointer-events:none;max-width:min(440px,calc(100% - 32px));padding:10px 13px;border:1px solid var(--nour-line);border-radius:4px;background:#1b261f;color:var(--nour-text);font-size:11px;line-height:1.5;transition:opacity .2s,transform .2s}.nour-shell-toast.is-visible{opacity:1;transform:translate(-50%,0)}
+.nour-shell-toast{position:fixed;left:50%;bottom:108px;z-index:13000;transform:translate(-50%,8px);opacity:0;pointer-events:none;max-width:min(440px,calc(100% - 32px));padding:10px 13px;border:1px solid var(--nour-line);border-radius:4px;background:var(--nour-paper);color:var(--nour-text);font-size:11px;line-height:1.5;transition:opacity .2s,transform .2s}.nour-shell-toast.is-visible{opacity:1;transform:translate(-50%,0)}
 @media(max-width:760px){
   #page-home>.hdr{padding:18px 17px 10px!important}.nour-product-home{width:calc(100% - 28px);margin-top:3px}.nour-product-head{display:block;padding:22px 0 19px}.nour-product-title{font-size:31px}.nour-product-lede{font-size:12px;line-height:1.75}.nour-product-search{margin-top:16px;width:100%;justify-content:center}.nour-product-grid{display:block;margin-top:14px}.nour-product-column{display:grid;gap:18px}.nour-product-column+.nour-product-column{margin-top:18px}.nour-discovery{grid-template-columns:1fr}.nour-ai-intro{display:block;padding-bottom:13px}.nour-ai-intro h1{font-size:27px}.nour-ai-modes{justify-content:flex-start;margin-top:13px}.nour-ai-note{margin-bottom:12px}#aiSec.nour-ai-workspace{padding:12px 12px 104px!important}#aiSec.nour-ai-workspace .ps-ai-msgs{flex:0 0 240px!important;height:240px!important;max-height:240px!important;min-height:210px!important}html body > #aiSec.page.nour-ai-workspace .ps-ai-msgs{flex:0 0 240px!important;height:240px!important;max-height:240px!important;min-height:210px!important}.nour-shell-search{right:16px;top:16px}.tabbar.nour-primary-nav,.tabbar.nour-four-nav{width:calc(100% - 24px)!important;bottom:calc(10px + env(safe-area-inset-bottom,0px))!important}.nour-continue-item{padding:13px 12px}.nour-continue-item .nour-product-action{padding:7px 8px}.nour-tool-index button{padding:13px 12px}
 }
@@ -4517,220 +4538,79 @@ body.reading #mReader .rd-paper {
   }
 }
 </style><style id="nour-design-system">/* ==========================================================================
-   NOUR 设计系统 · 裁决层（Design System / Final Contract）
+   NOUR 设计系统 · 裁决层 v4（Final Contract）
    --------------------------------------------------------------------------
-   定位：在所有旧视觉层之后注入（级联最高优先级），作为「单一真相」收敛
-   字体、色彩、间距、圆角、RTL 与排版。原则：
-     · 只做「令牌 + 排版 + RTL + 克制视觉」，不改布局结构、不改业务逻辑。
-     · 令牌取值对齐既有「纸感 + 墨 + 金」方向，不另起炉灶。
-     · 可整层删除回滚（删除本文件 + build_home.py 中对应注入块即可）。
+   职责（在所有旧视觉层之后注入，级联最高）：
+     1. 排版：统一字体、阿语行高、字距、bidi 隔离。
+     2. 浅色：覆盖各层硬编码的「深色玻璃」，统一纸感学术风。
+     3. 深色：保留既有深色主题，仅补少量可读性。
+   令牌前缀 --ds-*，避免与既有 --n-* / --nour-* 冲突。
    ========================================================================== */
 
-/* ============================================================
-   1) 设计令牌（单一来源）
-   ============================================================ */
-:root {
-  /* 色彩 — 浅色（学术纸感） */
-  --nour-bg: #f4f1e9;          /* 页面背景 */
-  --nour-surface: #fffefa;     /* 卡片/面板 */
-  --nour-surface-2: #f6f3ea;   /* 次级底 */
-  --nour-ink: #26352c;         /* 主文本（墨） */
-  --nour-ink-2: #5c6a61;       /* 次级文本 */
-  --nour-ink-3: #859087;       /* 弱文本/占位 */
-  --nour-line: #d7d2c4;        /* 1px 边框 */
-  --nour-brand: #0f5132;       /* 品牌墨绿 */
-  --nour-brand-2: #286a50;     /* 品牌提亮 */
-  --nour-gold: #b18a3c;        /* 哑金强调 */
-  --nour-gold-soft: #d4b86e;   /* 哑金浅 */
-  --nour-danger: #b3261e;
-  --nour-focus: #d7b96d;       /* 焦点环 */
-
-  /* 字号（模块化比例） */
-  --nour-fs-xs: 12px;
-  --nour-fs-sm: 13px;
-  --nour-fs-base: 15px;
-  --nour-fs-md: 17px;
-  --nour-fs-lg: 20px;
-  --nour-fs-xl: 24px;
-  --nour-fs-2xl: 32px;
-
-  /* 行高 */
-  --nour-lh-cjk: 1.6;          /* 中文/西文 */
-  --nour-lh-ar: 1.9;           /* 阿拉伯语常规 */
-  --nour-lh-ar-vocal: 2.05;    /* 阿拉伯语带音符原文 */
-
-  /* 间距（4px 基数） */
-  --nour-sp-1: 4px;
-  --nour-sp-2: 8px;
-  --nour-sp-3: 12px;
-  --nour-sp-4: 16px;
-  --nour-sp-5: 24px;
-  --nour-sp-6: 32px;
-  --nour-sp-7: 40px;
-  --nour-sp-8: 48px;
-
-  /* 圆角 */
-  --nour-r-sm: 4px;
-  --nour-r-md: 8px;
-  --nour-r-lg: 12px;
-  --nour-r-pill: 999px;
-
-  /* 阴影（克制：细边框为主，阴影仅做层级提示） */
-  --nour-shadow-xs: 0 1px 2px rgba(38, 53, 44, .05);
-  --nour-shadow-sm: 0 1px 3px rgba(38, 53, 44, .07);
-  --nour-shadow-md: 0 8px 24px rgba(38, 53, 44, .09);
-
-  /* 动效 */
-  --nour-ease: cubic-bezier(.23, 1, .32, 1);
-  --nour-fast: 150ms;
-
-  /* 字体 */
-  --nour-ar-ui: 'DubaiNur', 'AmiriNur', 'SF Arabic', 'Noto Naskh Arabic', serif;
-  --nour-ar-reading: 'ScheherazadeNur', 'AmiriNur', serif;
+:root{
+  --ds-bg:#f6f3eb; --ds-surface:#fffdf8; --ds-surface-2:#efe9dd;
+  --ds-ink:#24332b; --ds-ink-2:#5b6a60; --ds-ink-3:#8a938c;
+  --ds-line:#e3ddcc; --ds-brand:#0f5132; --ds-gold:#a98935;
+  --ds-shadow:0 1px 3px rgba(36,51,43,.06);
+  --ds-ar-ui:'DubaiNur','AmiriNur','SF Arabic','Noto Naskh Arabic',serif;
+  --ds-ar-reading:'ScheherazadeNur','AmiriNur',serif;
 }
 
-html[data-theme="dark"] {
-  --nour-bg: #0e1411;
-  --nour-surface: #162019;
-  --nour-surface-2: #1c2820;
-  --nour-ink: #edf0e8;
-  --nour-ink-2: #b6c1b7;
-  --nour-ink-3: #7f8d83;
-  --nour-line: rgba(235, 224, 193, .16);
-  --nour-brand: #2e8b57;
-  --nour-brand-2: #3aa06a;
-  --nour-gold: #e7d4a0;
-  --nour-gold-soft: #c9a94e;
-  --nour-focus: #e7d4a0;
-  --nour-shadow-xs: 0 1px 2px rgba(0, 0, 0, .22);
-  --nour-shadow-sm: 0 1px 3px rgba(0, 0, 0, .28);
-  --nour-shadow-md: 0 8px 24px rgba(0, 0, 0, .34);
-}
+/* ============ 排版（双模式） ============ */
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;letter-spacing:.005em}
+[lang="ar"],[dir="rtl"],.q-ar,.gar,.hs-line-ar,.belt-ar,.bktitle,.rd-ar,.rd-word-ar,.dict-lesson-ar,.nour-daily-quote-ar{font-family:var(--ds-ar-ui);letter-spacing:0!important;text-align:start}
+.q-ar,.gar,.rd-page,.rd-page__text,.rd-ar{font-family:var(--ds-ar-reading);line-height:1.95}
+.nour-bidi{unicode-bidi:isolate}.nour-bidi-plaintext{unicode-bidi:plaintext;direction:auto}
 
-/* ============================================================
-   2) 排版基线
-   ============================================================ */
-html {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-}
+/* ============ 浅色：统一纸感（覆盖硬编码深色玻璃） ============ */
+html[data-theme="light"] body,
+html[data-theme="light"] html{background:var(--ds-bg)!important;background-image:none!important;color:var(--ds-ink)!important}
 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC",
-    "Microsoft YaHei", "Noto Sans SC", sans-serif;
-  line-height: var(--nour-lh-cjk);
-  color: var(--nour-ink);
-  letter-spacing: .01em;
-}
+/* 顶栏品牌文字（硬编码浅字） */
+html[data-theme="light"] .hdr,
+html[data-theme="light"] #page-home>.hdr{color:var(--ds-ink)!important}
+html[data-theme="light"] .hdr .logo,
+html[data-theme="light"] #page-home>.hdr .logo{color:var(--ds-brand)!important;-webkit-text-fill-color:var(--ds-brand)!important}
+html[data-theme="light"] .hdr .logo-sub,
+html[data-theme="light"] #page-home>.hdr .logo-sub{color:var(--ds-ink-2)!important}
+html[data-theme="light"] .hdr .zh{color:var(--ds-ink-2)!important}
+html[data-theme="light"] .hdr .lang-btn,
+html[data-theme="light"] .hdr .ai-btn{color:var(--ds-ink)!important;border-color:var(--ds-line)!important;background:var(--ds-surface)!important}
 
-/* 标题节奏：中文大标题稍收字距，正文不缩 */
-.nour-product-section-head,
-.hs-sec h3,
-.pg-h,
-.m-head b {
-  letter-spacing: .005em;
-}
+/* 弹窗（硬编码深蓝） */
+html[data-theme="light"] #page-home .m-head,
+html[data-theme="light"] .modal .m-head,
+html[data-theme="light"] #mDict .m-head{background:var(--ds-surface)!important;color:var(--ds-ink)!important;border-color:var(--ds-line)!important}
+html[data-theme="light"] #page-home .m-body,
+html[data-theme="light"] .modal .m-body{background:var(--ds-bg)!important;color:var(--ds-ink)!important}
+html[data-theme="light"] #page-home>.modal{background:rgba(20,22,20,.38)!important}
 
-/* 阿拉伯语可读性：
-   —— 统一用阿语字体、加行高、去字距（字距会破坏连写）、对齐跟随方向 */
-[lang="ar"],
-[dir="rtl"],
-.q-ar,
-.gar,
-.hs-line-ar,
-.belt-ar,
-.bktitle,
-.rd-ar,
-.rd-word-ar,
-.dict-lesson-ar {
-  font-family: var(--nour-ar-ui);
-  line-height: var(--nour-lh-ar);
-  letter-spacing: 0 !important;
-  text-align: start;
-}
+/* 输入框（硬编码深色玻璃 + 浅字） */
+html[data-theme="light"] #page-home input,
+html[data-theme="light"] #page-home textarea,
+html[data-theme="light"] #page-home select{background:var(--ds-surface)!important;color:var(--ds-ink)!important;border-color:var(--ds-line)!important}
+html[data-theme="light"] #page-home input::placeholder,
+html[data-theme="light"] #page-home textarea::placeholder{color:var(--ds-ink-3)!important}
 
-/* 原文/诵读类（古兰经、圣训、名言）用阅读字体 + 更高行高容纳音符 */
-.q-ar,
-.gar,
-.rd-page,
-.rd-page__text,
-.rd-ar {
-  font-family: var(--nour-ar-reading);
-  line-height: var(--nour-lh-ar-vocal);
-}
+/* 底部导航（硬编码深色玻璃，双保险） */
+html[data-theme="light"] .tabbar,
+html[data-theme="light"] .tabbar.nour-primary-nav{background:var(--ds-surface)!important;border-color:var(--ds-line)!important;box-shadow:0 12px 30px rgba(36,51,43,.10)!important}
+html[data-theme="light"] .tabbar .tb{color:var(--ds-ink-2)!important}
+html[data-theme="light"] .tabbar .tb.on{color:var(--ds-brand)!important;background:var(--ds-surface-2)!important}
+html[data-theme="light"] .tabbar .tb.on .t-nm{color:var(--ds-brand)!important}
 
-/* ============================================================
-   3) RTL 与双向文本：逻辑属性 + 隔离工具类
-   ============================================================ */
-/* 提供 bidi 隔离工具类，供混排（中/阿交替）防标点与数字错位 */
-.nour-bidi { unicode-bidi: isolate; }
-.nour-bidi-plaintext { unicode-bidi: plaintext; direction: auto; }
-
-/* RTL 容器：让内边距/外边距/对齐优先使用逻辑方向，避免物理 left/right 硬编码 */
-[dir="rtl"] .nour-logical,
-[dir="rtl"].nour-logical {
-  direction: rtl;
-}
-
-/* 任何带「自动方向」的文本块统一按内容方向对齐 */
-[dir="auto"],
-.nour-bidi-plaintext,
-.ps-ai-msg {
-  text-align: start;
-}
-
-/* ============================================================
-   4) 克制视觉：主表面收敛为「细边框 + 轻阴影」，弱化旧层重投影
-   （仅覆盖颜色/阴影/圆角，不动 display/尺寸/定位，避免布局回归）
-   ============================================================ */
-.quote-card,
-.hs-row,
-.gcard,
-.belt-card,
-.ps-ai-card,
-.sup-card {
-  border: 1px solid var(--nour-line) !important;
-  box-shadow: var(--nour-shadow-sm) !important;
-}
-
-/* 卡片标题与正文的颜色统一走令牌（浅色墨、深色暖白） */
-html[data-theme="light"] .quote-card,
-html[data-theme="light"] .hs-row,
-html[data-theme="light"] .gcard,
-html[data-theme="light"] .belt-card,
-html[data-theme="light"] .ps-ai-card {
-  background: var(--nour-surface) !important;
-}
-
-/* ============================================================
-   5) 可访问性：对比增强（尊重系统「增强对比度」）
-   ============================================================ */
-@media (prefers-contrast: more) {
-  :root {
-    --nour-ink-2: #435048;
-    --nour-ink-3: #66726a;
-    --nour-line: #b9b3a4;
-  }
-  html[data-theme="dark"] {
-    --nour-ink-2: #d6ddd6;
-    --nour-ink-3: #a9b5aa;
-    --nour-line: rgba(235, 224, 193, .4);
-  }
-}
-
-/* 选中态与焦点保持一致（焦点环已在 nour-interface-polish 定义，此处补选中底色） */
-::selection {
-  background: rgba(215, 185, 109, .34);
-  color: inherit;
-}
+/* 无障碍 */
+:focus-visible{outline:2px solid var(--ds-gold)!important;outline-offset:3px!important}
+@media (prefers-contrast: more){:root{--ds-ink-2:#435048;--ds-ink-3:#66726a;--ds-line:#b9b3a4}}
+::selection{background:rgba(203,184,126,.34);color:inherit}
 </style></head>
 <body>
 <div class="page" id="page-home"><div id="splash"><div class="sp-lamp"></div><div class="sp-ar">نور</div><div class="sp-cn">燃 灯 者</div><div class="sp-bar"><i></i></div></div>
 <div class="bg-pattern"></div>
 <header class="hdr"><div class="glow"></div><div class="arch-wrap"><div class="arch"></div></div><div class="logo">نور</div><div class="logo-sub">Nour · 阿拉伯语学习</div><span class="zh">صامتٌ لكنّه يهدي إلى الطريق</span><div style="display:flex;gap:10px;justify-content:center;align-items:center;margin-top:14px;position:relative;z-index:5"><button id="langBtn" class="lang-btn" onclick="toggleLang()">中文</button></div>
 </header>
-<style>.donbar{overflow:hidden;white-space:nowrap;background:linear-gradient(90deg,#0f5132,#1d7a4f,#0f5132);color:#f6e7b4;font-size:13px;font-weight:700;padding:10px 0;cursor:pointer;margin:6px 0}.donbar-in{display:inline-block;padding-left:100%;animation:donmarq 24s linear infinite}@keyframes donmarq{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}html[data-theme=\'dark\'] .donbar{background:linear-gradient(90deg,#0b2f24,#155c3c,#0b2f24)}</style><div class='donbar' onclick='openDonate()' title='点击支持网站'><div class='donbar-in'>💖 本站由个人自费维护（服务器 · 域名 · AI 全部自掏腰包）· 所有捐款全部用于网站运营与维护 · 感谢每一份心意 · جزاك الله خيرا 💖 点我支持 ｜ 版本 2026-10-15 16:17</div></div><div class="tk-hero" style="max-width:720px;margin:16px auto 4px;padding:0 18px;text-align:center"><div class="nour-welcome-title">今天，从一个阿拉伯语单词开始</div><div class="nour-welcome-sub">查词、听清发音、读例句，所有基础学习工具都可直接使用，不必先打开 AI。</div><div class="native-quick-row"><button type="button" class="native-quick primary" onclick="openDict()"><b>🔎 查一个词</b><small>释义 · 例句 · 朗读</small></button><button type="button" class="native-quick" onclick="showListen()"><b>🔊 听一遍</b><small>阿语原生发音</small></button><button type="button" class="native-quick" onclick="showChallenge()"><b>✍️ 练一题</b><small>词汇 · 拼句</small></button></div></div><section class="vision-cards" aria-label="快速入口">
+<style>.donbar{overflow:hidden;white-space:nowrap;background:linear-gradient(90deg,#0f5132,#1d7a4f,#0f5132);color:#f6e7b4;font-size:13px;font-weight:700;padding:10px 0;cursor:pointer;margin:6px 0}.donbar-in{display:inline-block;padding-left:100%;animation:donmarq 24s linear infinite}@keyframes donmarq{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}html[data-theme=\'dark\'] .donbar{background:linear-gradient(90deg,#0b2f24,#155c3c,#0b2f24)}</style><div class='donbar' onclick='openDonate()' title='点击支持网站'><div class='donbar-in'>💖 本站由个人自费维护（服务器 · 域名 · AI 全部自掏腰包）· 所有捐款全部用于网站运营与维护 · 感谢每一份心意 · جزاك الله خيرا 💖 点我支持 ｜ 版本 2026-10-15 16:37</div></div><div class="tk-hero" style="max-width:720px;margin:16px auto 4px;padding:0 18px;text-align:center"><div class="nour-welcome-title">今天，从一个阿拉伯语单词开始</div><div class="nour-welcome-sub">查词、听清发音、读例句，所有基础学习工具都可直接使用，不必先打开 AI。</div><div class="native-quick-row"><button type="button" class="native-quick primary" onclick="openDict()"><b>🔎 查一个词</b><small>释义 · 例句 · 朗读</small></button><button type="button" class="native-quick" onclick="showListen()"><b>🔊 听一遍</b><small>阿语原生发音</small></button><button type="button" class="native-quick" onclick="showChallenge()"><b>✍️ 练一题</b><small>词汇 · 拼句</small></button></div></div><section class="vision-cards" aria-label="快速入口">
 <button class="vision-card" type="button" onclick="nav('learn')" aria-label="打开世界图书馆"><span class="vc-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 0 4 22.5z"/><path d="M4 5.5v17M8 7h8M8 11h8M8 15h6"/></svg></span><span class="vc-copy"><strong>世界图书馆</strong><small>典籍、历史与中文古籍</small></span><span class="vc-arrow" aria-hidden="true">›</span></button>
 <button class="vision-card" type="button" onclick="showListen()" aria-label="打开阿拉伯语听读练习"><span class="vc-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3Z"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4m-4 0h8"/></svg></span><span class="vc-copy"><strong>阿拉伯语口语</strong><small>听读练习与日常表达</small></span><span class="vc-arrow" aria-hidden="true">›</span></button>
 </section><div style="max-width:880px;margin:14px auto 6px;padding:0 16px"><div class="tk-dict" onclick="openDict()" style="background:linear-gradient(135deg,#0f5132,#1d7a4f 60%,#2f9d68);border-radius:18px;padding:16px 18px;box-shadow:0 10px 26px rgba(15,81,50,.28);cursor:pointer;color:#fff"><div style="display:flex;align-items:center;gap:10px"><div style="font-size:38px">📖</div><div style="flex:1"><div style="font-size:21px;font-weight:900;letter-spacing:.8px">查阿拉伯语单词</div><div style="font-size:13.5px;opacity:.95;margin-top:5px;line-height:1.6">输入阿语 → 中文释义 · 词根 · <b>近义词</b> · <b>反义词</b> · <b>同类词</b> · 例句</div></div><div style="background:#f6e7b4;color:#0f5132;font-weight:900;font-size:16px;padding:12px 20px;border-radius:999px;white-space:nowrap">开始查 ›</div></div></div></div><div class="lib-search"><span>🔍</span><input id="libQ" placeholder="搜索句子、词汇、文本、哲言…（回车）" onkeydown="if(event.key===&#39;Enter&#39;){libSearch(this.value)}"></div><div class="lib-acts" style="max-width:880px;margin:10px auto 0;padding:0 16px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center"><button class="act-btn" style="margin:0" onclick="openSearchAll()">🔎 全站搜索</button><button class="act-btn" style="margin:0;background:#c8a24a;color:#fff;border-color:#c8a24a;font-weight:700" onclick="openDonate()">💖 支持网站</button></div><div class="home-stats"><div><b id="hsBooks">—</b> 部世界典籍</div><div><b id="hsHistory">—</b> 部世界史书</div><div><b id="hsHadith">—</b> 段哲言</div><div><b id="hsReadable">—</b> 部可读全文</div><div><b>6</b> 课语法</div><div style="font-size:11px;color:#a8ada6" id="hsTime"></div></div><div class="home-audio-entry"><button type="button" onclick="showAudioLibrary()"><span>🎧</span><span><b>音频资料库</b><small>FLAC / WAV 无损 · 宣礼 · 系统/真人发音，直接在网页内播放</small></span><strong>打开 ›</strong></button></div><div class="daily-quote" id="quote"><div class="quote-card"><div class="q-ar" id="qAr">العِلْمُ كَنْزٌ لَا يَفْنَىٰ</div><div class="q-cn" id="qCn">知识是永不消逝的宝藏</div></div></div>
@@ -5267,10 +5147,10 @@ html[data-theme="light"] .ps-ai-card {
 <div class="s-card" data-cat="jordan_social"><div class="s-ar">خلينا نروح</div><div class="s-tr"><div class="s-en">🇬🇧 Let's go</div><div class="s-cn">🇨🇳 我们走吧</div><div class="s-py">🗣 哈利纳努鲁赫</div></div><div class="s-btns"><button class="s-btn" onclick="ap(this,0,'خلينا نروح')">🔊</button><button class="s-btn" onclick="ap(this,1,'Let\'s go')">🇬🇧</button><button class="s-btn" onclick="toggleFavWeb('خلينا نروح')" title="收藏">☆</button><button class="s-btn" onclick="reviewSent('خلينا نروح')" title="加入间隔复习">📌</button><button class="s-btn" onclick="explainSentence('خلينا نروح')" title="逐词拆解">✂️</button><button class="s-btn" onclick="trCard(this)" title="AI 中译">中</button></div></div>
 <div class="s-card" data-cat="jordan_social"><div class="s-ar">بكرة في حصة؟</div><div class="s-tr"><div class="s-en">🇬🇧 Is there a class tomorrow?</div><div class="s-cn">🇨🇳 明天有课吗？</div><div class="s-py">🗣 布克拉菲海沙</div></div><div class="s-btns"><button class="s-btn" onclick="ap(this,0,'بكرة في حصة؟')">🔊</button><button class="s-btn" onclick="ap(this,1,'Is there a class tomorrow?')">🇬🇧</button><button class="s-btn" onclick="toggleFavWeb('بكرة في حصة؟')" title="收藏">☆</button><button class="s-btn" onclick="reviewSent('بكرة في حصة؟')" title="加入间隔复习">📌</button><button class="s-btn" onclick="explainSentence('بكرة في حصة؟')" title="逐词拆解">✂️</button><button class="s-btn" onclick="trCard(this)" title="AI 中译">中</button></div></div></div></div></div></div>
 <section class="ps-ai" id="aiSec"><div class="ps-ai-card"><div class="ps-ai-head"><div class="ps-ai-head-l"><div class="ps-ai-avatar"></div><span>努尔老师 · نور</span><span id="aiQuota" style="font-size:11px;color:#8a8f88;margin-left:8px;cursor:pointer" onclick="openPay()" title="点击充值/开通"></span></div><span class="ps-en">写文章·翻译·解经·问答</span><button id="aiVoiceToggle" class="ai-voice-toggle" type="button" onclick="nourToggleAutoVoice()" aria-pressed="false">🔈 人声：关</button></div><button class="nour-close" type="button" onclick="closeNourVoice()" aria-label="结束语音对话">完成</button><div class="ps-ai-msgs" id="homeAI"><div class="ps-ai-msg bot">السلام عليكم ورحمة الله! السلام عليكم！我是你的阿拉伯语老师「努尔」（نور）。你可以让我陪你练习对话、翻译阿语、解释课文，或者一起解决学习中的问题。</div></div><div class="ps-ai-chips" id="homeAIChips"></div><div class="ps-ai-input"><div class="home-ai-compose"><textarea id="homeAIIn" rows="1" autocomplete="off" spellcheck="true" aria-label="阿拉伯语学习问题" placeholder="写下你想练习的内容…" oninput="homeAIInputState(this)" onkeydown="homeAIKeydown(event)"></textarea><div class="home-ai-tools"><button type="button" class="home-ai-mode on" id="homeAIFast" onclick="homeAIToggleFast()" title="直接回答，速度更快">快答</button><span class="home-ai-hint">回车发送 · Shift+回车换行</span><span class="home-ai-count" id="homeAICount">就绪</span></div></div><button class="ps-mic" id="homeMic" onclick="homeAIVoice()" title="开始语音练习" aria-label="开始语音练习">🎙</button><button id="homeAISendBtn" class="home-ai-send" onclick="homeAISend()" aria-label="发送问题">发送</button></div></div></section><div class="modal" id="mTalk"><div class="m-head"><span>🎙</span><b>阿语口语陪练 · محادثة</b><button class="m-close" onclick="closeModal('mTalk')">✕</button></div><div class="m-body" id="mTalkBody"></div></div></div><!-- 模态框 --><div class="modal" id="mReader"><div class="m-head"><button class="m-back" onclick="closeModal('mReader')">‹ 返回</button><b id="mReaderTitle">阅读</b><span style="width:52px"></span></div><div class="m-body" id="mReaderBody"></div></div><div class="modal" id="mH6"><div class="m-head"><span>📜</span><b>哲人哲言</b><button class="m-close" onclick="closeModal('mH6')">✕</button></div><div class="m-body" id="mH6Body"></div></div><div class="page library-page" id="mCat" style="display:none"><div class="m-head"><span>◎</span><b>世界图书馆</b><button class="library-back" onclick="nav('home')">首页</button></div><div class="m-body" id="mCatBody"></div></div><div class="modal" id="mSentences"><div class="m-head"><span>📖</span><b>全部句子</b><button class="m-close" onclick="closeModal('mSentences')">✕</button></div><div class="m-search"><input id="mSentSearch" placeholder="🔍 搜索句子..." oninput="renderAllS()"></div><div class="m-body" id="mSentBody"></div><div class="m-count" id="mSentCount"></div></div><div class='modal' id='mDict'><div class='m-head' style='padding:16px 18px'><span style='font-size:24px'>📖</span><b style='font-size:19px'>阿语词典 · قاموس</b><button class='m-close' onclick="closeModal('mDict')">✕</button></div><div class='m-search' style='gap:10px;padding:12px 16px'><input id='dictQ' placeholder='输入阿拉伯语单词（也可输入中文）' style='font-size:19px;font-weight:700;padding:16px 18px;border-radius:14px;border:2px solid #d9d1bc' onkeydown="if(event.key==='Enter')dictSearch()"><button class='s-btn' style='width:auto;padding:16px 18px;font-size:20px;font-weight:800;border-radius:14px' onclick='dictVoice()' title='语音输入（说阿语）'>🎤</button><button class='s-btn' style='width:auto;padding:16px 22px;font-size:17px;font-weight:800;border-radius:14px' onclick='dictSearch()'>查词</button></div><div class='m-body' id='dictBody' style='padding:16px'><div style='text-align:center;padding:18px 6px 8px'><div style='font-size:46px;line-height:1'>📖</div><div style='font-size:16px;font-weight:800;color:#0f5132;margin-top:10px'>输入阿语单词，查中文意思</div><div style='font-size:12.5px;color:#8a8f88;margin-top:6px;line-height:1.8'>同时给出 <b>词根</b> · <b>近义词</b> · <b>反义词</b> · <b>同类词</b> · <b>例句</b></div><div style='font-size:12px;color:#a8ada6;margin:16px 0 8px'>试试这些词 👇</div><div style='display:flex;gap:8px;justify-content:center;flex-wrap:wrap'><span onclick="dictTry('كِتَاب')" style='padding:10px 16px;background:#fff;border:1px solid #e0d8c4;border-radius:999px;font-family:var(--ar-font);font-size:18px;color:#0f5132;cursor:pointer;box-shadow:0 2px 8px rgba(15,81,50,.06)'>كِتَاب</span><span onclick="dictTry('مَاء')" style='padding:10px 16px;background:#fff;border:1px solid #e0d8c4;border-radius:999px;font-family:var(--ar-font);font-size:18px;color:#0f5132;cursor:pointer;box-shadow:0 2px 8px rgba(15,81,50,.06)'>مَاء</span><span onclick="dictTry('ذَهَبَ')" style='padding:10px 16px;background:#fff;border:1px solid #e0d8c4;border-radius:999px;font-family:var(--ar-font);font-size:18px;color:#0f5132;cursor:pointer;box-shadow:0 2px 8px rgba(15,81,50,.06)'>ذَهَبَ</span><span onclick="dictTry('كَبِير')" style='padding:10px 16px;background:#fff;border:1px solid #e0d8c4;border-radius:999px;font-family:var(--ar-font);font-size:18px;color:#0f5132;cursor:pointer;box-shadow:0 2px 8px rgba(15,81,50,.06)'>كَبِير</span></div></div></div></div><div class='modal' id='mGrammar'><div class='m-head'><span>📐</span><b id='mGramHead'>语法课</b><button class='m-close' onclick="closeModal('mGrammar')">✕</button></div><div class='m-body' id='mGramBody' style='padding:14px'></div></div><div class='modal' id='mBelt'><div class='m-head'><span>📰</span><b>一带一路 · 中阿合作</b><button class='m-close' onclick="closeModal('mBelt')">✕</button></div><div class='m-body' id='mBeltBody' style='padding:14px'></div></div><div class='modal' id='mDonate'><div class='m-head'><span>❤️</span><b>支持燃灯者</b><button class='m-close' onclick="closeModal('mDonate')">✕</button></div><div class='m-body' style='padding:18px;text-align:center'><div style='font-size:13px;color:#5a6159;line-height:2'>这个网站是<b>个人自费</b>在维护（服务器 · 域名 · AI）。<br>你的心意会变成 <b>AI 额度</b>，让灯继续亮着 🕯<br><br>如果它帮到了你，欢迎用一份心意<br>让它继续亮下去 🕯</div><div id='donAmts' style='display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:18px 0'></div><button onclick='donShowQr()' style='width:100%;max-width:300px;padding:13px;background:#c8a24a;color:#fff;font-weight:800;font-size:15px;border:0;border-radius:12px;cursor:pointer'>💳 扫码支持</button><div id='donQrBox' style='display:none;margin-top:16px'></div><div style='margin-top:16px;font-size:11px;color:#a8ada6'>支持全凭自愿，感谢每一份心意 · جزاك الله خيرا</div></div></div><style>body.locked .page,body.locked .tabbar{display:none!important}body.locked{overflow:hidden}</style><div id='mLock' style='position:fixed;inset:0;z-index:12000;display:none;flex-direction:column;align-items:center;justify-content:center;padding:26px;background:linear-gradient(165deg,#fbf8f1,#efe7d5);text-align:center'><div style='font-size:46px;line-height:1'>🪔</div><div style='font-size:26px;font-weight:800;color:#0f5132;margin-top:10px'>燃灯者</div><div style='font-family:var(--ar-font);font-size:20px;color:#8a7f72;margin-top:2px'>حامل المصباح</div><div style='font-size:13px;color:#5a6159;margin:18px 0 16px;max-width:300px;line-height:1.7'>燃灯同学 · 阿拉伯学习平台<br><span style='font-size:11px;color:#9aa09a'>付费进入后，全部内容与 AI 都免费</span></div><input id='lockCode' type='hidden' value=''><div id='lockMsg' style='margin-top:12px;font-size:13px;color:#b4553a;min-height:20px;max-width:320px;line-height:1.6'></div><div style='margin-top:18px;font-size:12px;color:#8a8f88'>付费后即可进入 👇</div><div style='margin-top:2px;font-size:11px;color:#a8ada6'>（随缘支持 · 不想支持就点「免费进入」✓）</div><button onclick='lockContact()' style='margin-top:8px;width:100%;max-width:320px;padding:13px;font-size:15px;font-weight:800;color:#fff;background:#c8a24a;border:0;border-radius:14px;cursor:pointer'>🙋 我想拥有这款学习平台</button><div style='margin-top:14px;width:100%;max-width:320px;border-top:1px dashed #e5decc;padding-top:12px'><input id='entryCode' type='hidden' value=''><div id='entryMsg' style='display:none'></div><div id='lockPayBox' style='display:none;margin-top:14px;width:100%;max-width:320px;background:#fff;border:1px solid #e5decc;border-radius:14px;padding:14px;text-align:center'><div style='font-size:12px;color:#5a6159;line-height:1.8;margin-bottom:8px'>本站由站长个人自费维护（服务器 · 域名 · AI 接口 每月都要花钱）<br>免费试用：<b>查词 200 次</b> · 书库 / 句子 / 听力 随便用<br>想无限用：<b>会员 ¥15/月</b> · <b>永久卡 ¥299</b> · 加微信 <b>YsuF0202</b></div><div style='font-size:12px;color:#b4553a;margin-bottom:6px'>请如实填写你实际付了多少钱（会员费自愿支持 · 最低 ¥10）</div><input id='lockAmtIn' type='number' min='1' step='1' placeholder='我付了 ___ 元' style='width:100%;box-sizing:border-box;padding:13px;border:2px solid #d9d1bc;border-radius:12px;text-align:center;font-size:16px;font-weight:700;margin-bottom:10px'><img id='lockQr' src='data/pay_qr.png?v=3' style='display:none;max-width:200px;border-radius:10px;border:1px solid #eee7d8' onerror="this.style.display='none';document.getElementById('lockQrTip').style.display=''"><div id='lockQrTip' style='display:none;font-size:11px;color:#a8ada6'>收款码加载失败，请联系管理员</div><button id='lockShowBtn' onclick='lockShowQr()' style='width:100%;margin-top:6px;padding:13px;background:#c8a24a;color:#fff;font-weight:800;font-size:15px;border:0;border-radius:12px;cursor:pointer'>📷 点这里显示收款码</button><div id='lockPayRest' style='display:none'><input id='lockPayNote' placeholder='付款备注（选填，如你的微信号）' style='width:100%;box-sizing:border-box;margin-top:10px;padding:10px;border:1px solid #d9d1bc;border-radius:10px;font-size:13px'><button onclick='lockClaim()' style='width:100%;margin-top:8px;padding:12px;background:#0f5132;color:#fff;font-weight:800;font-size:14px;border:0;border-radius:12px;cursor:pointer'>✅ 我已付款</button><div id='lockPayMsg' style='margin-top:8px;font-size:12px;color:#5a6159;min-height:16px'></div></div></div><div style='margin-top:28px;font-size:11px;color:#a8ada6'>设备码 <b id='lockDev'>—</b> · <span onclick='copyDev()' style='color:#0f5132;text-decoration:underline;cursor:pointer'>复制</span></div><div style='margin-top:6px;font-size:11px;color:#a8ada6'>燃灯同学 · 阿拉伯学习平台</div></div><div class='modal' id='mDonate'><div class='m-head'><span>❤️</span><b>支持燃灯者</b><button class='m-close' onclick="closeModal('mDonate')">✕</button></div><div class='m-body' style='padding:18px;text-align:center'><div style='font-size:13px;color:#5a6159;line-height:2'>这个网站是<b>个人自费</b>在维护：<br>服务器 · 域名 · AI 费用，全部自捐腰包。<br><b>所有捐款全部用于网站运营与维护</b> 🕯<br><br>如果它帮到了你，欢迎用一份心意<br>让它继续亮下去。</div><div id='donAmts' style='display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:18px 0'></div><button onclick='donShowQr()' style='width:100%;max-width:300px;padding:13px;background:#c8a24a;color:#fff;font-weight:800;font-size:15px;border:0;border-radius:12px;cursor:pointer'>💳 扫码支持</button><div id='donQrBox' style='display:none;margin-top:16px'></div><div style='margin-top:16px;font-size:11px;color:#a8ada6'>支持全凭自愿，感谢每一份心意 · جزاك الله خيرا</div></div></div><div class='modal' id='mVid'><div class='m-head'><span>🎬</span><b>阿语听力 · 视频</b><button class='m-close' onclick="closeModal('mVid')">✕</button></div><div id='vidPlay' style='display:none;background:#111'></div><div class='m-search' id='vidCats' style='flex-wrap:wrap;gap:6px'></div><input id='vidQ' placeholder='🔍 搜索视频标题 / 频道...' oninput='vidFilter()' style='margin:0 12px 8px;width:calc(100% - 24px);padding:10px 12px;border:1px solid #e5decc;border-radius:10px;box-sizing:border-box'><div class='m-body' id='vidBody'></div></div><div class='modal' id='mSearch'><div class='m-head'><span>🔎</span><b>全站搜索</b><button class='m-close' onclick="closeModal('mSearch')">✕</button></div><div class='m-search'><input id='sq' placeholder='搜索句子 / 词汇 / 哲言 / 经典选读 / 书库…' onkeydown="if(event.key==='Enter')doSearchAll()"><button class='s-btn' style='width:auto;padding:8px 14px' onclick='doSearchAll()'>搜索</button></div><div class='m-body' id='sRes' style='padding:8px 12px'></div></div><div class='modal' id='mPay'><div class='m-head'><span>💳</span><b>开通会员 / 充值</b><button class='m-close' onclick="closeModal('mPay')">✕</button></div><div class='m-body' style='padding:14px'><div id='payMine' style='background:#f7f3e9;border:1px solid #e5decc;border-radius:12px;padding:12px;margin-bottom:12px;font-size:13px;color:#12735a'>加载中…</div><div id='payPlans'></div><div style='font-size:12px;color:#5a6159;margin:10px 0 6px'>① 选择付款金额（<b>到账 AI 额度 = 付款额 × 50%</b>，例：付 ¥30 → 到账 ¥15）</div><div id='payAmt' style='display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px'></div><div style='font-size:12px;color:#5a6159;margin:10px 0 6px'>或：用<b>激活码 / 充值码</b>直接兑换（一个码只能用一次）</div><div style='display:flex;gap:8px'><input id='payCode' placeholder='XXXX-XXXX-XXXX' style='flex:1;padding:12px;border:2px solid #d9d1bc;border-radius:12px;font-family:ui-monospace,monospace;text-align:center' onkeydown="if(event.key==='Enter')redeemCode()"><button class='s-btn' style='width:auto;padding:12px 16px;background:#0f5132;color:#fff;font-weight:700;border:0;border-radius:12px' onclick='redeemCode()'>兑换</button></div><div id='payMsg' style='margin-top:10px;font-size:13px;min-height:18px'></div><div id='payQr' style='margin-top:14px;text-align:center'></div><div style='margin-top:14px;border-top:1px dashed #e5decc;padding-top:12px'><div style='font-size:13px;color:#12735a;font-weight:700;margin-bottom:6px'>③ 已付款？点下面按钮通知管理员开通</div><input id='payNote' placeholder='付款备注（可填你的微信号 / 订单号，选填）' style='width:100%;padding:10px;border:1px solid #d9d1bc;border-radius:10px;font-size:13px;margin-bottom:8px'><button onclick='claimPaid()' style='width:100%;padding:13px;background:#c8a24a;color:#fff;font-weight:800;font-size:15px;border:0;border-radius:12px;cursor:pointer'>✅ 我已付款，通知开通</button><div id='payMsg2' style='margin-top:8px;font-size:13px;min-height:18px'></div></div></div></div><div class="modal" id="mInstall"><div class="m-head"><span>📲</span><b>安装到手机 / 电脑</b><button class="m-close" onclick="closeModal('mInstall')">✕</button></div><div class="m-body" style="padding:14px"><div style="background:#f7f3e9;border:1px solid #e5decc;border-radius:12px;padding:12px;margin-bottom:10px"><b>📱 iPhone / iPad</b><div style="font-size:12px;color:#12735a;line-height:1.8;margin-top:4px">用 <b>Safari</b> 打开本页 → 点底部「分享」⬆️ → 选「<b>添加到主屏幕</b>」→ 完成。桌面出现「燃灯者」图标，点开即全屏 App。</div></div><div style="background:#f7f3e9;border:1px solid #e5decc;border-radius:12px;padding:12px;margin-bottom:10px"><b>🤖 安卓</b><div style="font-size:12px;color:#12735a;line-height:1.8;margin-top:4px">用 <b>Chrome</b> 打开本页 → 点右上角「⋮」→ 选「<b>安装应用 / 添加到主屏幕</b>」→ 确认。</div></div><div style="background:#f7f3e9;border:1px solid #e5decc;border-radius:12px;padding:12px;margin-bottom:10px"><b>💻 电脑</b><div style="font-size:12px;color:#12735a;line-height:1.8;margin-top:4px">Chrome / Edge 打开后，地址栏右侧会出现「安装」图标，点一下即变成独立窗口应用。</div></div><div style="background:#0f5132;color:#f6e7b4;border-radius:12px;padding:12px;text-align:center"><div style="font-size:11px;opacity:.8">分享给别人 · شارك التطبيق</div><div style="font-size:15px;font-weight:700;margin-top:4px">https://燃灯同学.com</div></div></div></div><div class="modal" id="mVocab"><div class="m-head"><span>📚</span><b>词汇表</b><button class="m-close" onclick="closeModal('mVocab')">✕</button></div><div class="m-search"><input id="mVocabSearch" placeholder="🔍 搜索词汇..." oninput="renderVocab()"></div><div class="m-body" id="mVocabBody"></div><div class="m-count" id="mVocabCount"></div></div><div class="modal" id="mLibrary"><div class="m-head"><span>📚</span><b>图书馆 · 阿拉伯语文章</b><button class="m-close" onclick="closeModal('mLibrary')">✕</button></div><div class="m-search" style="gap:6px;flex-wrap:wrap"><span style="font-size:10px;color:#999;white-space:nowrap">✨ AI 写文章:</span><button class="s-btn" style="width:auto;padding:4px 10px" onclick="aiWrite('القهوة')">☕ 咖啡</button><button class="s-btn" style="width:auto;padding:4px 10px" onclick="aiWrite('رمضان')">✈️ 旅行</button><button class="s-btn" style="width:auto;padding:4px 10px" onclick="aiWrite('السفر')">✈️ 旅行</button><button class="s-btn" style="width:auto;padding:4px 10px" onclick="aiWrite('القدس')">🕌 历史古城</button><button class="s-btn" style="width:auto;padding:4px 10px" onclick="aiWrite('العلم')">🔬 科学</button><button class="s-btn" style="width:auto;padding:4px 10px" onclick="aiWrite('الربيع')">🌸 春天</button></div><div class="m-body" id="mLibBody"></div><div class="m-count" id="mLibCount"></div></div><div class="modal" id="mExplain"><div class="m-head"><span>✂️</span><b>单词拆解 · AI 逐词解释</b><button class="m-close" onclick="closeModal('mExplain')">✕</button></div><div class="m-body" id="mExplainBody" style="padding:16px"></div></div><div class="modal" id="mQuran"><div class="m-head"><span>🕌</span><b>经典选读 · 114 章</b><button class="m-close" onclick="closeModal('mQuran')">✕</button></div><div class="m-search"><input id="mQuranSearch" placeholder="🔍 搜索章节..." oninput="renderQuranList()"></div><div class="m-body" id="mQuranBody"></div><div class="m-count" id="mQuranCount"></div></div><div class="modal" id="mFlash"><div class="m-head"><span>🃏</span><b id="mFlashHead">闪卡</b><button class="m-close" onclick="closeModal('mFlash')">✕</button></div><div class="m-body" id="mFlashBody"></div></div><div class="modal" id="mQuiz"><div class="m-head"><span>📝</span><b id="mQuizHead">测验</b><button class="m-close" onclick="closeModal('mQuiz')">✕</button></div><div class="m-body" id="mQuizBody"></div></div><div class="modal" id="mWordBook"><div class="m-head"><span>📕</span><b>生词本</b><button class="m-close" onclick="closeModal('mWordBook')">✕</button></div><div class="m-search"><input id="mWbSearch" placeholder="🔍 搜索生词..." oninput="renderWordBook()"></div><div class="m-body" id="mWordBookBody"></div><div class="m-count" id="mWordBookCount"></div></div><div class="modal" id="mAlphabet"><div class="m-head"><span>🔤</span><b id="mAlphabetHead">字母入门</b><button class="m-close" onclick="closeModal('mAlphabet')">✕</button></div><div class="m-body" id="mAlphabetBody" style="padding:16px"></div></div><div class="modal" id="mListen"><div class="m-head"><span>🎧</span><b id="mListenHead">跟读评测</b><button class="m-close" onclick="closeModal('mListen')">✕</button></div><div class="m-body" id="mListenBody" style="padding:16px"></div></div><div class="modal" id="mTheme"><div class="m-head"><span>◐</span><b>外观设置</b><button class="m-close" onclick="closeModal('mTheme')">✕</button></div><div class="m-body" id="mThemeBody" style="padding:16px"></div></div><div class="modal" id="mChallenge"><div class="m-head"><span>⚡</span><b id="mChallengeHead">阿拉伯语闯关</b><button class="m-close" onclick="closeModal('mChallenge')">✕</button></div><div class="m-body" id="mChallengeBody"></div></div><div class="modal" id="mDialog"><div class="m-head"><span>💬</span><b id="mDialogHead">日常对话</b><button class="m-close" onclick="closeModal('mDialog')">✕</button></div><div class="m-body" id="mDialogBody" style="padding:16px"></div></div><div class="modal" id="mHistory"><div class="m-head"><span>📜</span><b id="mHistoryHead">历史库</b><button class="m-close" onclick="closeModal('mHistory')">✕</button></div><div class="m-body" id="mHistoryBody" style="padding:16px"></div></div><div class="modal" id="mHadith"><div class="m-head"><span>📜</span><b id="mHadithHead">哲言库</b><button class="m-close" onclick="closeModal('mHadith')">✕</button></div><div class="m-body" id="mHadithBody" style="padding:16px"></div></div><div class="modal" id="mPrayer"><div class="m-head"><span>🕌</span><b id="mPrayPrayHead">每日一句</b><button class="m-close" onclick="closeModal('mPrayer')">✕</button></div><div class="m-body" id="mPrayerBody" style="padding:16px"></div></div><div class="modal" id="mLogin"><div class="m-head"><span>🔑</span><b>登录 / 注册</b><button class="m-close" onclick="closeModal('mLogin')">✕</button></div><div class="m-body" style="padding:16px"><input id="lUser" placeholder="用户名" style="width:100%;box-sizing:border-box;border:1px solid rgba(201,168,76,.35);border-radius:10px;padding:10px 12px;font-size:13px;margin-bottom:10px;background:#fff"><input id="lPass" type="password" placeholder="密码（至少 4 位）" style="width:100%;box-sizing:border-box;border:1px solid rgba(201,168,76,.35);border-radius:10px;padding:10px 12px;font-size:13px;margin-bottom:12px;background:#fff"><button class="act-btn" style="width:100%;padding:12px;font-size:14px" onclick="webAuth('login')">🔑 登录</button><button class="act-btn" style="width:100%;padding:12px;font-size:14px;margin-top:8px;background:#fff;color:#0f3d31;border:1px solid rgba(201,168,76,.4)" onclick="webAuth('register')">✨ 注册新账号</button><button class="act-btn" style="width:100%;padding:12px;font-size:14px;margin-top:8px;background:linear-gradient(135deg,#a8892e,#c9a84c);color:#fff;border:none" onclick="webActivate()">👑 输入激活码开通会员</button><div style="font-size:10.5px;color:#999;margin-top:12px;line-height:1.7">普通用户每日 AI 对话 20 次；开通会员无限使用。</div></div></div><div class="modal" id="mMusic"><div class="m-head"><span>🎵</span><b>AI 阿拉伯音乐</b><button class="m-close" onclick="closeModal('mMusic')">✕</button></div><div class="m-body" id="mMusicBody" style="padding:16px"></div></div><div class="modal" id="mImage"><div class="m-head"><span>🖼</span><b>AI 画图</b><button class="m-close" onclick="closeModal('mImage')">✕</button></div><div class="m-body" style="padding:16px"><textarea id="imgPrompt" placeholder="描述你想画的画面，例如：暮色中的古城，新月挂在天边，阿拉伯艺术风格，水墨意境" style="width:100%%;box-sizing:border-box;border:1px solid rgba(201,168,76,.35);border-radius:10px;padding:12px;font-size:13px;min-height:70px;background:#fff"></textarea><button class="act-btn" style="width:100%%;padding:12px;font-size:14px;margin-top:10px" onclick="genImage()">🎨 生成图片（约10-30秒）</button><div id="imgStatus" style="font-size:11.5px;color:#a8892e;margin-top:10px;min-height:18px"></div><div id="imgResult" style="margin-top:10px;text-align:center"></div><div style="font-size:10px;color:#8a9c8f;margin-top:10px;line-height:1.7">💡 支持中文描述，越具体越好看。生成后可长按图片保存。</div></div></div><div class="modal" id="mRead"><div class="m-head"><span>📖</span><b id="mReadTitle">文章</b><button class="m-close" onclick="closeModal('mRead')">✕</button></div><div class="m-body" id="mReadBody"></div></div></div><div class="page" id="page-me" style="display:none"><div class="pg-h">我的燃灯</div><div class="pg-wrap profile-wrap"><div id="meBox" class="profile-card"></div><section id="profileActivity" class="profile-card profile-activity"></section><section class="profile-card profile-settings"><h2>学习与设置</h2><button class="profile-link" onclick="updateStats()"><span>学业成就</span><b>›</b></button><button class="profile-link" onclick="showThemeSettings()"><span>外观设置</span><b>›</b></button><button class="profile-link" onclick="showWordBook()"><span>生词本</span><b>›</b></button><button class="profile-link" onclick="showListen()"><span>跟读练习</span><b>›</b></button><button class="profile-link" onclick="webLogout()"><span>退出登录</span><b>›</b></button></section></div></div><div class="page" id="page-search" style="display:none"><div class="pg-h">查单词 &amp; 句子查询</div><div class="pg-wrap search-wrap"><label class="search-label" for="sQ">搜索阿拉伯语、中文或书名</label><input class="srch-big" id="sQ" placeholder="输入 كلمة 或中文释义…" onkeydown="if(event.key===&#39;Enter&#39;){doSearch()}"><div class="search-tools"><button onclick="searchTool(&quot;vocab&quot;)">查单词</button><button onclick="searchTool(&quot;analysis&quot;)">句子分析</button><button onclick="searchTool(&quot;translate&quot;)">全文翻译</button></div><div class="srch-chips"><button class="chip on" data-s="all" onclick="sPick(this)">全部</button><button class="chip" data-s="sent" onclick="sPick(this)">句子</button><button class="chip" data-s="vocab" onclick="sPick(this)">词汇</button><button class="chip" data-s="quran" onclick="sPick(this)">经典文本</button><button class="chip" data-s="lib" onclick="sPick(this)">藏书</button></div><div id="sRes"><div class="srch-tip">输入阿拉伯语或中文，搜索词汇、例句与馆藏。</div></div></div></div><div class="page" id="page-civ" style="display:none"><div class="pg-h">世界文明图谱</div><div class="pg-wrap" id="civWrap"></div></div><nav class="tabbar"><button class="tb on" data-tab="home" onclick="nav('home')"><span class="t-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 0 4 22.5z"/><path d="M4 5.5v17M8 7h8M8 11h8"/></svg></span><span class="t-nm">首页</span></button><button class="tb" data-tab="learn" onclick="nav('learn')"><span class="t-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 0 4 22.5z"/><path d="M4 5.5v17M8 7h8M8 11h8M8 15h6"/></svg></span><span class="t-nm">世界图书馆</span></button><button class="tb" data-tab="search" onclick="nav('search')"><span class="t-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.3"/><path d="m16 16 4.5 4.5"/></svg></span><span class="t-nm">搜索</span></button><button class="tb" data-tab="wordbook" onclick="showWordBook()" aria-label="生词本"><span class="t-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h12v17l-6-3.5-6 3.5z"/></svg></span><span class="t-nm">生词本</span></button><button class="tb" data-tab="me" onclick="nav('me')"><span class="t-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.3"/><path d="M5 21a7 7 0 0 1 14 0"/></svg></span><span class="t-nm">我的</span></button></nav>
-<div class="app-footer" style="text-align:center;padding:18px 16px 80px;font-size:10px;color:#9a9f9c"><div style="margin-bottom:10px"><button class="act-btn" style="margin:0 4px" onclick="showInstall()">📲 安装到手机</button> <button class="act-btn" style="margin:0 4px" onclick="exportData()">💾 导出备份</button> <label class="act-btn" style="display:inline-block;cursor:pointer;margin:0 4px">📂 导入备份<input type="file" accept=".json" style="display:none" onchange="importData(event)"></label></div><div id="serverStatus" style="font-weight:700;margin-bottom:4px">··· 检测服务器 ···</div>حاملُ المِصباح، صامتٌ لكنّه يهدي إلى الطريق · 燃灯者 &nbsp;|&nbsp; v4.1.0 &nbsp;|&nbsp; 句子 33398 句 · 词汇 28424 词 · 文章 7 篇 · 对话 26 场景 &nbsp;|&nbsp; 构建 2026-10-15 16:17</div><script>
+<div class="app-footer" style="text-align:center;padding:18px 16px 80px;font-size:10px;color:#9a9f9c"><div style="margin-bottom:10px"><button class="act-btn" style="margin:0 4px" onclick="showInstall()">📲 安装到手机</button> <button class="act-btn" style="margin:0 4px" onclick="exportData()">💾 导出备份</button> <label class="act-btn" style="display:inline-block;cursor:pointer;margin:0 4px">📂 导入备份<input type="file" accept=".json" style="display:none" onchange="importData(event)"></label></div><div id="serverStatus" style="font-weight:700;margin-bottom:4px">··· 检测服务器 ···</div>حاملُ المِصباح، صامتٌ لكنّه يهدي إلى الطريق · 燃灯者 &nbsp;|&nbsp; v4.1.0 &nbsp;|&nbsp; 句子 33398 句 · 词汇 28424 词 · 文章 7 篇 · 对话 26 场景 &nbsp;|&nbsp; 构建 2026-10-15 16:37</div><script>
 var BUILTIN_SENTENCES = [];
 var BUILTIN_VOCAB = [];
-window.NOUR_ASSET_VERSION = "4.1.0-20261015161730";
+window.NOUR_ASSET_VERSION = "4.1.0-20261015163741";
 window.NOUR_DATA_ASSETS = {sentences: "data/builtin_sentences.js", books: "data/builtin_books.js", quran: "data/builtin_quran.js", hadith: "data/builtin_hadith.js", vocab: "data/builtin_vocab.js", history: "data/builtin_history.js"};
 window.NOUR_DATA_GLOBALS = {sentences: "BUILTIN_SENTENCES", books: "BUILTIN_BOOKS", quran: "BUILTIN_QURAN", hadith: "BUILTIN_HADITH", vocab: "BUILTIN_VOCAB", history: "BUILTIN_HISTORY"};
 window.NOUR_DATA_PROMISES = window.NOUR_DATA_PROMISES || {};
@@ -12448,5 +12328,5 @@ function exportData(){
   function boot(){wrap();ensureBack();observe();}
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',boot); else setTimeout(boot,0);
 })();
-</script></body><script defer src="data/course.js?v=4.1.0-20261015161730"></script><script defer src="data/belt.js?v=4.1.0-20261015161730"></script><script defer src="data/views2.js?v=4.1.0-20261015161730"></script><script defer src="data/contact.js?v=4.1.0-20261015161730"></script><script defer src="data/dictlimit.js?v=4.1.0-20261015161730"></script><script defer src="data/freeentry.js?v=4.1.0-20261015161730"></script><script defer src="data/permlock.js?v=4.1.0-20261015161730"></script><script defer src="data/audiostop.js?v=4.1.0-20261015161730"></script><script defer src="data/reader-plus.js?v=4.1.0-20261015161730"></script>
+</script></body><script defer src="data/course.js?v=4.1.0-20261015163741"></script><script defer src="data/belt.js?v=4.1.0-20261015163741"></script><script defer src="data/views2.js?v=4.1.0-20261015163741"></script><script defer src="data/contact.js?v=4.1.0-20261015163741"></script><script defer src="data/dictlimit.js?v=4.1.0-20261015163741"></script><script defer src="data/freeentry.js?v=4.1.0-20261015163741"></script><script defer src="data/permlock.js?v=4.1.0-20261015163741"></script><script defer src="data/audiostop.js?v=4.1.0-20261015163741"></script><script defer src="data/reader-plus.js?v=4.1.0-20261015163741"></script>
 </html>

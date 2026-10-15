@@ -1,208 +1,67 @@
 /* ==========================================================================
-   NOUR 设计系统 · 裁决层（Design System / Final Contract）
+   NOUR 设计系统 · 裁决层 v4（Final Contract）
    --------------------------------------------------------------------------
-   定位：在所有旧视觉层之后注入（级联最高优先级），作为「单一真相」收敛
-   字体、色彩、间距、圆角、RTL 与排版。原则：
-     · 只做「令牌 + 排版 + RTL + 克制视觉」，不改布局结构、不改业务逻辑。
-     · 令牌取值对齐既有「纸感 + 墨 + 金」方向，不另起炉灶。
-     · 可整层删除回滚（删除本文件 + build_home.py 中对应注入块即可）。
+   职责（在所有旧视觉层之后注入，级联最高）：
+     1. 排版：统一字体、阿语行高、字距、bidi 隔离。
+     2. 浅色：覆盖各层硬编码的「深色玻璃」，统一纸感学术风。
+     3. 深色：保留既有深色主题，仅补少量可读性。
+   令牌前缀 --ds-*，避免与既有 --n-* / --nour-* 冲突。
    ========================================================================== */
 
-/* ============================================================
-   1) 设计令牌（单一来源）
-   ============================================================ */
-:root {
-  /* 色彩 — 浅色（学术纸感） */
-  --nour-bg: #f4f1e9;          /* 页面背景 */
-  --nour-surface: #fffefa;     /* 卡片/面板 */
-  --nour-surface-2: #f6f3ea;   /* 次级底 */
-  --nour-ink: #26352c;         /* 主文本（墨） */
-  --nour-ink-2: #5c6a61;       /* 次级文本 */
-  --nour-ink-3: #859087;       /* 弱文本/占位 */
-  --nour-line: #d7d2c4;        /* 1px 边框 */
-  --nour-brand: #0f5132;       /* 品牌墨绿 */
-  --nour-brand-2: #286a50;     /* 品牌提亮 */
-  --nour-gold: #b18a3c;        /* 哑金强调 */
-  --nour-gold-soft: #d4b86e;   /* 哑金浅 */
-  --nour-danger: #b3261e;
-  --nour-focus: #d7b96d;       /* 焦点环 */
-
-  /* 字号（模块化比例） */
-  --nour-fs-xs: 12px;
-  --nour-fs-sm: 13px;
-  --nour-fs-base: 15px;
-  --nour-fs-md: 17px;
-  --nour-fs-lg: 20px;
-  --nour-fs-xl: 24px;
-  --nour-fs-2xl: 32px;
-
-  /* 行高 */
-  --nour-lh-cjk: 1.6;          /* 中文/西文 */
-  --nour-lh-ar: 1.9;           /* 阿拉伯语常规 */
-  --nour-lh-ar-vocal: 2.05;    /* 阿拉伯语带音符原文 */
-
-  /* 间距（4px 基数） */
-  --nour-sp-1: 4px;
-  --nour-sp-2: 8px;
-  --nour-sp-3: 12px;
-  --nour-sp-4: 16px;
-  --nour-sp-5: 24px;
-  --nour-sp-6: 32px;
-  --nour-sp-7: 40px;
-  --nour-sp-8: 48px;
-
-  /* 圆角 */
-  --nour-r-sm: 4px;
-  --nour-r-md: 8px;
-  --nour-r-lg: 12px;
-  --nour-r-pill: 999px;
-
-  /* 阴影（克制：细边框为主，阴影仅做层级提示） */
-  --nour-shadow-xs: 0 1px 2px rgba(38, 53, 44, .05);
-  --nour-shadow-sm: 0 1px 3px rgba(38, 53, 44, .07);
-  --nour-shadow-md: 0 8px 24px rgba(38, 53, 44, .09);
-
-  /* 动效 */
-  --nour-ease: cubic-bezier(.23, 1, .32, 1);
-  --nour-fast: 150ms;
-
-  /* 字体 */
-  --nour-ar-ui: 'DubaiNur', 'AmiriNur', 'SF Arabic', 'Noto Naskh Arabic', serif;
-  --nour-ar-reading: 'ScheherazadeNur', 'AmiriNur', serif;
+:root{
+  --ds-bg:#f6f3eb; --ds-surface:#fffdf8; --ds-surface-2:#efe9dd;
+  --ds-ink:#24332b; --ds-ink-2:#5b6a60; --ds-ink-3:#8a938c;
+  --ds-line:#e3ddcc; --ds-brand:#0f5132; --ds-gold:#a98935;
+  --ds-shadow:0 1px 3px rgba(36,51,43,.06);
+  --ds-ar-ui:'DubaiNur','AmiriNur','SF Arabic','Noto Naskh Arabic',serif;
+  --ds-ar-reading:'ScheherazadeNur','AmiriNur',serif;
 }
 
-html[data-theme="dark"] {
-  --nour-bg: #0e1411;
-  --nour-surface: #162019;
-  --nour-surface-2: #1c2820;
-  --nour-ink: #edf0e8;
-  --nour-ink-2: #b6c1b7;
-  --nour-ink-3: #7f8d83;
-  --nour-line: rgba(235, 224, 193, .16);
-  --nour-brand: #2e8b57;
-  --nour-brand-2: #3aa06a;
-  --nour-gold: #e7d4a0;
-  --nour-gold-soft: #c9a94e;
-  --nour-focus: #e7d4a0;
-  --nour-shadow-xs: 0 1px 2px rgba(0, 0, 0, .22);
-  --nour-shadow-sm: 0 1px 3px rgba(0, 0, 0, .28);
-  --nour-shadow-md: 0 8px 24px rgba(0, 0, 0, .34);
-}
+/* ============ 排版（双模式） ============ */
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;letter-spacing:.005em}
+[lang="ar"],[dir="rtl"],.q-ar,.gar,.hs-line-ar,.belt-ar,.bktitle,.rd-ar,.rd-word-ar,.dict-lesson-ar,.nour-daily-quote-ar{font-family:var(--ds-ar-ui);letter-spacing:0!important;text-align:start}
+.q-ar,.gar,.rd-page,.rd-page__text,.rd-ar{font-family:var(--ds-ar-reading);line-height:1.95}
+.nour-bidi{unicode-bidi:isolate}.nour-bidi-plaintext{unicode-bidi:plaintext;direction:auto}
 
-/* ============================================================
-   2) 排版基线
-   ============================================================ */
-html {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-}
+/* ============ 浅色：统一纸感（覆盖硬编码深色玻璃） ============ */
+html[data-theme="light"] body,
+html[data-theme="light"] html{background:var(--ds-bg)!important;background-image:none!important;color:var(--ds-ink)!important}
 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC",
-    "Microsoft YaHei", "Noto Sans SC", sans-serif;
-  line-height: var(--nour-lh-cjk);
-  color: var(--nour-ink);
-  letter-spacing: .01em;
-}
+/* 顶栏品牌文字（硬编码浅字） */
+html[data-theme="light"] .hdr,
+html[data-theme="light"] #page-home>.hdr{color:var(--ds-ink)!important}
+html[data-theme="light"] .hdr .logo,
+html[data-theme="light"] #page-home>.hdr .logo{color:var(--ds-brand)!important;-webkit-text-fill-color:var(--ds-brand)!important}
+html[data-theme="light"] .hdr .logo-sub,
+html[data-theme="light"] #page-home>.hdr .logo-sub{color:var(--ds-ink-2)!important}
+html[data-theme="light"] .hdr .zh{color:var(--ds-ink-2)!important}
+html[data-theme="light"] .hdr .lang-btn,
+html[data-theme="light"] .hdr .ai-btn{color:var(--ds-ink)!important;border-color:var(--ds-line)!important;background:var(--ds-surface)!important}
 
-/* 标题节奏：中文大标题稍收字距，正文不缩 */
-.nour-product-section-head,
-.hs-sec h3,
-.pg-h,
-.m-head b {
-  letter-spacing: .005em;
-}
+/* 弹窗（硬编码深蓝） */
+html[data-theme="light"] #page-home .m-head,
+html[data-theme="light"] .modal .m-head,
+html[data-theme="light"] #mDict .m-head{background:var(--ds-surface)!important;color:var(--ds-ink)!important;border-color:var(--ds-line)!important}
+html[data-theme="light"] #page-home .m-body,
+html[data-theme="light"] .modal .m-body{background:var(--ds-bg)!important;color:var(--ds-ink)!important}
+html[data-theme="light"] #page-home>.modal{background:rgba(20,22,20,.38)!important}
 
-/* 阿拉伯语可读性：
-   —— 统一用阿语字体、加行高、去字距（字距会破坏连写）、对齐跟随方向 */
-[lang="ar"],
-[dir="rtl"],
-.q-ar,
-.gar,
-.hs-line-ar,
-.belt-ar,
-.bktitle,
-.rd-ar,
-.rd-word-ar,
-.dict-lesson-ar {
-  font-family: var(--nour-ar-ui);
-  line-height: var(--nour-lh-ar);
-  letter-spacing: 0 !important;
-  text-align: start;
-}
+/* 输入框（硬编码深色玻璃 + 浅字） */
+html[data-theme="light"] #page-home input,
+html[data-theme="light"] #page-home textarea,
+html[data-theme="light"] #page-home select{background:var(--ds-surface)!important;color:var(--ds-ink)!important;border-color:var(--ds-line)!important}
+html[data-theme="light"] #page-home input::placeholder,
+html[data-theme="light"] #page-home textarea::placeholder{color:var(--ds-ink-3)!important}
 
-/* 原文/诵读类（古兰经、圣训、名言）用阅读字体 + 更高行高容纳音符 */
-.q-ar,
-.gar,
-.rd-page,
-.rd-page__text,
-.rd-ar {
-  font-family: var(--nour-ar-reading);
-  line-height: var(--nour-lh-ar-vocal);
-}
+/* 底部导航（硬编码深色玻璃，双保险） */
+html[data-theme="light"] .tabbar,
+html[data-theme="light"] .tabbar.nour-primary-nav{background:var(--ds-surface)!important;border-color:var(--ds-line)!important;box-shadow:0 12px 30px rgba(36,51,43,.10)!important}
+html[data-theme="light"] .tabbar .tb{color:var(--ds-ink-2)!important}
+html[data-theme="light"] .tabbar .tb.on{color:var(--ds-brand)!important;background:var(--ds-surface-2)!important}
+html[data-theme="light"] .tabbar .tb.on .t-nm{color:var(--ds-brand)!important}
 
-/* ============================================================
-   3) RTL 与双向文本：逻辑属性 + 隔离工具类
-   ============================================================ */
-/* 提供 bidi 隔离工具类，供混排（中/阿交替）防标点与数字错位 */
-.nour-bidi { unicode-bidi: isolate; }
-.nour-bidi-plaintext { unicode-bidi: plaintext; direction: auto; }
-
-/* RTL 容器：让内边距/外边距/对齐优先使用逻辑方向，避免物理 left/right 硬编码 */
-[dir="rtl"] .nour-logical,
-[dir="rtl"].nour-logical {
-  direction: rtl;
-}
-
-/* 任何带「自动方向」的文本块统一按内容方向对齐 */
-[dir="auto"],
-.nour-bidi-plaintext,
-.ps-ai-msg {
-  text-align: start;
-}
-
-/* ============================================================
-   4) 克制视觉：主表面收敛为「细边框 + 轻阴影」，弱化旧层重投影
-   （仅覆盖颜色/阴影/圆角，不动 display/尺寸/定位，避免布局回归）
-   ============================================================ */
-.quote-card,
-.hs-row,
-.gcard,
-.belt-card,
-.ps-ai-card,
-.sup-card {
-  border: 1px solid var(--nour-line) !important;
-  box-shadow: var(--nour-shadow-sm) !important;
-}
-
-/* 卡片标题与正文的颜色统一走令牌（浅色墨、深色暖白） */
-html[data-theme="light"] .quote-card,
-html[data-theme="light"] .hs-row,
-html[data-theme="light"] .gcard,
-html[data-theme="light"] .belt-card,
-html[data-theme="light"] .ps-ai-card {
-  background: var(--nour-surface) !important;
-}
-
-/* ============================================================
-   5) 可访问性：对比增强（尊重系统「增强对比度」）
-   ============================================================ */
-@media (prefers-contrast: more) {
-  :root {
-    --nour-ink-2: #435048;
-    --nour-ink-3: #66726a;
-    --nour-line: #b9b3a4;
-  }
-  html[data-theme="dark"] {
-    --nour-ink-2: #d6ddd6;
-    --nour-ink-3: #a9b5aa;
-    --nour-line: rgba(235, 224, 193, .4);
-  }
-}
-
-/* 选中态与焦点保持一致（焦点环已在 nour-interface-polish 定义，此处补选中底色） */
-::selection {
-  background: rgba(215, 185, 109, .34);
-  color: inherit;
-}
+/* 无障碍 */
+:focus-visible{outline:2px solid var(--ds-gold)!important;outline-offset:3px!important}
+@media (prefers-contrast: more){:root{--ds-ink-2:#435048;--ds-ink-3:#66726a;--ds-line:#b9b3a4}}
+::selection{background:rgba(203,184,126,.34);color:inherit}
