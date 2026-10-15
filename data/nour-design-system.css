@@ -61,6 +61,18 @@ html[data-theme="light"] .tabbar .tb{color:var(--ds-ink-2)!important}
 html[data-theme="light"] .tabbar .tb.on{color:var(--ds-brand)!important;background:var(--ds-surface-2)!important}
 html[data-theme="light"] .tabbar .tb.on .t-nm{color:var(--ds-brand)!important}
 
+/* ============ 深色：统一暖炭黑 + 金（替换深蓝玻璃） ============ */
+html[data-theme="dark"] body,
+html[data-theme="dark"] html{background:#171512!important;background-image:none!important;color:#ece6d8!important}
+html[data-theme="dark"] .tabbar,
+html[data-theme="dark"] .tabbar.nour-primary-nav{background:#1f1c18!important;border-color:#332e25!important;box-shadow:0 12px 30px rgba(0,0,0,.35)!important}
+html[data-theme="dark"] .tabbar .tb{color:#b4ac99!important}
+html[data-theme="dark"] .tabbar .tb.on{color:#c8a74d!important;background:rgba(200,167,77,.12)!important}
+html[data-theme="dark"] #page-home .m-head,
+html[data-theme="dark"] .modal .m-head{background:#1f1c18!important;color:#ece6d8!important;border-color:#332e25!important}
+html[data-theme="dark"] #page-home .m-body,
+html[data-theme="dark"] .modal .m-body{background:#171512!important;color:#ece6d8!important}
+
 /* 无障碍 */
 :focus-visible{outline:2px solid var(--ds-gold)!important;outline-offset:3px!important}
 @media (prefers-contrast: more){:root{--ds-ink-2:#435048;--ds-ink-3:#66726a;--ds-line:#b9b3a4}}
