@@ -1,0 +1,57 @@
+<view class="container">
+  <!-- 品牌头 -->
+  <view class="brand">
+    <view class="brand-logo">نور</view>
+    <view class="brand-sub">Nour · 阿拉伯语学习</view>
+  </view>
+
+  <!-- 今日一句 -->
+  <view class="card daily" wx:if="{{daily.item}}">
+    <view class="daily-label">今日一句 · {{daily.date}}</view>
+    <view class="ar ar-lg">{{daily.item.a}}</view>
+    <view class="cn daily-cn">{{daily.item.c}}</view>
+    <view class="cn-2 daily-en">{{daily.item.e}}</view>
+  </view>
+
+  <!-- 学习数据 -->
+  <view class="card stats">
+    <view class="stat">
+      <view class="stat-num">{{stats.sentences}}</view>
+      <view class="stat-label">句子</view>
+    </view>
+    <view class="stat">
+      <view class="stat-num">{{stats.vocab}}</view>
+      <view class="stat-label">词汇</view>
+    </view>
+    <view class="stat">
+      <view class="stat-num">{{stats.quran}}</view>
+      <view class="stat-label">古兰经章</view>
+    </view>
+  </view>
+
+  <!-- 快捷入口 -->
+  <view class="sec-title"><text class="t">开始学习</text></view>
+  <view class="entries">
+    <view class="entry" bindtap="goLearn">
+      <text class="entry-ic">📖</text>
+      <view class="entry-tx">
+        <text class="entry-t">句子与词汇</text>
+        <text class="entry-d">33000+ 句 · 4000+ 词</text>
+      </view>
+    </view>
+    <view class="entry" bindtap="goLibrary">
+      <text class="entry-ic">🕌</text>
+      <view class="entry-tx">
+        <text class="entry-t">世界图书馆</text>
+        <text class="entry-d">古兰经 · 圣训 · 经典</text>
+      </view>
+    </view>
+    <view class="entry" bindtap="goAI">
+      <text class="entry-ic">🤖</text>
+      <view class="entry-tx">
+        <text class="entry-t">AI 老师 · نور</text>
+        <text class="entry-d">阿/中/英 三段式对话</text>
+      </view>
+    </view>
+  </view>
+</view>

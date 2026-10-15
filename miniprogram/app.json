@@ -1,0 +1,33 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/learn/learn",
+    "pages/library/library",
+    "pages/ai/ai",
+    "pages/me/me"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#f6f3eb",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "燃灯同学",
+    "backgroundColor": "#f6f3eb",
+    "backgroundTextStyle": "dark",
+    "enablePullDownRefresh": false
+  },
+  "tabBar": {
+    "color": "#8a938c",
+    "selectedColor": "#0f5132",
+    "backgroundColor": "#fffdf8",
+    "borderStyle": "white",
+    "list": [
+      { "pagePath": "pages/home/home", "text": "首页" },
+      { "pagePath": "pages/learn/learn", "text": "学习" },
+      { "pagePath": "pages/library/library", "text": "图书馆" },
+      { "pagePath": "pages/ai/ai", "text": "AI 老师" },
+      { "pagePath": "pages/me/me", "text": "我的" }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

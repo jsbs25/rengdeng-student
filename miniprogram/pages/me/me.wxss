@@ -1,0 +1,38 @@
+.profile {
+  text-align: center;
+  padding: 40rpx;
+}
+.profile-sub {
+  margin-top: 8rpx;
+}
+
+.stat-grid {
+  display: flex;
+}
+.stat {
+  flex: 1;
+  text-align: center;
+}
+.stat-num {
+  font-size: 40rpx;
+  font-weight: 700;
+  color: var(--ds-brand);
+}
+.stat-label {
+  font-size: 22rpx;
+  color: var(--ds-ink-3);
+  margin-top: 6rpx;
+}
+
+.device {
+  margin-top: 16rpx;
+  word-break: break-all;
+  line-height: 1.6;
+}
+.about {
+  line-height: 1.8;
+  margin-bottom: 16rpx;
+}
+.copy {
+  width: 100%;
+}

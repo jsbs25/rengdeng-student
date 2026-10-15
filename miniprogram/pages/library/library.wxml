@@ -1,0 +1,36 @@
+<view class="container">
+  <!-- 搜索 -->
+  <view class="search">
+    <input
+      class="search-input"
+      placeholder="搜索书目、词汇或原文"
+      value="{{q}}"
+      bindinput="onInput"
+      confirm-type="search"
+    />
+  </view>
+
+  <!-- 搜索结果 -->
+  <view wx:if="{{q}}">
+    <view class="sec-title"><text class="t">搜索结果</text></view>
+    <view class="empty" wx:if="{{!searching && !results.length}}">没有找到「{{q}}」相关内容</view>
+    <view class="result" wx:for="{{results}}" wx:key="index">
+      <view class="ar ar-sm" wx:if="{{item.ar}}">{{item.ar}}</view>
+      <view class="cn" wx:if="{{item.zh}}">{{item.zh}}</view>
+      <view class="cn-3" wx:if="{{item.cat}}">{{item.cat}}</view>
+      <view class="hr"></view>
+    </view>
+  </view>
+
+  <!-- 精选书籍 -->
+  <block wx:if="{{!q}}">
+    <view class="sec-title"><text class="t">精选整书</text><text class="more">{{books.length}} 本</text></view>
+    <view class="book" wx:for="{{books}}" wx:key="title" data-title="{{item.title}}" bindtap="openBook">
+      <view class="book-title">{{item.title}}</view>
+      <view class="book-author">{{item.author}}</view>
+      <view class="book-intro">{{item.intro_cn}}</view>
+    </view>
+
+    <view class="empty" wx:if="{{!loading && !books.length}}">暂无书籍</view>
+  </block>
+</view>

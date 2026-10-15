@@ -1,0 +1,127 @@
+/* ==========================================================================
+   燃灯同学 · 设计令牌（与网页版同一套「纸感 + 墨绿 + 哑金」）
+   ========================================================================== */
+page {
+  --ds-bg: #f6f3eb;
+  --ds-surface: #fffdf8;
+  --ds-surface-2: #efe9dd;
+  --ds-ink: #24332b;
+  --ds-ink-2: #5b6a60;
+  --ds-ink-3: #8a938c;
+  --ds-line: #e3ddcc;
+  --ds-brand: #0f5132;
+  --ds-gold: #a98935;
+
+  background: var(--ds-bg);
+  color: var(--ds-ink);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 28rpx;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
+
+/* 容器 */
+.container {
+  padding: 24rpx 28rpx 48rpx;
+  box-sizing: border-box;
+}
+
+/* 卡片 */
+.card {
+  background: var(--ds-surface);
+  border: 1rpx solid var(--ds-line);
+  border-radius: 16rpx;
+  padding: 28rpx;
+  box-shadow: 0 1rpx 3rpx rgba(36, 51, 43, 0.06);
+}
+
+/* 区块标题 */
+.sec-title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin: 32rpx 4rpx 16rpx;
+}
+.sec-title .t {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: var(--ds-ink);
+  letter-spacing: -0.01em;
+}
+.sec-title .more {
+  font-size: 24rpx;
+  color: var(--ds-ink-3);
+}
+
+/* 主按钮 */
+.btn-primary {
+  background: var(--ds-brand);
+  color: #fff;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+  padding: 20rpx 0;
+  text-align: center;
+  border: none;
+}
+.btn-primary::after { border: none; }
+.btn-primary[disabled] { opacity: 0.5; }
+
+/* 次按钮 */
+.btn-ghost {
+  background: var(--ds-surface);
+  color: var(--ds-ink);
+  border: 1rpx solid var(--ds-line);
+  border-radius: 12rpx;
+  font-size: 26rpx;
+  padding: 16rpx 24rpx;
+  text-align: center;
+}
+.btn-ghost::after { border: none; }
+
+/* 阿拉伯语（RTL） */
+.ar {
+  direction: rtl;
+  text-align: right;
+  font-family: "Amiri", "Scheherazade New", "Noto Naskh Arabic", serif;
+  line-height: 1.9;
+  letter-spacing: 0;
+  unicode-bidi: plaintext;
+}
+.ar-lg { font-size: 44rpx; font-weight: 600; }
+.ar-md { font-size: 34rpx; }
+.ar-sm { font-size: 28rpx; }
+
+/* 中文正文 */
+.cn { color: var(--ds-ink); }
+.cn-2 { color: var(--ds-ink-2); font-size: 24rpx; }
+.cn-3 { color: var(--ds-ink-3); font-size: 22rpx; }
+
+/* 分隔 */
+.hr { height: 1rpx; background: var(--ds-line); margin: 16rpx 0; }
+
+/* 空态 */
+.empty {
+  text-align: center;
+  color: var(--ds-ink-3);
+  font-size: 26rpx;
+  padding: 60rpx 0;
+  line-height: 1.8;
+}
+
+/* 标签/chip */
+.chip {
+  display: inline-block;
+  padding: 8rpx 22rpx;
+  border: 1rpx solid var(--ds-line);
+  border-radius: 999rpx;
+  background: var(--ds-surface);
+  color: var(--ds-ink-2);
+  font-size: 24rpx;
+  margin: 0 12rpx 12rpx 0;
+}
+.chip.on {
+  background: var(--ds-brand);
+  border-color: var(--ds-brand);
+  color: #fff;
+}

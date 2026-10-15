@@ -1,0 +1,35 @@
+<view class="container">
+  <view class="card profile">
+    <view class="ar ar-lg">نور</view>
+    <view class="cn-2 profile-sub">燃灯同学 · 阿拉伯语学习</view>
+  </view>
+
+  <view class="sec-title"><text class="t">学习数据</text></view>
+  <view class="card stat-grid">
+    <view class="stat">
+      <view class="stat-num">{{stats.sentences || '—'}}</view>
+      <view class="stat-label">句子</view>
+    </view>
+    <view class="stat">
+      <view class="stat-num">{{stats.vocab || '—'}}</view>
+      <view class="stat-label">词汇</view>
+    </view>
+    <view class="stat">
+      <view class="stat-num">{{stats.quran || '—'}}</view>
+      <view class="stat-label">古兰经章</view>
+    </view>
+  </view>
+
+  <view class="sec-title"><text class="t">账号</text></view>
+  <view class="card">
+    <button class="btn-primary" bindtap="login">设备登录（解锁 AI 额度）</button>
+    <view class="cn-3 device">设备 ID：{{deviceId}}</view>
+  </view>
+
+  <view class="sec-title"><text class="t">关于</text></view>
+  <view class="card">
+    <view class="cn-2">版本 {{version}}</view>
+    <view class="cn-3 about">AI 对话、全站搜索、图书馆正文等能力由服务器提供。完整功能请访问网页版。</view>
+    <button class="btn-ghost copy" bindtap="copyDomain">复制网页版地址</button>
+  </view>
+</view>

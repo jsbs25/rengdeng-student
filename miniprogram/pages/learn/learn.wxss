@@ -1,0 +1,39 @@
+.head {
+  padding: 8rpx 4rpx 20rpx;
+}
+.head-title {
+  font-size: 40rpx;
+  font-weight: 700;
+  color: var(--ds-ink);
+}
+.head-sub {
+  font-size: 24rpx;
+  color: var(--ds-ink-3);
+  margin-top: 6rpx;
+}
+
+.cats {
+  white-space: nowrap;
+  margin-bottom: 8rpx;
+}
+.cats .chip {
+  display: inline-block;
+}
+
+.sentence-list {
+  margin-top: 12rpx;
+}
+.s-card {
+  background: var(--ds-surface);
+  border: 1rpx solid var(--ds-line);
+  border-radius: 16rpx;
+  padding: 26rpx 28rpx;
+  margin-bottom: 14rpx;
+}
+.s-cn {
+  margin-top: 12rpx;
+  font-size: 28rpx;
+}
+.s-en {
+  margin-top: 4rpx;
+}

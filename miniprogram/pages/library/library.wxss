@@ -1,0 +1,39 @@
+.search {
+  margin-bottom: 12rpx;
+}
+.search-input {
+  background: var(--ds-surface);
+  border: 1rpx solid var(--ds-line);
+  border-radius: 14rpx;
+  padding: 20rpx 24rpx;
+  font-size: 28rpx;
+  color: var(--ds-ink);
+}
+
+.book {
+  background: var(--ds-surface);
+  border: 1rpx solid var(--ds-line);
+  border-radius: 16rpx;
+  padding: 26rpx 28rpx;
+  margin-bottom: 14rpx;
+}
+.book-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: var(--ds-ink);
+}
+.book-author {
+  font-size: 24rpx;
+  color: var(--ds-gold);
+  margin-top: 6rpx;
+}
+.book-intro {
+  font-size: 24rpx;
+  color: var(--ds-ink-2);
+  line-height: 1.7;
+  margin-top: 10rpx;
+}
+
+.result {
+  padding: 6rpx 4rpx;
+}

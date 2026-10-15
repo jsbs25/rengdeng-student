@@ -1,0 +1,28 @@
+<view class="container">
+  <view class="head">
+    <view class="head-title">句子库</view>
+    <view class="head-sub">{{stats.sentences || '—'}} 句 · {{stats.cats || catKeys.length}} 类</view>
+  </view>
+
+  <!-- 分类 -->
+  <scroll-view scroll-x class="cats" show-scrollbar="{{false}}">
+    <view
+      wx:for="{{catKeys}}"
+      wx:key="*this"
+      class="chip {{activeCat === item ? 'on' : ''}}"
+      data-key="{{item}}"
+      bindtap="onCatTap"
+    >{{item}}</view>
+  </scroll-view>
+
+  <!-- 句子列表 -->
+  <view class="sentence-list" wx:if="{{sentences.length}}">
+    <view class="s-card" wx:for="{{sentences}}" wx:key="index">
+      <view class="ar ar-md">{{item.a}}</view>
+      <view class="cn s-cn">{{item.c}}</view>
+      <view class="cn-2 s-en">{{item.e}}</view>
+    </view>
+  </view>
+
+  <view class="empty" wx:if="{{!loading && !sentences.length}}">暂无句子</view>
+</view>

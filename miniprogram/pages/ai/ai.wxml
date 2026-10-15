@@ -1,0 +1,33 @@
+<view class="chat">
+  <scroll-view
+    class="msg-list"
+    scroll-y
+    scroll-into-view="{{scrollInto}}"
+    scroll-with-animation
+  >
+    <view
+      wx:for="{{messages}}"
+      wx:key="index"
+      id="m{{index}}"
+      class="msg {{item.role}}"
+    >
+      <text class="bubble" user-select>{{item.text}}</text>
+    </view>
+    <view wx:if="{{sending}}" class="msg bot">
+      <text class="bubble typing">…</text>
+    </view>
+  </scroll-view>
+
+  <view class="input-bar">
+    <input
+      class="input"
+      value="{{input}}"
+      placeholder="用中文或阿拉伯语提问…"
+      bindinput="onInput"
+      confirm-type="send"
+      bindconfirm="send"
+      disabled="{{sending}}"
+    />
+    <button class="send" size="mini" bindtap="send" disabled="{{sending}}">发送</button>
+  </view>
+</view>
