@@ -1,0 +1,53 @@
+{
+  "books": [
+    {
+      "key": "bukhari",
+      "ar": "صحيح البخاري",
+      "cn": "布哈里圣训实录",
+      "en": "Sahih al-Bukhari",
+      "n": 7580,
+      "mb": 8.4
+    },
+    {
+      "key": "muslim",
+      "ar": "صحيح مسلم",
+      "cn": "穆斯林圣训实录",
+      "en": "Sahih Muslim",
+      "n": 7360,
+      "mb": 7.4
+    },
+    {
+      "key": "nasai",
+      "ar": "سنن النسائي",
+      "cn": "奈萨仪圣训集",
+      "en": "Sunan an-Nasai",
+      "n": 5679,
+      "mb": 5.1
+    },
+    {
+      "key": "abudawud",
+      "ar": "سنن أبي داود",
+      "cn": "艾布·达乌德圣训集",
+      "en": "Sunan Abu Dawud",
+      "n": 5272,
+      "mb": 5.1
+    },
+    {
+      "key": "ibnmajah",
+      "ar": "سنن ابن ماجه",
+      "cn": "伊本·马哲圣训集",
+      "en": "Sunan Ibn Majah",
+      "n": 4338,
+      "mb": 3.7
+    },
+    {
+      "key": "tirmidhi",
+      "ar": "جامع الترمذي",
+      "cn": "提尔密济圣训集",
+      "en": "Jami at-Tirmidhi",
+      "n": 3924,
+      "mb": 5.4
+    }
+  ],
+  "total": 34153
+}

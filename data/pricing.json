@@ -1,0 +1,38 @@
+{
+ "plans": [
+  {
+   "id": "free",
+   "name": "免费码（无 AI）",
+   "days": 30,
+   "price": 0,
+   "quota": 0
+  },
+  {
+   "id": "month",
+   "name": "月卡",
+   "days": 30,
+   "price": 15,
+   "quota": 10
+  },
+  {
+   "id": "quarter",
+   "name": "季卡",
+   "days": 90,
+   "price": 40,
+   "quota": 28
+  },
+  {
+   "id": "year",
+   "name": "年卡",
+   "days": 365,
+   "price": 150,
+   "quota": 110
+  }
+ ],
+ "rates": {
+  "in_hit": 0.5,
+  "in_miss": 2,
+  "out": 8
+ },
+ "note": "rates = 人民币元/百万 token；quota = 该套餐赠送的 AI 额度（元）"
+}

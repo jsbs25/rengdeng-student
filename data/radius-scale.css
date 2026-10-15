@@ -1,0 +1,132 @@
+/* 圆角收敛层 radius-scale.css —— 自动生成，请勿手改（见 tools/gen_radius_scale.py）
+   队列第 3 项：全站圆角收敛到 4/8/12/16 四档（保留 999px/99px 药丸、50% 圆形）。
+   纯视觉覆盖层，只重写 border-radius 与半径 token，不改布局/逻辑。 */
+.hdr .arch{border-radius:16px 16px 0 0!important}
+.daily-card{border-radius:16px!important}
+.entr{border-radius:8px!important}
+.flash-card{border-radius:16px!important}
+.flash-front{border-radius:16px!important}
+.flash-back{border-radius:16px!important}
+.v-item{border-radius:8px!important}
+.s-item{border-radius:8px!important}
+.quote-card{border-radius:16px!important}
+.elf-panel{border-radius:16px!important}
+.elf-hd .bd{border-radius:8px!important}
+.ef-msg .bb{border-radius:12px!important}
+.ef-inp input{border-radius:16px!important}
+.section h3::after{border-radius:4px!important}
+::-webkit-scrollbar-thumb{border-radius:8px!important}
+.ps-banner-in{border-radius:12px!important}
+.ps-ai-card{border-radius:16px!important}
+.ps-ai-msg{border-radius:12px!important}
+.ps-ai-chips button{border-radius:16px!important}
+.ps-ai-input input{border-radius:8px!important}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{border-radius:8px!important}
+.gtab{border-radius:8px!important}
+.gcard{border-radius:12px!important}
+.gcard-n{border-radius:8px!important}
+.gdetail{border-radius:12px!important}
+.gspk{border-radius:8px!important}
+.bkframe{border-radius:4px!important}
+.belt-card{border-radius:12px!important}
+.belt-n{border-radius:8px!important}
+.bkimg{border-radius:4px 8px 8px 4px!important}
+.hs-row{border-radius:12px!important}
+.hs-di{border-radius:8px!important}
+.bk-cover{border-radius:8px 8px 8px 8px!important}
+.td-card{border-radius:16px!important}
+.td-bar{border-radius:4px!important}
+.td-bar i{border-radius:4px!important}
+.srch-bt{border-radius:8px!important}
+.sup-card{border-radius:16px!important}
+.hbb-b{border-radius:8px!important}
+.hs-bigres{border-radius:16px!important}
+.hero{border-radius:16px!important}
+.ps-ai-msg.bot{border-radius:16px!important}
+.ps-ai-msg.user{border-radius:16px!important}
+.bk-face{border-radius:4px!important}
+.se-n{border-radius:8px!important}
+.tk-hero{border-radius:16px!important}
+.sec-title h2::before{border-radius:4px!important}
+.tabbar .tb.on::after{border-radius:0 0 4px 4px!important}
+.theme-opt{border-radius:8px!important}
+.action-row .act-btn[style*="c9a84c"]{border-radius:8px!important}
+.daily-card,.quote-card,.stat-card{border-radius:8px!important}
+.lib-search input{border-radius:16px!important}
+.h6-item{border-radius:8px!important}
+.bk-in{border-radius:8px!important}
+.rd-w{border-radius:4px!important}
+.rd-wordbox{border-radius:16px!important}
+html[data-theme="light"] .lib-search input{border-radius:8px!important}
+html[data-theme="light"] .card,html[data-theme="light"] .ps-ai-card,html[data-theme="light"] .daily-card,
+html[data-theme="light"] .stat-card,html[data-theme="light"] .quote-card,html[data-theme="light"] .s-card,
+html[data-theme="light"] .s-item,html[data-theme="light"] .v-item,html[data-theme="light"] .entr{border-radius:12px!important}
+.tk-tip{border-radius:8px!important}
+.civ-sub{border-radius:12px!important}
+.civ-evt{border-radius:12px!important}
+.bk-cover.cv::before{border-radius:4px!important}
+.bk-cover.cv::after{border-radius:4px!important}
+.rd-sheet{border-radius:12px!important}
+.rd-sheet button{border-radius:8px!important}
+.cont-bar{border-radius:4px!important}
+.cont-bar i{border-radius:4px!important}
+#splash .sp-bar{border-radius:4px!important}
+@media (max-width:820px){.ps-ai-msg{border-radius:8px!important}}
+.ai-view-body .ps-ai-msg{border-radius:8px!important}
+#page-home>.tk-hero{border-radius:16px!important}
+.vision-card{border-radius:16px!important}
+.vc-icon{border-radius:12px!important}
+html[data-theme="light"] .daily-quote .quote-card,html[data-theme="dark"] .daily-quote .quote-card{border-radius:16px!important}
+.daily-quote .q-belt{border-radius:8px!important}
+#page-home>#homeShelves{border-radius:16px!important}
+#homeShelves .hs-grid .bkcard{border-radius:16px!important}
+#homeShelves .hs-grid .bkcov{border-radius:8px 12px 12px 8px!important}
+#page-home>.feed .card{border-radius:16px!important}
+#hsSupTop .sup-card,#permBoxHome{border-radius:16px!important}
+html[data-theme="light"] .tabbar,html[data-theme="dark"] .tabbar{border-radius:16px!important}
+.nour-live .ps-ai-card{border-radius:16px!important}
+#page-home .vision-card,#page-home .quote-card,.study-progress{border-radius:16px!important}
+.study-track{border-radius:8px!important}
+.study-track i{border-radius:8px!important}
+.library-page .bkcard{border-radius:12px!important}
+.profile-card{border-radius:16px!important}
+.footprint-mark{border-radius:8px!important}
+.search-tools button{border-radius:12px!important}
+.ai-page .ps-ai-card{border-radius:16px!important}
+html body > #mCat.page .bk-side{border-radius:16px!important}
+html body > #mCat.page .bk-q{border-radius:12px!important}
+html body > #page-search.page .srch-big{border-radius:16px!important}
+html body > #page-search.page .search-tools button{border-radius:12px!important}
+html body > #page-me.page .profile-card{border-radius:16px!important}
+html body > #aiSec.page .ps-ai-msg{border-radius:16px!important}
+html body > .tabbar{border-radius:16px!important}
+html body > .tabbar .tb{border-radius:16px!important}
+.nour-mission{border-radius:16px!important}
+.nour-mission-mark{border-radius:12px!important}
+.nour-palette-card{border-radius:16px!important}
+.nour-palette-item{border-radius:12px!important}
+.nour-palette-item i{border-radius:8px!important}
+.ai-page .ps-ai-input .ps-mic,.ai-page .ps-ai-input .home-ai-send{border-radius:16px!important}
+.dlg-intro{border-radius:16px!important}
+.dlg-intro-mark{border-radius:16px!important}
+.dlg-scene-card{border-radius:16px!important}
+.dlg-scene-icon{border-radius:16px!important}
+.dlg-empty{border-radius:16px!important}
+.dlg-line-card{border-radius:16px!important}
+.theme-settings-intro{border-radius:16px!important}
+.theme-settings-orb{border-radius:16px!important}
+.ca-map-hero{border-radius:16px!important}
+.ca-stage-card{border-radius:16px!important}
+.ca-question-card{border-radius:16px!important}
+.ca-option{border-radius:16px!important}
+.ca-order-answer{border-radius:12px!important}
+.ca-selected-token,.ca-token{border-radius:12px!important}
+.ca-score-grid div{border-radius:16px!important}
+.ca-finish-note{border-radius:12px!important}
+.rd-word-actions button{border-radius:12px!important}
+:root{--ap-r-sm:8px;--ap-r-md:12px;--ap-r-lg:16px;--hig-r-m:8px;--u-r-2:12px;--u-r-3:12px;--u-r-4:16px;--nur-r-xs:8px;--nur-r-s:8px}
+.tk-dict{border-radius:16px!important}
+#lockPayBox{border-radius:12px!important}
+#lockQr{border-radius:8px!important}
+#permCodeIn,#permCodeHome,#permBoxHome button,#permBox button,#permBoxHome input,#permBox input{border-radius:12px!important}
+button[onclick="lockContact()"],button[onclick="freeEnter()"]{border-radius:12px!important}

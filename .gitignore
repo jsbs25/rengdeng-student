@@ -1,0 +1,73 @@
+# 依赖/构建产物（体积大、可重装）
+node_modules/
+app/node_modules/
+.expo/
+app/.expo/
+dist/
+app/dist/
+release/
+app/release/
+html-build/
+
+# 大模型权重（2.4G，不入库）
+models_musicgen/
+
+# 抓取缓存/素材
+YouTube_files/
+music_out/
+athan/*.m4a
+athan/*.mp3
+
+# 压缩包/快照
+*.zip
+*.apk
+*.dmg
+
+# 中国古籍正文副本（约 4.8G，不入库；只留 data/cn_books/index.json）
+data/cn_books/t/
+
+# 殆知阁源文件解压目录（约 4.8G，由 daizhige.zip 解压得到；不入库）
+harvest/cn/daizhige/
+
+# macOS
+.DS_Store
+._*
+
+# 密钥（绝不入库）
+ai_key.txt
+**/deepseek密钥/
+**/*密钥*
+.env
+
+# ===== 运行时敏感数据（绝不入库）=====
+data/users.json
+data/codes.json
+data/pays.json
+data/unlocks.json
+data/wx_users.json
+data/admin_pw.txt
+data/ai_key.txt
+data/ai_keys.json
+data/ai_config.json
+data/openai_realtime_key.txt
+data/openai_api_key.txt
+**/*keystore
+**/*.jks
+**/*.pem
+**/*.key
+
+# ===== 开发快照 / 大文件（原先写在 .git/info/exclude，现纳入版本库规则）=====
+/tools/manus-results/
+/.manus-backups/
+/燃灯同学-备用站/
+/燃灯同学-备用站 2/
+/燃灯同学-备用站 4/
+/harvest/hadith_audio/bukhari.rar
+/docs/*-stress*.json
+deploy/bin/cloudflared
+*.bak
+*.bak2.*
+*.bak.*
+
+# 运行日志
+*.log

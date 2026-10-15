@@ -1,0 +1,48 @@
+{
+  "model": "deepseek-flash",
+  "endpoint_host": "api.deepseek.com",
+  "production_profile": {
+    "json_mode": true,
+    "thinking": "disabled",
+    "timeout_s": 75,
+    "max_tokens": 1150,
+    "page_text_cap_chars": 6500
+  },
+  "cases": [
+    {
+      "case": "short-grammar-fiqh",
+      "model": "deepseek-flash",
+      "input_chars": 1100,
+      "prompt_chars": 2677,
+      "request_bytes": 5514,
+      "http_status": 200,
+      "latency_ms": 4169,
+      "prompt_tokens": 1266,
+      "completion_tokens": 758,
+      "total_tokens": 2024,
+      "finish_reason": "stop",
+      "json_parse_ok": true,
+      "repair_requests": 0
+    },
+    {
+      "case": "long-grammar-fiqh",
+      "model": "deepseek-flash",
+      "input_chars": 6500,
+      "prompt_chars": 8077,
+      "request_bytes": 15284,
+      "http_status": 200,
+      "latency_ms": 6316,
+      "prompt_tokens": 3341,
+      "completion_tokens": 1025,
+      "total_tokens": 4366,
+      "finish_reason": "stop",
+      "json_parse_ok": true,
+      "repair_requests": 0
+    }
+  ],
+  "notes": [
+    "两次请求均为非流式、有界样本；不是长期 SLA。",
+    "输入使用生产页级提示与代表性阿拉伯语语法/法学样本，不写入模型返回正文。",
+    "缓存命中不会产生新 token；生产 JSON 修复路径才会额外重试，本文基准未触发修复请求。"
+  ]
+}

@@ -1,0 +1,25 @@
+return await (async function(){
+  const out=[]; const pause=ms=>new Promise(r=>setTimeout(r,ms));
+  const check=(name,ok,detail)=>out.push({name,ok:!!ok,detail:detail||''});
+  await pause(1900); if(typeof showDialog==='function') showDialog(); await pause(180);
+  const modal=document.getElementById('mDialog'), body=document.getElementById('mDialogBody'), head=document.getElementById('mDialogHead');
+  check('dialog center exists',!!modal); check('dialog visible',modal&&modal.classList.contains('show')); check('full screen workspace',modal&&modal.getBoundingClientRect().width>=innerWidth-2&&modal.getBoundingClientRect().height>=innerHeight-2);
+  check('center title',head&&head.textContent.indexOf('阿拉伯语对话学习')>=0,head&&head.textContent);
+  check('bilingual intro',!!document.querySelector('.dlg-intro strong'));
+  check('topic directory',document.querySelectorAll('.dlg-topic').length===7,document.querySelectorAll('.dlg-topic').length);
+  check('scene directory',document.querySelectorAll('.dlg-scene-card').length===26,document.querySelectorAll('.dlg-scene-card').length);
+  const study=document.querySelector('.dlg-topic[onclick*="study"]'); if(study) study.click(); await pause(50);
+  check('topic filter works',document.querySelectorAll('.dlg-scene-card').length>0&&document.querySelectorAll('.dlg-scene-card').length<26,document.querySelectorAll('.dlg-scene-card').length);
+  const all=document.querySelector('.dlg-topic[onclick*="all"]'); if(all) all.click(); await pause(50);
+  const card=document.querySelector('.dlg-scene-card'); if(card) card.click(); await pause(80);
+  check('scene detail opens',!!document.querySelector('.dlg-detail-head'));
+  check('Arabic lines present',document.querySelectorAll('.dlg-line-ar').length===10,document.querySelectorAll('.dlg-line-ar').length);
+  check('Chinese translations present',document.querySelectorAll('.dlg-line-cn').length===10,document.querySelectorAll('.dlg-line-cn').length);
+  check('listen controls present',document.querySelectorAll('.dlg-speak').length===10);
+  check('shadowing controls present',document.querySelectorAll('.dlg-line-actions button').length===20);
+  check('speech function present',typeof window.dlgSpeak==='function');
+  const back=Array.from(document.querySelectorAll('.dlg-tool-btn')).find(x=>x.textContent.indexOf('返回目录')>=0); if(back) back.click(); await pause(50);
+  check('back to directory',!!document.querySelector('.dlg-scene-list'));
+  check('no startup error',!window.__NUR_ERR,window.__NUR_ERR||'');
+  return JSON.stringify({passed:out.filter(x=>x.ok).length,total:out.length,results:out});
+})();

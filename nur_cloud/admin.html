@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>燃灯者 · 管理后台</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif}
+body{display:flex;min-height:100vh;background:#f4f6f8}
+/* 左侧导航 */
+.side{width:200px;background:linear-gradient(180deg,#0f3d31,#0a2b22);color:#cfe3d6;display:flex;flex-direction:column;position:fixed;top:0;bottom:0;left:0;z-index:10}
+.side .logo{padding:20px 16px 16px;border-bottom:1px solid rgba(255,255,255,.08)}
+.side .logo b{font-size:15px;color:#e8d48b;display:block}
+.side .logo span{font-size:10px;color:#8fae9c;margin-top:3px;display:block}
+.side .menu{flex:1;padding:10px 8px;overflow-y:auto}
+.side .mi{display:flex;align-items:center;gap:10px;padding:11px 12px;border-radius:10px;cursor:pointer;font-size:13px;color:#cfe3d6;margin-bottom:2px;transition:.15s}
+.side .mi:hover{background:rgba(255,255,255,.08)}
+.side .mi.on{background:linear-gradient(90deg,#a8892e,#c9a84c);color:#fff;font-weight:700}
+.side .foot{padding:14px 16px;font-size:10px;color:#6f8f7c;border-top:1px solid rgba(255,255,255,.08)}
+/* 主区 */
+.main{flex:1;margin-left:200px;display:flex;flex-direction:column;min-height:100vh}
+.top{background:#fff;border-bottom:1px solid #e8ecef;padding:0 24px;height:56px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:5}
+.top h1{font-size:16px;color:#1a2b24;font-weight:700}
+.top .status{margin-left:auto;display:flex;align-items:center;gap:8px;font-size:11px;color:#6b7d74}
+.top .dot{width:8px;height:8px;border-radius:50%;background:#ccc}
+.top .dot.ok{background:#1a8a5c;box-shadow:0 0 6px rgba(26,138,92,.5)}
+.top .dot.bad{background:#c0392b}
+.content{padding:24px;flex:1}
+.card{background:#fff;border-radius:14px;border:1px solid #e8ecef;padding:20px;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,.03)}
+.card h3{font-size:14px;color:#1a2b24;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px}
+.stat{background:linear-gradient(160deg,#fbfaf6,#f6f3ea);border:1px solid #e8e2d2;border-radius:12px;padding:16px}
+.stat .n{font-size:24px;font-weight:800;color:#0f3d31;margin-top:6px}
+.stat .l{font-size:11px;color:#8a9c8f;margin-top:3px}
+.stat .ic{font-size:20px}
+.stat .st{font-size:11px;font-weight:700;margin-top:5px}
+.ok{color:#1a8a5c}.bad{color:#c0392b}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th{background:#f7f8fa;color:#5c6b63;padding:10px 12px;text-align:left;font-weight:600;border-bottom:1px solid #e8ecef}
+td{padding:10px 12px;border-bottom:1px solid #f0f2f4;color:#333}
+tr:hover td{background:#fafbfc}
+.btn{display:inline-block;padding:9px 18px;border-radius:9px;border:none;font-size:12.5px;font-weight:700;cursor:pointer}
+.btn.g{background:linear-gradient(135deg,#a8892e,#c9a84c);color:#fff}
+.btn.d{background:#0f3d31;color:#e8d48b}
+.btn.r{background:#c0392b;color:#fff}
+.btn.w{background:#fff;color:#0f3d31;border:1px solid #d5dbd7}
+.btn:disabled{opacity:.5}
+textarea{width:100%;min-height:200px;border:1px solid #d5dbd7;border-radius:10px;padding:12px;font-size:12.5px;line-height:1.7;color:#333;font-family:monospace;background:#fdfbf5}
+input[type=text],select{border:1px solid #d5dbd7;border-radius:8px;padding:8px 12px;font-size:12.5px;background:#fff}
+.row{display:flex;gap:10px;align-items:center;margin-bottom:12px;flex-wrap:wrap}
+.out{background:#0e3529;color:#a8e0b5;border-radius:10px;padding:12px;font-size:11px;font-family:monospace;white-space:pre-wrap;max-height:280px;overflow:auto;margin-top:10px}
+.pg{display:flex;gap:8px;align-items:center;margin-top:12px}
+.it{display:flex;justify-content:space-between;gap:10px;padding:9px 4px;border-bottom:1px solid #f0f2f4;font-size:12px}
+.it .ar{font-family:serif;font-weight:700;color:#0f3d31;max-width:44%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.it .zh{color:#666;max-width:46%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.muted{color:#999;font-size:11px}
+.pill{display:inline-block;padding:3px 10px;border-radius:20px;font-size:10.5px;font-weight:700}
+.pill.ok{background:#e6f6ec;color:#1a8a5c}
+.pill.bad{background:#fdeaea;color:#c0392b}
+.pill.gold{background:#faf3dd;color:#a8892e}
+.hide{display:none}
+</style>
+</head>
+<body>
+<div class="side">
+  <div class="logo"><b>🕌 燃灯者</b><span>Nur Al-Arabiyya Admin</span></div>
+  <div class="menu">
+    <div class="mi on" data-m="dash" onclick="go('dash')">📊 仪表盘</div>
+    <div class="mi" data-m="content" onclick="go('content')">📚 内容管理</div>
+    <div class="mi" data-m="users" onclick="go('users')">👥 用户管理</div>
+    <div class="mi" data-m="codes" onclick="go('codes')">🔑 激活码</div>
+    <div class="mi" data-m="ai" onclick="go('ai')">🤖 AI 设置</div>
+    <div class="mi" data-m="sys" onclick="go('sys')">⚙️ 系统</div>
+  </div>
+  <div class="foot">燃灯者 · 学习应用管理后台<br>v1.5 · 2026</div>
+</div>
+<div class="main">
+  <div class="top">
+    <h1 id="pageTitle">仪表盘</h1>
+    <div class="status"><span class="dot ok" id="srvDot"></span><span id="srvTxt">检测中...</span></div>
+  </div>
+  <div class="content">
+    <div id="m-dash" class="pgm"><div class="card"><h3>📊 系统状态</h3><div class="grid" id="dashGrid">加载中...</div></div></div>
+    <div id="m-content" class="pgm hide">
+      <div class="card">
+        <h3>📚 内容管理</h3>
+        <div class="row">
+          <select id="dKind" onchange="loadData(0)">
+            <option value="sentences">💬 句子</option>
+            <option value="hadith">📜 圣训</option>
+            <option value="history">📜 历史文章</option>
+            <option value="dialogues">💬 日常对话</option>
+          </select>
+          <input type="text" id="dQ" placeholder="🔍 搜索..." onkeydown="if(event.key==='Enter')loadData(0)">
+          <button class="btn g" onclick="loadData(0)">搜索</button>
+          <span class="muted" id="dTotal"></span>
+        </div>
+        <div id="dList">加载中...</div>
+        <div class="pg" id="dNav"></div>
+      </div>
+    </div>
+    <div id="m-users" class="pgm hide">
+      <div class="card">
+        <h3>👥 用户管理（点击用户设置会员）</h3>
+        <button class="btn w" onclick="loadUsers()">🔄 刷新</button>
+        <div id="uList" style="margin-top:12px"></div>
+      </div>
+    </div>
+    <div id="m-codes" class="pgm hide">
+      <div class="card">
+        <h3>🔑 激活码管理</h3>
+        <div class="row">
+          <button class="btn g" onclick="genCodes(30)">生成 30 天 × 5</button>
+          <button class="btn g" onclick="genCodes(90)">生成 90 天 × 5</button>
+          <button class="btn g" onclick="genCodes(365)">生成 365 天 × 5</button>
+          <button class="btn w" onclick="loadCodes()">🔄 刷新</button>
+          <button class="btn d" onclick="copyAllCodes()">📋 复制全部激活码</button>
+        </div>
+        <div id="cList"></div>
+      </div>
+    </div>
+    <div id="m-ai" class="pgm hide">
+      <div class="card">
+        <h3>🤖 AI 系统提示词</h3>
+        <textarea id="aiSystem"></textarea>
+        <div class="row" style="margin-top:12px">
+          <span style="font-size:12px;font-weight:700;color:#1a2b24">最大回答（词元）：</span>
+          <input type="text" id="aiTokens" style="width:90px">
+          <button class="btn g" onclick="saveAI()">💾 保存</button>
+          <span class="muted" id="aiMsg"></span>
+        </div>
+        <div class="muted" style="margin-top:6px">⚠️ 修改后需重启服务器（桌面 App 重启）生效</div>
+      </div>
+    </div>
+    <div id="m-sys" class="pgm hide">
+      <div class="card">
+        <h3>⚙️ 系统控制</h3>
+        <div class="row">
+          <button class="btn d" onclick="doRebuild()">🔄 重建全部数据</button>
+          <button class="btn g" onclick="doScraper()">🕷 运行爬虫</button>
+          <button class="btn w" onclick="window.open('/','_blank')">🏠 应用首页</button>
+        </div>
+        <div class="out" id="sysOut">点击按钮执行操作</div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+var PAGE = 0;
+function go(m){
+  document.querySelectorAll('.mi').forEach(function(x){ x.classList.toggle('on', x.dataset.m === m); });
+  document.querySelectorAll('.pgm').forEach(function(x){ x.classList.add('hide'); });
+  var el = document.getElementById('m-' + m);
+  if(el) el.classList.remove('hide');
+  var t = {dash:'仪表盘', content:'内容管理', users:'用户管理', codes:'激活码', ai:'AI 设置', sys:'系统'}[m];
+  document.getElementById('pageTitle').textContent = t;
+  if(m === 'dash') loadDash();
+  if(m === 'content') loadData(0);
+  if(m === 'users') loadUsers();
+  if(m === 'codes') loadCodes();
+  if(m === 'ai') loadAI();
+}
+function api(u, opt){ return fetch(u, opt).then(function(r){ return r.json(); }); }
+function copyText(txt){
+  function done(){ var el = document.createElement('div'); el.textContent = '✅ 已复制'; el.style.cssText = 'position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#0f3d31;color:#e8d48b;padding:10px 22px;border-radius:10px;font-size:13px;font-weight:700;z-index:9999;box-shadow:0 4px 16px rgba(0,0,0,.25)'; document.body.appendChild(el); setTimeout(function(){ el.remove(); }, 1800); }
+  if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(done, function(){ legacyCopy(txt); done(); }); }
+  else { legacyCopy(txt); done(); }
+}
+function legacyCopy(txt){
+  var ta = document.createElement('textarea');
+  ta.value = txt; ta.style.position = 'fixed'; ta.style.opacity = '0';
+  document.body.appendChild(ta); ta.select();
+  try{ document.execCommand('copy'); }catch(e){}
+  document.body.removeChild(ta);
+}
+function copyAllCodes(){
+  var rows = document.querySelectorAll('#cList td b');
+  var codes = [];
+  rows.forEach(function(b){ codes.push(b.textContent.trim()); });
+  if(!codes.length){ alert('暂无激活码可复制'); return; }
+  copyText(codes.join('\n'));
+}
+function loadDash(){
+  api('/api/admin/status').then(function(d){
+    var h = '';
+    var cards = [
+      ['💬','句子', d.categorized, ''],
+      ['📜','圣训', d.hadith_all, ''],
+      ['📜','历史文章', d.history, ''],
+      ['💬','对话场景', d.dialogues, ''],
+      ['💾','磁盘可用', (d.disk_free_gb||'?') + ' GB', ''],
+      ['🗣','语音识别', d.asr_model ? '✅ 就绪' : '❌ 缺失', d.asr_model ? 'ok' : 'bad'],
+      ['🎵','音乐生成', d.music_model ? '✅ 就绪' : '❌ 缺失', d.music_model ? 'ok' : 'bad']
+    ];
+    cards.forEach(function(c){
+      h += '<div class="stat"><div class="ic">' + c[0] + '</div><div class="n">' + c[2] + '</div><div class="l">' + c[1] + '</div>' + (c[3] ? '<div class="st ' + c[3] + '">' + c[2] + '</div>' : '') + '</div>';
+    });
+    document.getElementById('dashGrid').innerHTML = h;
+    document.getElementById('srvDot').className = 'dot ok';
+    document.getElementById('srvTxt').textContent = '服务器在线 · ' + d.time;
+  }).catch(function(){
+    document.getElementById('dashGrid').innerHTML = '⚠️ 无法连接服务器';
+    document.getElementById('srvDot').className = 'dot bad';
+    document.getElementById('srvTxt').textContent = '服务器离线';
+  });
+}
+function loadData(pg){
+  PAGE = pg;
+  var kind = document.getElementById('dKind').value;
+  var q = document.getElementById('dQ').value;
+  api('/api/admin/data?kind=' + kind + '&page=' + pg + '&q=' + encodeURIComponent(q)).then(function(d){
+    if(d.error){ document.getElementById('dList').innerHTML = '⚠️ ' + d.error; return; }
+    document.getElementById('dTotal').textContent = '共 ' + d.total + ' 条';
+    var h = '';
+    (d.items||[]).forEach(function(it){
+      h += '<div class="it"><span class="ar">' + (it.ar||'') + '</span><span class="zh">' + (it.zh||'') + '</span></div>';
+    });
+    document.getElementById('dList').innerHTML = h || '<div class="muted" style="padding:12px">无数据</div>';
+    var tp = Math.ceil(d.total / d.size);
+    document.getElementById('dNav').innerHTML = '<button class="btn w" onclick="loadData(' + (pg-1) + ')" ' + (pg<=0?'disabled':'') + '>‹ 上一页</button><span class="muted">第 ' + (pg+1) + ' / ' + tp + ' 页</span><button class="btn w" onclick="loadData(' + (pg+1) + ')" ' + (pg+1>=tp?'disabled':'') + '>下一页 ›</button>';
+  });
+}
+function loadUsers(){
+  api('/api/admin/users').then(function(d){
+    var u = d.users || [];
+    var h = '<table><tr><th>用户</th><th>状态</th><th>注册时间</th><th>操作</th></tr>';
+    u.forEach(function(x){
+      h += '<tr><td><b>' + x.username + '</b></td><td>' + (x.vip ? '<span class="pill gold">👑 会员 · 至 ' + x.vip_until + '</span>' : '<span class="pill bad">普通用户</span>') + '</td><td>' + (x.created||'') + '</td><td><button class="btn g" onclick="setVip(\'' + x.username + '\')">设置会员</button></td></tr>';
+    });
+    h += '</table>';
+    document.getElementById('uList').innerHTML = h || '<div class="muted">暂无用户</div>';
+  });
+}
+function setVip(u){
+  var days = prompt(u + '：开通会员多少天？（输入 0 取消）', '30');
+  if(days === null) return;
+  api('/api/admin/set_vip', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({username:u, days:parseInt(days)||0})}).then(function(d){
+    alert(d.msg || '完成'); loadUsers();
+  });
+}
+function loadCodes(){
+  api('/api/admin/codes').then(function(d){
+    var c = d.codes || [];
+    var h = '<table><tr><th>激活码</th><th>天数</th><th>状态</th><th>使用者</th><th>使用时间</th><th>复制</th></tr>';
+    c.forEach(function(x){
+      h += '<tr><td><b style="letter-spacing:1px">' + x.code + '</b></td><td>' + x.days + ' 天</td><td>' + (x.used ? '<span class="pill bad">已用</span>' : '<span class="pill ok">可用</span>') + '</td><td>' + (x.used_by||'') + '</td><td>' + (x.used_at||'') + '</td><td><button class="btn w" style="padding:5px 12px" onclick="copyText(\'' + x.code + '\')">📋</button></td></tr>';
+    });
+    h += '</table>';
+    document.getElementById('cList').innerHTML = h || '<div class="muted">暂无激活码</div>';
+  });
+}
+function genCodes(days){
+  api('/api/admin/gen_code', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({days:days, batch:5})}).then(function(d){
+    alert(d.msg || '完成'); loadCodes();
+  });
+}
+function loadAI(){
+  api('/api/admin/ai').then(function(d){
+    document.getElementById('aiSystem').value = d.system || '';
+    document.getElementById('aiTokens').value = d.max_tokens || '2000';
+  });
+}
+function saveAI(){
+  api('/api/admin/ai', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({system:document.getElementById('aiSystem').value, max_tokens:parseInt(document.getElementById('aiTokens').value)||2000})}).then(function(d){
+    document.getElementById('aiMsg').textContent = d.ok ? '✅ 已保存（重启生效）' : '⚠️ 失败';
+  });
+}
+function doRebuild(){
+  var o = document.getElementById('sysOut');
+  o.textContent = '🔄 正在重建数据...';
+  api('/api/admin/rebuild', {method:'POST'}).then(function(d){ o.textContent = (d.ok?'✅ 完成\n':'❌ 失败\n') + (d.out||''); });
+}
+function doScraper(){
+  var o = document.getElementById('sysOut');
+  o.textContent = '🕷 爬虫运行中...';
+  api('/api/admin/scraper', {method:'POST'}).then(function(d){ o.textContent = (d.ok?'✅ 完成\n':'❌ 失败\n') + (d.out||''); });
+}
+loadDash();
+</script>
+</body>
+</html>

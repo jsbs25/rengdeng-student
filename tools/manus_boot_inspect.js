@@ -1,0 +1,1 @@
+(function(){return JSON.stringify({nav:typeof window.nav,openNurAI:typeof window.openNurAI,homeAISend:typeof window.homeAISend,err:window.__NUR_ERR||'',pages:Array.from(document.querySelectorAll('.page')).map(function(e){return {id:e.id,display:getComputedStyle(e).display,parent:e.parentElement&&e.parentElement.tagName};})});})();

@@ -1,0 +1,21 @@
+<slide id="executive_summary">
+  <background color="ivory"/>
+  <shape id="top-green" type="rect" x="40" y="40" width="780" height="2" fill="inkgreen"/>
+  <shape id="top-gold" type="rect" x="820" y="40" width="420" height="2" fill="gold"/>
+  <text id="title" x="40" y="68" width="1120" height="52" font="heading" color="inkgreen">结论先行：功能稳定，突发尾延迟是下一目标</text>
+  <shape id="metric-line" type="line" x="40" y="152" width="1200" height="0" stroke="linegold" stroke-width="1"/>
+  <text id="metric1" x="48" y="184" width="330" height="98" font="strong" color="success" align="center" anchor="middle"><p size="44">243 / 243</p><p font="caption" color="secondary">健康监控连续通过</p></text>
+  <text id="metric2" x="460" y="184" width="330" height="98" font="strong" color="success" align="center" anchor="middle"><p size="44">600 / 600</p><p font="caption" color="secondary">nodes 并发请求成功</p></text>
+  <text id="metric3" x="872" y="184" width="330" height="98" font="strong" color="gold" align="center" anchor="middle"><p size="44">6.92s</p><p font="caption" color="secondary">60并发突发最大延迟</p></text>
+  <shape id="divider1" type="line" x="410" y="172" width="0" height="126" stroke="linegold" stroke-width="1"/>
+  <shape id="divider2" type="line" x="822" y="172" width="0" height="126" stroke="linegold" stroke-width="1"/>
+  <shape id="matrix-line" type="line" x="40" y="332" width="1200" height="0" stroke="inkgreen" stroke-width="2"/>
+  <text id="stable-h" x="40" y="364" width="350" height="34" font="body" size="22" color="inkgreen"><strong>稳定性</strong></text>
+  <text id="stable-b" x="40" y="412" width="350" height="150" font="body" size="18" color="inkblack" line-height="1.5"><ul bullet="•"><li>nur 与健康监控服务均 active</li><li>NRestarts = 0</li><li>目录 8,794 与六大部条件持续正确</li></ul></text>
+  <text id="cache-h" x="455" y="364" width="350" height="34" font="body" size="22" color="inkgreen"><strong>缓存与单飞</strong></text>
+  <text id="cache-b" x="455" y="412" width="350" height="150" font="body" size="18" color="inkblack" line-height="1.5"><ul bullet="•"><li>过期缓存 300/300 均立即返回</li><li>只创建一个刷新 worker</li><li>刷新成功后提供 3 个节点</li></ul></text>
+  <text id="ux-h" x="870" y="364" width="350" height="34" font="body" size="22" color="inkgreen"><strong>用户入口</strong></text>
+  <text id="ux-b" x="870" y="412" width="350" height="150" font="body" size="18" color="inkblack" line-height="1.5"><ul bullet="•"><li>手机与桌面首页均 13/13</li><li>今日一句只取有界摘要</li><li>句子库坚持用户主动按需加载</li></ul></text>
+  <text id="foot" x="40" y="654" width="920" height="20" font="caption" color="secondary">行动焦点：保留既有缓存正确性，同时为瞬时连接突发建立更短、更可预测的响应路径。</text>
+  <text id="page" x="1120" y="654" width="80" height="22" font="caption" color="secondary" align="right">02 / 09</text>
+</slide>

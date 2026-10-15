@@ -1,0 +1,42 @@
+{
+  "model": "deepseek-chat",
+  "endpoint_host": "api.deepseek.com",
+  "cases": [
+    {
+      "case": "short",
+      "input_chars": 191,
+      "request_bytes": 705,
+      "http_status": 200,
+      "latency_ms": 1902,
+      "prompt_tokens": 137,
+      "completion_tokens": 223,
+      "total_tokens": 360,
+      "finish_reason": "stop",
+      "content_chars": 568
+    },
+    {
+      "case": "medium",
+      "input_chars": 1337,
+      "request_bytes": 2787,
+      "http_status": 200,
+      "latency_ms": 1948,
+      "prompt_tokens": 569,
+      "completion_tokens": 204,
+      "total_tokens": 773,
+      "finish_reason": "stop",
+      "content_chars": 514
+    },
+    {
+      "case": "long",
+      "input_chars": 5730,
+      "request_bytes": 10768,
+      "http_status": 200,
+      "latency_ms": 1795,
+      "prompt_tokens": 2225,
+      "completion_tokens": 148,
+      "total_tokens": 2373,
+      "finish_reason": "stop",
+      "content_chars": 385
+    }
+  ]
+}

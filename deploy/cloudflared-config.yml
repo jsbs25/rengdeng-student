@@ -1,0 +1,10 @@
+# Cloudflare 隧道配置：把 燃灯同学.com 指向本机 8080 的燃灯者服务
+tunnel: nur
+credentials-file: /Users/mafucheng/.cloudflared/nur.json
+
+ingress:
+  - hostname: xn--dqry4os3s3gb.com
+    service: http://localhost:8080
+  - hostname: www.xn--dqry4os3s3gb.com
+    service: http://localhost:8080
+  - service: http_status:404

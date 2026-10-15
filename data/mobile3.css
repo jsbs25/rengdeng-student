@@ -1,0 +1,109 @@
+/* ============================================================
+   燃灯同学 · 第 ④ 步：移动端最终适配
+   仅 @media (max-width:768px) 生效 —— 绝不破坏 ≥1000px 的电脑端
+   要点：取消左右分栏 → 内容在上 / AI 在下
+        输入框强制吸底（iOS 胶囊 + 安全区）
+   ============================================================ */
+@media (max-width:768px){
+
+  /* ① 防溢出 */
+  body{ overflow-x:clip; }  /* 只在 body 上裁，避免锁死滚动 */
+  img,video,table,pre,iframe{ max-width:100%!important; }
+
+  /* ② 取消左右分栏（把第③步的 grid 还原成纵向流）*/
+  #page-home{
+    display:block!important;
+    grid-template-columns:none!important;
+    padding:0 14px calc(96px + env(safe-area-inset-bottom))!important;
+    max-width:100%!important;
+  }
+  /* 右通道元素恢复全宽 */
+  #page-home > *{ grid-column:auto!important; grid-row:auto!important; width:100%!important; }
+
+  /* ③ 顺序：知识沉淀区在上，AI 交互区在下 */
+  #page-home > #aiSec{
+    position:static!important;
+    order:99!important;
+    margin:18px 0 0!important;
+    max-height:none!important;
+    height:auto!important;
+  }
+  #page-home > #aiSec::after{ display:none!important; }   /* 去掉桌上那条分界线 */
+  /* AI 卡片恢复自然高度 */
+  #page-home > #aiSec .ps-ai-card{
+    display:block!important;
+    height:auto!important; max-height:none!important;
+  }
+  #page-home > #aiSec .ps-ai-msgs{
+    height:170px!important; max-height:170px!important;
+    overflow-y:auto!important; -webkit-overflow-scrolling:touch;
+  }
+  /* 书架回 2 列（手机）*/
+  #page-home .hs-grid{ grid-template-columns:repeat(2,1fr)!important; gap:14px 10px!important; }
+
+  /* ④ 输入框强制吸底：iOS 胶囊 + 安全区 */
+  #page-home > #aiSec .ps-ai-input,
+  #page-home .ps-ai-input{
+    position:fixed!important;
+    left:10px!important; right:10px!important;
+    bottom:0!important;
+    z-index:4400!important;
+    display:flex!important; flex-direction:row!important; align-items:center!important;
+    gap:8px!important;
+    padding:8px 8px calc(8px + env(safe-area-inset-bottom)) 12px!important;
+    margin:0!important;
+    background-color:rgba(253,251,247,.96)!important;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E")!important;
+    backdrop-filter:saturate(180%) blur(20px)!important;
+    -webkit-backdrop-filter:saturate(180%) blur(20px)!important;
+    border:1px solid rgba(26,26,26,.12)!important;
+    border-radius:999px!important;
+    box-shadow:0 4px 20px rgba(26,26,26,.10)!important;
+    max-width:520px;
+    margin-left:auto!important; margin-right:auto!important;
+  }
+  #page-home .ps-ai-input input{
+    flex:1 1 auto!important; min-width:0!important;
+    min-height:42px!important; font-size:16px!important;   /* 16px 防 iOS 放大 */
+    padding:9px 14px!important;
+    border:1px solid rgba(26,26,26,.10)!important;
+    border-radius:999px!important;
+    background:#fff!important; color:#1a1a1a!important;
+  }
+  #page-home .ps-ai-input button{
+    flex:0 0 auto!important;
+    min-height:42px!important; min-width:56px!important;
+    padding:9px 14px!important; font-size:14px!important;
+    border-radius:999px!important;
+    background:#1a1a1a!important; color:#fdfbf7!important; border:0!important;
+    font-weight:650!important;
+  }
+  #page-home .ps-ai-input .ps-mic{
+    min-width:42px!important; background:transparent!important;
+    color:#1a1a1a!important; border:1px solid rgba(26,26,26,.12)!important;
+  }
+  /* ⑤ 夜间：吸底栏也变墨黑 */
+  html[data-theme="light"][data-lib-night="1"] #page-home .ps-ai-input,
+  html[data-theme="dark"] #page-home .ps-ai-input{
+    background-color:#1a1a18!important;
+    border-color:rgba(255,255,255,.12)!important;
+  }
+  html[data-theme="light"][data-lib-night="1"] #page-home .ps-ai-input input,
+  html[data-theme="dark"] #page-home .ps-ai-input input{
+    background:#242422!important; color:#e6e6de!important; border-color:rgba(255,255,255,.12)!important;
+  }
+
+  /* ⑥ 触控：全站可点 ≥44px */
+  button,.btn,[onclick],.s-btn,.cat-tab,.act-btn,.m-close{ min-height:44px!important; }
+
+  /* ⑦ 其它固定元素让开吸底栏 */
+  #libNightBtn{ bottom:calc(78px + env(safe-area-inset-bottom))!important; }
+  #libProgress{ z-index:4500!important; }
+}
+
+/* 超小屏 */
+@media (max-width:390px){
+  #page-home{ padding-left:12px!important; padding-right:12px!important; }
+  #page-home > #aiSec .ps-ai-msgs{ height:150px!important; max-height:150px!important; }
+  #page-home .ps-ai-input input{ font-size:15.5px!important; }
+}

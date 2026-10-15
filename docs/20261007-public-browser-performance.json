@@ -1,0 +1,190 @@
+{
+  "mobile": {
+    "viewport": [
+      390,
+      844
+    ],
+    "navigation": {
+      "domContentLoaded": 855,
+      "loadEvent": 867,
+      "responseEnd": 686,
+      "domInteractive": 842,
+      "fcp": 774,
+      "transferSize": 553031,
+      "encodedBodySize": 552731,
+      "decodedBodySize": 1922715
+    },
+    "resources": {
+      "count": 38,
+      "transferBytes": 1544987,
+      "encodedBytes": 1533587,
+      "slowest": [
+        {
+          "url": "/api/sentences",
+          "duration": 3588,
+          "transfer": 960535,
+          "encoded": 960235
+        },
+        {
+          "url": "/api/home_stats",
+          "duration": 2803,
+          "transfer": 565,
+          "encoded": 265
+        },
+        {
+          "url": "/api/library/fiqh-schools?size=5",
+          "duration": 2113,
+          "transfer": 15485,
+          "encoded": 15185
+        },
+        {
+          "url": "/api/library/classics?collection=&q=&page=0&size=18",
+          "duration": 1990,
+          "transfer": 2708,
+          "encoded": 2408
+        },
+        {
+          "url": "/data/library/novels_pool.json?t=1791370264198",
+          "duration": 1862,
+          "transfer": 2266,
+          "encoded": 1966
+        },
+        {
+          "url": "/api/ai/quota?device_id=dkmye7p46muxzlpkq",
+          "duration": 1198,
+          "transfer": 369,
+          "encoded": 69
+        },
+        {
+          "url": "/data/library/novels_pool.json?t=1791370263843",
+          "duration": 1192,
+          "transfer": 2266,
+          "encoded": 1966
+        },
+        {
+          "url": "/data/library/lit_pool.json?t=1791370265068",
+          "duration": 1151,
+          "transfer": 59730,
+          "encoded": 59430
+        }
+      ]
+    },
+    "routes": [
+      {
+        "name": "首页稳定",
+        "elapsed": 251,
+        "newResources": 0
+      },
+      {
+        "name": "进入书库",
+        "elapsed": 905,
+        "newResources": 2
+      },
+      {
+        "name": "进入词典",
+        "elapsed": 657,
+        "newResources": 2
+      },
+      {
+        "name": "进入学习",
+        "elapsed": 1254,
+        "newResources": 2
+      }
+    ],
+    "errors": []
+  },
+  "desktop": {
+    "viewport": [
+      1280,
+      900
+    ],
+    "navigation": {
+      "domContentLoaded": 797,
+      "loadEvent": 808,
+      "responseEnd": 677,
+      "domInteractive": 747,
+      "fcp": 676,
+      "transferSize": 552453,
+      "encodedBodySize": 552153,
+      "decodedBodySize": 1922715
+    },
+    "resources": {
+      "count": 40,
+      "transferBytes": 1607048,
+      "encodedBytes": 1595048,
+      "slowest": [
+        {
+          "url": "/api/sentences",
+          "duration": 2077,
+          "transfer": 960463,
+          "encoded": 960163
+        },
+        {
+          "url": "/api/home_stats",
+          "duration": 1525,
+          "transfer": 565,
+          "encoded": 265
+        },
+        {
+          "url": "/api/ai/quota?device_id=dgvuld3t4muxzm0bo",
+          "duration": 1124,
+          "transfer": 369,
+          "encoded": 69
+        },
+        {
+          "url": "/api/library/fiqh-schools?size=5",
+          "duration": 893,
+          "transfer": 15482,
+          "encoded": 15182
+        },
+        {
+          "url": "/api/library/classics?collection=&q=&page=0&size=18",
+          "duration": 889,
+          "transfer": 2708,
+          "encoded": 2408
+        },
+        {
+          "url": "/data/library/novels_pool.json?t=1791370278078",
+          "duration": 783,
+          "transfer": 2266,
+          "encoded": 1966
+        },
+        {
+          "url": "/data/library/lit_pool.json?t=1791370278348",
+          "duration": 781,
+          "transfer": 59726,
+          "encoded": 59426
+        },
+        {
+          "url": "/data/library/novels_pool.json?t=1791370277724",
+          "duration": 622,
+          "transfer": 2266,
+          "encoded": 1966
+        }
+      ]
+    },
+    "routes": [
+      {
+        "name": "首页稳定",
+        "elapsed": 251,
+        "newResources": 0
+      },
+      {
+        "name": "进入书库",
+        "elapsed": 905,
+        "newResources": 2
+      },
+      {
+        "name": "进入词典",
+        "elapsed": 660,
+        "newResources": 2
+      },
+      {
+        "name": "进入学习",
+        "elapsed": 2009,
+        "newResources": 2
+      }
+    ],
+    "errors": []
+  }
+}

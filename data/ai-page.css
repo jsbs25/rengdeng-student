@@ -1,0 +1,88 @@
+/* ============================================================
+   努尔老师 · 独立界面（点开才进）
+   首页不再内嵌 AI；侧栏加「🤖 努尔老师」入口
+   打开后 AI 在一个独立的全屏界面里
+   ============================================================ */
+
+/* ① 首页里的 AI 区块隐藏（保留 DOM，点开时搬进独立界面）*/
+#page-home > #aiSec{ display:none!important; }
+
+/* ② 独立界面（复用站点的 .modal 体系）*/
+#mAI .m-body{
+  padding:0!important;
+  display:flex!important; flex-direction:column!important;
+  height:calc(100vh - 96px);
+  max-height:calc(100vh - 96px);
+  overflow:hidden!important;
+}
+#mAI .m-body > .ps-ai{
+  margin:0!important; padding:0!important; max-width:none!important; width:100%!important;
+  flex:1 1 auto!important; min-height:0!important; display:flex!important;
+}
+#mAI .m-body > .ps-ai > .ps-ai-card{
+  flex:1 1 auto!important;
+  display:grid!important;
+  grid-template-rows:auto minmax(0,1fr) auto auto!important;
+  height:auto!important; max-height:none!important;
+  border-radius:0!important; border:0!important;
+  background:#fdfbf7!important; background-image:none!important;
+  box-shadow:none!important;
+  width:100%!important;
+}
+#mAI .m-body .ps-ai-msgs{
+  height:auto!important; min-height:0!important; max-height:none!important;
+  overflow-y:auto!important; -webkit-overflow-scrolling:touch;
+  padding:16px 18px!important; font-size:14px!important;
+}
+#mAI .m-body .ps-ai-msg{ font-size:14px!important; line-height:1.75!important;
+  padding:10px 14px!important; margin-bottom:10px!important; max-width:88%!important;
+  border-radius:10px!important; }
+#mAI .m-body .ps-ai-msg.bot{ background:#f4f1e9!important; color:#2c2c30!important; }
+#mAI .m-body .ps-ai-msg.user{ background:#1a1a1a!important; color:#fdfbf7!important; }
+#mAI .m-body .ps-ai-chips{ padding:10px 14px!important; gap:6px!important;
+  background:transparent!important; border-top:1px solid rgba(26,26,26,.08)!important; }
+#mAI .m-body .ps-ai-input{
+  display:flex!important; flex-direction:row!important; gap:8px!important;
+  padding:10px 14px calc(10px + env(safe-area-inset-bottom))!important;
+  border-top:1px solid rgba(26,26,26,.10)!important;
+  background:#fdfbf7!important;
+}
+#mAI .m-body .ps-ai-input input{
+  flex:1 1 auto!important; min-height:46px!important; font-size:16px!important;
+  padding:10px 16px!important; border-radius:999px!important;
+  border:1px solid rgba(26,26,26,.12)!important; background:#fff!important; color:#1a1a1a!important;
+}
+#mAI .m-body .ps-ai-input button{
+  flex:0 0 auto!important; min-height:46px!important; min-width:64px!important;
+  padding:10px 18px!important; border-radius:999px!important; font-size:14.5px!important;
+  font-weight:650!important;
+}
+#mAI .m-body .ps-ai-input .ps-mic{ min-width:46px!important; }
+#mAI .m-head{ background:rgba(253,251,247,.97)!important;
+  border-bottom:1px solid rgba(26,26,26,.10)!important; }
+
+/* ③ 侧栏入口高亮 */
+.chip[data-ai-entry]{ }
+.chip[data-ai-entry].on{ background:#1a1a1a!important; color:#fdfbf7!important; }
+
+/* ④ 夜间 */
+html[data-theme="light"][data-lib-night="1"] #mAI .m-body .ps-ai-card,
+html[data-theme="dark"] #mAI .m-body .ps-ai-card{ background-color:#1a1a18!important; }
+html[data-theme="light"][data-lib-night="1"] #mAI .m-body .ps-ai-msgs,
+html[data-theme="dark"] #mAI .m-body .ps-ai-msgs{ color:#c9c9c2!important; }
+html[data-theme="light"][data-lib-night="1"] #mAI .m-body .ps-ai-msg.bot,
+html[data-theme="dark"] #mAI .m-body .ps-ai-msg.bot{ background:#242422!important; color:#c9c9c2!important; }
+html[data-theme="light"][data-lib-night="1"] #mAI .m-body .ps-ai-input,
+html[data-theme="dark"] #mAI .m-body .ps-ai-input,
+html[data-theme="light"][data-lib-night="1"] #mAI .m-head,
+html[data-theme="dark"] #mAI .m-head{ background-color:#1a1a18!important; }
+html[data-theme="light"][data-lib-night="1"] #mAI .m-body .ps-ai-input input,
+html[data-theme="dark"] #mAI .m-body .ps-ai-input input{
+  background:#242422!important; color:#e6e6de!important; border-color:rgba(255,255,255,.12)!important; }
+
+/* ⑤ 手机端：独立界面全屏 */
+@media (max-width:768px){
+  #mAI .m-body{ height:calc(100vh - 52px); max-height:calc(100vh - 52px); }
+  #mAI .m-body .ps-ai-msgs{ padding:14px!important; }
+  #mAI .m-body .ps-ai-msg{ font-size:14.5px!important; max-width:94%!important; }
+}

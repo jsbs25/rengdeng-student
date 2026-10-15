@@ -1,0 +1,108 @@
+/* ============================================================
+   燃灯同学 · V3 深色全屏版（试版，只加到 /v3.html，不动线上）
+   设计来源：另一 AI 的四屏稿 → 我整理后的原生实现
+   原则：只覆盖视觉，不改任何功能
+   ============================================================ */
+:root{
+  --v3-bg:#0f0f0f; --v3-bg-2:#161818; --v3-panel:rgba(255,255,255,.045);
+  --v3-line:rgba(255,255,255,.10);
+  --v3-t1:#f2f1ed; --v3-t2:#a9b0ac; --v3-t3:#6f7772;
+  --v3-gold:#c9a84c; --v3-gold-soft:rgba(201,168,76,.16); --v3-gold-line:rgba(231,209,140,.40);
+  --v3-emerald:#1f6b54; --v3-emerald-2:#2e8f6e;
+  --v3-r-s:10px; --v3-r-m:14px; --v3-r-l:20px;
+  --v3-ease:cubic-bezier(.16,1,.3,1);
+  --v3-ar:'Amiri','DubaiNur','Scheherazade New','Noto Naskh Arabic',serif;
+}
+/* ① 全局底色 → 深曜石 */
+html[data-theme="light"] body,html[data-theme="dark"] body{
+  background-color:var(--v3-bg)!important;
+  background-image:
+    radial-gradient(1200px 600px at 50% -10%, rgba(201,168,76,.09), transparent 60%),
+    radial-gradient(900px 500px at 85% 110%, rgba(31,107,84,.13), transparent 60%)!important;
+  background-attachment:fixed!important;
+  color:var(--v3-t1)!important;
+}
+/* ② 顶部/条款/侧栏 */
+html[data-theme="light"] .hdr,html[data-theme="light"] .topbar,html[data-theme="light"] .donbar{
+  background-color:rgba(15,15,15,.92)!important; background-image:none!important;
+  border-color:var(--v3-line)!important; color:var(--v3-t2)!important; }
+html[data-theme="light"] .hs-rail{ background-color:transparent!important; border-right:1px solid var(--v3-line)!important; }
+html[data-theme="light"] .chip{ background:transparent!important; color:var(--v3-t2)!important; border-radius:10px!important; }
+html[data-theme="light"] .chip.on{ background:var(--v3-gold)!important; color:#17170f!important; font-weight:650!important; }
+@media (hover:hover){ html[data-theme="light"] .chip:not(.on):hover{ background:rgba(255,255,255,.06)!important; color:var(--v3-t1)!important; } }
+/* ③ 卡片 → 玻璃 */
+html[data-theme="light"] .s-card,html[data-theme="light"] .bk-card,html[data-theme="light"] .gcard,
+html[data-theme="light"] .card,html[data-theme="light"] .stat{
+  background-color:var(--v3-panel)!important; background-image:none!important;
+  border:1px solid var(--v3-line)!important; border-radius:var(--v3-r-l)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05)!important;
+  backdrop-filter:blur(20px) saturate(150%)!important;
+  -webkit-backdrop-filter:blur(20px) saturate(150%)!important;
+  color:var(--v3-t1)!important;
+}
+@media (hover:hover){
+  html[data-theme="light"] .s-card:hover,html[data-theme="light"] .bk-card:hover{
+    border-color:var(--v3-gold-line)!important; box-shadow:0 10px 30px rgba(0,0,0,.4)!important; }
+}
+/* ④ 阿语 → 鎏金 */
+html[data-theme="light"] .s-card .s-ar,html[data-theme="light"] .gar,html[data-theme="light"] .ct-ar,
+html[data-theme="light"] .bk-ar,html[data-theme="light"] .rd-page [dir="rtl"],html[data-theme="light"] .dict-ar{
+  font-family:var(--v3-ar)!important; color:var(--v3-gold)!important;
+  direction:rtl; unicode-bidi:isolate; word-spacing:.05em;
+  text-shadow:0 2px 16px rgba(201,168,76,.20);
+  border-bottom-color:rgba(201,168,76,.14)!important;
+}
+html[data-theme="light"] .s-card .s-cn{ color:var(--v3-t2)!important; }
+html[data-theme="light"] .s-card .s-tr,html[data-theme="light"] .s-card .s-en{ color:var(--v3-t3)!important; }
+/* ⑤ 按钮 → 玻璃描边 / 金实心 */
+html[data-theme="light"] .s-btn,html[data-theme="light"] .act-btn{
+  background:rgba(255,255,255,.04)!important; background-image:none!important;
+  border:1px solid var(--v3-line)!important; color:var(--v3-t2)!important;
+  border-radius:12px!important; min-height:44px!important; font-weight:600!important; }
+@media (hover:hover){ html[data-theme="light"] .s-btn:hover{ border-color:var(--v3-gold-line)!important; color:var(--v3-gold)!important; } }
+html[data-theme="light"] .cat-tab{ background:transparent!important; border:1px solid var(--v3-line)!important;
+  color:var(--v3-t2)!important; border-radius:999px!important; min-height:44px!important; }
+html[data-theme="light"] .cat-tab.on{ background:var(--v3-gold)!important; color:#17170f!important; border-color:var(--v3-gold)!important; }
+/* ⑥ 输入 */
+html[data-theme="light"] input,html[data-theme="light"] textarea,html[data-theme="light"] select{
+  background-color:rgba(255,255,255,.05)!important;
+  border:1px solid var(--v3-line)!important; color:var(--v3-t1)!important; border-radius:12px!important; }
+html[data-theme="light"] ::placeholder{ color:var(--v3-t3)!important; }
+html[data-theme="light"] input:focus,html[data-theme="light"] textarea:focus{ border-color:var(--v3-gold-line)!important;
+  box-shadow:0 0 0 3px rgba(201,168,76,.14)!important; }
+/* ⑦ 弹层 → 深色 sheet */
+html[data-theme="light"] .modal .m-body,html[data-theme="light"] .modal .m-head{
+  background-color:rgba(20,22,22,.96)!important; background-image:none!important;
+  border-color:var(--v3-line)!important; color:var(--v3-t1)!important;
+  backdrop-filter:blur(24px) saturate(150%)!important; -webkit-backdrop-filter:blur(24px) saturate(150%)!important; }
+html[data-theme="light"] .m-head b,html[data-theme="light"] .m-head h3{ color:var(--v3-t1)!important; }
+/* ⑧ 文字 */
+html[data-theme="light"] h1,html[data-theme="light"] h2,html[data-theme="light"] h3,html[data-theme="light"] h4{ color:var(--v3-t1)!important; }
+html[data-theme="light"] p{ color:var(--v3-t2)!important; }
+html[data-theme="light"] .sec-title,html[data-theme="light"] .srch-g{ color:var(--v3-gold)!important; letter-spacing:.16em!important; text-transform:uppercase; font-size:.72rem!important; }
+/* ⑨ AI 独立视图（保持深色一致）*/
+.ai-view{ background-color:var(--v3-bg)!important; background-image:none!important; }
+.ai-view-head{ background-color:rgba(15,15,15,.94)!important; border-color:var(--v3-line)!important; }
+.ai-view-title,.ai-back{ color:var(--v3-t1)!important; }
+.ai-view-body .ps-ai-msgs{ color:var(--v3-t2)!important; }
+.ai-view-body .ps-ai-msg.bot{ background:rgba(255,255,255,.06)!important; color:var(--v3-t1)!important; }
+.ai-view-body .ps-ai-msg.user{ background:linear-gradient(135deg,var(--v3-emerald-2),var(--v3-emerald))!important; color:#eafff5!important; }
+.ai-view-body .ps-ai-input{ background-color:rgba(15,15,15,.96)!important; border-color:var(--v3-line)!important; }
+.ai-view-body .ps-ai-input input{ background:rgba(255,255,255,.06)!important; color:var(--v3-t1)!important; border-color:var(--v3-line)!important; }
+.ai-view-body .ps-ai-input button{ background:var(--v3-gold)!important; color:#17170f!important; border:0!important; }
+/* ⑩ 底部导航（V3 新增）*/
+#v3nav{ position:fixed; left:12px; right:12px; bottom:12px; z-index:4000;
+  display:grid; grid-template-columns:repeat(4,1fr); gap:2px;
+  padding:8px 6px calc(8px + env(safe-area-inset-bottom));
+  border-radius:22px; border:1px solid var(--v3-line);
+  background:rgba(25,28,28,.92); backdrop-filter:blur(24px) saturate(160%);
+  -webkit-backdrop-filter:blur(24px) saturate(160%);
+  box-shadow:0 18px 40px rgba(0,0,0,.55); }
+#v3nav button{ background:none;border:0;color:var(--v3-t3);cursor:pointer;
+  font-family:inherit; display:flex;flex-direction:column;align-items:center;gap:4px;
+  padding:6px 0;border-radius:14px;transition:.18s var(--v3-ease); }
+#v3nav button .i{ font-size:18px; line-height:1 }
+#v3nav button .l{ font-size:9.5px }
+#v3nav button.on{ color:var(--v3-gold); background:rgba(201,168,76,.10) }
+body{ padding-bottom:86px!important; }
+@media (min-width:1000px){ #v3nav{ left:50%; right:auto; transform:translateX(-50%); width:520px } }

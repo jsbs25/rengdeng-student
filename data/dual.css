@@ -1,0 +1,94 @@
+/* ============================================================
+   燃灯同学 · 桌面端双通道布局（4:6）
+   第 ③ 步 · frontend-design-pro 输出
+   视觉：方案 B 沙色纸感（日间）+ 方案 C 墨黑（夜间）
+   作用域：仅 ≥1000px 生效，≤999px 完全不动
+   ============================================================ */
+@media (min-width:1000px){
+
+  /* ① 外层：把 #page-home 从"纵向流"改成"左右双通道 Grid" */
+  #page-home{
+    display:grid!important;
+    grid-template-columns:minmax(0,40%) minmax(0,60%)!important;
+    column-gap:26px!important;
+    row-gap:0!important;
+    align-items:start!important;
+    max-width:1400px;
+    margin:0 auto;
+    padding:0 26px 60px!important;
+    box-sizing:border-box;
+  }
+
+  /* ② 跨满两栏的元素（背景/顶栏/装饰） */
+  #page-home > .bg-pattern,
+  #page-home > .hdr,
+  #page-home > #hsBigBox,
+  #page-home > .donbar{ grid-column:1 / -1!important; }
+
+  /* ③ 左通道：努尔老师（40%）—— 固定 + 内部独立滚动 */
+  #page-home > #aiSec{
+    grid-column:1!important;
+    grid-row:1 / span 40!important;
+    position:sticky!important;
+    top:14px!important;
+    align-self:start!important;
+    margin:14px 0 0 0!important;
+    padding:0!important;
+    max-height:calc(100vh - 30px);
+    z-index:3;
+  }
+  /* 左通道内部：对话区撑开，输入区吸底 */
+  #page-home > #aiSec .ps-ai-card{
+    display:grid!important;
+    grid-template-rows:auto minmax(0,1fr) auto auto!important;
+    max-height:calc(100vh - 30px)!important;
+    height:calc(100vh - 30px)!important;
+    border-radius:14px!important;
+  }
+  #page-home > #aiSec .ps-ai-msgs{
+    min-height:0!important;
+    height:auto!important;
+    overflow-y:auto!important;
+    -webkit-overflow-scrolling:touch;
+  }
+  /* 输入区粘在卡片底部 */
+  #page-home > #aiSec .ps-ai-input{ flex:0 0 auto; }
+
+  /* ④ 右通道：其余所有模块（60%）—— 保持原顺序纵向排列 */
+  #page-home > *:not(#aiSec):not(.bg-pattern):not(.hdr):not(#hsBigBox):not(.donbar){
+    grid-column:2!important;
+    min-width:0;
+  }
+  /* 右通道里书架：4 列 → 3 列（列宽变大更舒展） */
+  #page-home .hs-grid{ grid-template-columns:repeat(3,1fr)!important; gap:24px 18px!important; }
+  /* 右通道里的卡片不要跨到左通道 */
+  #page-home .s-card,#page-home .card,#page-home .stat{ max-width:100%; }
+
+  /* ⑤ 左右通道视觉分界（发丝线，极克制） */
+  #page-home > #aiSec::after{
+    content:''; position:absolute; top:0; bottom:0; right:-13px;
+    width:1px; background:rgba(26,26,26,.08); pointer-events:none;
+  }
+  #page-home > #aiSec{ position:sticky!important; }
+
+  /* ⑥ 中屏（1000-1200px）：收一点比例，别太挤 */
+}
+@media (min-width:1000px) and (max-width:1200px){
+  #page-home{ grid-template-columns:minmax(0,38%) minmax(0,62%)!important; column-gap:20px!important; padding:0 18px 50px!important; }
+  #page-home .hs-grid{ grid-template-columns:repeat(2,1fr)!important; }
+}
+
+/* ⑦ 夜间（方案 C）：左通道用墨黑，右通道同色系 */
+html[data-theme="light"][data-lib-night="1"] #page-home > #aiSec .ps-ai-card,
+html[data-theme="dark"] #page-home > #aiSec .ps-ai-card{
+  background-color:#1a1a18!important; background-image:none!important;
+  border-color:rgba(255,255,255,.10)!important;
+}
+html[data-theme="light"][data-lib-night="1"] #page-home > #aiSec .ps-ai-msgs,
+html[data-theme="dark"] #page-home > #aiSec .ps-ai-msgs{ color:#c9c9c2!important; }
+html[data-theme="light"][data-lib-night="1"] #page-home > #aiSec .ps-ai-msg.bot,
+html[data-theme="dark"] #page-home > #aiSec .ps-ai-msg.bot{
+  background:#242422!important; color:#c9c9c2!important;
+}
+html[data-theme="light"][data-lib-night="1"] #page-home > #aiSec::after,
+html[data-theme="dark"] #page-home > #aiSec::after{ background:rgba(255,255,255,.08)!important; }

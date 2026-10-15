@@ -1,0 +1,131 @@
+{
+  "schema": "nour-phase0-regression-1",
+  "generated_at": "2026-10-05T20:33:07.577884",
+  "offline": [
+    {
+      "name": "openiti_stream_test",
+      "result": "passed",
+      "details": {
+        "large_first_status": 202,
+        "large_second_status": 200,
+        "small_eof_status": 416,
+        "arabic_replacement": false,
+        "manifest_resume": true
+      }
+    },
+    {
+      "name": "classics_index_test",
+      "result": "passed",
+      "details": {
+        "total": 1820,
+        "unique_ids": 1820,
+        "shamela_readable": true,
+        "paths": 4
+      }
+    }
+  ],
+  "browser": [
+    {
+      "output_dir": "/tmp/nour-phase0-classics-desktop",
+      "passed": 9,
+      "total": 9,
+      "errors": 0,
+      "failed": []
+    },
+    {
+      "output_dir": "/tmp/nour-phase0-classics-mobile",
+      "passed": 9,
+      "total": 9,
+      "errors": 0,
+      "failed": []
+    },
+    {
+      "output_dir": "/tmp/nour-phase0-evidence-desktop",
+      "passed": 10,
+      "total": 10,
+      "errors": 0,
+      "failed": []
+    },
+    {
+      "output_dir": "/tmp/nour-phase0-evidence-mobile",
+      "passed": 10,
+      "total": 10,
+      "errors": 0,
+      "failed": []
+    },
+    {
+      "output_dir": "/tmp/nour-phase0-quran-desktop-v2",
+      "passed": 7,
+      "total": 7,
+      "errors": 0,
+      "failed": []
+    },
+    {
+      "output_dir": "/tmp/nour-phase0-quran-mobile-v2",
+      "passed": 7,
+      "total": 7,
+      "errors": 0,
+      "failed": []
+    },
+    {
+      "output_dir": "/tmp/nour-phase0-reader-desktop-v2",
+      "passed": 18,
+      "total": 18,
+      "errors": 0,
+      "failed": []
+    },
+    {
+      "output_dir": "/tmp/nour-phase0-reader-mobile-v2",
+      "passed": 18,
+      "total": 18,
+      "errors": 0,
+      "failed": []
+    },
+    {
+      "output_dir": "/tmp/nour-phase0-shell-desktop-v2",
+      "passed": 18,
+      "total": 18,
+      "errors": 0,
+      "failed": []
+    },
+    {
+      "output_dir": "/tmp/nour-phase0-shell-mobile-v2",
+      "passed": 19,
+      "total": 19,
+      "errors": 0,
+      "failed": []
+    },
+    {
+      "output_dir": "/tmp/nour-phase0-theme-desktop-v2",
+      "passed": 12,
+      "total": 12,
+      "errors": 0,
+      "failed": []
+    },
+    {
+      "output_dir": "/tmp/nour-phase0-theme-mobile-v2",
+      "passed": 12,
+      "total": 12,
+      "errors": 0,
+      "failed": []
+    },
+    {
+      "output_dir": "/tmp/nour-phase0-word-desktop",
+      "passed": 11,
+      "total": 11,
+      "errors": 0,
+      "failed": []
+    },
+    {
+      "output_dir": "/tmp/nour-phase0-word-mobile",
+      "passed": 11,
+      "total": 11,
+      "errors": 0,
+      "failed": []
+    }
+  ],
+  "environment_notes": [
+    "node executable unavailable on the connected desktop terminal; JavaScript runtime validation was performed by the real browser harness instead.",
+    "The first combined command stopped at node --check with exit 127; no application test had failed before that stop."
+  ]
+}

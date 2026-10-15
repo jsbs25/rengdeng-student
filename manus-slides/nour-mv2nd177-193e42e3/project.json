@@ -1,0 +1,89 @@
+{
+  "id": "nour-mv2nd177-193e42e3",
+  "title": "NOUR 线上稳定性与界面升级总结",
+  "designType": "deck",
+  "resourceUri": "manus-resource://manus-slides/deck/nour-mv2nd177-193e42e3",
+  "widgetUri": "manus-widget://manus-slides/studio/deck/nour-mv2nd177-193e42e3",
+  "versionId": "v-mv2nd1d3-cd868e5a",
+  "projectDir": "/Users/mafucheng/Desktop/arabic-learning/manus-slides/nour-mv2nd177-193e42e3",
+  "activeFile": "cover.xml",
+  "files": [],
+  "scaffolds": [],
+  "viewState": {
+    "deck_topic": "report",
+    "generate_mode": "pptx",
+    "isPptxSlides": true,
+    "mode": "preview",
+    "outline": [
+      {
+        "id": "cover",
+        "state": "edit_pending",
+        "summary": "2026-10-10 线上健康监控、/api/nodes 高并发缓存测试、首页交互验证，以及全局界面契约升级。",
+        "title": "NOUR 线上稳定性与界面升级"
+      },
+      {
+        "id": "executive_summary",
+        "state": "edit_pending",
+        "summary": "健康监控持续全绿；nodes 并发请求全部成功并命中缓存；首页今日一句和按需句子库交互通过。60并发瞬时突发的尾延迟需要继续治理。",
+        "title": "结论先行：功能稳定，突发尾延迟是下一目标"
+      },
+      {
+        "id": "health_monitoring",
+        "state": "edit_pending",
+        "summary": "展示最近约四小时243条JSONL健康记录，服务、公网、本地、8794目录和六大部圣训条件全部为true，并呈现系统资源状态。",
+        "title": "健康监控：243次连续探测全部通过"
+      },
+      {
+        "id": "singleflight",
+        "state": "edit_pending",
+        "summary": "解释过期缓存下的stale-while-revalidate行为：请求仍拿缓存，后台只启动一个worker；日志出现一次外源失败序列、一次测速、一次刷新成功。",
+        "title": "单飞刷新：300个请求只触发一次后台刷新"
+      },
+      {
+        "id": "nodes_latency",
+        "state": "edit_pending",
+        "summary": "以图表对比60并发突发和20并发连续三波的P50/P95/最大延迟，区分网络连接突发与稳定热缓存。",
+        "title": "/api/nodes 高并发结果：成功率100%，尾延迟分层明显"
+      },
+      {
+        "id": "nodes_optimization",
+        "state": "edit_pending",
+        "summary": "提出分阶段优化：持久化快照、内存响应快路径、请求并发闸门、热点短缓存、分级刷新、可观测指标与外源健康评分。",
+        "title": "下一步：把突发尾延迟从连接队列里拿回来"
+      },
+      {
+        "id": "home_experience",
+        "state": "edit_pending",
+        "summary": "展示手机390和桌面1280均13/13通过；daily摘要小于10KB；首屏不加载完整句子，用户主动进入后才加载版本化句子资源。",
+        "title": "首页真实交互：今日一句轻、句子库按需进"
+      },
+      {
+        "id": "ui_polish",
+        "state": "edit_pending",
+        "summary": "总结已加入的全局界面层：可见焦点、42px触控目标、4px克制圆角、RTL隔离、底部安全区、统一反馈动效和prefers-reduced-motion。",
+        "title": "全局界面契约：所有页面共享一套可感知规则"
+      },
+      {
+        "id": "roadmap",
+        "state": "edit_pending",
+        "summary": "给出下一阶段优先级：nodes连接队列与指标、订阅源治理、全站视觉一致性回归、阅读器与AI工作区细节，并明确不改数据和业务合同。",
+        "title": "路线图：先稳住入口，再提升阅读与研究密度"
+      }
+    ],
+    "slide_ids": [
+      "cover",
+      "executive_summary",
+      "health_monitoring",
+      "singleflight",
+      "nodes_latency",
+      "nodes_optimization",
+      "home_experience",
+      "ui_polish",
+      "roadmap"
+    ],
+    "style_request": "中文专业技术复盘风格，采用NOUR既有视觉：墨黑/深墨绿、象牙白、哑光金，克制留白、学术图书馆气质。图表突出真实测试数据，少用装饰性卡片；用清晰的流程图、指标卡和折线/柱状图呈现结论。",
+    "zoom": 1
+  },
+  "createdAt": "2026-10-10T17:07:14.131Z",
+  "updatedAt": "2026-10-10T17:13:05.226Z"
+}

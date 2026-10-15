@@ -1,0 +1,386 @@
+{
+  "schema": "nour-phase0-baseline-1",
+  "generated_at": "2026-10-05T20:28:24.416630+03:00",
+  "project_root": "/Users/mafucheng/Desktop/arabic-learning",
+  "runtime": {
+    "python": "3.9.6"
+  },
+  "file_fingerprints": {
+    "server.py": {
+      "bytes": 265284,
+      "sha256": "7e356d9eb13eb9bb07ea6065781eff99a3175014c026d98333c7bd26098041c9"
+    },
+    "build_home.py": {
+      "bytes": 647563,
+      "sha256": "c4a8785b0ec6360ec97fd5529a302d2218dca9a158a5b62613bf14f1f4977429"
+    },
+    "arabic_learning.html": {
+      "bytes": 1880728,
+      "sha256": "24d621af660fc35a4ede14b59634edc695e9630195080ab2238b662625585471"
+    },
+    "v3.html": {
+      "bytes": 1880728,
+      "sha256": "24d621af660fc35a4ede14b59634edc695e9630195080ab2238b662625585471"
+    },
+    "openiti_stream.py": {
+      "bytes": 19667,
+      "sha256": "a9c8a16c2c3753a288adcd27c6334f8570705257417fb25ce8213d2c30ad3fb5"
+    },
+    "data/nour-product-shell.js": {
+      "bytes": 12537,
+      "sha256": "3ef88cca37765850a30858d6c0fd55aef9597d512255764bdb04bd48e75eec72"
+    },
+    "data/page-analysis.js": {
+      "bytes": 25701,
+      "sha256": "ab5905515a96c724bf3c9a22c2e47e908c1ef6dec57c286663dba4bffd94152a"
+    },
+    "data/nour-reader-context.js": {
+      "bytes": 8354,
+      "sha256": "61c147e06c3ca34671e90f881dcc2c43fb784490e26b1f5b5012fa7732e11e86"
+    },
+    "data/nour-theme.css": {
+      "bytes": 16199,
+      "sha256": "4c8a7b7201689985b57df0817a695d95a25180678bf3b54fddd68e6f081b1b58"
+    },
+    "data/islamic_catalog.json": {
+      "bytes": 27398321,
+      "sha256": "a8142afc2ce345a72cf5b069b984b4a187654b02395afda9c6575d58c3042204"
+    },
+    "data/library/classics_index.json": {
+      "bytes": 1364287,
+      "sha256": "2ddec21226f5480f1502ec4b08b4924f75dc93edda0a3a227801135190b1f8c8"
+    },
+    "data/library/shamela_index.json": {
+      "bytes": 1870806,
+      "sha256": "23aceaaa8acab6223d2ad5c0fd9b40e9610c697af01b1cea6a3f681ad7445964"
+    }
+  },
+  "data_summaries": {
+    "data/islamic_catalog.json": {
+      "type": "object",
+      "keys": [
+        "schema_version",
+        "meta",
+        "books"
+      ],
+      "books_count": 8794,
+      "meta_count": 19
+    },
+    "data/library/classics_index.json": {
+      "type": "object",
+      "keys": [
+        "meta",
+        "reading_paths",
+        "items"
+      ],
+      "items_count": 1820,
+      "reading_paths_count": 4,
+      "meta_count": 7
+    },
+    "data/library/shamela_index.json": {
+      "type": "object",
+      "keys": [
+        "total",
+        "books"
+      ],
+      "books_count": 8589
+    },
+    "data/categorized.json": {
+      "type": "array",
+      "count": 29150
+    },
+    "data/dialogues.json": {
+      "type": "array",
+      "count": 26
+    },
+    "data/articles.json": {
+      "type": "object",
+      "keys": [
+        "القهوة",
+        "السفر",
+        "الأسرة",
+        "الطعام",
+        "الربيع",
+        "الخيل",
+        "النيل"
+      ]
+    },
+    "data/books.json": {
+      "type": "array",
+      "count": 4
+    },
+    "data/vocab_meanings.json": {
+      "type": "object",
+      "keys": [
+        "في",
+        "من",
+        "هل",
+        "هي",
+        "عربية",
+        "يوميا",
+        "رقم",
+        "الجملة",
+        "جملة",
+        "للتعلم",
+        "إلى",
+        "أنا",
+        "هو",
+        "كل",
+        "لا",
+        "على",
+        "أن",
+        "سامي",
+        "زيري",
+        "جدا"
+      ]
+    },
+    "data/users.json": {
+      "type": "object",
+      "entry_count": 7
+    },
+    "data/codes.json": {
+      "type": "object",
+      "entry_count": 1,
+      "code_container_count": 1
+    },
+    "data/ai_daily.json": {
+      "type": "object",
+      "entry_count": 2
+    }
+  },
+  "api_routes": [
+    "/api/audio/file",
+    "/api/admin/",
+    "/api/admin/login",
+    "/api/auth/me",
+    "/api/admin/users",
+    "/api/admin/status",
+    "/api/admin/kinds",
+    "/api/admin/data",
+    "/api/admin/ai",
+    "/api/admin/codes",
+    "/api/pay/status",
+    "/api/home_stats",
+    "/api/videos",
+    "/api/thumb",
+    "/api/plans",
+    "/api/access/status",
+    "/api/me/usage",
+    "/api/admin/pricing",
+    "/api/admin/payments",
+    "/api/admin/stats",
+    "/api/recite",
+    "/api/asr/status",
+    "/api/nodes",
+    "/api/quran/proxy",
+    "/api/catalog/meta",
+    "/api/theme/source-feed",
+    "/api/library/classics",
+    "/api/library/fiqh-schools",
+    "/api/catalog",
+    "/api/catalog/read",
+    "/api/read",
+    "/api/hnote",
+    "/api/hnote/status",
+    "/api/history",
+    "/api/histbook",
+    "/api/cnbooks",
+    "/api/cnbook",
+    "/api/cover",
+    "/api/websearch",
+    "/api/ai/quota",
+    "/api/dict/cn",
+    "/api/dict/lookup",
+    "/api/dict/free",
+    "/api/audio/library",
+    "/api/audio",
+    "/api/coverimg",
+    "/api/islamic/search",
+    "/api/quran/tafsir",
+    "/api/books",
+    "/api/articles",
+    "/api/vocab",
+    "/api/sentences",
+    "/api/page/analyze",
+    "/api/realtime/session",
+    "/api/chat/stream_voice",
+    "/api/admin/ai_provider",
+    "/api/asr",
+    "/api/auth/register",
+    "/api/auth/login",
+    "/api/search",
+    "/api/unlock/use",
+    "/api/access/leave",
+    "/api/entry/use",
+    "/api/access/login",
+    "/api/device/login",
+    "/api/pay/claim",
+    "/api/vip/activate",
+    "/api/license/check",
+    "/api/admin/pay_action",
+    "/api/admin/user_action",
+    "/api/admin/code_action",
+    "/api/admin/gen_code",
+    "/api/admin/set_vip",
+    "/api/admin/rebuild",
+    "/api/admin/scraper",
+    "/api/deploy_node",
+    "/api/tts",
+    "/api/image",
+    "/api/music",
+    "/api/chat/message"
+  ],
+  "page_and_surface_ids": [
+    "mHadithSearch",
+    "mMusicPrompt",
+    "mMusicBtn",
+    "mMusicStatus",
+    "mMusicAudio",
+    "mMusicLyrics",
+    "mHistorySearch",
+    "page-home",
+    "mLearn",
+    "mTalk",
+    "mTalkBody",
+    "mReader",
+    "mReaderTitle",
+    "mReaderBody",
+    "mH6",
+    "mH6Body",
+    "mCat",
+    "mCatBody",
+    "mSentences",
+    "mSentSearch",
+    "mSentBody",
+    "mSentCount",
+    "mDict",
+    "mGrammar",
+    "mGramHead",
+    "mGramBody",
+    "mBelt",
+    "mBeltBody",
+    "mDonate",
+    "mLock",
+    "mVid",
+    "mSearch",
+    "mPay",
+    "mInstall",
+    "mVocab",
+    "mVocabSearch",
+    "mVocabBody",
+    "mVocabCount",
+    "mLibrary",
+    "mLibBody",
+    "mLibCount",
+    "mExplain",
+    "mExplainBody",
+    "mQuran",
+    "mQuranSearch",
+    "mQuranBody",
+    "mQuranCount",
+    "mFlash",
+    "mFlashHead",
+    "mFlashBody",
+    "mQuiz",
+    "mQuizHead",
+    "mQuizBody",
+    "mWordBook",
+    "mWbSearch",
+    "mWordBookBody",
+    "mWordBookCount",
+    "mAlphabet",
+    "mAlphabetHead",
+    "mAlphabetBody",
+    "mListen",
+    "mListenHead",
+    "mListenBody",
+    "mTheme",
+    "mThemeBody",
+    "mChallenge",
+    "mChallengeHead",
+    "mChallengeBody",
+    "mDialog",
+    "mDialogHead",
+    "mDialogBody",
+    "mHistory",
+    "mHistoryHead",
+    "mHistoryBody",
+    "mHadith",
+    "mHadithHead",
+    "mHadithBody",
+    "mPrayer",
+    "mPrayPrayHead",
+    "mPrayerBody",
+    "mLogin",
+    "mMusic",
+    "mMusicBody",
+    "mImage",
+    "mRead",
+    "mReadTitle",
+    "mReadBody",
+    "page-me",
+    "page-search",
+    "page-civ"
+  ],
+  "git": {
+    "status_entry_count": 244,
+    "status_head": [
+      " M admin.html",
+      " M admin_panel.py",
+      " M app/src/data.js",
+      " M arabic_learning.html",
+      " M build_home.py",
+      " M data/arabic_quotes.json",
+      " M data/articles.json",
+      " M data/books.json",
+      " M data/categorized.json",
+      " M data/civ.json",
+      " M data/civ_rulers.json",
+      " M data/covers.json",
+      " M data/data.json",
+      " M data/dialogues.json",
+      " M data/hadith.json",
+      " M data/hadith_all.json",
+      " M data/hadith_api.json",
+      " M data/hadith_crawler.log",
+      " M data/history.json",
+      " M data/islamic_catalog.json",
+      " M data/quotes.json",
+      " M data/tafsir.json",
+      " M data/vocab_meanings.json",
+      " M manifest.webmanifest",
+      " M server.py",
+      " M tools/verify_web.py",
+      " M tools/web_errcheck.swift",
+      "?? .manus-backups/",
+      "?? \"H,d[i+2:i+4])[0]\\n    print(str(w)+x+str(h))\\nexcept: print()\\n\\\"; done\"",
+      "?? \"H,d[i+5:i+7])[0]; w=struct.unpack(\""
+    ]
+  },
+  "protected_paths": {
+    "data/ai_key.txt": {
+      "exists": true,
+      "is_dir": false
+    },
+    "data/users.json": {
+      "exists": true,
+      "is_dir": false
+    },
+    "data/codes.json": {
+      "exists": true,
+      "is_dir": false
+    },
+    "data/cache": {
+      "exists": true,
+      "is_dir": true
+    },
+    "data/islamic_catalog.json": {
+      "exists": true,
+      "is_dir": false
+    },
+    "data/library/shamela_index.json": {
+      "exists": true,
+      "is_dir": false
+    }
+  }
+}

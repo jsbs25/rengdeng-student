@@ -1,0 +1,130 @@
+{
+  "id": "nour-mv2nlcm2-7a4002ac",
+  "title": "NOUR 线上稳定性与界面升级总结（展示版）",
+  "designType": "deck",
+  "resourceUri": "manus-resource://manus-slides/deck/nour-mv2nlcm2-7a4002ac",
+  "widgetUri": "manus-widget://manus-slides/studio/deck/nour-mv2nlcm2-7a4002ac",
+  "versionId": "v-mv8i2szt-08abe840",
+  "projectDir": "/Users/mafucheng/Desktop/arabic-learning/manus-slides/nour-mv2nlcm2-7a4002ac",
+  "activeFile": "cover.html",
+  "files": [
+    {
+      "path": "cover.html",
+      "mimeType": "text/html",
+      "title": "cover.html",
+      "content": "<!DOCTYPE html>\n<html lang=\"zh-CN\"><head><meta charset=\"utf-8\"><link href=\"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@500;600;700&display=swap\" rel=\"stylesheet\"><style>*{margin:0;padding:0;box-sizing:border-box}.slide-container{width:1280px;min-height:720px;background:#FAF8F5;color:#2C3E35;font-family:'Noto Sans SC',sans-serif;display:flex;flex-direction:column;padding-top:78px}.rule{height:2px;background:#1A3629;margin:0 88px}.gold{height:2px;background:#C1A673;width:245px;margin:0 88px}.hero{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;padding-top:20px}.eyebrow{font-size:16px;letter-spacing:3px;color:#5C6E64}.title{font-family:'Noto Serif SC',serif;font-size:58px;color:#1A3629;line-height:1.28;margin-top:35px;text-align:center}.subtitle{font-size:22px;color:#C1A673;margin-top:24px;letter-spacing:1px}.footer{display:flex;justify-content:space-between;margin:0 88px 42px;font-size:14px;color:#5C6E64}.mark{color:#C1A673;font-size:19px;margin-right:10px}</style></head><body><div class=\"slide-container\"><div class=\"rule\"></div><div class=\"hero\"><div class=\"eyebrow\">NOUR / 燃灯同学 · AI ARABIC LIBRARY</div><div class=\"title\">线上稳定性与<br>界面升级总结</div><div class=\"subtitle\">健康监控 · 节点缓存单飞 · 高并发延迟 · 今日一句 · 全局界面契约</div></div><div class=\"gold\"></div><div class=\"footer\"><span>真实线上测试窗口：2026-10-10</span><span>01 / 08</span></div></div></body></html>"
+    },
+    {
+      "path": "experience.html",
+      "mimeType": "text/html",
+      "title": "experience.html",
+      "content": "<!DOCTYPE html>\n<html lang=\"zh-CN\"><head><meta charset=\"utf-8\"><link href=\"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@500;600;700&display=swap\" rel=\"stylesheet\"><style>*{margin:0;padding:0;box-sizing:border-box}.slide-container{width:1280px;min-height:720px;background:#FAF8F5;color:#2C3E35;font-family:'Noto Sans SC',sans-serif;display:flex;flex-direction:column;padding:46px 48px 0}.head{border-top:2px solid #1A3629;padding-top:21px}.motif{color:#C1A673;margin-right:12px}.head h1{font-family:'Noto Serif SC',serif;font-size:34px;color:#1A3629}.head p{font-size:18px;color:#5C6E64;margin-top:13px}.devices{display:grid;grid-template-columns:1fr 1fr;gap:70px;flex:1;padding-top:42px}.device{border-top:2px solid #1A3629;padding-top:19px}.device h2{font-family:'Noto Serif SC',serif;color:#1A3629;font-size:27px}.score{font-size:48px;font-weight:700;color:#276749;margin-top:19px}.device ul{padding-left:23px;font-size:18px;line-height:1.75;margin-top:10px}.flow{display:grid;grid-template-columns:240px 62px 240px 62px 400px;justify-content:center;align-items:center;border-top:1px solid #D9D6CE;padding-top:25px}.node{border:1px solid #D9D6CE;min-height:78px;padding:14px 18px;font-size:16px;line-height:1.45}.node strong{display:block;color:#1A3629;font-size:18px;margin-bottom:3px}.node.gold{border-top:3px solid #C1A673;background:#F0EFEA}.node.green{border-top:3px solid #276749}.arrow{text-align:center;color:#C1A673;font-size:32px}.footer{display:flex;justify-content:space-between;font-size:13px;color:#5C6E64;padding-top:14px}.footer span:last-child{font-weight:600}</style></head><body><div class=\"slide-container\"><div class=\"head\"><h1><span class=\"motif\">■</span>首页与句子库：首屏有界，完整能力按需进入</h1><p>首页使用真实的 /api/sentences/daily；完整句子库仍然保留，但只在用户主动进入学习功能时加载。</p></div><div class=\"devices\"><section class=\"device\"><h2>手机 · 390 × 844</h2><div class=\"score\">13 / 13</div><ul><li>今日一句来自既有真实句子数据</li><li>摘要响应小于 10KB</li><li>阿语与中文方向隔离</li><li>无横向溢出、无 JavaScript 错误</li></ul></section><section class=\"device\"><h2>桌面 · 1280 × 900</h2><div class=\"score\">13 / 13</div><ul><li>保持不等宽双区信息层级</li><li>今日一句可进入真实句子库</li><li>次级工具默认折叠且入口仍保留</li><li>首页首屏不请求全量 /api/sentences</li></ul></section></div><div class=\"flow\"><div class=\"node\"><strong>首页打开</strong>仅请求 daily 摘要</div><div class=\"arrow\">→</div><div class=\"node gold\"><strong>今日一句</strong>小响应、稳定日期选择</div><div class=\"arrow\">→</div><div class=\"node green\"><strong>主动进入句子库 / 闪卡 / 跟读</strong>加载版本化 builtin_sentences.js；实际验证数据 29,740 项</div></div><div class=\"footer\"><span>来源：公网浏览器回归、按需资源回归</span><span>06 / 08</span></div></div></body></html>"
+    },
+    {
+      "path": "health.html",
+      "mimeType": "text/html",
+      "title": "health.html",
+      "content": "<!DOCTYPE html>\n<html lang=\"zh-CN\"><head><meta charset=\"utf-8\"><link href=\"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@500;600;700&display=swap\" rel=\"stylesheet\"><style>*{margin:0;padding:0;box-sizing:border-box}.slide-container{width:1280px;min-height:720px;background:#FAF8F5;color:#2C3E35;font-family:'Noto Sans SC',sans-serif;display:flex;flex-direction:column;padding:46px 48px 0}.head{border-top:2px solid #1A3629;padding-top:21px}.motif{color:#C1A673;margin-right:12px}.head h1{font-family:'Noto Serif SC',serif;font-size:34px;color:#1A3629}.head p{font-size:18px;color:#5C6E64;margin-top:13px}.content{flex:1;display:grid;grid-template-columns:720px 1fr;gap:62px;padding-top:46px}.big{font-size:52px;font-weight:700;color:#276749;line-height:1}.caption{font-size:17px;color:#5C6E64;margin-top:7px}.table{margin-top:32px;border-top:2px solid #1A3629;border-bottom:2px solid #1A3629}.row{display:grid;grid-template-columns:1fr 150px 90px;min-height:48px;align-items:center;border-top:1px solid #D9D6CE;font-size:17px}.row:first-child{border-top:0;font-weight:700;color:#1A3629}.ok{color:#276749;font-weight:700;text-align:right}.count{text-align:right}.side{padding-top:24px}.side h2{font-family:'Noto Serif SC',serif;font-size:27px;color:#1A3629}.code{margin-top:22px;background:#F0EFEA;border-left:3px solid #C1A673;padding:23px 25px;font-family:monospace;font-size:16px;line-height:1.68;color:#1A3629}.system{margin-top:32px;border-top:1px solid #D9D6CE;padding-top:22px;font-size:17px;line-height:1.7}.footer{display:flex;justify-content:space-between;font-size:13px;color:#5C6E64;padding-top:14px}.footer span:last-child{font-weight:600}</style></head><body><div class=\"slide-container\"><div class=\"head\"><h1><span class=\"motif\">■</span>健康监控：243次连续探测全部通过</h1><p>最近约四小时，每分钟检查公网、本地、目录完整性与六大部圣训入口。</p></div><div class=\"content\"><section><div class=\"big\">243 / 243</div><div class=\"caption\">最近窗口内可解析的健康 JSONL 记录全部 <strong>ok=true</strong></div><div class=\"table\"><div class=\"row\"><span>健康条件</span><span class=\"count\">通过次数</span><span class=\"ok\">状态</span></div><div class=\"row\"><span>nur.service active</span><span class=\"count\">243 / 243</span><span class=\"ok\">通过</span></div><div class=\"row\"><span>公网 HTTP 接口全 200</span><span class=\"count\">243 / 243</span><span class=\"ok\">通过</span></div><div class=\"row\"><span>本地 HTTP 接口全 200</span><span class=\"count\">243 / 243</span><span class=\"ok\">通过</span></div><div class=\"row\"><span>目录总数保持 8,794</span><span class=\"count\">243 / 243</span><span class=\"ok\">通过</span></div><div class=\"row\"><span>六大部圣训入口总数 6</span><span class=\"count\">243 / 243</span><span class=\"ok\">通过</span></div></div></section><aside class=\"side\"><h2>当前健康快照</h2><div class=\"code\">ok: true<br>service_active: true<br>public_http_all_200: true<br>local_http_200: true<br>catalog_total_8794: true<br>sunnah_total_6: true</div><div class=\"system\">磁盘可用：<strong>35.38 GB</strong><br>内存可用：<strong>1,938 MB</strong><br>内存使用：<strong>47.0%</strong><br>服务重启：<strong>0</strong></div></aside></div><div class=\"footer\"><span>来源：/var/log/nur-monitor/health.jsonl、systemd 状态</span><span>02 / 08</span></div></div></body></html>"
+    },
+    {
+      "path": "latency.html",
+      "mimeType": "text/html",
+      "title": "latency.html",
+      "content": "<!DOCTYPE html>\n<html lang=\"zh-CN\"><head><meta charset=\"utf-8\"><link href=\"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@500;600;700&display=swap\" rel=\"stylesheet\"><script src=\"https://cdn.jsdelivr.net/npm/chart.js@3.9.1\"></script><style>*{margin:0;padding:0;box-sizing:border-box}.slide-container{width:1280px;min-height:720px;background:#FAF8F5;color:#2C3E35;font-family:'Noto Sans SC',sans-serif;display:flex;flex-direction:column;padding:46px 48px 0}.head{border-top:2px solid #1A3629;padding-top:21px}.motif{color:#C1A673;margin-right:12px}.head h1{font-family:'Noto Serif SC',serif;font-size:34px;color:#1A3629}.head p{font-size:17px;color:#5C6E64;margin-top:13px}.content{flex:1;display:grid;grid-template-columns:850px 1fr;gap:50px;padding-top:25px}.chartbox{height:410px}.side{border-left:1px solid #D9D6CE;padding:28px 0 0 35px}.metric{font-size:45px;color:#C1A673;font-weight:700;line-height:1}.metriclabel{font-size:15px;color:#5C6E64;margin:8px 0 29px}.side h2{font-family:'Noto Serif SC',serif;font-size:24px;color:#1A3629;margin-bottom:14px}.side p{font-size:17px;line-height:1.55;margin-bottom:18px}.side strong{color:#1A3629}.footer{display:flex;justify-content:space-between;font-size:13px;color:#5C6E64;padding-top:14px}.footer span:last-child{font-weight:600}</style></head><body><div class=\"slide-container\"><div class=\"head\"><h1><span class=\"motif\">■</span>/api/nodes：成功率100%，尾延迟在瞬时突发时明显抬升</h1><p>单位：毫秒。所有测试请求均为 HTTP 200，并从缓存返回节点数据；图中展示真实 P50、P95 与最大值。</p></div><div class=\"content\"><div class=\"chartbox\"><canvas id=\"latencyChart\"></canvas></div><aside class=\"side\"><div class=\"metric\">6.92 秒</div><div class=\"metriclabel\">60并发过期缓存的最大延迟</div><h2>如何解读</h2><p><strong>正确性稳定：</strong>600 / 600 请求成功，刷新隔离未失效。</p><p><strong>尾部受压：</strong>60个瞬时连接会放大公网代理、TLS/连接队列与单进程线程调度的等待。</p><p><strong>稳定热缓存：</strong>20并发第3波 P95 为 355ms，最大 376ms。</p></aside></div><div class=\"footer\"><span>来源：2026-10-10 公网 /api/nodes 两组并发测试</span><span>04 / 08</span></div></div><script>new Chart(document.getElementById('latencyChart'),{type:'bar',data:{labels:['60并发\\n过期','60并发\\n热缓存','20并发\\n第1波','20并发\\n第2波','20并发\\n第3波'],datasets:[{label:'P50',data:[139.59,231.8,128.66,126.98,133.56],backgroundColor:'#1A3629'},{label:'P95',data:[6563.54,1504.2,2906.8,213.91,355.21],backgroundColor:'#C1A673'},{label:'最大值',data:[6924.68,2952.02,3924.01,1144.44,376.44],backgroundColor:'#4A6B58'}]},options:{animation:false,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{font:{family:'Noto Sans SC',size:14},color:'#2C3E35'}},tooltip:{enabled:false}},scales:{x:{grid:{display:false},ticks:{font:{family:'Noto Sans SC',size:12},color:'#5C6E64'}},y:{beginAtZero:true,grid:{color:'#D9D6CE'},ticks:{font:{family:'Noto Sans SC',size:12},color:'#5C6E64'},title:{display:true,text:'延迟（ms）',color:'#5C6E64',font:{family:'Noto Sans SC',size:13}}}}}});</script></body></html>"
+    },
+    {
+      "path": "optimization.html",
+      "mimeType": "text/html",
+      "title": "optimization.html",
+      "content": "<!DOCTYPE html>\n<html lang=\"zh-CN\"><head><meta charset=\"utf-8\"><link href=\"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@500;600;700&display=swap\" rel=\"stylesheet\"><style>*{margin:0;padding:0;box-sizing:border-box}.slide-container{width:1280px;min-height:720px;background:#FAF8F5;color:#2C3E35;font-family:'Noto Sans SC',sans-serif;display:flex;flex-direction:column;padding:46px 48px 0}.head{border-top:2px solid #1A3629;padding-top:21px}.motif{color:#C1A673;margin-right:12px}.head h1{font-family:'Noto Serif SC',serif;font-size:34px;color:#1A3629}.head p{font-size:18px;color:#5C6E64;margin-top:13px}.flow{flex:1;display:grid;grid-template-columns:1fr 50px 1fr 50px 1fr 50px 1fr;align-items:center;padding-top:42px}.stage{min-height:300px;border-top:3px solid #1A3629;border-bottom:1px solid #D9D6CE;padding:25px 21px}.stage.gold{border-top-color:#C1A673}.stage h2{font-family:'Noto Serif SC',serif;font-size:25px;color:#1A3629}.num{color:#C1A673;font-size:15px;letter-spacing:2px;margin-bottom:12px}.stage ul{padding-left:21px;font-size:17px;line-height:1.65;margin-top:22px}.arrow{text-align:center;color:#C1A673;font-size:35px}.accept{border-top:1px solid #D9D6CE;padding-top:20px;font-size:18px;line-height:1.55;color:#2C3E35}.accept strong{color:#1A3629}.footer{display:flex;justify-content:space-between;font-size:13px;color:#5C6E64;padding-top:14px}.footer span:last-child{font-weight:600}</style></head><body><div class=\"slide-container\"><div class=\"head\"><h1><span class=\"motif\">■</span>节点接口性能优化方案：让缓存读取更短、更可预测</h1><p>不改变节点内容、不扩大外部抓取；只治理响应快路径、连接排队、刷新来源与可观测性。</p></div><div class=\"flow\"><section class=\"stage\"><div class=\"num\">01 · 快路径</div><h2>预解析快照</h2><ul><li>内存同时持有 YAML 与 nodes JSON</li><li>刷新完成后一次原子交换</li><li>避免每请求正则扫描 YAML</li></ul></section><div class=\"arrow\">→</div><section class=\"stage\"><div class=\"num\">02 · 连接治理</div><h2>突发隔离</h2><ul><li>确认 NGINX/Cloudflare 连接复用</li><li>端点微缓存 1–5 秒</li><li>记录并发队列与排队时间</li></ul></section><div class=\"arrow\">→</div><section class=\"stage gold\"><div class=\"num\">03 · 刷新治理</div><h2>来源可控</h2><ul><li>持久化最后成功快照</li><li>外源健康评分与退避</li><li>刷新耗时、失败率、节点数指标</li></ul></section><div class=\"arrow\">→</div><section class=\"stage\"><div class=\"num\">04 · 验收</div><h2>公开回归</h2><ul><li>冷/热/过期三态压测</li><li>P50、P95、P99、错误率</li><li>备份、原子发布与可回滚</li></ul></section></div><div class=\"accept\"><strong>建议验收门槛：</strong>60 并发下保持 100% 成功与单飞刷新；热缓存 P95 以公网实测为准，并持续记录长尾根因。每一项优化独立发布、独立回归。</div><div class=\"footer\"><span>优先级：先优化读缓存路径，再处理连接突发与订阅来源质量</span><span>05 / 08</span></div></div></body></html>"
+    },
+    {
+      "path": "roadmap.html",
+      "mimeType": "text/html",
+      "title": "roadmap.html",
+      "content": "<!DOCTYPE html>\n<html lang=\"zh-CN\"><head><meta charset=\"utf-8\"><link href=\"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@500;600;700&display=swap\" rel=\"stylesheet\"><style>*{margin:0;padding:0;box-sizing:border-box}.slide-container{width:1280px;min-height:720px;background:#FAF8F5;color:#2C3E35;font-family:'Noto Sans SC',sans-serif;display:flex;flex-direction:column;padding:46px 48px 0}.head{border-top:2px solid #1A3629;padding-top:21px}.motif{color:#C1A673;margin-right:12px}.head h1{font-family:'Noto Serif SC',serif;font-size:34px;color:#1A3629}.head p{font-size:18px;color:#5C6E64;margin-top:13px}.timeline{flex:1;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:28px;align-items:center;padding-top:33px}.phase{min-height:265px;border-top:3px solid #1A3629;border-bottom:1px solid #D9D6CE;padding-top:20px}.phase.gold{border-top-color:#C1A673}.phase .n{color:#C1A673;font-size:14px;letter-spacing:2px}.phase h2{font-family:'Noto Serif SC',serif;font-size:24px;color:#1A3629;margin-top:11px}.phase ul{font-size:17px;line-height:1.65;padding-left:20px;margin-top:18px}.measure{border-top:1px solid #D9D6CE;padding-top:18px;font-size:19px;line-height:1.55;color:#1A3629}.footer{display:flex;justify-content:space-between;font-size:13px;color:#5C6E64;padding-top:14px}.footer span:last-child{font-weight:600}</style></head><body><div class=\"slide-container\"><div class=\"head\"><h1><span class=\"motif\">■</span>路线图：先稳住入口，再提升阅读与研究密度</h1><p>每一步都以线上回归收口：健康监控、冷/热/过期缓存、首页网络、移动安全区、RTL/LTR 与阅读器交互。</p></div><div class=\"timeline\"><section class=\"phase\"><div class=\"n\">PHASE 01</div><h2>节点快路径</h2><ul><li>预解析 JSON 快照</li><li>YAML/JSON 原子交换</li><li>缓存命中与序列化耗时指标</li></ul></section><section class=\"phase\"><div class=\"n\">PHASE 02</div><h2>连接突发治理</h2><ul><li>连接复用与端点微缓存</li><li>并发闸门与队列可观测</li><li>针对 P95/P99 做公网复测</li></ul></section><section class=\"phase gold\"><div class=\"n\">PHASE 03</div><h2>外源质量治理</h2><ul><li>记录来源健康评分</li><li>404/超时退避和失效源替换</li><li>最后成功快照持久化</li></ul></section><section class=\"phase\"><div class=\"n\">PHASE 04</div><h2>体验持续回归</h2><ul><li>全站功能工作区入口</li><li>阅读器纸面与词卡细节</li><li>主题、双向文本、手机布局</li></ul></section></div><div class=\"measure\"><strong>不变原则：</strong>不覆盖 AI 密钥、用户、支付、会员、缓存或监控数据；不删除书库、词汇、经文、AI、语音及学习能力；发布永远先备份、后最小替换、再公网验证。</div><div class=\"footer\"><span>NOUR：让用户稳定地阅读整个阿拉伯语世界</span><span>08 / 08</span></div></div></body></html>"
+    },
+    {
+      "path": "singleflight.html",
+      "mimeType": "text/html",
+      "title": "singleflight.html",
+      "content": "<!DOCTYPE html>\n<html lang=\"zh-CN\"><head><meta charset=\"utf-8\"><link href=\"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@500;600;700&display=swap\" rel=\"stylesheet\"><style>*{margin:0;padding:0;box-sizing:border-box}.slide-container{width:1280px;min-height:720px;background:#FAF8F5;color:#2C3E35;font-family:'Noto Sans SC',sans-serif;display:flex;flex-direction:column;padding:46px 48px 0}.head{border-top:2px solid #1A3629;padding-top:21px}.motif{color:#C1A673;margin-right:12px}.head h1{font-family:'Noto Serif SC',serif;font-size:34px;color:#1A3629}.head p{font-size:18px;color:#5C6E64;margin-top:13px}.lanes{flex:1;display:grid;grid-template-columns:170px 1fr;padding-top:58px}.labels{display:flex;flex-direction:column;justify-content:space-around;padding-bottom:50px;font-size:21px;font-family:'Noto Serif SC',serif;color:#1A3629}.flow{position:relative;display:flex;flex-direction:column;justify-content:space-around;padding-bottom:50px}.line{height:1px;background:#D9D6CE;width:100%}.steps{position:absolute;inset:0 35px 50px 0;display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;gap:35px}.step{min-height:102px;border:1px solid #D9D6CE;background:#FAF8F5;padding:17px 20px;font-size:17px;line-height:1.45}.step strong{display:block;color:#1A3629;font-size:20px;margin-bottom:7px}.step.cache{border-top:3px solid #1A3629}.step.worker{border-top:3px solid #C1A673;background:#F0EFEA}.step.result{border-top:3px solid #276749}.arrow{font-size:32px;color:#C1A673;text-align:center}.notes{display:grid;grid-template-columns:1fr 1fr;gap:36px;border-top:1px solid #D9D6CE;padding-top:18px;font-size:16px;color:#5C6E64;line-height:1.55}.notes strong{color:#1A3629}.footer{display:flex;justify-content:space-between;font-size:13px;color:#5C6E64;padding-top:14px}.footer span:last-child{font-weight:600}</style></head><body><div class=\"slide-container\"><div class=\"head\"><h1><span class=\"motif\">■</span>单飞刷新：300个请求只触发一次后台刷新</h1><p>过期缓存采用 stale-while-revalidate：所有请求先读快照，刷新只在后台运行。</p></div><div class=\"lanes\"><div class=\"labels\"><span>用户请求</span><span>缓存状态机</span><span>刷新 Worker</span></div><div class=\"flow\"><div class=\"line\"></div><div class=\"line\"></div><div class=\"line\"></div><div class=\"steps\"><div class=\"step cache\"><strong>300 并发请求</strong>300 / 300 返回 HTTP 200。状态为 refreshing=true、stale=true。</div><div class=\"arrow\">→</div><div class=\"step worker\"><strong>唯一后台 worker</strong>第一条过期请求获得刷新令牌；其他请求不重复抓取或测速。</div><div></div><div class=\"step cache\"><strong>最近成功快照</strong>YAML/JSON 立即回给用户，不等待第三方来源。</div><div class=\"arrow\">→</div><div></div><div></div><div class=\"step result\"><strong>刷新成功</strong>测速完成后写入 559 bytes 新快照，节点数 3，refreshing=false。</div></div></div></div><div class=\"notes\"><div><strong>日志事实：</strong>本次刷新中 4 个外部源返回 404，但工作线程没有失败，仍成功获得可用来源与缓存结果。</div><div><strong>保护机制：</strong>若刷新失败，旧缓存继续保留；冷缓存也返回可识别的临时 YAML，不会同步阻塞调用者。</div></div><div class=\"footer\"><span>来源：nur.service journal，2026-10-10 16:53 UTC</span><span>03 / 08</span></div></div></body></html>"
+    },
+    {
+      "path": "ui.html",
+      "mimeType": "text/html",
+      "title": "ui.html",
+      "content": "<!DOCTYPE html>\n<html lang=\"zh-CN\"><head><meta charset=\"utf-8\"><link href=\"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@500;600;700&display=swap\" rel=\"stylesheet\"><style>*{margin:0;padding:0;box-sizing:border-box}.slide-container{width:1280px;min-height:720px;background:#FAF8F5;color:#2C3E35;font-family:'Noto Sans SC',sans-serif;display:flex;flex-direction:column;padding:46px 48px 0}.head{border-top:2px solid #1A3629;padding-top:21px}.motif{color:#C1A673;margin-right:12px}.head h1{font-family:'Noto Serif SC',serif;font-size:34px;color:#1A3629}.head p{font-size:18px;color:#5C6E64;margin-top:13px}.grid{flex:1;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:1fr 1fr;gap:0;margin-top:35px;border-top:1px solid #D9D6CE;border-left:1px solid #D9D6CE}.cell{padding:23px 24px;border-right:1px solid #D9D6CE;border-bottom:1px solid #D9D6CE}.cell h2{font-size:20px;color:#1A3629;margin-bottom:10px}.cell p{font-size:16px;color:#5C6E64;line-height:1.55}.tag{color:#C1A673;font-size:14px;margin-bottom:8px;letter-spacing:1px}.footnote{font-size:17px;color:#1A3629;padding-top:17px}.footer{display:flex;justify-content:space-between;font-size:13px;color:#5C6E64;padding-top:12px}.footer span:last-child{font-weight:600}</style></head><body><div class=\"slide-container\"><div class=\"head\"><h1><span class=\"motif\">■</span>全局界面契约：在不改业务逻辑的前提下优化所有页面</h1><p>新增最后加载的视觉与可访问性层；不删除图书、学习数据、AI、阅读器、古兰经、圣训或用户功能。</p></div><div class=\"grid\"><div class=\"cell\"><div class=\"tag\">01 / ACCESS</div><h2>可见焦点</h2><p>统一金色 focus-visible 描边，让键盘用户能明确看到当前可操作入口。</p></div><div class=\"cell\"><div class=\"tag\">02 / TOUCH</div><h2>触控反馈</h2><p>常用入口至少 42px；按压为 .985 缩放，避免夸张浮动和放大。</p></div><div class=\"cell\"><div class=\"tag\">03 / BIDI</div><h2>Arabic + 中文</h2><p>使用 plaintext 隔离混合文本，避免阿拉伯语、数字与中文整体倒序。</p></div><div class=\"cell\"><div class=\"tag\">04 / SAFE AREA</div><h2>底部安全区</h2><p>普通移动页面为固定导航预留空间，最后一行按钮不会被遮挡。</p></div><div class=\"cell\"><div class=\"tag\">05 / SURFACE</div><h2>克制容器</h2><p>共享产品表面采用 4px 圆角、细分隔线和内容优先的留白。</p></div><div class=\"cell\"><div class=\"tag\">06 / MOTION</div><h2>减弱动效</h2><p>尊重 prefers-reduced-motion；动效只服务状态反馈，不干扰阅读。</p></div><div class=\"cell\"><div class=\"tag\">07 / READER</div><h2>阅读留白</h2><p>Apple Books 式纸面正文保持独立；阅读器不会被全局安全区覆盖。</p></div><div class=\"cell\"><div class=\"tag\">08 / RESPONSIVE</div><h2>响应式尺度</h2><p>手机、平板、桌面共用有界阅读宽度和明确的工作区返回路径。</p></div></div><div class=\"footnote\">已回归通过：主题与双向排版 12/12 · 古兰经 8/8 · OpenITI 流式阅读 16/16 · 首页移动/桌面均 13/13。</div><div class=\"footer\"><span>实现方式：data/nour-interface-polish.css + 构建器最后注入</span><span>07 / 08</span></div></div></body></html>"
+    }
+  ],
+  "scaffolds": [],
+  "viewState": {
+    "mode": "preview",
+    "zoom": 1,
+    "slide_ids": [
+      "cover",
+      "health",
+      "singleflight",
+      "latency",
+      "optimization",
+      "experience",
+      "ui",
+      "roadmap"
+    ],
+    "outline": [
+      {
+        "id": "cover",
+        "title": "NOUR 线上稳定性与界面升级",
+        "summary": "封面：2026-10-10真实监控、节点并发、首页按需加载与界面升级。",
+        "state": "edited"
+      },
+      {
+        "id": "health",
+        "title": "健康监控连续通过",
+        "summary": "243条健康记录全部通过，服务、目录、六大部与公网/本地状态稳定。",
+        "state": "edited"
+      },
+      {
+        "id": "singleflight",
+        "title": "单飞刷新有效",
+        "summary": "300并发缓存请求触发一次后台刷新，旧缓存不阻塞用户请求。",
+        "state": "edited"
+      },
+      {
+        "id": "latency",
+        "title": "尾延迟的真实数据",
+        "summary": "展示60并发与20并发不同波次的真实P50/P95/最大延迟。",
+        "state": "edited"
+      },
+      {
+        "id": "optimization",
+        "title": "节点接口性能优化方案",
+        "summary": "快路径、连接治理、刷新治理、可观测验收四阶段优化方案。",
+        "state": "edited"
+      },
+      {
+        "id": "experience",
+        "title": "首页与句子库交互验证",
+        "summary": "手机与桌面首页13/13，通过daily摘要和主动加载完整句子库。",
+        "state": "edited"
+      },
+      {
+        "id": "ui",
+        "title": "全局界面契约升级",
+        "summary": "总结焦点、触控、双向文字、安全区、阅读留白与减弱动效升级。",
+        "state": "edited"
+      },
+      {
+        "id": "roadmap",
+        "title": "持续优化路线图",
+        "summary": "未来优先级和严格的线上回归门槛。",
+        "state": "edited"
+      }
+    ],
+    "generate_mode": "html",
+    "deck_topic": "report",
+    "style_request": "中文技术复盘展示，NOUR品牌色：象牙白、深墨绿、哑光金。无照片、无动画，用严谨表格、流程和真实数据图表，保持学术图书馆的克制留白。"
+  },
+  "createdAt": "2026-10-10T17:13:42.170Z",
+  "updatedAt": "2026-10-14T19:25:56.856Z"
+}

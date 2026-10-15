@@ -1,0 +1,57 @@
+{
+  "expo": {
+    "name": "حامل المصباح",
+    "slug": "nur-al-arabiyya",
+    "version": "4.1.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "backgroundColor": "#0f3d31",
+      "resizeMode": "contain",
+      "image": "./assets/icon.png"
+    },
+    "ios": {
+      "bundleIdentifier": "com.nurarabiyya.app",
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSMicrophoneUsageDescription": "需要麦克风，用于阿拉伯语口语陪练",
+        "CFBundleDisplayName": "燃灯者",
+        "UIBackgroundModes": []
+      }
+    },
+    "android": {
+      "package": "com.nurarabiyya.app",
+      "versionCode": 410,
+      "adaptiveIcon": {
+        "backgroundColor": "#0f3d31"
+      },
+      "permissions": [
+        "INTERNET",
+        "RECORD_AUDIO",
+        "POST_NOTIFICATIONS",
+        "SCHEDULE_EXACT_ALARM"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/icon.png"
+    },
+    "plugins": [
+      "expo-notifications",
+      "expo-audio",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "usesCleartextTraffic": true
+          },
+          "ios": {
+            "deploymentTarget": "15.1"
+          }
+        }
+      ],
+      "expo-speech-recognition"
+    ]
+  },
+  "version": "4.1.0"
+}

@@ -1,0 +1,16 @@
+/* OpenITI streaming reader: progress is informative, not a fake download percentage. */
+.rd-openiti-progress{width:min(42em,calc(100% - 28px));margin:10px auto 0;padding:10px 12px;border:1px solid rgba(15,81,50,.14);border-radius:14px;background:rgba(247,249,244,.92);color:#496055;font-size:11px;line-height:1.55;box-sizing:border-box}
+.rd-openiti-progress__top{display:flex;align-items:center;justify-content:space-between;gap:12px;min-width:0}
+.rd-openiti-progress__top span:first-child{font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rd-openiti-progress__top span:last-child{color:#8a938e;white-space:nowrap}
+.rd-openiti-progress__track{height:5px;margin-top:8px;border-radius:99px;overflow:hidden;background:rgba(15,81,50,.12)}
+.rd-openiti-progress__track i{display:block;height:100%;width:0;border-radius:inherit;background:linear-gradient(90deg,#0f5132,#e6bf56);transition:width .25s ease}
+.rd-openiti-progress[hidden]{display:none!important}
+#mReader.rd-theme-night .rd-openiti-progress{border-color:rgba(230,191,86,.24);background:rgba(255,255,255,.06);color:#dce9df}
+#mReader.rd-theme-night .rd-openiti-progress__top span:last-child{color:rgba(255,255,255,.58)}
+#mReader.rd-theme-night .rd-openiti-progress__track{background:rgba(255,255,255,.12)}
+#mReader.rd-theme-sepia .rd-openiti-progress{background:rgba(255,250,231,.92);border-color:rgba(128,91,35,.18)}
+@media(max-width:600px){
+  .rd-openiti-progress{width:calc(100% - 20px);margin-top:8px;padding:9px 10px;border-radius:12px;font-size:10.5px}
+  .rd-openiti-progress__top{gap:8px}
+}

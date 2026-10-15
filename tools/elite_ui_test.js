@@ -1,0 +1,22 @@
+return await (async function(){
+  const out=[]; const pause=ms=>new Promise(r=>setTimeout(r,ms));
+  const check=(name,ok,detail)=>out.push({name,ok:!!ok,detail:detail||''});
+  await pause(2600);
+  check('scroll progress',!!document.getElementById('nourScrollProgress'));
+  check('ambient ring',!!document.querySelector('.nour-ambient-ring'));
+  check('today mission',!!document.getElementById('nourMission'));
+  check('focus toggle',!!document.getElementById('nourFocusToggle'));
+  check('command button',!!document.getElementById('nourPaletteOpen'));
+  check('palette mounted',!!document.getElementById('nourPalette'));
+  const open=document.getElementById('nourPaletteOpen'); if(open) open.click(); await pause(120);
+  check('palette opens',document.getElementById('nourPalette').classList.contains('is-open'));
+  check('palette actions',document.querySelectorAll('#nourPaletteList [data-palette-key]').length>=6);
+  document.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape'})); await pause(80);
+  check('palette closes',!document.getElementById('nourPalette').classList.contains('is-open'));
+  const focus=document.getElementById('nourFocusToggle'); if(focus) focus.click(); await pause(80);
+  check('focus on',document.body.classList.contains('nour-focus'));
+  if(focus) focus.click(); await pause(80);
+  check('focus off',!document.body.classList.contains('nour-focus'));
+  check('no startup error',!window.__NUR_ERR,window.__NUR_ERR||'');
+  return JSON.stringify({passed:out.filter(x=>x.ok).length,total:out.length,results:out});
+})();

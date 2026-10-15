@@ -1,0 +1,18 @@
+<design>
+ <size width="1280" height="720"/>
+ <color name="inkgreen" value="#1B3B36"/>
+  <color name="inkblack" value="#1B1D1B"/>
+ <color name="ivory" value="#F8F6F0"/>
+  <color name="gold" value="#B89C65"/>
+  <color name="softgray" value="#EAEAE5"/>
+  <color name="linegold" value="#D1CDA8"/>
+  <color name="secondary" value="#5E635F"/>
+  <color name="success" value="#276749"/>
+  <color name="warning" value="#8A6B25"/>
+  <color name="white" value="#FFFDF7"/>
+  <font name="display" family="Noto Serif SC" size="48"/>
+  <font name="heading" family="Noto Sans SC" size="32"/>
+  <font name="strong" family="Noto Serif SC" size="38"/>
+  <font name="body" family="Noto Sans SC" size="18"/>
+  <font name="caption" family="Noto Sans SC" size="14"/>
+</design>

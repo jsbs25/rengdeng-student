@@ -1,0 +1,238 @@
+/* ============================================================
+   燃灯同学 · E-Ink / Paper 主题
+   来源：ui-ux-pro-max 风格库（styles.csv · E-Ink/Paper）
+        + Taste-Skill（克制、去 AI 感）
+        + frontend-design-pro（层次、对比、可达性）
+   指标：纸白 #FDFBF7 · 墨黑 #1A1A1A · WCAG AAA
+   ============================================================ */
+:root{
+  /* —— 纸（E-Ink 官方色 + 品牌墨绿）—— */
+  --p-paper:#fdfbf7;        /* 主：暖纸白 */
+  --p-paper-2:#f7f4ed;      /* 次级纸面 */
+  --p-paper-3:#efeade;      /* 凹陷/引用 */
+  --p-card:#fffefb;         /* 卡片：比底更亮一点 */
+  --p-ink:#1a1a1a;          /* 墨黑（正文）*/
+  --p-ink-2:#3a3a38;        /* 墨灰 */
+  --p-ink-3:#6d6d68;        /* 次级文字 */
+  --p-ink-4:#9b9b94;        /* 弱化 */
+  --p-hair:rgba(26,26,26,.10);   /* 发丝线 */
+  --p-hair-2:rgba(26,26,26,.06);
+  /* —— 墨绿（品牌，用于极少处的重音）—— */
+  --p-green:#1f4737;
+  --p-green-2:#2c5d48;
+  /* —— 哑光金（真正的"少量"）—— */
+  --p-gold:#9c7f2c;
+  /* —— 纸纹（E-Ink 签名特征）—— */
+  --p-noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.055'/%3E%3C/svg%3E");
+  --p-ar:'DubaiNur','AmiriNur','Noto Naskh Arabic','SF Arabic',serif;
+  --p-ease:cubic-bezier(.2,0,0,1);   /* 锐利，不拖沓 */
+}
+/* ═══ ① 纸底 + 颗粒质感（E-Ink 核心）═══ */
+body{
+  background-color:var(--p-paper)!important;
+  background-image:var(--p-noise)!important;
+  background-attachment:fixed!important;
+  color:var(--p-ink)!important;
+  -webkit-font-smoothing:antialiased;
+}
+.modal .m-body,.modal .m-head{
+  background-color:rgba(253,251,247,.94)!important;
+  background-image:var(--p-noise)!important;
+  backdrop-filter:blur(18px)!important; -webkit-backdrop-filter:blur(18px)!important;
+  border-color:var(--p-hair)!important;
+}
+/* ═══ ② 排版：锐利、高对比、无花活 ═══ */
+h1,h2,h3,h4{ color:var(--p-ink)!important; letter-spacing:-.018em; }
+h1{ font-weight:760; } h2{ font-weight:700; } h3{ font-weight:650; }
+p,.rd-page p{ color:var(--p-ink-2)!important; line-height:1.92; }
+/* 除阿语外的正文不上纯黑，用墨灰更耐读 */
+body{ font-variant-numeric:tabular-nums; }
+/* ═══ ③ 阿拉伯语：纸感大字 ═══ */
+.s-card .s-ar,.gar,.rd-page [dir="rtl"],.dict-ar,.word-ar{
+  font-family:var(--p-ar)!important;
+  color:var(--p-ink)!important;          /* 纸感里阿语用墨黑，不用彩绿 */
+  line-height:2.2!important;
+  word-spacing:.05em!important;
+  unicode-bidi:isolate;
+}
+.s-card .s-ar{ font-size:1.95rem!important; padding:4px 0 10px; }
+.gar{ font-size:1.42rem!important; }
+.rd-page [dir="rtl"]{ font-size:1.5rem!important; line-height:2.3!important; }
+/* 阿语下加一条极细的"纸线"，像印刷的基线 */
+.s-card .s-ar{ border-bottom:1px solid var(--p-hair-2); }
+/* ═══ ④ 卡片：变成"纸片"，不是"白盒子" ═══ */
+.s-card,.bk-card,.gcard,.srch-it,.stat,.card,.gcard-n,.ct-ic{
+  background-color:var(--p-card)!important;
+  background-image:none!important;
+  border:1px solid var(--p-hair)!important;
+  border-radius:4px!important;              /* 纸片：几乎是直角 */
+  box-shadow:none!important;                /* E-Ink：无阴影，靠线 */
+}
+@media (hover:hover){
+  .s-card:hover,.bk-card:hover,.gcard:hover{
+    border-color:rgba(26,26,26,.22)!important;
+    box-shadow:2px 2px 0 rgba(26,26,26,.055)!important;   /* 纸片轻抬，硬阴影 */
+  }
+}
+.s-card{ padding:20px 22px 16px!important; margin-bottom:-1px!important; }  /* 纸片紧贴，像书页 */
+/* ═══ ⑤ 按钮：印刷按钮（锐利 · 无渐变）═══ */
+.s-btn{
+  background:transparent!important; background-image:none!important;
+  border:1px solid var(--p-hair)!important;
+  color:var(--p-ink-3)!important; font-weight:600!important;
+  border-radius:4px!important; min-height:44px!important;
+  box-shadow:none!important; font-size:.85rem!important;
+}
+@media (hover:hover){ .s-btn:hover{
+  border-color:var(--p-ink)!important; color:var(--p-ink)!important; background:transparent!important; } }
+.s-btn:active{ background:var(--p-paper-3)!important; }
+.btn-primary,.hs-dict-btn{
+  background:var(--p-ink)!important; background-image:none!important;
+  color:var(--p-paper)!important; border:1px solid var(--p-ink)!important; border-radius:4px!important;
+  box-shadow:none!important;
+}
+/* ═══ ⑥ 标签：印刷目录感 ═══ */
+.cat-tab{
+  background:transparent!important; background-image:none!important;
+  border:1px solid var(--p-hair)!important; border-radius:4px!important;
+  color:var(--p-ink-3)!important; font-weight:600!important;
+  font-size:.86rem!important; min-height:44px!important; box-shadow:none!important;
+}
+.cat-tab.on{ background:var(--p-ink)!important; color:var(--p-paper)!important;
+  border-color:var(--p-ink)!important; }
+/* ═══ ⑦ 侧栏：书脊感 ═══ */
+.hs-rail{ background:transparent!important; border-right:1px solid var(--p-hair)!important; }
+.chip{ background:transparent!important; border-radius:4px!important; color:var(--p-ink-2)!important;
+  min-height:44px!important; font-weight:550!important; }
+@media (hover:hover){ .chip:not(.on):hover{ background:var(--p-paper-3)!important; color:var(--p-ink)!important; } }
+.chip.on{ background:var(--p-ink)!important; color:var(--p-paper)!important; font-weight:650!important; }
+/* ═══ ⑧ 分区标题：印刷小标 ═══ */
+.sec-title,.hs-sec-t,.srch-g{
+  color:var(--p-gold)!important; font-weight:700!important;
+  letter-spacing:.09em!important; text-transform:uppercase; font-size:.74rem!important;
+}
+/* 极细分隔线（印刷感）*/
+hr,.it,td,th{ border-color:var(--p-hair)!important; }
+/* ═══ ⑨ 输入：纸面书写 ═══ */
+input,textarea,select{
+  background:var(--p-paper-2)!important; background-image:none!important;
+  border:1px solid var(--p-hair)!important; border-radius:4px!important;
+  color:var(--p-ink)!important; box-shadow:none!important;
+}
+input:focus,textarea:focus,select:focus{
+  border-color:var(--p-ink)!important; box-shadow:0 0 0 3px rgba(26,26,26,.07)!important; }
+::placeholder{ color:var(--p-ink-4)!important; }
+/* ═══ ⑩ 动效：E-Ink 规范"锐利切换，不用模糊渐变" ═══ */
+@media (prefers-reduced-motion:no-preference){
+  .pgm,.modal .m-body{ animation:pTurn .18s var(--p-ease); }   /* 像翻页 */
+  .bk-card{ transition:border-color .14s var(--p-ease),box-shadow .14s var(--p-ease); }
+}
+@keyframes pTurn{ from{opacity:.35} to{opacity:1} }
+/* ═══ ⑪ 夜间：E-Ink 黑（不是蓝黑）═══ */
+body[data-lib-night="1"]{
+  background-color:#141412!important; background-image:var(--p-noise)!important; }
+body[data-lib-night="1"] .rd-page,body[data-lib-night="1"] .modal .m-body{
+  background-color:#1a1a18!important; background-image:var(--p-noise)!important; color:#c9c9c2!important; }
+body[data-lib-night="1"] .rd-page [dir="rtl"],
+body[data-lib-night="1"] .rd-page .ar-ln{ color:#e6e6de!important; }
+body[data-lib-night="1"] .s-card,body[data-lib-night="1"] .bk-card{
+  background-color:#1a1a18!important; border-color:rgba(255,255,255,.10)!important; }
+/* ═══ ⑫ 手机：纸片铺满，不溢出 ═══ */
+@media (max-width:640px){
+  .s-card{ padding:16px 16px 13px!important; border-radius:3px!important; }
+  .s-card .s-ar{ font-size:1.78rem!important; }
+  .s-card .s-ar{ border-bottom:none; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   特异性强化：站内样式块多，用 html body 前缀提高优先级
+   （只覆盖视觉，不动功能）
+   ═══════════════════════════════════════════════════════════ */
+html body{
+  background-color:#fdfbf7!important;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.055'/%3E%3C/svg%3E")!important;
+  background-attachment:fixed!important;
+  color:#1a1a1a!important;
+}
+/* 纸片卡片：直角 + 发丝边 + 无阴影 */
+html body .s-card,html body .bk-card,html body .gcard,html body .card,html body .stat{
+  background:#fffefb!important; background-image:none!important;
+  border:1px solid rgba(26,26,26,.10)!important;
+  border-radius:4px!important; box-shadow:none!important;
+}
+html body .s-card{ padding:20px 22px 16px!important; margin-bottom:-1px!important; }
+@media (hover:hover){
+  html body .s-card:hover,html body .bk-card:hover,html body .gcard:hover{
+    border-color:rgba(26,26,26,.24)!important;
+    box-shadow:2px 2px 0 rgba(26,26,26,.06)!important; }
+}
+/* 印刷按钮 */
+html body .s-btn{ background:transparent!important; background-image:none!important;
+  border:1px solid rgba(26,26,26,.13)!important; color:#6d6d68!important;
+  border-radius:4px!important; box-shadow:none!important; font-weight:600!important; min-height:44px!important; }
+@media (hover:hover){ html body .s-btn:hover{ border-color:#1a1a1a!important; color:#1a1a1a!important;
+  background:transparent!important; } }
+html body .cat-tab{ background:transparent!important; background-image:none!important;
+  border:1px solid rgba(26,26,26,.13)!important; border-radius:4px!important; color:#6d6d68!important;
+  box-shadow:none!important; font-weight:600!important; min-height:44px!important; }
+html body .cat-tab.on{ background:#1a1a1a!important; color:#fdfbf7!important; border-color:#1a1a1a!important; }
+html body .chip{ background:transparent!important; border-radius:4px!important; color:#3a3a38!important; min-height:44px!important; }
+html body .chip.on{ background:#1a1a1a!important; color:#fdfbf7!important; }
+html body .hs-rail{ background:transparent!important; border-right:1px solid rgba(26,26,26,.10)!important; }
+/* 分区小标：金色印刷字（唯一用金的地方）*/
+html body .sec-title,html body .hs-sec-t,html body .srch-g{
+  color:#9c7f2c!important; font-weight:700!important; letter-spacing:.09em!important;
+  text-transform:uppercase; font-size:.74rem!important; }
+/* 弹层 */
+html body .modal .m-body,html body .modal .m-head{
+  background-color:rgba(253,251,247,.95)!important;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.055'/%3E%3C/svg%3E")!important;
+  border-color:rgba(26,26,26,.10)!important; }
+/* 阿语：墨黑纸感 */
+html body .s-card .s-ar,html body .gar,html body .rd-page [dir="rtl"]{
+  font-family:'DubaiNur','AmiriNur','Noto Naskh Arabic',serif!important;
+  color:#1a1a1a!important; }
+html body .s-card .s-ar{ border-bottom:1px solid rgba(26,26,26,.06)!important; }
+/* 输入 */
+html body input,html body textarea,html body select{
+  background:#f7f4ed!important; background-image:none!important;
+  border:1px solid rgba(26,26,26,.12)!important; border-radius:4px!important; box-shadow:none!important; }
+/* 夜间（E-Ink 黑）*/
+html body[data-lib-night="1"]{ background-color:#141412!important; }
+html body[data-lib-night="1"] .s-card,html body[data-lib-night="1"] .bk-card{
+  background:#1a1a18!important; border-color:rgba(255,255,255,.10)!important; }
+html body[data-lib-night="1"] .rd-page,html body[data-lib-night="1"] .modal .m-body{
+  background:#1a1a18!important; color:#c9c9c2!important; }
+
+/* ═══ 终极特异性（对齐站内 html[data-theme="light"] 前缀）+ 制服所有命名空间 ═══ */
+html[data-theme="light"] body,html[data-theme="light"] body,html[data-theme="dark"] body{
+  background-color:#fdfbf7!important;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E")!important;
+  background-attachment:fixed!important; color:#1a1a1a!important; }
+html[data-theme="light"] .s-card,html[data-theme="light"] .bk-card,html[data-theme="light"] .gcard,
+html[data-theme="light"] .card,html[data-theme="light"] .stat,html[data-theme="light"] .srch-it{
+  background:#fffefb!important; background-image:none!important;
+  border:1px solid rgba(26,26,26,.10)!important; border-radius:4px!important;
+  box-shadow:none!important; }
+html[data-theme="light"] .s-card{ padding:20px 22px 16px!important; margin-bottom:-1px!important; }
+html[data-theme="light"] .s-btn{ background:transparent!important; background-image:none!important;
+  border:1px solid rgba(26,26,26,.13)!important; color:#6d6d68!important;
+  border-radius:4px!important; box-shadow:none!important; min-height:44px!important; font-weight:600!important; }
+html[data-theme="light"] .cat-tab{ background:transparent!important; border:1px solid rgba(26,26,26,.13)!important;
+  border-radius:4px!important; color:#6d6d68!important; box-shadow:none!important; min-height:44px!important; }
+html[data-theme="light"] .cat-tab.on{ background:#1a1a1a!important; color:#fdfbf7!important; border-color:#1a1a1a!important; }
+html[data-theme="light"] .chip{ background:transparent!important; border-radius:4px!important; color:#3a3a38!important; }
+html[data-theme="light"] .chip.on{ background:#1a1a1a!important; color:#fdfbf7!important; }
+html[data-theme="light"] .hs-rail{ background:transparent!important; border-right:1px solid rgba(26,26,26,.10)!important; }
+html[data-theme="light"] .modal .m-body,html[data-theme="light"] .modal .m-head,
+html[data-theme="light"] #mCat .m-body,html[data-theme="light"] #mH6 .m-body{
+  background-color:rgba(253,251,247,.96)!important; background-image:none!important;
+  border-color:rgba(26,26,26,.10)!important; }
+html[data-theme="light"] input,html[data-theme="light"] textarea,html[data-theme="light"] select{
+  background:#f7f4ed!important; border:1px solid rgba(26,26,26,.12)!important;
+  border-radius:4px!important; box-shadow:none!important; }
+html[data-theme="light"] .hdr{ background-color:rgba(253,251,247,.92)!important; }
+/* 夜间 */
+html[data-theme][data-lib-night="1"] body{ background-color:#141412!important; }
+html[data-theme][data-lib-night="1"] .s-card,html[data-theme][data-lib-night="1"] .bk-card{
+  background:#1a1a18!important; border-color:rgba(255,255,255,.10)!important; }

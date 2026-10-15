@@ -1,0 +1,1 @@
+(function(){return JSON.stringify({quran:typeof window.QURAN,quranLen:(window.QURAN||[]).length,bq:typeof window.BUILTIN_QURAN,bqLen:(window.BUILTIN_QURAN||[]).length,keys:Object.keys(window).filter(function(k){return /QURAN/i.test(k)}),err:window.__NUR_ERR||''});})()

@@ -1,0 +1,19 @@
+[Unit]
+Description=Nour public API and catalog health monitor
+After=network-online.target nur.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/nur
+ExecStart=/usr/bin/python3 /opt/nur/monitor/nur_health_monitor.py --public-url https://xn--dqry4os3s3gb.com --local-url http://127.0.0.1:8080 --service nur.service --interval 60 --timeout 20 --log-dir /var/log/nur-monitor
+Restart=always
+RestartSec=5
+User=root
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ReadWritePaths=/var/log/nur-monitor
+
+[Install]
+WantedBy=multi-user.target

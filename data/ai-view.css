@@ -1,0 +1,126 @@
+/* ============================================================
+   努尔老师 · 独立视图样式
+   首页不再显示 AI；左栏点「🤖 努尔老师」→ 全屏聊天
+   输入框固定在视图底部（手机适配安全区）
+   ============================================================ */
+
+/* ① 首页里的 AI 不显示（它会被搬进独立视图）*/
+#page-home > #aiSec{ display:none!important; }
+
+/* ② 独立视图：全屏 */
+.ai-view{
+  position:fixed!important; inset:0!important; z-index:3900!important;
+  display:none;
+  flex-direction:column!important;
+  background-color:#fdfbf7;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");
+}
+.ai-view[style*="display: block"],.ai-view[style*="display:block"]{ display:flex!important; }
+
+/* 顶部：返回 + 标题 */
+.ai-view-head{
+  flex:0 0 auto;
+  display:flex!important; align-items:center!important;
+  height:calc(52px + env(safe-area-inset-top));
+  padding-top:env(safe-area-inset-top);
+  padding-left:6px; padding-right:14px;
+  background-color:rgba(253,251,247,.96);
+  backdrop-filter:saturate(180%) blur(16px); -webkit-backdrop-filter:saturate(180%) blur(16px);
+  border-bottom:1px solid rgba(26,26,26,.10);
+}
+.ai-back{
+  flex:0 0 auto; display:flex; align-items:center; gap:3px;
+  min-height:44px; padding:0 12px; margin-right:6px;
+  background:none; border:0; color:#1a1a1a; font-size:1rem; font-weight:600;
+  border-radius:4px; cursor:pointer;
+}
+.ai-back:active{ background:rgba(26,26,26,.07); }
+.ai-view-title{ flex:1; font-size:1rem; font-weight:650; color:#1a1a1a; letter-spacing:-.01em; }
+
+/* 主体 */
+.ai-view-body{ flex:1 1 auto; min-height:0; display:flex; flex-direction:column; overflow:hidden; }
+.ai-view-body > .ps-ai{ margin:0!important; padding:0!important; max-width:none!important; width:100%!important;
+  flex:1 1 auto; min-height:0; display:flex; }
+.ai-view-body > .ps-ai > .ps-ai-card{
+  flex:1 1 auto; display:grid!important;
+  grid-template-rows:auto minmax(0,1fr) auto auto!important;
+  height:auto!important; max-height:none!important;
+  width:100%!important; border-radius:0!important; border:0!important;
+  background:transparent!important; background-image:none!important; box-shadow:none!important;
+}
+/* 对话区：撑满 + 独立滚动 */
+.ai-view-body .ps-ai-msgs{
+  height:auto!important; min-height:0!important; max-height:none!important;
+  overflow-y:auto!important; -webkit-overflow-scrolling:touch;
+  padding:18px 20px!important; font-size:14.5px!important;
+  max-width:820px; width:100%; margin:0 auto;
+}
+.ai-view-body .ps-ai-msg{ font-size:14.5px!important; line-height:1.8!important;
+  padding:11px 15px!important; margin-bottom:10px!important; max-width:86%!important; border-radius:10px!important; }
+.ai-view-body .ps-ai-msg.bot{ background:#f4f1e9!important; color:#2c2c30!important; }
+.ai-view-body .ps-ai-msg.user{ background:#1a1a1a!important; color:#fdfbf7!important; }
+/* 快捷问题 */
+.ai-view-body .ps-ai-chips{ flex:0 0 auto; padding:10px 20px!important; gap:6px!important;
+  background:transparent!important; border-top:1px solid rgba(26,26,26,.07)!important;
+  display:flex!important; flex-wrap:wrap!important; max-width:820px; width:100%; margin:0 auto; }
+/* 输入框：固定在视图底部 + 安全区 */
+.ai-view-body .ps-ai-input{
+  flex:0 0 auto;
+  display:flex!important; flex-direction:row!important; align-items:center!important; gap:8px!important;
+  padding:10px 16px calc(10px + env(safe-area-inset-bottom))!important;
+  margin:0!important;
+  background-color:rgba(253,251,247,.97)!important;
+  border-top:1px solid rgba(26,26,26,.10)!important;
+  backdrop-filter:saturate(180%) blur(16px); -webkit-backdrop-filter:saturate(180%) blur(16px);
+}
+.ai-view-body .ps-ai-input input{
+  flex:1 1 auto!important; min-width:0!important; min-height:46px!important;
+  font-size:16px!important; padding:10px 16px!important; border-radius:999px!important;
+  border:1px solid rgba(26,26,26,.12)!important; background:#fff!important; color:#1a1a1a!important;
+}
+.ai-view-body .ps-ai-input button{
+  flex:0 0 auto!important; min-height:46px!important; min-width:64px!important;
+  padding:10px 18px!important; border-radius:999px!important;
+  font-size:14.5px!important; font-weight:650!important;
+  background:#1a1a1a!important; color:#fdfbf7!important; border:0!important;
+}
+.ai-view-body .ps-ai-input .ps-mic{
+  min-width:46px!important; background:transparent!important; color:#1a1a1a!important;
+  border:1px solid rgba(26,26,26,.12)!important;
+}
+/* 头部里的配额文字 */
+.ai-view-body .ps-ai-head{
+  max-width:820px; width:100%; margin:0 auto;
+  background:transparent!important; color:#1a1a1a!important;
+  border-bottom:1px solid rgba(26,26,26,.08)!important;
+}
+
+/* ③ 打开时锁住背景滚动（避免双滚动）*/
+body.ai-open{ overflow:hidden!important; }
+
+/* ④ 夜间 */
+html[data-theme="light"][data-lib-night="1"] .ai-view,
+html[data-theme="dark"] .ai-view{ background-color:#141412!important; }
+html[data-theme="light"][data-lib-night="1"] .ai-view-head,
+html[data-theme="light"][data-lib-night="1"] .ai-view-body .ps-ai-input,
+html[data-theme="dark"] .ai-view-head,
+html[data-theme="dark"] .ai-view-body .ps-ai-input{ background-color:#1a1a18!important;
+  border-color:rgba(255,255,255,.10)!important; }
+html[data-theme="light"][data-lib-night="1"] .ai-view-title,
+html[data-theme="dark"] .ai-view-title,
+html[data-theme="light"][data-lib-night="1"] .ai-back,
+html[data-theme="dark"] .ai-back{ color:#e8e8e0!important; }
+html[data-theme="light"][data-lib-night="1"] .ai-view-body .ps-ai-msgs,
+html[data-theme="dark"] .ai-view-body .ps-ai-msgs{ color:#c9c9c2!important; }
+html[data-theme="light"][data-lib-night="1"] .ai-view-body .ps-ai-msg.bot,
+html[data-theme="dark"] .ai-view-body .ps-ai-msg.bot{ background:#242422!important; color:#c9c9c2!important; }
+html[data-theme="light"][data-lib-night="1"] .ai-view-body .ps-ai-input input,
+html[data-theme="dark"] .ai-view-body .ps-ai-input input{
+  background:#242422!important; color:#e6e6de!important; border-color:rgba(255,255,255,.12)!important; }
+
+/* ⑤ 手机 */
+@media (max-width:768px){
+  .ai-view-body .ps-ai-msgs{ padding:14px!important; font-size:14.5px!important; }
+  .ai-view-body .ps-ai-msg{ max-width:94%!important; }
+  .ai-view-body .ps-ai-chips{ padding:8px 12px!important; }
+}

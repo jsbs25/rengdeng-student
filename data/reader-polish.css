@@ -1,0 +1,10 @@
+
+.rd-appearance{display:flex;align-items:center;gap:5px;flex-wrap:wrap;padding:8px 10px;border-top:1px solid rgba(150,120,70,.2);margin-top:5px}.rd-appearance b{width:100%;font-size:10px;color:#92783f}.rd-appearance button{flex:1!important;padding:8px 7px!important;min-width:42px;border:1px solid rgba(150,120,70,.2)!important;background:rgba(255,255,255,.5)!important;text-align:center!important;font-size:11px!important}.rd-appearance button:hover{border-color:#b28a31!important;background:rgba(201,168,76,.15)!important}html[data-theme="dark"] .rd-appearance{border-color:rgba(235,210,132,.16)}html[data-theme="dark"] .rd-appearance b{color:#e4ca83}html[data-theme="dark"] .rd-appearance button{border-color:rgba(235,210,132,.2)!important;background:rgba(255,255,255,.06)!important;color:#f0dda1!important}
+
+/* Mobile reading gestures: vertical scroll stays native; horizontal swipe changes page. */
+#mReader .m-body{-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain}
+#mReader .rd-paper{touch-action:pan-y;overscroll-behavior:contain;-webkit-user-select:none;user-select:none}
+@media(max-width:720px){
+  #mReader .rd-paper{min-height:calc(100vh - 86px);padding-bottom:calc(76px + env(safe-area-inset-bottom))}
+  #mReader .rd-page{padding-left:18px;padding-right:18px}
+}

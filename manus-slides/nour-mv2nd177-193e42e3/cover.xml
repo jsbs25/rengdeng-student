@@ -1,0 +1,11 @@
+<slide id="cover">
+  <background color="inkgreen"/>
+  <shape id="gold-rule" type="rect" x="80" y="547" width="1120" height="2" fill="gold"/>
+  <text id="eyebrow" x="80" y="140" width="1120" height="28" font="caption" color="#E3D6AD" align="center" wrap="false">NOUR / 燃灯同学 · AI Arabic Library</text>
+  <text id="title" x="150" y="226" width="980" height="135" font="display" size="54" color="white" align="center" anchor="middle" autofit="shrink">
+    <p>线上稳定性与界面升级</p>
+  </text>
+  <text id="subtitle" x="220" y="382" width="840" height="60" font="body" size="21" color="#E8E3D7" align="center" line-height="1.5">健康监控 · 节点缓存单飞 · 高并发延迟 · 首页按需加载 · 全局界面契约</text>
+  <text id="date" x="80" y="590" width="1120" height="24" font="caption" color="#D9D4C6" align="center">真实线上测试窗口：2026-10-10 · 数据来自 systemd journal、健康 JSONL 与公网浏览器回归</text>
+  <text id="page" x="1120" y="660" width="80" height="22" font="caption" color="#D9D4C6" align="right">01 / 09</text>
+</slide>

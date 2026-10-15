@@ -1,0 +1,21 @@
+import { spawn } from 'node:child_process';
+import { setTimeout as sleep } from 'node:timers/promises';
+import { writeFileSync } from 'node:fs';
+const [url, w, h, out] = process.argv.slice(2);
+const PORT = 9335;
+const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+const chrome = spawn(CHROME, ['--headless=new', `--remote-debugging-port=${PORT}`, '--user-data-dir=/tmp/cdp-shot', '--no-first-run', '--disable-gpu', '--hide-scrollbars', 'about:blank'], { stdio: 'ignore' });
+async function getWs() { for (let i = 0; i < 60; i++) { try { const p = (await (await fetch(`http://127.0.0.1:${PORT}/json/list`)).json()).find(t => t.type === 'page'); if (p?.webSocketDebuggerUrl) return p.webSocketDebuggerUrl; } catch {} await sleep(250); } throw new Error('no cdp'); }
+const ws = new WebSocket(await getWs());
+await new Promise((res, rej) => { ws.onopen = res; ws.onerror = rej; });
+let id = 0; const pending = new Map();
+ws.onmessage = e => { const m = JSON.parse(e.data); if (m.id && pending.has(m.id)) { pending.get(m.id)(m); pending.delete(m.id); } };
+const send = (method, params = {}) => new Promise(res => { const i = ++id; pending.set(i, res); ws.send(JSON.stringify({ id: i, method, params })); });
+await send('Page.enable');
+await send('Emulation.setDeviceMetricsOverride', { width: +w, height: +h, deviceScaleFactor: 1, mobile: +w < 600 });
+await send('Page.navigate', { url });
+await sleep(4500);
+const r = await send('Page.captureScreenshot', { format: 'png' });
+writeFileSync(out, Buffer.from(r.result.data, 'base64'));
+console.log('saved', out);
+ws.close(); chrome.kill(); process.exit(0);

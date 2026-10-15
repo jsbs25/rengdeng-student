@@ -1,0 +1,87 @@
+/* ============================================================
+   燃灯同学 · 手机端安全适配层 v2（保守版）
+   —— 吸取教训：绝不改动「左栏 + 内容」的既有结构
+   —— 只做：防溢出 / 触控 / 留白 / 顶栏
+   ① ui-ux-pro-max ② Taste-Skill ③ frontend-design-pro
+   ============================================================ */
+
+/* ① 全局防溢出（所有尺寸都安全） */
+body{ overflow-x:clip; }  /* 只在 body 上裁，避免锁死滚动 */
+*,*::before,*::after{ box-sizing:border-box; }
+
+@media (max-width:820px){
+
+  /* ── ② 防溢出：任何内容不能超过屏幕 ── */
+  img,video,canvas,iframe,table,pre{ max-width:100%!important; }
+  /* 只处理"内容区"里明显是横向并排的卡片组（不碰 .hs-body） */
+  .hs-main .grid,[class*="hs-grid"]{ max-width:100%!important; }
+
+  /* ── ③ 留白：内容区左右 16px（不再贴边）── */
+  .hs-main > *{ }
+  .hs-main{ padding-left:14px!important; padding-right:14px!important; }
+  /* 卡片间距拉大（只加下边距，不改宽高）*/
+  .s-card{ margin-bottom:12px!important; padding:16px 16px 13px!important; }
+  .bk-card,.gcard,.card,.stat{ margin-bottom:12px!important; }
+
+  /* ── ④ 触控：可点元素 ≥44px（只加最小高度，不改外观）── */
+  button,.btn,[onclick],.s-btn,.cat-tab,.act-btn,.m-close,.rd-ic{
+    min-height:44px!important;
+  }
+  .s-btn{ padding:11px 14px!important; }
+  /* iOS 输入不缩放 */
+  input,textarea,select{ font-size:16px!important; }
+
+  /* ── ⑤ 移动端顶部栏（返回 + 居中标题）── */
+  #mobBar{ display:none!important; } /* 暂未启用 */
+  #mobBarX{
+    position:fixed; top:0; left:0; right:0; z-index:4300;
+    display:flex; align-items:center;
+    height:calc(50px + env(safe-area-inset-top));
+    padding-top:env(safe-area-inset-top);
+    background-color:rgba(253,251,247,.95);
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");
+    backdrop-filter:saturate(180%) blur(16px); -webkit-backdrop-filter:saturate(180%) blur(16px);
+    border-bottom:1px solid rgba(26,26,26,.10);
+  }
+  #mobBar .mb-back{
+    flex:0 0 auto; display:flex; align-items:center; gap:3px;
+    min-height:44px; padding:0 12px; margin-left:4px;
+    background:none; border:0; color:#1a1a1a; font-size:1rem; font-weight:600;
+    border-radius:4px; cursor:pointer;
+  }
+  #mobBar .mb-back:active{ background:rgba(26,26,26,.07); }
+  #mobBar .mb-title{
+    flex:1; text-align:center; font-size:1rem; font-weight:650; color:#1a1a1a;
+    padding-right:70px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  }
+  /* 顶栏暂未启用 → 不占位（避免顶部空白）*/
+  /* 顶栏出现时，页面锚点不被遮 */
+  [id]{ scroll-margin-top:calc(58px + env(safe-area-inset-top)); }
+
+  /* ── ⑥ 弹层：贴着顶栏，不盖住返回键 ── */
+  .modal{ align-items:flex-start!important; }
+
+  /* ── ⑦ 努尔老师：保持上一版的紧凑设定（这里只兜底）── */
+  #aiSec{ position:static!important; }
+  #page-home,.hs-main{ padding-bottom:24px!important; }
+}
+
+/* 小屏（iPhone SE / mini）*/
+@media (max-width:390px){
+  .hs-main{ padding-left:12px!important; padding-right:12px!important; }
+  .s-card{ padding:14px 14px 12px!important; }
+}
+
+/* 横屏手机：顶栏矮一点 */
+@media (max-width:820px) and (orientation:landscape){
+  #mobBar{ display:none!important; } /* 暂未启用 */
+  #mobBarX{ height:calc(42px + env(safe-area-inset-top)); }
+  body{ padding-top:calc(42px + env(safe-area-inset-top))!important; }
+}
+
+/* ⑧ 捐款条超宽修复（本地测发现它 1322px 超屏）*/
+@media (max-width:820px){
+  .donbar-in,.donbar{ max-width:100%!important; width:100%!important; overflow:hidden!important; }
+  .donbar-in{ display:flex!important; flex-wrap:nowrap!important; gap:8px!important; }
+  .donbar-in *{ flex-shrink:1; min-width:0; }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "燃灯者 · حامل المصباح",
+  "short_name": "燃灯者",
+  "description": "阿拉伯语学习：句子库、词汇、经典选读、哲言、听力跟读、AI 老师",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0f3d31",
+  "theme_color": "#0f3d31",
+  "lang": "zh-CN",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

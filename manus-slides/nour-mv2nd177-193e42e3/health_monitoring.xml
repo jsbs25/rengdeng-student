@@ -1,0 +1,21 @@
+<slide id="health_monitoring">
+  <background color="ivory"/>
+  <shape id="top-green" type="rect" x="40" y="40" width="780" height="2" fill="inkgreen"/>
+  <shape id="top-gold" type="rect" x="820" y="40" width="420" height="2" fill="gold"/>
+  <text id="title" x="40" y="68" width="1120" height="52" font="heading" color="inkgreen">健康监控：243次连续探测全部通过</text>
+  <text id="lead" x="40" y="128" width="720" height="48" font="body" size="19" color="secondary">最近约四小时的 /var/log/nur-monitor/health.jsonl：每一分钟检查一次公网、本地与目录完整性。</text>
+  <table id="health-table" x="40" y="210" width="700" height="320" columns="5,3,2" rows="54,auto,auto,auto,auto,auto" font="body" size="17" color="inkblack" padding="10 14" header-fill="inkgreen" header-border="2 gold" border-h="1 #D1CDA8">
+    <tr color="white"><td>健康条件</td><td align="center">通过次数</td><td align="center">状态</td></tr>
+    <tr><td>nur.service active</td><td align="center">243 / 243</td><td align="center" color="success">通过</td></tr>
+    <tr><td>公网 HTTP 接口全 200</td><td align="center">243 / 243</td><td align="center" color="success">通过</td></tr>
+    <tr><td>本地 HTTP 接口全 200</td><td align="center">243 / 243</td><td align="center" color="success">通过</td></tr>
+    <tr><td>目录总数保持 8,794</td><td align="center">243 / 243</td><td align="center" color="success">通过</td></tr>
+    <tr><td>六大部圣训入口总数 6</td><td align="center">243 / 243</td><td align="center" color="success">通过</td></tr>
+  </table>
+  <shape id="log-bg" type="rect" x="790" y="190" width="410" height="300" fill="softgray" corner-radius="4"/>
+  <text id="log-title" x="820" y="220" width="350" height="25" font="caption" color="secondary">最近一条健康记录（节选）</text>
+  <text id="log" x="820" y="263" width="350" height="175" font="caption" size="15" color="inkgreen" line-height="1.45"><p>ok: true</p><p>service_active: true</p><p>public_http_all_200: true</p><p>local_http_200: true</p><p>catalog_total_8794: true</p><p>sunnah_total_6: true</p></text>
+  <shape id="resource-line" type="line" x="40" y="580" width="1160" height="0" stroke="linegold" stroke-width="1"/>
+  <text id="resources" x="40" y="604" width="1050" height="28" font="body" size="17" color="inkblack">服务器观察值：磁盘可用 <strong color="inkgreen">35.38 GB</strong> · 内存可用 <strong color="inkgreen">1,938 MB</strong> · 内存已用 <strong color="inkgreen">47.0%</strong> · 服务重启 <strong color="inkgreen">0</strong></text>
+  <text id="page" x="1120" y="654" width="80" height="22" font="caption" color="secondary" align="right">03 / 09</text>
+</slide>

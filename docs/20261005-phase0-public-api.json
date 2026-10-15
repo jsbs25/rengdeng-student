@@ -1,0 +1,161 @@
+{
+  "schema": "nour-phase0-public-api-1",
+  "base": "https://xn--dqry4os3s3gb.com",
+  "checked_at": "2026-10-05T20:28:52+0300",
+  "checks": [
+    {
+      "path": "/api/catalog/meta",
+      "status": 200,
+      "bytes": 7216,
+      "latency_ms": 332.7,
+      "content_type": "application/json; charset=utf-8",
+      "json_type": "dict",
+      "keys": [
+        "title",
+        "ar",
+        "notice",
+        "source_notice",
+        "disciplines",
+        "catalog_mode",
+        "openiti_release",
+        "openiti_metadata_url",
+        "openiti_metadata_fetched_at",
+        "openiti_rows_scanned",
+        "openiti_arabic_works",
+        "openiti_notice",
+        "openiti_series_counts",
+        "total",
+        "catalog_tags_version",
+        "catalog_tags_notice",
+        "tag_facets",
+        "fiqh_school_facets",
+        "fiqh_school_index_notice",
+        "categories"
+      ],
+      "total": 8794,
+      "returned": 0
+    },
+    {
+      "path": "/api/catalog?size=1&page=0",
+      "status": 200,
+      "bytes": 10641,
+      "latency_ms": 110.6,
+      "content_type": "application/json; charset=utf-8",
+      "json_type": "dict",
+      "keys": [
+        "total",
+        "page",
+        "size",
+        "items"
+      ],
+      "returned": 1
+    },
+    {
+      "path": "/api/library/classics?size=1&page=0",
+      "status": 200,
+      "bytes": 2768,
+      "latency_ms": 201.2,
+      "content_type": "application/json; charset=utf-8",
+      "json_type": "dict",
+      "keys": [
+        "ok",
+        "total",
+        "page",
+        "size",
+        "items",
+        "reading_paths",
+        "meta",
+        "reading_entry"
+      ],
+      "returned": 1
+    },
+    {
+      "path": "/api/library/fiqh-schools?size=1",
+      "status": 200,
+      "bytes": 39965,
+      "latency_ms": 182.4,
+      "content_type": "application/json; charset=utf-8",
+      "json_type": "dict",
+      "keys": [
+        "ok",
+        "schools",
+        "notice"
+      ]
+    },
+    {
+      "path": "/api/dict/lookup?word=%D8%B0%D9%87%D8%A8",
+      "status": 200,
+      "bytes": 33,
+      "latency_ms": 115.8,
+      "content_type": "application/json; charset=utf-8",
+      "json_type": "dict",
+      "keys": [
+        "ok",
+        "msg"
+      ]
+    },
+    {
+      "path": "/api/quran/tafsir?surah=1",
+      "status": 200,
+      "bytes": 4736,
+      "latency_ms": 124.4,
+      "content_type": "application/json; charset=utf-8",
+      "json_type": "dict",
+      "keys": [
+        "ok",
+        "surah",
+        "edition",
+        "edition_name",
+        "source_name",
+        "source_url",
+        "retrieved_at",
+        "ayahs",
+        "notice"
+      ]
+    },
+    {
+      "path": "/api/read?t=shamela&id=8220",
+      "status": 200,
+      "bytes": 443280,
+      "latency_ms": 275.2,
+      "content_type": "application/json; charset=utf-8",
+      "json_type": "dict",
+      "keys": [
+        "t",
+        "id",
+        "title",
+        "cat",
+        "pages"
+      ],
+      "page_count": 239
+    },
+    {
+      "path": "/",
+      "status": 200,
+      "bytes": 1881095,
+      "latency_ms": 324.4,
+      "content_type": "text/html; charset=utf-8",
+      "sha256": "6b856e3507b3199c74032e0f722361f1ee6e62f72dcf417fa6edc62b94faae48"
+    },
+    {
+      "path": "/api/dict/lookup?w=%D8%B0%D9%87%D8%A8",
+      "status": 200,
+      "latency_ms": 426.1,
+      "content_type": "application/json; charset=utf-8",
+      "json_type": "dict",
+      "keys": [
+        "ok",
+        "found",
+        "word",
+        "normalized",
+        "meaning",
+        "examples",
+        "matches",
+        "source",
+        "offline"
+      ],
+      "ok": true,
+      "found": false
+    }
+  ]
+}

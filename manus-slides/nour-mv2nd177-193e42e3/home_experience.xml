@@ -1,0 +1,26 @@
+<slide id="home_experience">
+  <background color="ivory"/>
+  <shape id="top-green" type="rect" x="40" y="40" width="780" height="2" fill="inkgreen"/>
+  <shape id="top-gold" type="rect" x="820" y="40" width="420" height="2" fill="gold"/>
+  <text id="title" x="40" y="68" width="1120" height="52" font="heading" color="inkgreen">首页真实交互：今日一句轻，句子库按需进</text>
+  <text id="lead" x="40" y="128" width="1120" height="34" font="body" size="18" color="secondary">保留完整句子库能力，但不再让首页首屏背负完整数据响应；用户点击后再获取版本化资源。</text>
+  <shape id="mobile" type="rect" x="75" y="210" width="440" height="320" fill="#F4F2EA" stroke="linegold" stroke-width="1" corner-radius="4"/>
+  <icon id="mobile-icon" name="smartphone" x="105" y="238" width="34" height="34" color="inkgreen"/>
+  <text id="mobile-title" x="155" y="238" width="315" height="36" font="body" size="23" color="inkgreen"><strong>手机 · 390 × 844</strong></text>
+  <text id="mobile-score" x="105" y="310" width="130" height="82" font="strong" size="42" color="success" align="center" anchor="middle">13 / 13</text>
+  <text id="mobile-tests" x="250" y="302" width="220" height="110" font="body" size="17" color="inkblack" line-height="1.45"><ul bullet="•"><li>无横向溢出</li><li>阿语/中文方向隔离</li><li>可进入真实句子库</li></ul></text>
+  <shape id="desktop" type="rect" x="765" y="210" width="440" height="320" fill="#F4F2EA" stroke="linegold" stroke-width="1" corner-radius="4"/>
+  <icon id="desktop-icon" name="monitor" x="795" y="238" width="34" height="34" color="inkgreen"/>
+  <text id="desktop-title" x="845" y="238" width="315" height="36" font="body" size="23" color="inkgreen"><strong>桌面 · 1280 × 900</strong></text>
+  <text id="desktop-score" x="795" y="310" width="130" height="82" font="strong" size="42" color="success" align="center" anchor="middle">13 / 13</text>
+  <text id="desktop-tests" x="940" y="302" width="220" height="110" font="body" size="17" color="inkblack" line-height="1.45"><ul bullet="•"><li>保持不等宽双区</li><li>今日一句真实数据</li><li>无 JavaScript 错误</li></ul></text>
+  <shape id="flow1" type="rect" x="90" y="595" width="210" height="48" fill="inkgreen" corner-radius="4"/>
+  <text id="flow1t" x="96" y="605" width="198" height="28" font="caption" color="white" align="center">首页：/sentences/daily</text>
+  <shape id="flowa" type="line" x="300" y="619" width="118" height="0" stroke="gold" stroke-width="2" arrow-end="arrow"/>
+  <shape id="flow2" type="rect" x="420" y="595" width="210" height="48" fill="#F3ECD9" stroke="gold" stroke-width="1" corner-radius="4"/>
+  <text id="flow2t" x="426" y="605" width="198" height="28" font="caption" color="warning" align="center">摘要小于 10KB</text>
+  <shape id="flowb" type="line" x="630" y="619" width="118" height="0" stroke="gold" stroke-width="2" arrow-end="arrow"/>
+  <shape id="flow3" type="rect" x="750" y="595" width="360" height="48" fill="#EEF4EE" stroke="#8BB79A" stroke-width="1" corner-radius="4"/>
+  <text id="flow3t" x="756" y="605" width="348" height="28" font="caption" color="success" align="center">用户主动进入：builtin_sentences.js（29,740 项）</text>
+  <text id="page" x="1120" y="654" width="80" height="22" font="caption" color="secondary" align="right">07 / 09</text>
+</slide>

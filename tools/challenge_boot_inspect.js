@@ -1,0 +1,1 @@
+(function(){return JSON.stringify({openModal:typeof window.openModal,closeModal:typeof window.closeModal,showChallenge:typeof window.showChallenge,renderRead:typeof window.renderRead,dictSearch:typeof window.dictSearch,apiBase:typeof window.API_BASE,err:window.__NUR_ERR||'',ready:document.readyState,scripts:document.scripts.length});})()

@@ -1,0 +1,18 @@
+<slide id="nodes_latency">
+  <background color="ivory"/>
+  <shape id="top-green" type="rect" x="40" y="40" width="780" height="2" fill="inkgreen"/>
+  <shape id="top-gold" type="rect" x="820" y="40" width="420" height="2" fill="gold"/>
+  <text id="title" x="40" y="68" width="1120" height="52" font="heading" color="inkgreen">/api/nodes：成功率100%，尾延迟在瞬时突发时明显抬升</text>
+  <text id="lead" x="40" y="128" width="1120" height="34" font="body" size="18" color="secondary">单位：毫秒。所有请求为 HTTP 200 且均返回缓存；P95 / 最大值以哑光金强调，反映连接与排队压力，而非第三方刷新阻塞。</text>
+  <chart id="latency-chart" type="column" x="48" y="205" width="820" height="370" font="caption" text-size="14" categories="60并发过期,60并发热缓存,20并发第1波,20并发第2波,20并发第3波" color="inkgreen,gold,#829D8A" legend="bottom" y-axis="true" x-axis="true" y-title="毫秒" gridlines="h" gridline-color="#D1CDA8" gap-width="70">
+    <series name="P50" values="139.59,231.8,128.66,126.98,133.56" color="inkgreen"/>
+    <series name="P95" values="6563.54,1504.2,2906.8,213.91,355.21" color="gold"/>
+    <series name="最大值" values="6924.68,2952.02,3924.01,1144.44,376.44" color="#829D8A"/>
+  </chart>
+  <shape id="key-line" type="line" x="918" y="205" width="0" height="370" stroke="linegold" stroke-width="1"/>
+  <text id="callout1" x="952" y="220" width="250" height="100" font="strong" size="38" color="gold" align="center" anchor="middle"><p>6.92 秒</p><p font="caption" color="secondary">60并发过期缓存最大值</p></text>
+  <text id="callout2" x="952" y="348" width="250" height="88" font="strong" size="38" color="inkgreen" align="center" anchor="middle"><p>100%</p><p font="caption" color="secondary">600 / 600 请求成功</p></text>
+  <text id="callout3" x="952" y="468" width="250" height="80" font="body" size="17" color="inkblack" align="center"><p><strong>稳定热缓存</strong></p><p font="caption" color="secondary">第3波 P95 355ms，最大 376ms</p></text>
+  <text id="foot" x="48" y="614" width="990" height="28" font="caption" color="secondary">解释：刷新 worker 被隔离，正确性不受影响；下一阶段应治理公网连接突发、TLS/代理队列与应用层短路径。</text>
+  <text id="page" x="1120" y="654" width="80" height="22" font="caption" color="secondary" align="right">05 / 09</text>
+</slide>

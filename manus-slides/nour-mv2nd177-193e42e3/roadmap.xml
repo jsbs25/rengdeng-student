@@ -1,0 +1,18 @@
+<slide id="roadmap">
+  <background color="inkgreen"/>
+  <shape id="gold-rule" type="rect" x="80" y="118" width="1120" height="2" fill="gold"/>
+  <text id="title" x="80" y="160" width="900" height="66" font="display" size="43" color="white">先稳住入口，再提升阅读与研究密度</text>
+  <text id="lead" x="80" y="246" width="930" height="34" font="body" size="20" color="#E8E3D7">下一阶段以真实线上指标为约束：不改变用户数据，不扩大外部抓取，不牺牲现有阅读和学习能力。</text>
+  <shape id="timeline" type="line" x="145" y="435" width="980" height="0" stroke="#E3D6AD" stroke-width="2"/>
+  <shape id="n1" type="ellipse" x="180" y="416" width="38" height="38" fill="gold"/>
+  <shape id="n2" type="ellipse" x="470" y="416" width="38" height="38" fill="gold"/>
+  <shape id="n3" type="ellipse" x="760" y="416" width="38" height="38" fill="gold"/>
+  <shape id="n4" type="ellipse" x="1050" y="416" width="38" height="38" fill="gold"/>
+  <text id="r1" x="105" y="320" width="190" height="78" font="body" size="18" color="white" align="center"><p><strong>节点快路径</strong></p><p font="caption" color="#D9D4C6">预解析快照 · 缓存指标</p></text>
+  <text id="r2" x="395" y="320" width="190" height="78" font="body" size="18" color="white" align="center"><p><strong>连接与边缘</strong></p><p font="caption" color="#D9D4C6">复用 · 微缓存 · 队列</p></text>
+  <text id="r3" x="685" y="320" width="190" height="78" font="body" size="18" color="white" align="center"><p><strong>来源治理</strong></p><p font="caption" color="#D9D4C6">健康评分 · 退避 · 快照</p></text>
+  <text id="r4" x="975" y="320" width="190" height="78" font="body" size="18" color="white" align="center"><p><strong>体验回归</strong></p><p font="caption" color="#D9D4C6">页面 · 阅读器 · AI 工作区</p></text>
+  <text id="measure" x="150" y="500" width="980" height="70" font="body" size="20" color="#E8E3D7" align="center"><p><strong color="#E3D6AD">每次变更都以公网回归收口：</strong>健康监控、冷/热/过期缓存压测、首页首屏网络、移动端安全区、RTL/LTR 与阅读器交互。</p></text>
+  <text id="closing" x="80" y="610" width="820" height="30" font="body" size="19" color="white">NOUR 的目标不只是“能打开”，而是让用户稳定地阅读整个阿拉伯语世界。</text>
+  <text id="page" x="1120" y="654" width="80" height="22" font="caption" color="#D9D4C6" align="right">09 / 09</text>
+</slide>

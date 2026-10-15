@@ -1,0 +1,37 @@
+/* ============================================================
+   燃灯同学 · 对比度修复层 (contrast-fix.css)
+   目的：把浅色主题下 < 4.5:1 的文字提到 >= 4.5:1（WCAG AA）
+   来源：ui-ux-pro-max(可达性) + design-taste-frontend-condensed(暖色纸感)
+        + frontend-design-pro(落地)
+   范围：纯视觉；只覆盖文字颜色，不动布局/逻辑/字体
+   作用域：仅 html[data-theme="light"]，暗色主题行为不变
+   实测：1440x900 / 390x844 两档 + Chrome 1440x900/390x844
+   ============================================================ */
+
+/* 1) 首页 hero 副标题「已收录 …部世界典籍」——原 #86868b 仅 3.62:1
+      .hero 卡底固定为 #fff，换成 Apple 二级文字 #6e6e73 (5.07:1) */
+html[data-theme="light"] .hero-tx span{
+  color:#6e6e73!important;
+}
+
+/* 2) 解锁码提示行「👉 需要联系站长购买…」——内联 #a08a4a 仅 3.37:1
+      （源码在 data/permlock.js 的内联 style；此处只覆盖颜色，不改 JS）
+      卡底固定 #fff → #8a6f2e (4.78:1)；行内 <b> 微信绿字不受影响 */
+html[data-theme="light"] #permBoxHome div[style*="a08a4a"],
+html[data-theme="light"] #permBox div[style*="a08a4a"],
+html[data-theme="light"] [style*="color:#a08a4a"]{
+  color:#8a6f2e!important;
+}
+
+/* 3) 书封装饰纹样「❖」——原 rgba(214,182,106,.66) 在深绿书封上仅 4.21:1
+      底为固定深色（#0f2a20/#0e3b2a），把不透明度提到 .88 (6.16:1)
+      观感不变、对比达标 */
+html[data-theme="light"] .bk-orn{
+  color:rgba(214,182,106,.88)!important;
+}
+
+/* 备注：每日名言卡（.quote-card）的 q-cn/q-src/q-switch 未改动。
+   原因：该卡在 WebKit 上会出现「页面为浅色、卡片却渲染成暗底」的既有
+   渲染异常（Chrome 正常、本地正常，仅线上 WebKit 复现，约 2/3 概率），
+   卡底不确定 → 任何单一文字色都会在其中一种渲染下失效。
+   为保证零回归，本次不动它（等定位到卡底问题后再修）。 */

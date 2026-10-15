@@ -1,0 +1,196 @@
+/* ============================================================
+   燃灯同学 · 学术阅读平台视觉层  library.css
+   原则：只覆盖视觉，不改任何功能
+   工作流：ui-ux-pro-max（层级）+ Taste-Skill（审美）+ frontend-design-pro（规范）
+   ============================================================ */
+:root{
+  /* —— 温暖象牙白体系 —— */
+  --nur-bg:#faf8f3;          /* 主背景：温暖米白 */
+  --nur-bg-2:#f4f1e9;        /* 次级面 */
+  --nur-surface:#fffdf9;     /* 卡片面：微微暖白 */
+  --nur-sunken:#efece2;      /* 凹陷面 */
+  /* —— 墨绿 / 橄榄体系 —— */
+  --nur-ink:#13251c;         /* 最深：正文标题 */
+  --nur-green:#1c4a35;       /* 深墨绿：主色 */
+  --nur-green-2:#2a6349;     /* 悬停 */
+  --nur-olive:#5c6b4a;       /* 橄榄：次强调 */
+  --nur-green-soft:#eaf0e9;  /* 极浅绿底 */
+  /* —— 哑光金（只作强调，绝不铺面）—— */
+  --nur-gold:#a8892e;
+  --nur-gold-2:#c4a752;
+  --nur-gold-soft:#f6f1e2;
+  /* —— 深棕 —— */
+  --nur-brown:#5a4632;
+  /* —— 文字（暖调灰阶）—— */
+  --nur-t1:#1a1f1c; --nur-t2:#40473f; --nur-t3:#6b7269; --nur-t4:#9aa096; --nur-t5:#b8bdb3;
+  /* —— 分隔线：极克制 —— */
+  --nur-line:rgba(92,107,74,.14);
+  --nur-line-2:rgba(92,107,74,.08);
+  /* —— 圆角：宁小勿大 —— */
+  --nur-r-xs:6px; --nur-r-s:9px; --nur-r-m:12px; --nur-r-l:16px;
+  /* —— 阴影：轻到几乎看不见 —— */
+  --nur-sh-1:0 1px 2px rgba(35,30,20,.04);
+  --nur-sh-2:0 2px 8px rgba(35,30,20,.07);
+  --nur-sh-3:0 10px 30px rgba(35,30,20,.10);
+  /* —— 阿语排版 —— */
+  --nur-ar:'DubaiNur','AmiriNur','Scheherazade New','SF Arabic',serif;
+  --nur-fs-ar:1.9rem;        /* 阿语基准 */
+  --nur-lh-ar:2.15;          /* 阿语行高（比中文大） */
+  --nur-ws-ar:.045em;        /* 阿语词距（阿拉伯字母粘连，需微松） */
+  --nur-ease:cubic-bezier(.16,1,.3,1);
+}
+
+/* ========== ① 全局底色：换成温暖象牙白 ========== */
+body{ background:var(--nur-bg)!important; color:var(--nur-t1); }
+.modal .m-body,.modal .m-head{ background:rgba(255,253,249,.86)!important; }
+
+/* ========== ② 阿拉伯语排版：成为视觉重点 ========== */
+[dir="rtl"],.ar,.s-ar,.gar,.bk-ar,.gcard-ar,.ct-ar,.word-ar,.rd-ar,
+.rd-page[dir="rtl"],.dict-ar,.dic-ar,.k-ar,.ar-text{
+  direction:rtl; unicode-bidi:isolate; text-align:right;
+  font-family:var(--nur-ar);
+  line-height:var(--nur-lh-ar);
+  word-spacing:var(--nur-ws-ar);
+  font-feature-settings:"kern" 1,"liga" 1,"calt" 1;
+  text-rendering:optimizeLegibility;
+}
+/* 阿语大字（句子卡 / 词典 / 阅读）*/
+.s-card .s-ar{ font-family:var(--nur-ar)!important; font-size:var(--nur-fs-ar)!important;
+  line-height:var(--nur-lh-ar)!important; word-spacing:var(--nur-ws-ar)!important;
+  color:var(--nur-green)!important; letter-spacing:0; padding:2px 0 6px; }
+.gar{ font-family:var(--nur-ar)!important; font-size:1.35rem!important; line-height:2!important;
+  color:var(--nur-green)!important; word-spacing:var(--nur-ws-ar)!important; }
+/* 阿语与中文的视觉关系：阿语在前更突出，中文作注解 */
+.s-card .s-cn{ color:var(--nur-t2)!important; font-size:1.02rem!important; line-height:1.85!important; }
+.s-card .s-tr{ color:var(--nur-t4)!important; font-size:.82rem!important; letter-spacing:.02em; }
+.s-card .s-en{ color:var(--nur-t3)!important; font-size:.9rem!important; line-height:1.6!important; }
+
+/* ========== ③ 阅读页：专业电子书质感 ========== */
+.rd-page{ background:var(--nur-surface); color:var(--nur-t2);
+  font-size:1.06rem; line-height:1.95; }
+.rd-page p{ margin:0 0 1.15em; max-width:66ch; }
+.rd-page p+p{ text-indent:0; }
+/* 阅读页里的阿语段落：更大更宽松 */
+.rd-page [dir="rtl"],.rd-page .ar-ln{
+  font-size:1.45rem!important; line-height:2.2!important; color:var(--nur-ink)!important;
+  margin:.5em 0 .9em; word-spacing:var(--nur-ws-ar);
+}
+.rd-page h1,.rd-page h2,.rd-page h3{ color:var(--nur-ink); line-height:1.35; margin:1.6em 0 .6em; }
+.rd-page h2{ font-size:1.4rem; border-bottom:1px solid var(--nur-line); padding-bottom:.4em; }
+/* 阅读正文区限宽居中（长文不疲劳）*/
+.rd-body,.rd-content,.rd-text{ max-width:74ch; margin:0 auto; }
+
+/* ========== ④ 夜间阅读模式 ========== */
+body[data-lib-night="1"]{ background:#171a18!important; }
+body[data-lib-night="1"] .rd-page,body[data-lib-night="1"] .modal .m-body{
+  background:#1e2220!important; color:#cfd6cd!important; }
+body[data-lib-night="1"] .rd-page h1,body[data-lib-night="1"] .rd-page h2,
+body[data-lib-night="1"] .rd-page h3{ color:#e8efe4!important; border-color:rgba(200,220,200,.14)!important; }
+body[data-lib-night="1"] .rd-page [dir="rtl"],
+body[data-lib-night="1"] .rd-page .ar-ln{ color:#bfe0c6!important; }
+body[data-lib-night="1"] .rd-page p{ color:#b6bdb4!important; }
+body[data-lib-night="1"] .modal .m-head{ background:rgba(30,34,32,.9)!important; }
+/* 夜间切换按钮 */
+#libNightBtn{ position:fixed; right:16px; bottom:calc(16px + env(safe-area-inset-bottom)); z-index:4000;
+  width:44px; height:44px; border-radius:50%; border:1px solid var(--nur-line);
+  background:rgba(255,253,249,.92); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+  color:var(--nur-green); font-size:18px; cursor:pointer; box-shadow:var(--nur-sh-2);
+  display:none; align-items:center; justify-content:center; }
+body.reading #libNightBtn{ display:flex; }
+body[data-lib-night="1"] #libNightBtn{ background:rgba(40,46,42,.92); color:#e8d48b; border-color:rgba(200,220,200,.2); }
+
+/* ========== ⑤ 阅读进度条 ========== */
+#libProgress{ position:fixed; top:0; left:0; height:2.5px; width:0;
+  background:linear-gradient(90deg,var(--nur-gold),var(--nur-gold-2)); z-index:5000;
+  transition:width .12s linear; opacity:0; pointer-events:none; }
+body.reading #libProgress{ opacity:1; }
+
+/* ========== ⑥ 卡片体系：不再像"几十个白盒子" ========== */
+.s-card,.bk-card,.gcard,.srch-it,.stat,.card{
+  background:var(--nur-surface)!important;
+  border:1px solid var(--nur-line-2)!important;
+  border-radius:var(--nur-r-m)!important;
+  box-shadow:var(--nur-sh-1)!important;
+}
+@media (hover:hover){
+  .s-card:hover,.bk-card:hover,.gcard:hover{
+    border-color:var(--nur-line)!important; box-shadow:var(--nur-sh-2)!important; }
+}
+/* 句子卡：去掉"盒子感"，改为"分隔式条目"（更学术） */
+.s-card{ padding:18px 20px 14px!important; margin-bottom:10px!important; }
+.s-card::before{ content:''; display:block; position:absolute; }
+/* 相邻句子卡之间用更轻的视觉连线 */
+.s-card+.s-card{ margin-top:0!important; }
+/* ========== ⑦ 按钮：哑光金只做强调 ========== */
+.s-btn{ background:transparent!important; border:1px solid var(--nur-line)!important;
+  color:var(--nur-t3)!important; font-weight:600!important; border-radius:var(--nur-r-s)!important;
+  padding:9px 14px!important; min-height:44px!important; font-size:.86rem!important; }
+@media (hover:hover){ .s-btn:hover{ background:var(--nur-green-soft)!important;
+  border-color:rgba(28,74,53,.2)!important; color:var(--nur-green)!important; } }
+.s-btn:active{ transform:scale(.97); }
+/* 主按钮（保留品牌绿，不用大面积金）*/
+.btn-primary,.hs-dict-btn,.lock-go{
+  background:var(--nur-green)!important; color:#f4f1e9!important; border:none!important;
+  border-radius:var(--nur-r-s)!important; font-weight:650!important; }
+/* 金色仅用于极克制的强调文字 */
+.lib-gold-txt,.perm-hint b{ color:var(--nur-gold)!important; }
+
+/* ========== ⑧ 分类标签 ========== */
+.cat-tab{ background:transparent!important; border:1px solid var(--nur-line)!important;
+  color:var(--nur-t3)!important; border-radius:var(--nur-r-s)!important; font-weight:600!important;
+  min-height:44px!important; padding:10px 16px!important; }
+.cat-tab.on{ background:var(--nur-green)!important; color:#f4f1e9!important;
+  border-color:var(--nur-green)!important; }
+@media (hover:hover){ .cat-tab:not(.on):hover{ background:var(--nur-green-soft)!important; color:var(--nur-green)!important; } }
+
+/* ========== ⑨ 侧栏（左栏竖排保持，配色统一）========== */
+.hs-rail,.chip{ background:transparent!important; }
+.chip{ color:var(--nur-t2)!important; border-radius:var(--nur-r-s)!important; min-height:44px!important; }
+@media (hover:hover){ .chip:not(.on):hover{ background:rgba(28,74,53,.05)!important; color:var(--nur-green)!important; } }
+.chip.on{ background:var(--nur-green)!important; color:#f6f3ea!important; font-weight:650!important; }
+
+/* ========== ⑩ 弹层：更安静的 sheet ========== */
+.modal .m-head{ border-bottom:1px solid var(--nur-line-2)!important;
+  box-shadow:none!important; }
+.modal.show .m-body,.modal.show .m-head{ box-shadow:var(--nur-sh-3)!important; }
+.m-head h3,.m-head b{ color:var(--nur-ink)!important; letter-spacing:-.01em; }
+
+/* ========== ⑪ 搜索：展开更顺滑 ========== */
+.srch-it:hover{ background:var(--nur-green-soft)!important; }
+.si-cn{ color:var(--nur-t1)!important; }
+.srch-g{ color:var(--nur-gold)!important; font-weight:700; letter-spacing:.04em; font-size:.76rem; }
+input,textarea,select{ background:var(--nur-surface)!important; border-color:var(--nur-line)!important;
+  color:var(--nur-t1)!important; }
+input:focus,textarea:focus,select:focus{ border-color:var(--nur-green)!important;
+  box-shadow:0 0 0 3.5px rgba(28,74,53,.10)!important; }
+::placeholder{ color:var(--nur-t4)!important; }
+
+/* ========== ⑫ 动效：克制（只做 4 处）========== */
+@media (prefers-reduced-motion:no-preference){
+  /* 页面切换 */
+  .pgm,.modal .m-body{ animation:libFade .26s var(--nur-ease); }
+  /* 卡片 hover 微升 */
+  .bk-card{ transition:transform .24s var(--nur-ease),box-shadow .24s var(--nur-ease),border-color .24s var(--nur-ease); }
+  /* 搜索展开 */
+  .m-search,.srch-wrap{ animation:libSlide .22s var(--nur-ease); }
+}
+@keyframes libFade{ from{opacity:0} to{opacity:1} }
+@keyframes libSlide{ from{opacity:0;transform:translateY(-6px)} to{opacity:1;transform:none} }
+
+/* ========== ⑬ 手机端：绝不横向滚动 ========== */
+@media (max-width:640px){
+  body{ overflow-x:clip; }  /* 只在 body 上裁，避免锁死滚动 */
+  .s-card{ padding:15px 16px 12px!important; }
+  .s-card .s-ar{ font-size:1.75rem!important; }
+  .s-btn{ font-size:.82rem!important; padding:9px 12px!important; }
+  img,table,pre{ max-width:100%!important; }
+  .gar{ font-size:1.2rem!important; }
+  #libNightBtn{ right:12px; bottom:calc(74px + env(safe-area-inset-bottom)); }
+}
+@media (max-width:380px){
+  .s-card .s-ar{ font-size:1.6rem!important; }
+}
+/* iPad / 宽屏：正文不过宽 */
+@media (min-width:1024px){
+  .s-card{ padding:20px 24px 16px!important; }
+}

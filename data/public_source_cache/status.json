@@ -1,0 +1,80 @@
+{
+  "job": "public-source-sync",
+  "started_at": "2026-09-30T16:46:49+00:00",
+  "finished_at": "2026-09-30T16:47:00+00:00",
+  "policy": {
+    "allowlist_only": true,
+    "max_response_bytes": 2097152,
+    "request_spacing_seconds": 1.1,
+    "bulk_downloads": false,
+    "overwrites_user_data": false
+  },
+  "sources": [
+    {
+      "id": "ar-wiktionary",
+      "url": "https://ar.wiktionary.org/w/api.php",
+      "kind": "dictionary",
+      "license": "CC BY-SA 4.0 / GFDL per entry; verify entry and media terms",
+      "ok": true,
+      "http_status": 200,
+      "retrieved_at": "2026-09-30T16:46:50+00:00",
+      "etag": "",
+      "last_modified": ""
+    },
+    {
+      "id": "tatoeba",
+      "url": "https://api.tatoeba.org/",
+      "kind": "sentences",
+      "license": "Per-sentence CC BY 2.0 FR or CC0; audio is separately licensed",
+      "ok": true,
+      "http_status": 200,
+      "retrieved_at": "2026-09-30T16:46:52+00:00",
+      "etag": "",
+      "last_modified": ""
+    },
+    {
+      "id": "openiti-release",
+      "url": "https://github.com/OpenITI/RELEASE",
+      "kind": "texts",
+      "license": "CC BY-NC-SA 4.0; non-commercial and attribution/share-alike",
+      "ok": true,
+      "http_status": 200,
+      "retrieved_at": "2026-09-30T16:46:54+00:00",
+      "etag": "W/\"7a0bbc52dbfaebdf768d74f6a54e87bf\"",
+      "last_modified": ""
+    },
+    {
+      "id": "arabic-wikipedia",
+      "url": "https://ar.wikipedia.org/w/api.php",
+      "kind": "reading",
+      "license": "Usually CC BY-SA 4.0; verify page and media provenance",
+      "ok": true,
+      "http_status": 200,
+      "retrieved_at": "2026-09-30T16:46:56+00:00",
+      "etag": "",
+      "last_modified": ""
+    },
+    {
+      "id": "common-voice-mdc",
+      "url": "https://mozilladatacollective.com/datasets/cmu5wom3z00ceo107guxtg4xa",
+      "kind": "audio-metadata",
+      "license": "CC0 dataset label with MDC/Mozilla distribution terms",
+      "ok": true,
+      "http_status": 200,
+      "retrieved_at": "2026-09-30T16:46:58+00:00",
+      "etag": "",
+      "last_modified": ""
+    }
+  ],
+  "wiktionary_sample": {
+    "source_id": "ar-wiktionary",
+    "title": "سلام",
+    "pageid": 210057,
+    "revid": 1108405,
+    "source_url": "https://ar.wiktionary.org/wiki/%D8%B3%D9%84%D8%A7%D9%85",
+    "extract": "\n== عربية ==\n\nسَلَام (اسم)(شائع)\nسَلَّام (اسم)\nسُلَام (اسم)\nسِلَام (اسم)",
+    "license": "CC BY-SA 4.0 / GFDL per entry; verify entry and media terms",
+    "retrieved_at": "2026-09-30T16:47:00+00:00",
+    "http_status": 200
+  }
+}

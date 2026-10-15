@@ -1,0 +1,211 @@
+/* NOUR Interface Contract v1.0
+   Shared visual polish for every existing surface.
+   Scope: visual/accessibility/responsive behavior only; no business selectors or data flows.
+*/
+:root {
+  --nour-ui-ease: cubic-bezier(.23,1,.32,1);
+  --nour-ui-fast: 150ms;
+  --nour-ui-panel-gap: clamp(14px, 2vw, 28px);
+  --nour-ui-content-max: 1180px;
+  --nour-ui-focus: #d7b96d;
+  --nour-ui-focus-ink: #19261f;
+  --nour-ui-control-min: 40px;
+}
+
+html {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  overscroll-behavior-x: none;
+}
+
+/* A shared, keyboard-visible focus language across old and new modules. */
+:where(button, a[href], input, textarea, select, summary, [role="button"], [tabindex]:not([tabindex="-1"])):focus-visible {
+  outline: 2px solid var(--nour-ui-focus) !important;
+  outline-offset: 3px !important;
+}
+
+:where(button, [role="button"], summary, input[type="button"], input[type="submit"], input[type="reset"]) {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Buttons confirm a press without the distracting hover zoom used by generic templates. */
+:where(button, [role="button"], input[type="button"], input[type="submit"], input[type="reset"]) {
+  transition: background-color var(--nour-ui-fast) var(--nour-ui-ease),
+    border-color var(--nour-ui-fast) var(--nour-ui-ease),
+    color var(--nour-ui-fast) var(--nour-ui-ease),
+    opacity var(--nour-ui-fast) var(--nour-ui-ease),
+    transform var(--nour-ui-fast) var(--nour-ui-ease),
+    box-shadow var(--nour-ui-fast) var(--nour-ui-ease);
+}
+:where(button, [role="button"], input[type="button"], input[type="submit"], input[type="reset"]):not(:disabled):active {
+  transform: scale(.985);
+}
+:where(button, [role="button"], input[type="button"], input[type="submit"], input[type="reset"]):disabled,
+:where(button, [role="button"])[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: .58;
+}
+
+/* Keep the user's requested restrained 4px language on shared product surfaces. */
+:where(.nour-product-card, .nour-tool-index, .nour-discovery, .nour-daily-quote-body,
+  .nour-continue-item, .nour-fiqh-school-card, .nour-ai-note, .study-workspace-intro,
+  .nour-product-search, .nour-product-action, .nour-shell-search, .nour-shell-toast,
+  .nour-mission, .nour-mission-mark, .nour-mission-actions button) {
+  border-radius: 4px !important;
+}
+
+/* Dense pages become calmer through a consistent reading measure and section rhythm. */
+:where(#page-home, #mCat, #page-search, #page-me, #aiSec):not(.nour-focus-page) {
+  scroll-padding-top: max(18px, env(safe-area-inset-top));
+}
+:where(#page-home, #mCat, #page-search, #page-me):not(.nour-focus-page) .pg-wrap,
+:where(#page-home, #mCat, #page-search, #page-me):not(.nour-focus-page) .m-body,
+:where(#page-home, #mCat, #page-search, #page-me):not(.nour-focus-page) .nour-product-home {
+  width: min(var(--nour-ui-content-max), calc(100% - 32px));
+  margin-left: auto;
+  margin-right: auto;
+}
+:where(#page-home, #mCat, #page-search, #page-me) :where(.pg-h, .m-head, .nour-product-section-head) {
+  text-wrap: balance;
+}
+
+/* One predictable control height for the shared shell; reader micro-controls stay untouched. */
+:where(.nour-product-action, .nour-product-search, .nour-tool-index button,
+  .study-workspace-actions button, .nour-shell-search, .nour-more-tools summary) {
+  min-height: var(--nour-ui-control-min);
+}
+:where(.nour-product-action, .nour-product-search, .nour-tool-index button,
+  .study-workspace-actions button, .nour-more-tools summary):hover {
+  filter: brightness(1.035);
+}
+
+/* Prevent mixed Arabic/Chinese strings from reversing a whole control or label. */
+:where(.nour-product-home, .nour-product-head, .nour-product-card, .nour-tool-index,
+  .nour-daily-quote-body, .study-workspace-intro, .nour-ai-note, .ps-ai-card,
+  .nour-shell-toast) {
+  unicode-bidi: plaintext;
+}
+:where([data-auto-dir="true"], [dir="auto"], .nour-ar, .nour-daily-quote-ar,
+  .ps-ai-msg, .rd-word-ar, .rd-ar) {
+  unicode-bidi: plaintext;
+  overflow-wrap: anywhere;
+}
+
+/* Do not let fixed bottom navigation cover the last actionable line on ordinary pages. */
+@media (max-width: 760px) {
+  :where(#page-home, #mCat, #page-search, #page-me, #aiSec):not(.nour-focus-page) {
+    padding-bottom: max(104px, calc(88px + env(safe-area-inset-bottom))) !important;
+  }
+  :where(#page-home, #mCat, #page-search, #page-me):not(.nour-focus-page) .pg-wrap,
+  :where(#page-home, #mCat, #page-search, #page-me):not(.nour-focus-page) .m-body,
+  :where(#page-home, #mCat, #page-search, #page-me):not(.nour-focus-page) .nour-product-home {
+    width: calc(100% - 28px);
+  }
+  :where(.nour-product-head, .nour-product-section-head, .nour-continue-item,
+    .nour-daily-quote-body, .study-workspace-intro) {
+    max-width: 100%;
+  }
+  :where(.nour-product-action, .nour-product-search, .nour-tool-index button,
+    .study-workspace-actions button) {
+    min-height: 42px;
+  }
+  :where(input, textarea, select) {
+    font-size: max(16px, 1em);
+  }
+}
+
+@media (min-width: 761px) {
+  :where(#page-home, #mCat, #page-search, #page-me, #aiSec):not(.nour-focus-page) {
+    padding-bottom: 42px;
+  }
+}
+
+/* Keep focus workspaces and the Apple Books paper surface full-height and unobstructed. */
+body.nour-focus-active :where(#page-home, #mCat, #page-search, #page-me, #aiSec),
+body.reading #mReader {
+  padding-bottom: 0 !important;
+}
+body.reading #mReader .rd-paper {
+  scroll-margin-bottom: calc(124px + env(safe-area-inset-bottom));
+}
+
+/* Avoid accidental overflow from long Arabic titles in every list and toolbar. */
+:where(.book-card, .book-item, .catalog-card, .nour-continue-item, .nour-tool-index button,
+  .m-head, .pg-h, .nour-product-section-head) > :where(b, strong, span, small, a) {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+/* Quiet, useful motion only when the user permits it. */
+@media (prefers-reduced-motion: no-preference) {
+  :where(.nour-product-card, .nour-discovery, .nour-continue-item, .nour-fiqh-school-card,
+    .nour-tool-index button, .study-workspace-intro) {
+    transition: background-color 180ms var(--nour-ui-ease),
+      border-color 180ms var(--nour-ui-ease),
+      box-shadow 180ms var(--nour-ui-ease),
+      opacity 180ms var(--nour-ui-ease);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+::selection {
+  background: rgba(215,185,109,.34);
+  color: inherit;
+}
+
+/* Mobile mission bar: copy keeps its hierarchy; existing actions remain reachable on a calm scroll row. */
+@media (max-width: 600px) {
+  #page-home > .nour-mission {
+    display: grid !important;
+    grid-template-columns: 40px minmax(0, 1fr);
+    align-items: center;
+    gap: 8px 10px !important;
+    padding: 12px 13px !important;
+  }
+  #page-home > .nour-mission .nour-mission-mark {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 4px !important;
+  }
+  #page-home > .nour-mission .nour-mission-copy {
+    min-width: 0;
+  }
+  #page-home > .nour-mission .nour-mission-copy strong {
+    display: block;
+    white-space: nowrap;
+    font-size: 13px !important;
+  }
+  #page-home > .nour-mission .nour-mission-actions {
+    grid-column: 1 / -1;
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    gap: 6px !important;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    padding-top: 2px;
+    scrollbar-width: none;
+  }
+  #page-home > .nour-mission .nour-mission-actions::-webkit-scrollbar {
+    display: none;
+  }
+  #page-home > .nour-mission .nour-mission-actions button {
+    flex: 0 0 auto;
+    min-height: 38px !important;
+    padding: 7px 11px !important;
+    border-radius: 4px !important;
+    scroll-snap-align: start;
+  }
+}

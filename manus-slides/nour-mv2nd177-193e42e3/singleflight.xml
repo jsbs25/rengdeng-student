@@ -1,0 +1,25 @@
+<slide id="singleflight">
+  <background color="ivory"/>
+  <shape id="top-green" type="rect" x="40" y="40" width="780" height="2" fill="inkgreen"/>
+  <shape id="top-gold" type="rect" x="820" y="40" width="420" height="2" fill="gold"/>
+  <text id="title" x="40" y="68" width="1120" height="52" font="heading" color="inkgreen">单飞刷新：300个请求只触发一次后台刷新</text>
+  <text id="lead" x="40" y="128" width="1120" height="34" font="body" size="19" color="secondary">过期时采用 stale-while-revalidate：请求不等待第三方，统一返回最近快照；仅第一条请求占用刷新令牌。</text>
+  <text id="lane1" x="45" y="220" width="170" height="32" font="body" size="20" color="inkgreen"><strong>用户请求</strong></text>
+  <text id="lane2" x="45" y="350" width="170" height="32" font="body" size="20" color="inkgreen"><strong>缓存状态机</strong></text>
+  <text id="lane3" x="45" y="480" width="170" height="32" font="body" size="20" color="inkgreen"><strong>刷新 Worker</strong></text>
+  <shape id="line1" type="line" x="220" y="250" width="920" height="0" stroke="linegold" stroke-width="1"/>
+  <shape id="line2" type="line" x="220" y="380" width="920" height="0" stroke="linegold" stroke-width="1"/>
+  <shape id="line3" type="line" x="220" y="510" width="920" height="0" stroke="linegold" stroke-width="1"/>
+  <shape id="burst" type="rect" x="255" y="208" width="210" height="84" fill="#EAEAE5" corner-radius="4"/>
+  <text id="burst-t" x="270" y="220" width="180" height="60" font="body" size="18" color="inkblack" align="center" anchor="middle"><p><strong>300 并发请求</strong></p><p font="caption" color="secondary">全部 HTTP 200</p></text>
+  <shape id="cache" type="rect" x="540" y="338" width="220" height="84" fill="#EEF4EE" stroke="#8BB79A" stroke-width="1" corner-radius="4"/>
+  <text id="cache-t" x="555" y="350" width="190" height="62" font="body" size="18" color="inkgreen" align="center" anchor="middle"><p><strong>读取旧快照</strong></p><p font="caption" color="secondary">refreshing=true</p></text>
+  <shape id="worker" type="rect" x="840" y="468" width="245" height="84" fill="#F3ECD9" stroke="gold" stroke-width="1" corner-radius="4"/>
+  <text id="worker-t" x="854" y="480" width="217" height="60" font="body" size="18" color="warning" align="center" anchor="middle"><p><strong>唯一后台 worker</strong></p><p font="caption" color="secondary">抓取 + 有界测速</p></text>
+  <shape id="a1" type="line" x="465" y="250" width="72" height="103" stroke="inkgreen" stroke-width="2" arrow-end="arrow"/>
+  <shape id="a2" type="line" x="760" y="380" width="78" height="103" stroke="gold" stroke-width="2" arrow-end="arrow"/>
+  <shape id="a3" type="line" x="1085" y="510" width="62" height="-130" stroke="success" stroke-width="2" arrow-end="arrow"/>
+  <text id="result" x="878" y="344" width="250" height="55" font="body" size="17" color="success" align="center"><p><strong>559 bytes 新快照</strong></p><p font="caption" color="secondary">3 个节点 · refreshing=false</p></text>
+  <text id="log-note" x="230" y="590" width="910" height="44" font="caption" size="15" color="secondary" align="center">本次日志：4 个外源返回 404，但刷新未失败；1 个可达节点经测速后写入新缓存。失败时旧快照会被保留。</text>
+  <text id="page" x="1120" y="654" width="80" height="22" font="caption" color="secondary" align="right">04 / 09</text>
+</slide>

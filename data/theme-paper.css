@@ -1,0 +1,116 @@
+/* ============================================================
+   燃灯同学 · 纸感主题（干净重写版）
+   来源：ui-ux-pro-max「E-Ink / Paper」+ Taste-Skill + frontend-design-pro
+   作用域：只用 html[data-theme="light"] / dark 前缀，与站内写法对等
+   ============================================================ */
+:root{
+  --paper:#fdfbf7; --paper-2:#f7f4ed; --paper-3:#efeade; --paper-card:#fffefb;
+  --ink:#1a1a1a; --ink-2:#3a3a38; --ink-3:#6d6d68; --ink-4:#9b9b94;
+  --hair:rgba(26,26,26,.10); --hair-2:rgba(26,26,26,.06);
+  --gold:#9c7f2c;
+  --pnoise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");
+}
+
+/* ── 纸底 + 颗粒 ── */
+html[data-theme="light"] body,html[data-theme="dark"] body{
+  background-color:var(--paper)!important;
+  background-image:var(--pnoise)!important;
+  background-attachment:fixed!important;
+  color:var(--ink)!important;
+}
+/* ── 纸片卡片：直角 + 发丝线 + 无阴影 ── */
+html[data-theme="light"] .s-card,html[data-theme="dark"] .s-card,
+html[data-theme="light"] .bk-card,html[data-theme="dark"] .bk-card,
+html[data-theme="light"] .gcard,html[data-theme="dark"] .gcard,
+html[data-theme="light"] .card,html[data-theme="dark"] .card,
+html[data-theme="light"] .stat,html[data-theme="dark"] .stat{
+  background-color:var(--paper-card)!important;
+  background-image:none!important;
+  border:1px solid var(--hair)!important;
+  border-radius:4px!important;
+  box-shadow:none!important;
+}
+html[data-theme="light"] .s-card,html[data-theme="dark"] .s-card{
+  padding:20px 22px 16px!important;
+  margin-bottom:-1px!important;
+}
+@media (hover:hover){
+  html[data-theme="light"] .s-card:hover,html[data-theme="dark"] .s-card:hover,
+  html[data-theme="light"] .bk-card:hover,html[data-theme="dark"] .bk-card:hover{
+    border-color:rgba(26,26,26,.24)!important;
+    box-shadow:2px 2px 0 rgba(26,26,26,.06)!important;
+  }
+}
+/* ── 印刷按钮 ── */
+html[data-theme="light"] .s-btn,html[data-theme="dark"] .s-btn,
+html[data-theme="light"] .act-btn,html[data-theme="dark"] .act-btn{
+  background:transparent!important; background-image:none!important;
+  border:1px solid rgba(26,26,26,.14)!important;
+  color:var(--ink-3)!important; font-weight:600!important;
+  border-radius:4px!important; box-shadow:none!important; min-height:44px!important;
+}
+@media (hover:hover){
+  html[data-theme="light"] .s-btn:hover{ border-color:var(--ink)!important; color:var(--ink)!important; }
+}
+html[data-theme="light"] .s-btn:active{ background:var(--paper-3)!important; }
+/* ── 分类标签 ── */
+html[data-theme="light"] .cat-tab,html[data-theme="dark"] .cat-tab{
+  background:transparent!important; background-image:none!important;
+  border:1px solid rgba(26,26,26,.14)!important; border-radius:4px!important;
+  color:var(--ink-3)!important; font-weight:600!important;
+  box-shadow:none!important; min-height:44px!important;
+}
+html[data-theme="light"] .cat-tab.on,html[data-theme="dark"] .cat-tab.on{
+  background:var(--ink)!important; color:var(--paper)!important; border-color:var(--ink)!important;
+}
+/* ── 侧栏 / 书脊 ── */
+html[data-theme="light"] .hs-rail,html[data-theme="dark"] .hs-rail{
+  background-color:transparent!important;
+  border-right:1px solid var(--hair)!important;
+}
+html[data-theme="light"] .chip,html[data-theme="dark"] .chip{
+  background:transparent!important; border-radius:4px!important;
+  color:var(--ink-2)!important; min-height:44px!important;
+}
+html[data-theme="light"] .chip.on,html[data-theme="dark"] .chip.on{
+  background:var(--ink)!important; color:var(--paper)!important;
+}
+/* ── 分区小标（唯一用金的地方）── */
+html[data-theme="light"] .sec-title,html[data-theme="light"] .hs-sec-t,
+html[data-theme="light"] .srch-g{
+  color:var(--gold)!important; font-weight:700!important;
+  letter-spacing:.09em!important; text-transform:uppercase; font-size:.74rem!important;
+}
+/* ── 弹层（纸感 sheet）── */
+html[data-theme="light"] .modal .m-body,html[data-theme="light"] .modal .m-head,
+html[data-theme="dark"] .modal .m-body,html[data-theme="dark"] .modal .m-head{
+  background-color:rgba(253,251,247,.96)!important;
+  background-image:var(--pnoise)!important;
+  border-color:var(--hair)!important;
+}
+/* ── 阿语：墨黑纸感（比彩绿更耐读）── */
+html[data-theme="light"] .s-card .s-ar,html[data-theme="dark"] .s-card .s-ar,
+html[data-theme="light"] .gar,html[data-theme="dark"] .gar{
+  color:var(--ink)!important;
+  font-family:'DubaiNur','AmiriNur','Noto Naskh Arabic','SF Arabic',serif!important;
+}
+html[data-theme="light"] .s-card .s-ar{ border-bottom:1px solid var(--hair-2)!important; }
+/* ── 输入 ── */
+html[data-theme="light"] input,html[data-theme="light"] textarea,html[data-theme="light"] select{
+  background-color:var(--paper-2)!important; background-image:none!important;
+  border:1px solid rgba(26,26,26,.12)!important; border-radius:4px!important;
+  color:var(--ink)!important; box-shadow:none!important;
+}
+/* ── 夜间（E-Ink 黑）── */
+html[data-theme="light"][data-lib-night="1"] body,
+html[data-theme="dark"][data-lib-night="1"] body{
+  background-color:#141412!important;
+}
+html[data-theme][data-lib-night="1"] .s-card,
+html[data-theme][data-lib-night="1"] .bk-card{
+  background-color:#1a1a18!important; border-color:rgba(255,255,255,.10)!important;
+}
+html[data-theme][data-lib-night="1"] .rd-page,
+html[data-theme][data-lib-night="1"] .modal .m-body{
+  background-color:#1a1a18!important; background-image:none!important; color:#c9c9c2!important;
+}

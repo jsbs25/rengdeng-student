@@ -1,0 +1,144 @@
+/* ============================================================
+   努尔老师 · 手机端紧凑版 v2（按真实 DOM 结构写）
+   结构：.ps-ai-card > .ps-ai-head / .ps-ai-msgs / .ps-ai-chips / .ps-ai-input
+   目标：小卡片 + 左输入 / 右答案 + 不再霸屏
+   ============================================================ */
+@media (max-width:820px){
+
+  .ps-ai{ max-width:100%!important; margin:10px 0 0!important; padding:0 12px!important; }
+
+  /* 卡片：用 grid 做左右两栏 */
+  .ps-ai-card{
+    display:grid!important;
+    grid-template-columns:minmax(0,36%) minmax(0,64%)!important;
+    grid-template-rows:auto minmax(0,1fr) auto!important;
+    grid-template-areas:
+      "head head"
+      "input msgs"
+      "input chips"!important;
+    border-radius:12px!important;
+    border:1px solid rgba(26,26,26,.10)!important;
+    background:#fffefb!important;                 /* 纸感：不用深绿渐变了 */
+    background-image:none!important;
+    box-shadow:none!important;
+    overflow:hidden!important;
+    max-height:none!important;
+  }
+  .ps-ai-card::before{ display:none!important; }  /* 去掉斜纹装饰 */
+
+  /* 头部：整行，紧凑 */
+  .ps-ai-head{
+    grid-area:head!important;
+    padding:8px 12px!important; font-size:12.5px!important;
+    background:transparent!important;
+    color:#1a1a1a!important;
+    border-bottom:1px solid rgba(26,26,26,.10)!important;
+  }
+  .ps-ai-head .ps-en{ display:none!important; }   /* 手机上去掉英文小字，省空间 */
+  .ps-ai-head-l{ display:flex!important; align-items:center!important; gap:6px!important; }
+  .ps-ai-avatar{ width:20px!important; height:20px!important; }
+
+  /* 左：输入区 */
+  .ps-ai-input{
+    grid-area:input!important;
+    display:flex!important; flex-direction:column!important; gap:6px!important;
+    padding:10px 8px 10px 10px!important;
+    border-right:1px solid rgba(26,26,26,.10)!important;
+    background:#fdfbf7!important;
+  }
+  .ps-ai-input input{
+    width:100%!important; min-height:64px!important; font-size:14px!important;
+    padding:8px 10px!important; border-radius:4px!important;
+    border:1px solid rgba(26,26,26,.12)!important;
+    background:#fff!important; color:#1a1a1a!important;
+  }
+  .ps-ai-input button{
+    width:100%!important; min-height:44px!important;
+    font-size:13px!important; padding:8px 10px!important; border-radius:4px!important;
+  }
+  .ps-ai-input .ps-mic{ min-height:40px!important; }
+
+  /* 右：答案区 */
+  .ps-ai-msgs{
+    grid-area:msgs!important;
+    height:auto!important; min-height:110px!important; max-height:150px!important;
+    overflow-y:auto!important;
+    padding:10px 12px!important;
+    background:transparent!important;
+    font-size:12.5px!important; color:#3a3a38!important;
+    -webkit-overflow-scrolling:touch;
+  }
+  .ps-ai-msg{
+    font-size:12.5px!important; line-height:1.62!important;
+    padding:6px 9px!important; margin-bottom:6px!important; max-width:100%!important;
+    border-radius:6px!important;
+  }
+  .ps-ai-msg.bot{ background:#f4f1e9!important; color:#2c2c30!important; }
+  .ps-ai-msg.user{ background:#1a1a1a!important; color:#fdfbf7!important; }
+
+  /* 右：快捷问题 */
+  .ps-ai-chips{
+    grid-area:chips!important;
+    padding:6px 10px 10px!important; gap:5px!important;
+    display:flex!important; flex-wrap:wrap!important;
+    background:transparent!important;
+    border-top:1px solid rgba(26,26,26,.06)!important;
+  }
+  .ps-ai-chips button,.ps-ai-chips .chip{
+    font-size:11.5px!important; min-height:32px!important; padding:5px 9px!important;
+    border-radius:4px!important;
+  }
+
+  /* 绝不吸底（之前的霸屏就是它）*/
+  #aiSec{ position:static!important; max-height:none!important; }
+}
+@media (max-width:390px){
+  .ps-ai-card{ grid-template-columns:minmax(0,40%) minmax(0,60%)!important; }
+  .ps-ai-msgs{ max-height:132px!important; }
+  .ps-ai-input input{ min-height:56px!important; }
+}
+
+
+/* ═══ v3：简单可靠（放弃 grid，改为整体限高）═══ */
+@media (max-width:820px){
+  .ps-ai{ margin:8px 0 0!important; padding:0 12px!important; }
+  .ps-ai-card{
+    display:block!important;
+    grid-template-columns:none!important;
+    grid-template-areas:none!important;
+    border-radius:12px!important;
+    border:1px solid rgba(26,26,26,.10)!important;
+    background:#fffefb!important; background-image:none!important;
+    box-shadow:none!important; overflow:hidden!important;
+    max-height:312px!important;              /* ← 关键：整体限高，不霸屏 */
+    height:auto!important;
+  }
+  .ps-ai-head{ padding:7px 12px!important; font-size:12px!important;
+    background:transparent!important; color:#1a1a1a!important;
+    border-bottom:1px solid rgba(26,26,26,.10)!important; }
+  .ps-ai-head .ps-en{ display:none!important; }
+  .ps-ai-msgs{
+    height:158px!important; max-height:158px!important; min-height:0!important;
+    overflow-y:auto!important; padding:8px 10px!important;
+    background:transparent!important; font-size:12px!important; color:#3a3a38!important;
+    -webkit-overflow-scrolling:touch;
+  }
+  .ps-ai-msg{ font-size:12px!important; line-height:1.58!important;
+    padding:5px 8px!important; margin-bottom:5px!important; border-radius:6px!important; }
+  .ps-ai-msg.bot{ background:#f4f1e9!important; color:#2c2c30!important; }
+  .ps-ai-msg.user{ background:#1a1a1a!important; color:#fdfbf7!important; }
+  .ps-ai-chips{ padding:5px 8px!important; gap:4px!important; background:transparent!important; }
+  .ps-ai-chips button,.ps-ai-chips .chip{ font-size:11px!important;
+    min-height:28px!important; padding:4px 8px!important; border-radius:4px!important; }
+  .ps-ai-input{ display:flex!important; flex-direction:row!important; gap:6px!important;
+    padding:8px 10px!important; border-top:1px solid rgba(26,26,26,.08)!important;
+    background:#fdfbf7!important; }
+  .ps-ai-input input{ flex:1!important; min-height:44px!important; font-size:15px!important;
+    padding:8px 10px!important; border-radius:4px!important;
+    border:1px solid rgba(26,26,26,.12)!important; background:#fff!important; }
+  .ps-ai-input button{ flex:0 0 auto!important; min-height:44px!important;
+    min-width:60px!important; font-size:13px!important; padding:8px 12px!important;
+    border-radius:4px!important; }
+  .ps-ai-input .ps-mic{ min-width:44px!important; }
+  #aiSec{ position:static!important; max-height:none!important; }
+}

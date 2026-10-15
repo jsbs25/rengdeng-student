@@ -1,0 +1,24 @@
+<slide id="nodes_optimization">
+  <background color="ivory"/>
+  <shape id="top-green" type="rect" x="40" y="40" width="780" height="2" fill="inkgreen"/>
+  <shape id="top-gold" type="rect" x="820" y="40" width="420" height="2" fill="gold"/>
+  <text id="title" x="40" y="68" width="1120" height="52" font="heading" color="inkgreen">下一步：把突发尾延迟从连接队列里拿回来</text>
+  <text id="lead" x="40" y="128" width="1120" height="34" font="body" size="18" color="secondary">目标不是改变节点内容或扩大抓取，而是让缓存读取在任何刷新状态下稳定、可测、可回滚。</text>
+  <shape id="stage1" type="rect" x="50" y="210" width="250" height="255" fill="#EEF4EE" stroke="#8BB79A" stroke-width="1" corner-radius="4"/>
+  <text id="stage1-t" x="72" y="234" width="206" height="42" font="body" size="22" color="inkgreen" align="center"><strong>01 · 快路径</strong></text>
+  <text id="stage1-b" x="72" y="294" width="206" height="145" font="body" size="17" color="inkblack" line-height="1.45"><ul bullet="•"><li>内存中预解析 nodes JSON</li><li>YAML 与 JSON 同时原子交换</li><li>避免每请求正则扫描 YAML</li></ul></text>
+  <shape id="stage2" type="rect" x="365" y="210" width="250" height="255" fill="#F4F2EA" stroke="linegold" stroke-width="1" corner-radius="4"/>
+  <text id="stage2-t" x="387" y="234" width="206" height="42" font="body" size="22" color="inkgreen" align="center"><strong>02 · 连接治理</strong></text>
+  <text id="stage2-b" x="387" y="294" width="206" height="145" font="body" size="17" color="inkblack" line-height="1.45"><ul bullet="•"><li>NGINX / Cloudflare 连接复用</li><li>端点微型边缘缓存 1–5 秒</li><li>并发闸门与排队指标</li></ul></text>
+  <shape id="stage3" type="rect" x="680" y="210" width="250" height="255" fill="#F3ECD9" stroke="gold" stroke-width="1" corner-radius="4"/>
+  <text id="stage3-t" x="702" y="234" width="206" height="42" font="body" size="22" color="warning" align="center"><strong>03 · 刷新治理</strong></text>
+  <text id="stage3-b" x="702" y="294" width="206" height="145" font="body" size="17" color="inkblack" line-height="1.45"><ul bullet="•"><li>持久化最后成功快照</li><li>外源健康评分与退避</li><li>独立刷新耗时/失败率观测</li></ul></text>
+  <shape id="stage4" type="rect" x="995" y="210" width="220" height="255" fill="#EAEAE5" stroke="#A6AAA5" stroke-width="1" corner-radius="4"/>
+  <text id="stage4-t" x="1012" y="234" width="186" height="42" font="body" size="22" color="inkgreen" align="center"><strong>04 · 验收</strong></text>
+  <text id="stage4-b" x="1012" y="294" width="186" height="145" font="body" size="17" color="inkblack" line-height="1.45"><ul bullet="•"><li>冷/热/过期三态压测</li><li>P50、P95、P99与错误率</li><li>自动保留可回滚版本</li></ul></text>
+  <shape id="a1" type="line" x="300" y="338" width="64" height="0" stroke="inkgreen" stroke-width="2" arrow-end="arrow"/>
+  <shape id="a2" type="line" x="615" y="338" width="64" height="0" stroke="inkgreen" stroke-width="2" arrow-end="arrow"/>
+  <shape id="a3" type="line" x="930" y="338" width="64" height="0" stroke="inkgreen" stroke-width="2" arrow-end="arrow"/>
+  <text id="accept" x="90" y="540" width="1100" height="55" font="body" size="20" color="inkgreen" align="center"><p><strong>验收门槛建议：</strong>60 并发下 100% 成功、节点刷新不阻塞、热缓存 P95 可预测；每一项以公网实测替代估计。</p></text>
+  <text id="page" x="1120" y="654" width="80" height="22" font="caption" color="secondary" align="right">06 / 09</text>
+</slide>

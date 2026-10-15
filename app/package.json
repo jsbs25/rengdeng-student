@@ -1,0 +1,48 @@
+{
+  "name": "nur-al-arabiyya",
+  "version": "4.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "desktop": "electron .",
+    "pack": "electron-packager . \"حامل المصباح\" --platform=darwin --arch=arm64 --overwrite --icon=assets/icon.png --out=release",
+    "android": "expo run:android",
+    "ios": "expo run:ios"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@expo/metro-runtime": "~5.0.5",
+    "@react-native-async-storage/async-storage": "^2.2.0",
+    "@react-navigation/bottom-tabs": "^7.18.14",
+    "@react-navigation/native": "^7.3.14",
+    "expo": "^53.0.27",
+    "expo-asset": "~11.1.7",
+    "expo-audio": "~0.4.9",
+    "expo-av": "~15.1.7",
+    "expo-build-properties": "~0.14.8",
+    "expo-clipboard": "~7.1.5",
+    "expo-constants": "~17.1.8",
+    "expo-file-system": "~18.1.11",
+    "expo-network": "~7.1.5",
+    "expo-notifications": "~0.31.5",
+    "expo-sharing": "~13.1.5",
+    "expo-speech": "~13.1.7",
+    "expo-speech-recognition": "~1.1.1",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "react-native": "0.79.6",
+    "react-native-safe-area-context": "5.4.0",
+    "react-native-screens": "~4.11.1",
+    "react-native-svg": "15.11.2",
+    "react-native-web": "^0.20.0",
+    "react-native-webview": "13.13.5"
+  },
+  "devDependencies": {
+    "electron": "^43.2.0",
+    "electron-packager": "^17.1.2"
+  }
+}

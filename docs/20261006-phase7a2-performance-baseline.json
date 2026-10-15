@@ -1,0 +1,488 @@
+{
+  "generated_at_utc": "2026-10-06T20:42:10Z",
+  "scope": "read-only; no AI, auth, payment, TTS, ASR or write endpoints",
+  "public_base": "https://xn--dqry4os3s3gb.com",
+  "public_api": [
+    {
+      "url": "https://xn--dqry4os3s3gb.com/",
+      "status": 200,
+      "latency_ms": 751.87,
+      "wire_bytes": 543522,
+      "content_encoding": "gzip",
+      "cache_control": "no-cache, must-revalidate, max-age=0",
+      "etag": false,
+      "last_modified": true,
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://xn--dqry4os3s3gb.com/api/home_stats",
+      "status": 200,
+      "latency_ms": 1591.03,
+      "wire_bytes": 258,
+      "content_encoding": "gzip",
+      "cache_control": "no-store, max-age=3600",
+      "etag": false,
+      "last_modified": false,
+      "content_type": "application/json; charset=utf-8"
+    },
+    {
+      "url": "https://xn--dqry4os3s3gb.com/api/catalog/meta",
+      "status": 200,
+      "latency_ms": 131.36,
+      "wire_bytes": 2507,
+      "content_encoding": "gzip",
+      "cache_control": "no-store, max-age=3600",
+      "etag": false,
+      "last_modified": false,
+      "content_type": "application/json; charset=utf-8"
+    },
+    {
+      "url": "https://xn--dqry4os3s3gb.com/api/catalog?page=1&size=60",
+      "status": 200,
+      "latency_ms": 117.76,
+      "wire_bytes": 11021,
+      "content_encoding": "gzip",
+      "cache_control": "no-store, max-age=3600",
+      "etag": false,
+      "last_modified": false,
+      "content_type": "application/json; charset=utf-8"
+    },
+    {
+      "url": "https://xn--dqry4os3s3gb.com/api/library/classics?size=5",
+      "status": 200,
+      "latency_ms": 200.98,
+      "wire_bytes": 1721,
+      "content_encoding": "gzip",
+      "cache_control": "no-store, max-age=3600",
+      "etag": false,
+      "last_modified": false,
+      "content_type": "application/json; charset=utf-8"
+    },
+    {
+      "url": "https://xn--dqry4os3s3gb.com/api/library/fiqh-schools?size=5",
+      "status": 200,
+      "latency_ms": 131.72,
+      "wire_bytes": 15174,
+      "content_encoding": "gzip",
+      "cache_control": "no-store, max-age=3600",
+      "etag": false,
+      "last_modified": false,
+      "content_type": "application/json; charset=utf-8"
+    },
+    {
+      "url": "https://xn--dqry4os3s3gb.com/api/dict/lookup?w=%D9%83%D8%AA%D8%A7%D8%A8",
+      "status": 200,
+      "latency_ms": 124.5,
+      "wire_bytes": 774,
+      "content_encoding": "gzip",
+      "cache_control": "no-store, max-age=3600",
+      "etag": false,
+      "last_modified": false,
+      "content_type": "application/json; charset=utf-8"
+    }
+  ],
+  "public_assets": [
+    {
+      "url": "https://xn--dqry4os3s3gb.com/data/upgrade2.css?v=4.1.0-20261006232743",
+      "status": 200,
+      "latency_ms": 41.86,
+      "wire_bytes": 3384,
+      "content_encoding": "gzip",
+      "cache_control": "public, max-age=604800, immutable",
+      "etag": true,
+      "last_modified": true,
+      "content_type": "text/css; charset=utf-8"
+    },
+    {
+      "url": "https://xn--dqry4os3s3gb.com/data/library2.css?v=4.1.0-20261006232743",
+      "status": 200,
+      "latency_ms": 42.03,
+      "wire_bytes": 3708,
+      "content_encoding": "gzip",
+      "cache_control": "public, max-age=604800, immutable",
+      "etag": true,
+      "last_modified": true,
+      "content_type": "text/css; charset=utf-8"
+    },
+    {
+      "url": "https://xn--dqry4os3s3gb.com/data/paper-v3.css?v=4.1.0-20261006232743",
+      "status": 200,
+      "latency_ms": 120.16,
+      "wire_bytes": 1965,
+      "content_encoding": "gzip",
+      "cache_control": "public, max-age=604800, immutable",
+      "etag": true,
+      "last_modified": true,
+      "content_type": "text/css; charset=utf-8"
+    },
+    {
+      "url": "https://xn--dqry4os3s3gb.com/data/pay_qr.png?v=3",
+      "status": 200,
+      "latency_ms": 54.06,
+      "wire_bytes": 126773,
+      "content_encoding": "",
+      "cache_control": "max-age=2592000",
+      "etag": false,
+      "last_modified": true,
+      "content_type": "image/png"
+    },
+    {
+      "url": "https://xn--dqry4os3s3gb.com/data/course.js?v=4.1.0-20261006232743",
+      "status": 200,
+      "latency_ms": 38.74,
+      "wire_bytes": 1287,
+      "content_encoding": "gzip",
+      "cache_control": "public, max-age=604800, immutable",
+      "etag": true,
+      "last_modified": true,
+      "content_type": "application/javascript; charset=utf-8"
+    },
+    {
+      "url": "https://xn--dqry4os3s3gb.com/data/belt.js?v=4.1.0-20261006232743",
+      "status": 200,
+      "latency_ms": 35.06,
+      "wire_bytes": 898,
+      "content_encoding": "gzip",
+      "cache_control": "public, max-age=604800, immutable",
+      "etag": true,
+      "last_modified": true,
+      "content_type": "application/javascript; charset=utf-8"
+    },
+    {
+      "url": "https://xn--dqry4os3s3gb.com/data/views2.js?v=4.1.0-20261006232743",
+      "status": 200,
+      "latency_ms": 35.68,
+      "wire_bytes": 11861,
+      "content_encoding": "gzip",
+      "cache_control": "public, max-age=604800, immutable",
+      "etag": true,
+      "last_modified": true,
+      "content_type": "application/javascript; charset=utf-8"
+    },
+    {
+      "url": "https://xn--dqry4os3s3gb.com/data/contact.js?v=4.1.0-20261006232743",
+      "status": 200,
+      "latency_ms": 32.67,
+      "wire_bytes": 994,
+      "content_encoding": "gzip",
+      "cache_control": "public, max-age=604800, immutable",
+      "etag": true,
+      "last_modified": true,
+      "content_type": "application/javascript; charset=utf-8"
+    },
+    {
+      "url": "https://xn--dqry4os3s3gb.com/data/dictlimit.js?v=4.1.0-20261006232743",
+      "status": 200,
+      "latency_ms": 37.58,
+      "wire_bytes": 1079,
+      "content_encoding": "gzip",
+      "cache_control": "public, max-age=604800, immutable",
+      "etag": true,
+      "last_modified": true,
+      "content_type": "application/javascript; charset=utf-8"
+    },
+    {
+      "url": "https://xn--dqry4os3s3gb.com/data/freeentry.js?v=4.1.0-20261006232743",
+      "status": 200,
+      "latency_ms": 38.7,
+      "wire_bytes": 1748,
+      "content_encoding": "gzip",
+      "cache_control": "public, max-age=604800, immutable",
+      "etag": true,
+      "last_modified": true,
+      "content_type": "application/javascript; charset=utf-8"
+    },
+    {
+      "url": "https://xn--dqry4os3s3gb.com/data/permlock.js?v=4.1.0-20261006232743",
+      "status": 200,
+      "latency_ms": 48.13,
+      "wire_bytes": 2191,
+      "content_encoding": "gzip",
+      "cache_control": "public, max-age=604800, immutable",
+      "etag": true,
+      "last_modified": true,
+      "content_type": "application/javascript; charset=utf-8"
+    },
+    {
+      "url": "https://xn--dqry4os3s3gb.com/data/audiostop.js?v=4.1.0-20261006232743",
+      "status": 200,
+      "latency_ms": 41.32,
+      "wire_bytes": 999,
+      "content_encoding": "gzip",
+      "cache_control": "public, max-age=604800, immutable",
+      "etag": true,
+      "last_modified": true,
+      "content_type": "application/javascript; charset=utf-8"
+    },
+    {
+      "url": "https://xn--dqry4os3s3gb.com/data/reader-plus.js?v=4.1.0-20261006232743",
+      "status": 200,
+      "latency_ms": 41.15,
+      "wire_bytes": 1855,
+      "content_encoding": "gzip",
+      "cache_control": "public, max-age=604800, immutable",
+      "etag": true,
+      "last_modified": true,
+      "content_type": "application/javascript; charset=utf-8"
+    }
+  ],
+  "public_deferred_assets": [
+    {
+      "url": "https://xn--dqry4os3s3gb.com/data/builtin_books.js?v=4.1.0-20261006232743",
+      "status": 200,
+      "latency_ms": 163.96,
+      "wire_bytes": 644648,
+      "content_encoding": "gzip",
+      "cache_control": "public, max-age=604800, immutable",
+      "etag": true,
+      "last_modified": true,
+      "content_type": "application/javascript; charset=utf-8",
+      "load_mode": "deferred"
+    },
+    {
+      "url": "https://xn--dqry4os3s3gb.com/data/builtin_hadith.js?v=4.1.0-20261006232743",
+      "status": 200,
+      "latency_ms": 50.16,
+      "wire_bytes": 747,
+      "content_encoding": "gzip",
+      "cache_control": "public, max-age=604800, immutable",
+      "etag": true,
+      "last_modified": true,
+      "content_type": "application/javascript; charset=utf-8",
+      "load_mode": "deferred"
+    },
+    {
+      "url": "https://xn--dqry4os3s3gb.com/data/builtin_history.js?v=4.1.0-20261006232743",
+      "status": 200,
+      "latency_ms": 45.56,
+      "wire_bytes": 54,
+      "content_encoding": "gzip",
+      "cache_control": "public, max-age=604800, immutable",
+      "etag": true,
+      "last_modified": true,
+      "content_type": "application/javascript; charset=utf-8",
+      "load_mode": "deferred"
+    },
+    {
+      "url": "https://xn--dqry4os3s3gb.com/data/builtin_quran.js?v=4.1.0-20261006232743",
+      "status": 200,
+      "latency_ms": 77.69,
+      "wire_bytes": 619297,
+      "content_encoding": "gzip",
+      "cache_control": "public, max-age=604800, immutable",
+      "etag": true,
+      "last_modified": true,
+      "content_type": "application/javascript; charset=utf-8",
+      "load_mode": "deferred"
+    },
+    {
+      "url": "https://xn--dqry4os3s3gb.com/data/builtin_sentences.js?v=4.1.0-20261006232743",
+      "status": 200,
+      "latency_ms": 126.23,
+      "wire_bytes": 1550866,
+      "content_encoding": "gzip",
+      "cache_control": "public, max-age=604800, immutable",
+      "etag": true,
+      "last_modified": true,
+      "content_type": "application/javascript; charset=utf-8",
+      "load_mode": "deferred"
+    },
+    {
+      "url": "https://xn--dqry4os3s3gb.com/data/builtin_vocab.js?v=4.1.0-20261006232743",
+      "status": 200,
+      "latency_ms": 60.71,
+      "wire_bytes": 138006,
+      "content_encoding": "gzip",
+      "cache_control": "public, max-age=604800, immutable",
+      "etag": true,
+      "last_modified": true,
+      "content_type": "application/javascript; charset=utf-8",
+      "load_mode": "deferred"
+    }
+  ],
+  "local_dictionary": {
+    "warm": {
+      "summary": {
+        "count": 25,
+        "p50_ms": 2.544,
+        "max_ms": 49.747
+      },
+      "samples": [
+        {
+          "word": "في",
+          "latency_ms": 27.673,
+          "found": true
+        },
+        {
+          "word": "من",
+          "latency_ms": 0.096,
+          "found": true
+        },
+        {
+          "word": "هل",
+          "latency_ms": 0.246,
+          "found": true
+        },
+        {
+          "word": "هي",
+          "latency_ms": 0.627,
+          "found": true
+        },
+        {
+          "word": "عربية",
+          "latency_ms": 0.326,
+          "found": true
+        },
+        {
+          "word": "يوميا",
+          "latency_ms": 2.96,
+          "found": true
+        },
+        {
+          "word": "رقم",
+          "latency_ms": 2.544,
+          "found": true
+        },
+        {
+          "word": "الجملة",
+          "latency_ms": 2.917,
+          "found": true
+        },
+        {
+          "word": "جملة",
+          "latency_ms": 2.96,
+          "found": true
+        },
+        {
+          "word": "للتعلم",
+          "latency_ms": 3.325,
+          "found": true
+        },
+        {
+          "word": "إلى",
+          "latency_ms": 0.214,
+          "found": true
+        },
+        {
+          "word": "أنا",
+          "latency_ms": 0.059,
+          "found": true
+        },
+        {
+          "word": "هو",
+          "latency_ms": 0.442,
+          "found": true
+        },
+        {
+          "word": "كل",
+          "latency_ms": 0.3,
+          "found": true
+        },
+        {
+          "word": "لا",
+          "latency_ms": 0.129,
+          "found": true
+        },
+        {
+          "word": "على",
+          "latency_ms": 0.783,
+          "found": true
+        },
+        {
+          "word": "أن",
+          "latency_ms": 0.055,
+          "found": true
+        },
+        {
+          "word": "سامي",
+          "latency_ms": 3.639,
+          "found": true
+        },
+        {
+          "word": "زيري",
+          "latency_ms": 3.682,
+          "found": true
+        },
+        {
+          "word": "جدا",
+          "latency_ms": 0.265,
+          "found": true
+        },
+        {
+          "word": "كتاب",
+          "latency_ms": 4.015,
+          "found": true
+        },
+        {
+          "word": "كِتَاب",
+          "latency_ms": 4.316,
+          "found": true
+        },
+        {
+          "word": "سلام",
+          "latency_ms": 6.343,
+          "found": true
+        },
+        {
+          "word": "مدرسة",
+          "latency_ms": 6.211,
+          "found": true
+        },
+        {
+          "word": "غيرموجودكلمة",
+          "latency_ms": 49.747,
+          "found": true
+        }
+      ]
+    },
+    "cold": {
+      "summary": {
+        "count": 8,
+        "p50_ms": 26.361,
+        "max_ms": 27.895
+      },
+      "samples": [
+        {
+          "word": "في",
+          "latency_ms": 24.686,
+          "found": true
+        },
+        {
+          "word": "من",
+          "latency_ms": 27.128,
+          "found": true
+        },
+        {
+          "word": "هل",
+          "latency_ms": 25.123,
+          "found": true
+        },
+        {
+          "word": "هي",
+          "latency_ms": 25.503,
+          "found": true
+        },
+        {
+          "word": "عربية",
+          "latency_ms": 25.595,
+          "found": true
+        },
+        {
+          "word": "يوميا",
+          "latency_ms": 27.378,
+          "found": true
+        },
+        {
+          "word": "رقم",
+          "latency_ms": 27.339,
+          "found": true
+        },
+        {
+          "word": "الجملة",
+          "latency_ms": 27.895,
+          "found": true
+        }
+      ]
+    }
+  }
+}
