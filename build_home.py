@@ -8033,6 +8033,14 @@ try:
         html = html.replace('</head>', _interface_polish_css + '</head>', 1)
 except Exception as _interface_polish_css_err:
     print('nour-interface-polish.css 注入失败:', _interface_polish_css_err)
+# NOUR 设计系统裁决层：统一令牌/排版/RTL 逻辑属性/克制视觉，注入在所有旧视觉层之后（最高优先级，可整层删除回滚）。
+try:
+    _design_system_css_path = DIR / 'data' / 'nour-design-system.css'
+    if _design_system_css_path.exists():
+        _design_system_css = '<style id="nour-design-system">' + _design_system_css_path.read_text(encoding='utf-8') + '</style>'
+        html = html.replace('</head>', _design_system_css + '</head>', 1)
+except Exception as _design_system_css_err:
+    print('nour-design-system.css 注入失败:', _design_system_css_err)
 # ===== PWA：manifest + 图标（输出到同目录）=====
 import shutil as _sh
 try:
