@@ -101,6 +101,29 @@ html[data-theme="dark"] .modal .m-body{background:#171512!important;color:#ece6d
 .nour-more-tools summary{padding:18px!important}
 .nour-product-action{padding:10px 12px!important;font-size:12px!important}
 
+/* ============ 界面精修：去模板感、去重复、提可读性 ============ */
+/* 顶栏：去掉装饰性光晕/拱门（AI 模板感来源） */
+.hdr .glow, .hdr .arch-wrap { display: none !important; }
+.hdr { padding-top: 20px !important; padding-bottom: 8px !important; }
+.hdr .logo, #page-home>.hdr .logo { font-size: 30px !important; letter-spacing: 0 !important; line-height: 1.1 !important; }
+.hdr .logo-sub, #page-home>.hdr .logo-sub { font-size: 12px !important; letter-spacing: .08em !important; }
+.hdr .zh, #page-home>.hdr .zh { font-size: 12px !important; color: var(--ds-ink-2) !important; margin-top: 6px !important; }
+.hdr .lang-btn { min-height: 36px !important; font-size: 13px !important; }
+
+/* 内容区：去掉与顶栏重复的英文 kicker，让中文标题成为主角 */
+.nour-product-kicker { display: none !important; }
+.nour-product-head { padding-top: 24px !important; }
+.nour-product-title { font-size: clamp(26px, 3.6vw, 40px) !important; letter-spacing: -.02em !important; }
+
+/* 搜索框：清晰实底 */
+.nour-product-search { background: var(--ds-surface) !important; box-shadow: var(--ds-shadow) !important; }
+
+/* 底部导航：标签字号从 10.5px 提到 12px，选中态更清晰 */
+.tabbar .tb .t-nm, .tabbar.nour-primary-nav .tb .t-nm { font-size: 12px !important; letter-spacing: 0 !important; }
+.tabbar .tb { gap: 4px !important; }
+.tabbar .tb.on, .tabbar.nour-primary-nav .tb.on { background: var(--ds-surface-2) !important; border-radius: 10px !important; }
+.tabbar .tb.on .t-nm, .tabbar.nour-primary-nav .tb.on .t-nm { font-weight: 600 !important; }
+
 /* 无障碍 */
 :focus-visible{outline:2px solid var(--ds-gold)!important;outline-offset:3px!important}
 @media (prefers-contrast: more){:root{--ds-ink-2:#435048;--ds-ink-3:#66726a;--ds-line:#b9b3a4}}
