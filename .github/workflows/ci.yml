@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  verify:
+    name: 网页体检 + 语法检查
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Python 语法检查（server.py / 主要脚本）
+        run: |
+          python3 -m py_compile server.py admin_panel.py build_home.py openiti_stream.py
+
+      - name: 网页自动体检（重建 + JS/DOM/函数完整性）
+        run: python3 tools/verify_web.py

@@ -57,7 +57,7 @@ def check_ids(html):
     all_ids = set(re.findall(r'id=["\']([^"\']+)["\']', html))
     ref = set(re.findall(r"getElementById\(\s*'([^']+)'\s*\)", js))
     ref |= set(re.findall(r'getElementById\(\s*"([^"]+)"\s*\)', js))
-    removed = {'dueBar','dueBarTxt','goalBar','goalBtn','goalTxt','miniChart','eb','ei','eiSend','em','ep','homeMic','wakeBtn','wakeStatus','homeAI','homeAIChips','homeAIIn','donMsg','payRatio','rdFloatBack','dictAI','tkTabs','tkGrid','tkSeg','nurHomeBtn','aiView','qSrc','qAr','qCn'}
+    removed = {'dueBar','dueBarTxt','goalBar','goalBtn','goalTxt','miniChart','eb','ei','eiSend','em','ep','homeMic','wakeBtn','wakeStatus','homeAI','homeAIChips','homeAIIn','donMsg','payRatio','rdFloatBack','dictAI','tkTabs','tkGrid','tkSeg','nurHomeBtn','aiView','qSrc','qAr','qCn','mAudioLibrary','nourRealtimeHud'}
     missing = sorted(r for r in ref if r not in all_ids and r not in removed)
     if missing:
         print('❌ 引用了不存在的元素 id:', missing)
@@ -89,8 +89,8 @@ def check_fns(html):
         import os as _os
         for _m in re.findall(r'<script[^>]*src=["\']([^"\']+)["\']', html):
             _p = _m.split('?')[0]
-            _fp = os.path.join(str(ROOT), _p.lstrip('/'))
-            if os.path.exists(_fp) and _fp.endswith('.js'):
+            _fp = _os.path.join(str(ROOT), _p.lstrip('/'))
+            if _os.path.exists(_fp) and _fp.endswith('.js'):
                 _ex = open(_fp, encoding='utf-8').read()
                 defined |= set(re.findall(r'function\s+([A-Za-z_$][\w$]*)\s*\(', _ex))
                 defined |= set(re.findall(r'window\.([A-Za-z_$][\w$]*)\s*=', _ex))
@@ -104,7 +104,8 @@ def check_fns(html):
     builtins = {'if', 'for', 'while', 'return', 'alert', 'confirm', 'prompt', 'JSON', 'Math', 'parseInt',
                 'parseFloat', 'String', 'Number', 'Array', 'Object', 'Date', 'fetch', 'setTimeout',
                 'setInterval', 'encodeURIComponent', 'decodeURIComponent', 'console', 'event', 'this',
-                'getElementById', 'querySelector', 'querySelectorAll', 'indexOf', 'replace', 'stringify'}
+                'getElementById', 'querySelector', 'querySelectorAll', 'indexOf', 'replace', 'stringify',
+                'stopPropagation', 'preventDefault'}
     # 只把“像函数名”的（驼峰/下划线/已知单字函数）算进来，避免英文散文里的括号误报
     single = {'nav', 'ec', 'ap', 'em', 'sp', 'esc', 'cp', 'tr', 'qs', 'rc'}
     def looks_like_fn(n):

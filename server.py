@@ -30,8 +30,63 @@ try:
 except Exception:
     pass
 
-SECRET = 'nur-al-arabiyya-2026'
+def _load_secret():
+    """SECRET：优先环境变量 → data/secret.txt（gitignore）→ 首次自动生成并持久化。"""
+    v = (os.environ.get('NUR_SECRET') or '').strip()
+    if v:
+        return v
+    _sp = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data', 'secret.txt')
+    try:
+        v = open(_sp, encoding='utf-8').read().strip()
+        if v:
+            return v
+    except Exception:
+        pass
+    import secrets as _secrets
+    v = _secrets.token_hex(24)
+    try:
+        open(_sp, 'w', encoding='utf-8').write(v)
+        os.chmod(_sp, 0o600)
+    except Exception:
+        pass
+    return v
+
+SECRET = _load_secret()
 FREE_AI_DAILY = 20  # 普通用户每日 AI 次数
+
+# ===== 简易 IP 限流（防滥用高成本接口；每 IP 每分钟上限）=====
+_RATE = {}
+_RATE_LOCK = threading.Lock()
+_RATE_RULES = {
+    '/api/tts': 10,
+    '/api/image': 5,
+    '/api/music': 3,
+    '/api/asr': 10,
+    '/api/chat/message': 30,
+    '/api/chat/stream_voice': 10,
+    '/api/page/analyze': 20,
+    '/api/search': 60,
+}
+
+def _rate_limited(ip, path):
+    """命中限流规则则返回需等待秒数；否则返回 None（放行）。"""
+    lim = None
+    for pref, n in _RATE_RULES.items():
+        if path == pref or path.startswith(pref + '/'):
+            lim = n
+            break
+    if lim is None:
+        return None
+    now = time.time()
+    key = ip + '|' + path
+    with _RATE_LOCK:
+        hits = [t for t in _RATE.get(key, []) if now - t < 60]
+        if len(hits) >= lim:
+            _RATE[key] = hits
+            return int(60 - (now - hits[0])) + 1
+        hits.append(now)
+        _RATE[key] = hits
+        return None
 
 # ===== 静态文件安全：禁止通过 HTTP 直接下载的敏感文件 =====
 # 说明：_serve 会返回项目根目录下的静态文件，这里显式拒绝密钥/用户库/后台密码/源码等，
@@ -3992,6 +4047,10 @@ class Handler(BaseHTTPRequestHandler):
         if urlparse(self.path).path in ('/wechat', '/wechat/'):
             return self.do_GET()
         p = urlparse(self.path).path
+        _ip = self.client_address[0] if self.client_address else ''
+        _wait = _rate_limited(_ip, p)
+        if _wait:
+            return self._json({'ok': False, 'error': '请求过于频繁，请 %d 秒后再试。' % _wait}, 429)
         if p == '/api/page/analyze':
             # 只接收当前阅读器页文本；不把整本书上传给模型，也不把密钥交给浏览器。
             try:

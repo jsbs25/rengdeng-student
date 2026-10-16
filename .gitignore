@@ -46,6 +46,7 @@ data/pays.json
 data/unlocks.json
 data/wx_users.json
 data/admin_pw.txt
+data/secret.txt
 data/ai_key.txt
 data/ai_keys.json
 data/ai_config.json
