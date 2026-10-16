@@ -4,25 +4,50 @@
     <view class="head-sub">{{stats.sentences || '—'}} 句 · {{stats.cats || catKeys.length}} 类</view>
   </view>
 
-  <!-- 分类 -->
-  <scroll-view scroll-x class="cats" show-scrollbar="{{false}}">
-    <view
-      wx:for="{{catKeys}}"
-      wx:key="*this"
-      class="chip {{activeCat === item ? 'on' : ''}}"
-      data-key="{{item}}"
-      bindtap="onCatTap"
-    >{{item}}</view>
-  </scroll-view>
-
-  <!-- 句子列表 -->
-  <view class="sentence-list" wx:if="{{sentences.length}}">
-    <view class="s-card" wx:for="{{sentences}}" wx:key="index">
-      <view class="ar ar-md">{{item.a}}</view>
-      <view class="cn s-cn">{{item.c}}</view>
-      <view class="cn-2 s-en">{{item.e}}</view>
+  <!-- 闪卡模式 -->
+  <view class="flash" wx:if="{{flashMode && sentences.length}}">
+    <view class="flash-card" bindtap="reveal">
+      <view class="ar ar-lg">{{sentences[flashIndex].a}}</view>
+      <block wx:if="{{flashRevealed}}">
+        <view class="cn flash-cn">{{sentences[flashIndex].c}}</view>
+        <view class="cn-2 flash-en">{{sentences[flashIndex].e}}</view>
+      </block>
+      <view class="cn-3 flash-hint" wx:if="{{!flashRevealed}}">点卡片看答案</view>
     </view>
+    <view class="flash-actions" wx:if="{{flashRevealed}}">
+      <button class="btn-ghost" bindtap="nextCard">认识</button>
+      <button class="btn-primary" bindtap="nextCard">下一张</button>
+    </view>
+    <view class="flash-progress">{{flashIndex + 1}} / {{sentences.length}}</view>
   </view>
 
-  <view class="empty" wx:if="{{!loading && !sentences.length}}">暂无句子</view>
+  <!-- 分类 + 列表模式 -->
+  <block wx:if="{{!flashMode}}">
+    <scroll-view scroll-x class="cats" show-scrollbar="{{false}}">
+      <view
+        wx:for="{{catKeys}}"
+        wx:key="*this"
+        class="chip {{activeCat === item ? 'on' : ''}}"
+        data-key="{{item}}"
+        bindtap="onCatTap"
+      >{{item}}</view>
+    </scroll-view>
+
+    <view class="toolbar">
+      <button class="btn-ghost tb-btn" bindtap="toggleFlash" wx:if="{{sentences.length}}">🃏 闪卡复习</button>
+    </view>
+
+    <view class="sentence-list" wx:if="{{sentences.length}}">
+      <view class="s-card" wx:for="{{sentences}}" wx:key="index">
+        <view class="s-top">
+          <view class="ar ar-md s-ar">{{item.a}}</view>
+          <view class="collect" data-i="{{index}}" bindtap="collectWord">＋ 收词</view>
+        </view>
+        <view class="cn s-cn">{{item.c}}</view>
+        <view class="cn-2 s-en">{{item.e}}</view>
+      </view>
+    </view>
+
+    <view class="empty" wx:if="{{!loading && !sentences.length}}">暂无句子</view>
+  </block>
 </view>

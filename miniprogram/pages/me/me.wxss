@@ -24,6 +24,25 @@
   margin-top: 6rpx;
 }
 
+.word {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid var(--ds-line);
+}
+.word:last-child { border-bottom: none; }
+.word-main { flex: 1; min-width: 0; }
+.word-cn { margin-top: 4rpx; font-size: 24rpx; color: var(--ds-ink-2); }
+.word-del {
+  flex: none;
+  color: var(--ds-ink-3);
+  font-size: 24rpx;
+  padding: 8rpx 18rpx;
+  border: 1rpx solid var(--ds-line);
+  border-radius: 999rpx;
+}
+
 .device {
   margin-top: 16rpx;
   word-break: break-all;

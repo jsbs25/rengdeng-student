@@ -15,10 +15,23 @@
       <view class="stat-label">词汇</view>
     </view>
     <view class="stat">
-      <view class="stat-num">{{stats.quran || '—'}}</view>
-      <view class="stat-label">古兰经章</view>
+      <view class="stat-num">{{words.length}}</view>
+      <view class="stat-label">生词</view>
     </view>
   </view>
+
+  <!-- 生词本 -->
+  <view class="sec-title"><text class="t">生词本</text><text class="more">{{words.length}} 词</text></view>
+  <view class="card" wx:if="{{words.length}}">
+    <view class="word" wx:for="{{words}}" wx:key="a">
+      <view class="word-main">
+        <view class="ar ar-md">{{item.a}}</view>
+        <view class="cn word-cn">{{item.c}}</view>
+      </view>
+      <view class="word-del" data-a="{{item.a}}" bindtap="removeWord">删</view>
+    </view>
+  </view>
+  <view class="empty" wx:else>还没有收藏生词。去「学习」里点句子上的「＋ 收词」。</view>
 
   <view class="sec-title"><text class="t">账号</text></view>
   <view class="card">
@@ -29,7 +42,7 @@
   <view class="sec-title"><text class="t">关于</text></view>
   <view class="card">
     <view class="cn-2">版本 {{version}}</view>
-    <view class="cn-3 about">AI 对话、全站搜索、图书馆正文等能力由服务器提供。完整功能请访问网页版。</view>
+    <view class="cn-3 about">AI 对话、全站搜索、图书馆正文等能力由服务器提供。</view>
     <button class="btn-ghost copy" bindtap="copyDomain">复制网页版地址</button>
   </view>
 </view>

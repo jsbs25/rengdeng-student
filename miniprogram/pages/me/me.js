@@ -1,16 +1,26 @@
 const api = require('../../utils/api');
+const wordbook = require('../../utils/wordbook');
 
 Page({
   data: {
     stats: {},
     deviceId: '',
-    version: '1.0.0'
+    version: '1.0.0',
+    words: []
+  },
+  onShow() {
+    this.setData({ words: wordbook.list() });
   },
   onLoad() {
     this.setData({ deviceId: api.getDeviceId() });
     api.getHomeStats().then((s) => {
       this.setData({ stats: s || {} });
     }).catch(() => {});
+  },
+  removeWord(e) {
+    const a = e.currentTarget.dataset.a;
+    const words = wordbook.remove(a);
+    this.setData({ words });
   },
   login() {
     api.deviceLogin().then((d) => {
