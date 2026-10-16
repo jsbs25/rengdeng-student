@@ -73,6 +73,34 @@ html[data-theme="dark"] .modal .m-head{background:#1f1c18!important;color:#ece6d
 html[data-theme="dark"] #page-home .m-body,
 html[data-theme="dark"] .modal .m-body{background:#171512!important;color:#ece6d8!important}
 
+/* ============ 布局疏朗化（双模式）：增大留白、放大过小字号、改善阅读节奏 ============ */
+.nour-product-head{padding:44px 0 36px!important}
+.nour-product-kicker{font-size:12px!important;letter-spacing:.14em!important;margin-bottom:14px!important}
+.nour-product-title{line-height:1.12!important;letter-spacing:-.04em!important}
+.nour-product-lede{font-size:15px!important;line-height:1.9!important;margin-top:16px!important}
+.nour-product-search{margin-top:22px!important;padding:13px 18px!important;font-size:13px!important}
+.nour-product-grid{gap:28px!important;margin-top:28px!important}
+.nour-product-column{gap:24px!important}
+.nour-product-section{padding-top:26px!important}
+.nour-product-section h2{font-size:15px!important;margin-bottom:14px!important}
+.nour-continue-item{padding:20px 22px!important;min-height:84px!important}
+.nour-continue-copy strong{font-size:14px!important}
+.nour-continue-copy small{font-size:11px!important;margin-top:6px!important}
+.nour-discovery-block{padding:26px!important;min-height:170px!important}
+.nour-discovery-block h3{font-size:16px!important;margin-bottom:10px!important}
+.nour-discovery-block p{font-size:12px!important;line-height:1.9!important}
+.nour-discovery-actions{margin-top:20px!important;gap:8px!important}
+.nour-stat{padding:22px 20px!important}
+.nour-stat b{font-size:26px!important}
+.nour-stat span{font-size:11px!important;margin-top:10px!important}
+.nour-tool-index button{padding:18px 18px!important}
+.nour-tool-index strong{font-size:13px!important}
+.nour-tool-index small{font-size:11px!important;margin-top:5px!important}
+.nour-home-progress{padding:18px 18px!important}
+.nour-daily-quote-body{padding:26px 26px 22px!important;gap:14px!important}
+.nour-more-tools summary{padding:18px!important}
+.nour-product-action{padding:10px 12px!important;font-size:12px!important}
+
 /* 无障碍 */
 :focus-visible{outline:2px solid var(--ds-gold)!important;outline-offset:3px!important}
 @media (prefers-contrast: more){:root{--ds-ink-2:#435048;--ds-ink-3:#66726a;--ds-line:#b9b3a4}}

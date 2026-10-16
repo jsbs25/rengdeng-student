@@ -53,11 +53,11 @@ def check_js(html):
 
 def check_ids(html):
     scripts = re.findall(r'(?s)<script[^>]*>(.*?)</script>', html)
-    js = max(scripts, key=len) if scripts else ''
+    js = '\n'.join(scripts) if scripts else ''
     all_ids = set(re.findall(r'id=["\']([^"\']+)["\']', html))
     ref = set(re.findall(r"getElementById\(\s*'([^']+)'\s*\)", js))
     ref |= set(re.findall(r'getElementById\(\s*"([^"]+)"\s*\)', js))
-    removed = {'dueBar','dueBarTxt','goalBar','goalBtn','goalTxt','miniChart','eb','ei','eiSend','em','ep','homeMic','wakeBtn','wakeStatus','homeAI','homeAIChips','homeAIIn','donMsg','payRatio','rdFloatBack','dictAI','tkTabs','tkGrid','tkSeg','nurHomeBtn'}
+    removed = {'dueBar','dueBarTxt','goalBar','goalBtn','goalTxt','miniChart','eb','ei','eiSend','em','ep','homeMic','wakeBtn','wakeStatus','homeAI','homeAIChips','homeAIIn','donMsg','payRatio','rdFloatBack','dictAI','tkTabs','tkGrid','tkSeg','nurHomeBtn','aiView','qSrc','qAr','qCn'}
     missing = sorted(r for r in ref if r not in all_ids and r not in removed)
     if missing:
         print('❌ 引用了不存在的元素 id:', missing)
@@ -80,17 +80,20 @@ def check_stray(html):
 def check_fns(html):
     """标记中的 onclick/oninput 等引用的函数，是否真的定义了（防“函数被误删”类事故）。"""
     scripts = re.findall(r'(?s)<script[^>]*>(.*?)</script>', html)
-    js = max(scripts, key=len) if scripts else ''
+    js = '\n'.join(scripts) if scripts else ''
     defined = set(re.findall(r'function\s+([A-Za-z_$][\w$]*)\s*\(', js))
     defined |= set(re.findall(r'(?:var|let|const)\s+([A-Za-z_$][\w$]*)\s*=\s*(?:async\s*)?(?:function|\([^)]*\)\s*=>)', js))
     defined |= set(re.findall(r'window\.([A-Za-z_$][\w$]*)\s*=', js))
-    # 外部脚本（课程中心等）里的函数也算已定义
+    # 外部脚本里的函数也算已定义：动态解析页面实际引用的 <script src>（不再依赖硬编码清单）
     try:
         import os as _os
-        for _f in ('data/course.js', 'data/belt.js', 'data/views.js', 'data/contact.js', 'data/unlockbox.js', 'data/dictlimit.js', 'data/freeentry.js'):
-            if _os.path.exists(_f):
-                _ex = open(_f, encoding='utf-8').read()
+        for _m in re.findall(r'<script[^>]*src=["\']([^"\']+)["\']', html):
+            _p = _m.split('?')[0]
+            _fp = os.path.join(str(ROOT), _p.lstrip('/'))
+            if os.path.exists(_fp) and _fp.endswith('.js'):
+                _ex = open(_fp, encoding='utf-8').read()
                 defined |= set(re.findall(r'function\s+([A-Za-z_$][\w$]*)\s*\(', _ex))
+                defined |= set(re.findall(r'window\.([A-Za-z_$][\w$]*)\s*=', _ex))
     except Exception:
         pass
     calls = set()
