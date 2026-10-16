@@ -3,6 +3,7 @@
     "pages/home/home",
     "pages/learn/learn",
     "pages/library/library",
+    "pages/book/book",
     "pages/ai/ai",
     "pages/me/me"
   ],

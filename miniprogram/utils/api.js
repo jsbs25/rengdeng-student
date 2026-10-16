@@ -89,6 +89,19 @@ function getDeviceId() {
   return id;
 }
 
+// 书籍缓存（整书 2.3MB，跨页复用，避免重复拉取）
+let _booksCache = null;
+function getBooksCached() {
+  if (_booksCache) return Promise.resolve(_booksCache);
+  return getBooks().then((d) => {
+    _booksCache = (d && d.books) || [];
+    return _booksCache;
+  });
+}
+function getBookByTitle(title) {
+  return (_booksCache || []).find((b) => b.title === title) || null;
+}
+
 module.exports = {
   API_BASE,
   request,
@@ -102,5 +115,7 @@ module.exports = {
   search,
   chat,
   deviceLogin,
-  getDeviceId
+  getDeviceId,
+  getBooksCached,
+  getBookByTitle
 };

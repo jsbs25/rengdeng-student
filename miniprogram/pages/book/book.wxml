@@ -1,0 +1,20 @@
+<!-- 阅读正文 -->
+<scroll-view class="read" scroll-y wx:if="{{reading && current}}">
+  <view class="read-head">
+    <view class="read-back" bindtap="backToList">‹ 目录</view>
+    <view class="read-title">{{current.t}}</view>
+  </view>
+  <view class="ar read-body">{{current.body}}</view>
+</scroll-view>
+
+<!-- 目录 -->
+<view class="toc" wx:else>
+  <view class="toc-head">{{book.title}}</view>
+  <view class="toc-author">{{book.author}}</view>
+  <view class="toc-intro">{{book.intro_cn}}</view>
+  <view class="chapter" wx:for="{{chapters}}" wx:key="index" data-i="{{index}}" bindtap="openChapter">
+    <text class="chapter-num">{{index + 1}}</text>
+    <text class="chapter-t">{{item.t}}</text>
+  </view>
+  <view class="empty" wx:if="{{!chapters.length}}">暂无章节</view>
+</view>

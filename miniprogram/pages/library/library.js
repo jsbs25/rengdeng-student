@@ -14,10 +14,10 @@ Page({
   },
   load() {
     Promise.all([
-      api.getBooks().catch(() => ({ total: 0, books: [] })),
+      api.getBooksCached().catch(() => []),
       api.getCatalogMeta().catch(() => ({}))
-    ]).then(([b, m]) => {
-      this.setData({ books: b.books || [], meta: m, loading: false });
+    ]).then(([books, m]) => {
+      this.setData({ books, meta: m, loading: false });
     });
   },
   onInput(e) {
@@ -37,6 +37,6 @@ Page({
   },
   openBook(e) {
     const t = e.currentTarget.dataset.title;
-    wx.showToast({ title: '正文请到网页版阅读', icon: 'none' });
+    wx.navigateTo({ url: '/pages/book/book?title=' + encodeURIComponent(t) });
   }
 });
