@@ -7767,6 +7767,14 @@ except Exception as _focus_js_err:
     print('nour-focus-workspace.js 读取失败:', _focus_js_err)
 if _focus_js:
     html = html.replace('</body>', '<script>' + _focus_js + '</script></body>', 1)
+# NOUR 主题执行器：内联 !important 强制关键表面配色（覆盖历史 CSS 层级的级联混乱）。
+try:
+    _enforcer_js_path = DIR / 'data' / 'nour-theme-enforcer.js'
+    if _enforcer_js_path.exists():
+        _enforcer_js = _enforcer_js_path.read_text(encoding='utf-8')
+        html = html.replace('</body>', '<script>' + _enforcer_js + '</script></body>', 1)
+except Exception as _enforcer_err:
+    print('nour-theme-enforcer.js 注入失败:', _enforcer_err)
 # 首页精修 v2：缩短首屏的重复品牌信息，把主要视线留给学习入口。
 _home_finish_css = r'''<style id="home-finish-v4">
 :root{--vision-bg:#0b1021;--vision-panel:rgba(255,255,255,.075);--vision-panel-strong:rgba(20,34,54,.82);--vision-line:rgba(226,232,240,.15);--vision-text:#f4f1e9;--vision-muted:#a6b0c2;--vision-gold:#e8c96b;--vision-gold-soft:#f4df9b;--vision-emerald:#26b38d;--vision-blue:#89b9df;--vision-radius:20px;--cream:#0b1021;--ink:#f4f1e9;--white:#111a29;--card:#101c2c;--muted:#a6b0c2;--green:#1b8068;--green-d:#125c4b;--green-l:#26b38d;--gold:#cda94f;--gold-l:#f0da91;--gold-d:#a47c28;--line:rgba(226,232,240,.14);--lib-line:rgba(226,232,240,.15);--lib-bg:#0b1021;--ap-bg:#0b1021;--ap-card:#111a29;--ap-text:#f4f1e9;--ap-text2:#a6b0c2}

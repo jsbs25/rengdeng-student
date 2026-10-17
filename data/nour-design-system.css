@@ -1,130 +1,228 @@
-/* ==========================================================================
-   NOUR 设计系统 · 裁决层 v4（Final Contract）
-   --------------------------------------------------------------------------
-   职责（在所有旧视觉层之后注入，级联最高）：
-     1. 排版：统一字体、阿语行高、字距、bidi 隔离。
-     2. 浅色：覆盖各层硬编码的「深色玻璃」，统一纸感学术风。
-     3. 深色：保留既有深色主题，仅补少量可读性。
-   令牌前缀 --ds-*，避免与既有 --n-* / --nour-* 冲突。
-   ========================================================================== */
+/* ============================================================================
+   NOUR 终极设计系统 · Final Design System v1
+   ----------------------------------------------------------------------------
+   目标：一套完整、连贯、克制的视觉语言，覆盖全站所有界面，作为唯一权威。
+   原则：排版优先、留白充分、细线分隔、去渐变去光晕、RTL 一等公民。
+   注入位置：所有旧视觉层之后（最后加载 = 最高优先级，可整层删除回滚）。
+   ============================================================================ */
 
-:root{
-  --ds-bg:#f6f3eb; --ds-surface:#fffdf8; --ds-surface-2:#efe9dd;
-  --ds-ink:#24332b; --ds-ink-2:#5b6a60; --ds-ink-3:#8a938c;
-  --ds-line:#e3ddcc; --ds-brand:#0f5132; --ds-gold:#a98935;
-  --ds-shadow:0 1px 3px rgba(36,51,43,.06);
-  --ds-ar-ui:'DubaiNur','AmiriNur','SF Arabic','Noto Naskh Arabic',serif;
-  --ds-ar-reading:'ScheherazadeNur','AmiriNur',serif;
+/* ============ 1. 设计令牌 ============ */
+:root {
+  /* 色彩 · 浅色（暖纸 + 墨 + 哑金） */
+  --ds-bg: #f7f5ef;
+  --ds-surface: #ffffff;
+  --ds-surface-2: #f1efe8;
+  --ds-ink: #1f1e1b;
+  --ds-ink-2: #6b6a64;
+  --ds-ink-3: #9b9a93;
+  --ds-line: #e7e4da;
+  --ds-brand: #0f5132;
+  --ds-brand-2: #17603f;
+  --ds-gold: #a98935;
+  --ds-danger: #b3261e;
+
+  /* 字号 */
+  --ds-fs-display: 34px;
+  --ds-fs-title: 24px;
+  --ds-fs-sub: 18px;
+  --ds-fs-body: 16px;
+  --ds-fs-2: 14px;
+  --ds-fs-cap: 12px;
+
+  /* 行高 */
+  --ds-lh-cjk: 1.65;
+  --ds-lh-ar: 1.9;
+
+  /* 间距（4px 基数） */
+  --ds-sp-1: 4px; --ds-sp-2: 8px; --ds-sp-3: 12px;
+  --ds-sp-4: 16px; --ds-sp-5: 24px; --ds-sp-6: 32px; --ds-sp-7: 48px;
+
+  /* 圆角 */
+  --ds-r-sm: 6px; --ds-r-md: 10px; --ds-r-lg: 14px; --ds-r-pill: 999px;
+
+  /* 阴影（克制） */
+  --ds-shadow: 0 1px 2px rgba(31, 30, 27, .04), 0 4px 14px rgba(31, 30, 27, .05);
+
+  /* 字体 */
+  --ds-ar: 'DubaiNur', 'AmiriNur', 'SF Arabic', 'Noto Naskh Arabic', serif;
+  --ds-ar-read: 'ScheherazadeNur', 'AmiriNur', serif;
+  --ds-zh: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
 }
 
-/* ============ 排版（双模式） ============ */
-html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;letter-spacing:.005em}
-[lang="ar"],[dir="rtl"],.q-ar,.gar,.hs-line-ar,.belt-ar,.bktitle,.rd-ar,.rd-word-ar,.dict-lesson-ar,.nour-daily-quote-ar{font-family:var(--ds-ar-ui);letter-spacing:0!important;text-align:start}
-.q-ar,.gar,.rd-page,.rd-page__text,.rd-ar{font-family:var(--ds-ar-reading);line-height:1.95}
-.nour-bidi{unicode-bidi:isolate}.nour-bidi-plaintext{unicode-bidi:plaintext;direction:auto}
+html[data-theme="dark"] {
+  --ds-bg: #171512;
+  --ds-surface: #211e1a;
+  --ds-surface-2: #2a2621;
+  --ds-ink: #ece6d8;
+  --ds-ink-2: #b5ae9f;
+  --ds-ink-3: #7d7768;
+  --ds-line: #332e25;
+  --ds-brand: #3a9a68;
+  --ds-brand-2: #4bae79;
+  --ds-gold: #c8a74d;
+  --ds-shadow: 0 1px 2px rgba(0,0,0,.3), 0 6px 18px rgba(0,0,0,.32);
+}
 
-/* ============ 浅色：统一纸感（覆盖硬编码深色玻璃） ============ */
-html[data-theme="light"] body,
-html[data-theme="light"] html{background:var(--ds-bg)!important;background-image:none!important;color:var(--ds-ink)!important}
+/* ============ 2. 基础与排版 ============ */
+html[data-theme] body, html[data-theme] {
+  background: var(--ds-bg) !important;
+  background-image: none !important;
+  color: var(--ds-ink) !important;
+}
+body {
+  font-family: var(--ds-zh) !important;
+  line-height: var(--ds-lh-cjk);
+  letter-spacing: .005em;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
 
-/* 顶栏品牌文字（硬编码浅字） */
-html[data-theme="light"] .hdr,
-html[data-theme="light"] #page-home>.hdr{color:var(--ds-ink)!important}
-html[data-theme="light"] .hdr .logo,
-html[data-theme="light"] #page-home>.hdr .logo{color:var(--ds-brand)!important;-webkit-text-fill-color:var(--ds-brand)!important}
-html[data-theme="light"] .hdr .logo-sub,
-html[data-theme="light"] #page-home>.hdr .logo-sub{color:var(--ds-ink-2)!important}
-html[data-theme="light"] .hdr .zh{color:var(--ds-ink-2)!important}
-html[data-theme="light"] .hdr .lang-btn,
-html[data-theme="light"] .hdr .ai-btn{color:var(--ds-ink)!important;border-color:var(--ds-line)!important;background:var(--ds-surface)!important}
+/* 阿拉伯语：统一字体、行高、去字距、RTL */
+[lang="ar"], [dir="rtl"], .q-ar, .gar, .hs-line-ar, .belt-ar, .bktitle,
+.rd-ar, .rd-word-ar, .dict-lesson-ar, .nour-daily-quote-ar {
+  font-family: var(--ds-ar) !important;
+  letter-spacing: 0 !important;
+  text-align: start;
+}
+.q-ar, .gar, .rd-page, .rd-page__text, .rd-ar, .nour-daily-quote-ar {
+  font-family: var(--ds-ar-read) !important;
+  line-height: 1.95;
+}
+.nour-bidi { unicode-bidi: isolate; }
+.nour-bidi-plaintext { unicode-bidi: plaintext; direction: auto; }
 
-/* 弹窗（硬编码深蓝） */
-html[data-theme="light"] #page-home .m-head,
-html[data-theme="light"] .modal .m-head,
-html[data-theme="light"] #mDict .m-head{background:var(--ds-surface)!important;color:var(--ds-ink)!important;border-color:var(--ds-line)!important}
-html[data-theme="light"] #page-home .m-body,
-html[data-theme="light"] .modal .m-body{background:var(--ds-bg)!important;color:var(--ds-ink)!important}
-html[data-theme="light"] #page-home>.modal{background:rgba(20,22,20,.38)!important}
+/* 统一链接/强调为品牌绿 */
+a { color: var(--ds-brand); }
 
-/* 输入框（硬编码深色玻璃 + 浅字） */
-html[data-theme="light"] #page-home input,
-html[data-theme="light"] #page-home textarea,
-html[data-theme="light"] #page-home select{background:var(--ds-surface)!important;color:var(--ds-ink)!important;border-color:var(--ds-line)!important}
-html[data-theme="light"] #page-home input::placeholder,
-html[data-theme="light"] #page-home textarea::placeholder{color:var(--ds-ink-3)!important}
+/* ============ 3. 顶栏（去装饰，纯品牌） ============ */
+.hdr { text-align: center; padding: 28px 16px 12px !important; }
+.hdr .glow, .hdr .arch-wrap, .hdr .arch { display: none !important; }
+.hdr .logo, #page-home>.hdr .logo {
+  font-family: var(--ds-ar-read) !important;
+  font-size: 34px !important;
+  font-weight: 700 !important;
+  color: var(--ds-brand) !important;
+  line-height: 1.1 !important;
+  letter-spacing: 0 !important;
+}
+.hdr .logo-sub, #page-home>.hdr .logo-sub {
+  font-size: 12px !important;
+  color: var(--ds-ink-2) !important;
+  letter-spacing: .14em !important;
+  margin-top: 6px !important;
+}
+.hdr .zh { font-size: 12px !important; color: var(--ds-ink-3) !important; margin-top: 6px !important; }
+.hdr .lang-btn { color: var(--ds-ink) !important; border: 1px solid var(--ds-line) !important; background: var(--ds-surface) !important; }
 
-/* 底部导航（硬编码深色玻璃，双保险） */
-html[data-theme="light"] .tabbar,
-html[data-theme="light"] .tabbar.nour-primary-nav{background:var(--ds-surface)!important;border-color:var(--ds-line)!important;box-shadow:0 12px 30px rgba(36,51,43,.10)!important}
-html[data-theme="light"] .tabbar .tb{color:var(--ds-ink-2)!important}
-html[data-theme="light"] .tabbar .tb.on{color:var(--ds-brand)!important;background:var(--ds-surface-2)!important}
-html[data-theme="light"] .tabbar .tb.on .t-nm{color:var(--ds-brand)!important}
+/* ============ 4. 底部导航 ============ */
+html[data-theme] .tabbar, html[data-theme] .tabbar.nour-primary-nav, html[data-theme] .tabbar.nour-four-nav {
+  background: var(--ds-surface) !important;
+  border: 1px solid var(--ds-line) !important;
+  border-radius: 18px !important;
+  box-shadow: var(--ds-shadow) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+html[data-theme] .tabbar .tb { color: var(--ds-ink-2) !important; border-radius: 12px !important; }
+html[data-theme] .tabbar .tb .t-ic { filter: none !important; }
+html[data-theme] .tabbar .tb .t-nm { font-size: 12px !important; letter-spacing: 0 !important; }
+html[data-theme] .tabbar .tb.on {
+  background: var(--ds-surface-2) !important;
+  color: var(--ds-brand) !important;
+}
+html[data-theme] .tabbar .tb.on .t-nm { color: var(--ds-brand) !important; font-weight: 600 !important; }
+html[data-theme] .tabbar .tb.on .t-ic svg { stroke: var(--ds-brand) !important; }
 
-/* ============ 深色：统一暖炭黑 + 金（替换深蓝玻璃） ============ */
-html[data-theme="dark"] body,
-html[data-theme="dark"] html{background:#171512!important;background-image:none!important;color:#ece6d8!important}
-html[data-theme="dark"] .tabbar,
-html[data-theme="dark"] .tabbar.nour-primary-nav{background:#1f1c18!important;border-color:#332e25!important;box-shadow:0 12px 30px rgba(0,0,0,.35)!important}
-html[data-theme="dark"] .tabbar .tb{color:#b4ac99!important}
-html[data-theme="dark"] .tabbar .tb.on{color:#c8a74d!important;background:rgba(200,167,77,.12)!important}
-html[data-theme="dark"] #page-home .m-head,
-html[data-theme="dark"] .modal .m-head{background:#1f1c18!important;color:#ece6d8!important;border-color:#332e25!important}
-html[data-theme="dark"] #page-home .m-body,
-html[data-theme="dark"] .modal .m-body{background:#171512!important;color:#ece6d8!important}
+/* ============ 5. 卡片与表面（统一） ============ */
+.hero, .hs-row, .quote-card, .sup-card, .gcard, .belt-card, .ps-ai-card,
+.nour-product-card, .vision-card, .nour-continue-item, .nour-discovery-block,
+.nour-stat, .nour-tool-index, .nour-daily-quote-body, .nour-home-progress,
+.nour-more-tools, .profile-card, .bk-card, .dlg-scene-card {
+  background: var(--ds-surface) !important;
+  border: 1px solid var(--ds-line) !important;
+  box-shadow: var(--ds-shadow) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
 
-/* ============ 布局疏朗化（双模式）：增大留白、放大过小字号、改善阅读节奏 ============ */
-.nour-product-head{padding:44px 0 36px!important}
-.nour-product-kicker{font-size:12px!important;letter-spacing:.14em!important;margin-bottom:14px!important}
-.nour-product-title{line-height:1.12!important;letter-spacing:-.04em!important}
-.nour-product-lede{font-size:15px!important;line-height:1.9!important;margin-top:16px!important}
-.nour-product-search{margin-top:22px!important;padding:13px 18px!important;font-size:13px!important}
-.nour-product-grid{gap:28px!important;margin-top:28px!important}
-.nour-product-column{gap:24px!important}
-.nour-product-section{padding-top:26px!important}
-.nour-product-section h2{font-size:15px!important;margin-bottom:14px!important}
-.nour-continue-item{padding:20px 22px!important;min-height:84px!important}
-.nour-continue-copy strong{font-size:14px!important}
-.nour-continue-copy small{font-size:11px!important;margin-top:6px!important}
-.nour-discovery-block{padding:26px!important;min-height:170px!important}
-.nour-discovery-block h3{font-size:16px!important;margin-bottom:10px!important}
-.nour-discovery-block p{font-size:12px!important;line-height:1.9!important}
-.nour-discovery-actions{margin-top:20px!important;gap:8px!important}
-.nour-stat{padding:22px 20px!important}
-.nour-stat b{font-size:26px!important}
-.nour-stat span{font-size:11px!important;margin-top:10px!important}
-.nour-tool-index button{padding:18px 18px!important}
-.nour-tool-index strong{font-size:13px!important}
-.nour-tool-index small{font-size:11px!important;margin-top:5px!important}
-.nour-home-progress{padding:18px 18px!important}
-.nour-daily-quote-body{padding:26px 26px 22px!important;gap:14px!important}
-.nour-more-tools summary{padding:18px!important}
-.nour-product-action{padding:10px 12px!important;font-size:12px!important}
-
-/* ============ 界面精修：去模板感、去重复、提可读性 ============ */
-/* 顶栏：去掉装饰性光晕/拱门（AI 模板感来源） */
-.hdr .glow, .hdr .arch-wrap { display: none !important; }
-.hdr { padding-top: 20px !important; padding-bottom: 8px !important; }
-.hdr .logo, #page-home>.hdr .logo { font-size: 30px !important; letter-spacing: 0 !important; line-height: 1.1 !important; }
-.hdr .logo-sub, #page-home>.hdr .logo-sub { font-size: 12px !important; letter-spacing: .08em !important; }
-.hdr .zh, #page-home>.hdr .zh { font-size: 12px !important; color: var(--ds-ink-2) !important; margin-top: 6px !important; }
-.hdr .lang-btn { min-height: 36px !important; font-size: 13px !important; }
-
-/* 内容区：去掉与顶栏重复的英文 kicker，让中文标题成为主角 */
+/* ============ 6. 首页 ============ */
+.nour-product-head { padding: 20px 0 28px !important; border-bottom: 1px solid var(--ds-line) !important; }
 .nour-product-kicker { display: none !important; }
-.nour-product-head { padding-top: 24px !important; }
-.nour-product-title { font-size: clamp(26px, 3.6vw, 40px) !important; letter-spacing: -.02em !important; }
+.nour-product-title { font-size: var(--ds-fs-display) !important; font-weight: 650 !important; letter-spacing: -.02em !important; line-height: 1.15 !important; color: var(--ds-ink) !important; }
+.nour-product-lede { font-size: var(--ds-fs-body) !important; line-height: 1.75 !important; color: var(--ds-ink-2) !important; margin-top: 14px !important; }
+.nour-product-search {
+  background: var(--ds-surface) !important;
+  border: 1px solid var(--ds-line) !important;
+  color: var(--ds-ink) !important;
+  box-shadow: var(--ds-shadow) !important;
+  padding: 12px 16px !important;
+}
+.nour-product-grid { gap: var(--ds-sp-5) !important; margin-top: var(--ds-sp-5) !important; }
+.nour-product-column { gap: var(--ds-sp-5) !important; }
+.nour-product-section { border-top: 1px solid var(--ds-line) !important; padding-top: 22px !important; }
+.nour-product-section h2, .nour-product-section-head h2 { font-size: var(--ds-fs-sub) !important; font-weight: 650 !important; color: var(--ds-ink) !important; }
+.nour-product-section-head small, .nour-product-section-head .more { color: var(--ds-ink-3) !important; font-size: var(--ds-fs-cap) !important; }
+.nour-continue-copy strong { font-size: var(--ds-fs-body) !important; color: var(--ds-ink) !important; }
+.nour-continue-copy small { font-size: var(--ds-fs-cap) !important; color: var(--ds-ink-3) !important; }
+.nour-discovery-block h3 { font-size: var(--ds-fs-sub) !important; color: var(--ds-ink) !important; }
+.nour-discovery-block p { font-size: var(--ds-fs-2) !important; color: var(--ds-ink-2) !important; line-height: 1.7 !important; }
+.nour-stat b { font-size: 26px !important; color: var(--ds-brand) !important; }
+.nour-stat span { font-size: var(--ds-fs-cap) !important; color: var(--ds-ink-3) !important; }
+.nour-tool-index strong { font-size: var(--ds-fs-2) !important; color: var(--ds-ink) !important; }
+.nour-tool-index small { font-size: var(--ds-fs-cap) !important; color: var(--ds-ink-3) !important; }
+.nour-daily-quote-ar { color: var(--ds-brand) !important; font-size: clamp(22px, 3vw, 30px) !important; }
+.nour-daily-quote-cn { color: var(--ds-ink-2) !important; }
+.nour-product-action { color: var(--ds-brand) !important; border-color: var(--ds-line) !important; }
+.nour-product-action.primary { background: var(--ds-brand) !important; color: #fff !important; border-color: var(--ds-brand) !important; }
 
-/* 搜索框：清晰实底 */
-.nour-product-search { background: var(--ds-surface) !important; box-shadow: var(--ds-shadow) !important; }
+/* ============ 7. 图书馆 ============ */
+.bk-side { background: var(--ds-surface) !important; border-color: var(--ds-line) !important; }
+.bk-cat { color: var(--ds-ink-2) !important; }
+.bk-cat.on { background: var(--ds-surface-2) !important; color: var(--ds-brand) !important; }
+.bk-title { color: var(--ds-ink) !important; }
+.bk-q { background: var(--ds-surface) !important; color: var(--ds-ink) !important; border-color: var(--ds-line) !important; }
+.bk-meta b, .bk-meta { color: var(--ds-ink) !important; }
+.lib-tabs .lt { background: var(--ds-surface) !important; color: var(--ds-ink-2) !important; border-color: var(--ds-line) !important; }
+.lib-tabs .lt.on { background: var(--ds-brand) !important; color: #fff !important; border-color: var(--ds-brand) !important; }
 
-/* 底部导航：标签字号从 10.5px 提到 12px，选中态更清晰 */
-.tabbar .tb .t-nm, .tabbar.nour-primary-nav .tb .t-nm { font-size: 12px !important; letter-spacing: 0 !important; }
-.tabbar .tb { gap: 4px !important; }
-.tabbar .tb.on, .tabbar.nour-primary-nav .tb.on { background: var(--ds-surface-2) !important; border-radius: 10px !important; }
-.tabbar .tb.on .t-nm, .tabbar.nour-primary-nav .tb.on .t-nm { font-weight: 600 !important; }
+/* ============ 8. 阅读器 ============ */
+.rd-paper { background: var(--ds-surface) !important; color: var(--ds-ink) !important; }
+.rd-page { background: var(--ds-surface) !important; color: var(--ds-ink) !important; border-color: var(--ds-line) !important; box-shadow: var(--ds-shadow) !important; }
+.rd-bar, .rd-head, .rd-foot { color: var(--ds-ink-2) !important; border-color: var(--ds-line) !important; }
+.rd-bar .rd-ic { color: var(--ds-ink-2) !important; }
 
-/* 无障碍 */
-:focus-visible{outline:2px solid var(--ds-gold)!important;outline-offset:3px!important}
-@media (prefers-contrast: more){:root{--ds-ink-2:#435048;--ds-ink-3:#66726a;--ds-line:#b9b3a4}}
-::selection{background:rgba(203,184,126,.34);color:inherit}
+/* ============ 9. AI 工作区 ============ */
+.ps-ai-msg.bot { background: var(--ds-surface) !important; color: var(--ds-ink) !important; border-color: var(--ds-line) !important; }
+.ps-ai-msg.user { background: var(--ds-brand) !important; color: #fff !important; border-color: var(--ds-brand) !important; }
+.ps-ai-input input, .home-ai-compose input { background: var(--ds-surface) !important; color: var(--ds-ink) !important; border-color: var(--ds-line) !important; }
+.nour-ai-mode { color: var(--ds-ink-2) !important; border-color: var(--ds-line) !important; }
+.nour-ai-mode.is-active { color: var(--ds-brand) !important; border-color: var(--ds-brand) !important; background: var(--ds-surface-2) !important; }
+
+/* ============ 10. 弹窗 ============ */
+.modal { background: rgba(20, 20, 18, .38) !important; backdrop-filter: blur(4px); }
+.m-head, .modal .m-head, #page-home .m-head, #mCat .m-head, #mDict .m-head {
+  background: var(--ds-surface) !important; color: var(--ds-ink) !important; border-color: var(--ds-line) !important;
+}
+.m-body, .modal .m-body, #page-home .m-body {
+  background: var(--ds-bg) !important; color: var(--ds-ink) !important;
+}
+
+/* ============ 11. 表单与按钮 ============ */
+input, textarea, select, #page-home input, #page-home textarea, #page-home select {
+  background: var(--ds-surface) !important;
+  color: var(--ds-ink) !important;
+  border: 1px solid var(--ds-line) !important;
+}
+input::placeholder, textarea::placeholder { color: var(--ds-ink-3) !important; }
+.hbb, .srch-box { background: var(--ds-surface) !important; border: 1px solid var(--ds-line) !important; }
+.hbb input, .srch-box input { color: var(--ds-ink) !important; }
+.chip { background: var(--ds-surface) !important; color: var(--ds-ink-2) !important; border: 1px solid var(--ds-line) !important; }
+.chip.on { background: var(--ds-brand) !important; color: #fff !important; border-color: var(--ds-brand) !important; }
+
+/* ============ 12. 无障碍 ============ */
+:focus-visible { outline: 2px solid var(--ds-gold) !important; outline-offset: 3px !important; }
+::selection { background: rgba(169, 137, 53, .22); color: inherit; }
+@media (prefers-contrast: more) {
+  :root { --ds-ink-2: #4a4944; --ds-ink-3: #6f6e68; --ds-line: #c9c5b8; }
+  html[data-theme="dark"] { --ds-ink-2: #d6d0c2; --ds-ink-3: #a9a296; --ds-line: #4a4438; }
+}
