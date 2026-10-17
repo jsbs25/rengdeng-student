@@ -62,7 +62,7 @@ def set_ai_config(new_system=None, max_tokens=None):
             src = src[:m.start()] + 'SYSTEM = ' + json.dumps(new_system, ensure_ascii=False) + src[m.end():]
     if max_tokens:
         src = re.sub(r'"max_tokens": \d+', f'"max_tokens": {int(max_tokens)}', src)
-    p.write_text(encoding='utf-8', data=src)
+    p.write_text(src, encoding='utf-8')
     return True
 
 def rebuild():

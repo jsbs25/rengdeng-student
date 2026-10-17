@@ -1932,8 +1932,6 @@ def make_annotation(ar, book='', num=''):
     return {'cn': txt[:800], 'note': ''}
 
 
-def _dl(url, dst):
-    from urllib.parse import quote
 HF_SHAMELA = 'https://huggingface.co/datasets/AuthenticIlm/Shamela4_Full_DB/resolve/main'
 HF_WAQFEYA = 'https://huggingface.co/datasets/ieasybooks-org/shamela-waqfeya-library/resolve/main'
 _SHAMELA_IDX = None
