@@ -7917,7 +7917,8 @@ body,html[data-theme="light"] body,html[data-theme="dark"] body{background-image
 @media(max-width:700px){.page .pg-h{padding:18px 20px 13px!important;font-size:23px!important}.pg-wrap{width:calc(100% - 28px)!important}.library-page .m-head{min-height:64px!important}.library-page .m-head b{font-size:19px!important}.library-page .m-body{width:calc(100% - 20px)!important}.library-page .lib-tabs{top:64px!important}.study-progress{width:calc(100% - 24px)!important;gap:10px!important;padding:14px!important}.search-tools{gap:7px}.search-tools button{font-size:12px}}
 </style>'''
 # 高级产品主题：在旧样式之后注入，确保全屏页面、导航和 AI 工作区统一。
-html = html.replace('</head>', _home_finish_css + '</head>', 1)
+# （已停用：该「vision 深色层」强制深蓝、污染浅色模式，是界面混色的主因。浅/深主题现由 nour-design-system + nour-theme-enforcer 统一接管。）
+# html = html.replace('</head>', _home_finish_css + '</head>', 1)
 
 # 顶层页面视觉系统：从独立 CSS 读取，便于后续迭代且不碰内置数据。
 try:
