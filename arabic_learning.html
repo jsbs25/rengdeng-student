@@ -1032,7 +1032,7 @@ button,.btn,[onclick]{ transition-duration:var(--dur-micro) !important; }
   *{ animation-duration:.01ms !important; transition-duration:.01ms !important; } }
 /* 加载中的按钮文案（skill：说明在做什么，不要"请稍候"）*/
 button[disabled]{ opacity:.55; cursor:default; }
-</style><link rel="stylesheet" href="data/upgrade2.css?v=4.1.0-20261017231837"><style></style><link rel="stylesheet" href="data/library2.css?v=4.1.0-20261017231837"><style></style><link rel="stylesheet" href="data/paper-v3.css?v=4.1.0-20261017231837"><style>
+</style><link rel="stylesheet" href="data/upgrade2.css?v=4.1.0-20261017231852"><style></style><link rel="stylesheet" href="data/library2.css?v=4.1.0-20261017231852"><style></style><link rel="stylesheet" href="data/paper-v3.css?v=4.1.0-20261017231852"><style>
 /* 顶部公告静态呈现，避免长文字被跑马灯截断 */
 .donbar{margin:0!important;padding:9px 16px!important;background:#f5f4ef!important;color:#68675f!important;border-bottom:1px solid #e9e7df!important;font-size:12px!important;font-weight:500!important;white-space:normal!important;overflow:visible!important;line-height:1.6}
 .donbar-in{display:block!important;padding:0!important;animation:none!important;text-align:center;max-width:1240px;margin:auto}
@@ -5319,7 +5319,7 @@ input::placeholder, textarea::placeholder { color: var(--ds-ink-3) !important; }
 <div class="app-footer" style="text-align:center;padding:18px 16px 80px;font-size:10px;color:#9a9f9c"><div style="margin-bottom:10px"><button class="act-btn" style="margin:0 4px" onclick="showInstall()">📲 安装到手机</button> <button class="act-btn" style="margin:0 4px" onclick="exportData()">💾 导出备份</button> <label class="act-btn" style="display:inline-block;cursor:pointer;margin:0 4px">📂 导入备份<input type="file" accept=".json" style="display:none" onchange="importData(event)"></label></div><div id="serverStatus" style="font-weight:700;margin-bottom:4px">··· 检测服务器 ···</div>حاملُ المِصباح، صامتٌ لكنّه يهدي إلى الطريق · 燃灯者 &nbsp;|&nbsp; v4.1.0 &nbsp;|&nbsp; 句子 34782 句 · 词汇 29110 词 · 文章 7 篇 · 对话 26 场景 &nbsp;|&nbsp; 构建 2026-10-17 23:18</div><script>
 var BUILTIN_SENTENCES = [];
 var BUILTIN_VOCAB = [];
-window.NOUR_ASSET_VERSION = "4.1.0-20261017231837";
+window.NOUR_ASSET_VERSION = "4.1.0-20261017231852";
 window.NOUR_DATA_ASSETS = {sentences: "data/builtin_sentences.js", books: "data/builtin_books.js", quran: "data/builtin_quran.js", hadith: "data/builtin_hadith.js", vocab: "data/builtin_vocab.js", history: "data/builtin_history.js"};
 window.NOUR_DATA_GLOBALS = {sentences: "BUILTIN_SENTENCES", books: "BUILTIN_BOOKS", quran: "BUILTIN_QURAN", hadith: "BUILTIN_HADITH", vocab: "BUILTIN_VOCAB", history: "BUILTIN_HISTORY"};
 window.NOUR_DATA_PROMISES = window.NOUR_DATA_PROMISES || {};
@@ -12578,14 +12578,17 @@ function exportData(){
   try {
     new MutationObserver(run).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
   } catch (e) {}
-  // DOM 变化（动态渲染的图书馆/阅读器）防抖后重应用
+  // DOM 变化（动态渲染的图书馆/阅读器）防抖后重应用；仅新增节点时触发，避免无效重绘
   var _deb;
   try {
-    new MutationObserver(function () {
+    new MutationObserver(function (muts) {
+      var added = false;
+      for (var i = 0; i < muts.length; i++) { if (muts[i].addedNodes && muts[i].addedNodes.length) { added = true; break; } }
+      if (!added) return;
       clearTimeout(_deb);
-      _deb = setTimeout(run, 60);
+      _deb = setTimeout(run, 80);
     }).observe(document.body, { childList: true, subtree: true });
   } catch (e) {}
 })();
-</script></body><script defer src="data/course.js?v=4.1.0-20261017231837"></script><script defer src="data/belt.js?v=4.1.0-20261017231837"></script><script defer src="data/views2.js?v=4.1.0-20261017231837"></script><script defer src="data/contact.js?v=4.1.0-20261017231837"></script><script defer src="data/dictlimit.js?v=4.1.0-20261017231837"></script><script defer src="data/freeentry.js?v=4.1.0-20261017231837"></script><script defer src="data/permlock.js?v=4.1.0-20261017231837"></script><script defer src="data/audiostop.js?v=4.1.0-20261017231837"></script><script defer src="data/reader-plus.js?v=4.1.0-20261017231837"></script>
+</script></body><script defer src="data/course.js?v=4.1.0-20261017231852"></script><script defer src="data/belt.js?v=4.1.0-20261017231852"></script><script defer src="data/views2.js?v=4.1.0-20261017231852"></script><script defer src="data/contact.js?v=4.1.0-20261017231852"></script><script defer src="data/dictlimit.js?v=4.1.0-20261017231852"></script><script defer src="data/freeentry.js?v=4.1.0-20261017231852"></script><script defer src="data/permlock.js?v=4.1.0-20261017231852"></script><script defer src="data/audiostop.js?v=4.1.0-20261017231852"></script><script defer src="data/reader-plus.js?v=4.1.0-20261017231852"></script>
 </html>

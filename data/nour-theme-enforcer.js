@@ -79,12 +79,15 @@
   try {
     new MutationObserver(run).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
   } catch (e) {}
-  // DOM 变化（动态渲染的图书馆/阅读器）防抖后重应用
+  // DOM 变化（动态渲染的图书馆/阅读器）防抖后重应用；仅新增节点时触发，避免无效重绘
   var _deb;
   try {
-    new MutationObserver(function () {
+    new MutationObserver(function (muts) {
+      var added = false;
+      for (var i = 0; i < muts.length; i++) { if (muts[i].addedNodes && muts[i].addedNodes.length) { added = true; break; } }
+      if (!added) return;
       clearTimeout(_deb);
-      _deb = setTimeout(run, 60);
+      _deb = setTimeout(run, 80);
     }).observe(document.body, { childList: true, subtree: true });
   } catch (e) {}
 })();
