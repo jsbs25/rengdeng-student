@@ -191,6 +191,14 @@ html[data-theme] .tabbar .tb.on .t-ic svg { stroke: var(--ds-brand) !important; 
 .rd-bar, .rd-head, .rd-foot { color: var(--ds-ink-2) !important; border-color: var(--ds-line) !important; }
 .rd-bar .rd-ic { color: var(--ds-ink-2) !important; }
 
+/* 阅读器阿语正文：确保用阅读字体 + 舒适行距（带音符原文 2.0 行距） */
+#mReader [dir="rtl"], #mReader [lang="ar"], .rd-page [dir="rtl"], .rd-page [lang="ar"],
+.rd-body, .rd-content, .rd-text, .rd-cn, .rd-ar {
+  font-family: var(--ds-ar-read) !important;
+  line-height: 2.0 !important;
+  letter-spacing: 0 !important;
+}
+
 /* ============ 9. AI 工作区 ============ */
 .ps-ai-msg.bot { background: var(--ds-surface) !important; color: var(--ds-ink) !important; border-color: var(--ds-line) !important; }
 .ps-ai-msg.user { background: var(--ds-brand) !important; color: #fff !important; border-color: var(--ds-brand) !important; }
