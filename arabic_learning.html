@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN" data-theme="light">
 <head><script>window.__NUR_ERR='';window.onerror=function(m,src,l){window.__NUR_ERR=String(m);try{var b=document.getElementById('nurErrBar');if(!b){b=document.createElement('div');b.id='nurErrBar';b.style.cssText='position:fixed;top:0;left:0;right:0;z-index:99999;background:#b3261e;color:#fff;font-size:12px;padding:8px 10px;word-break:break-all;line-height:1.6';document.body.appendChild(b);}b.textContent='⚠️ 页面出错（请把这句话发给管理员）：'+m+' @'+l;}catch(e){}return false;};setTimeout(function(){try{var s=document.getElementById('splash');if(s&&s.parentNode)s.parentNode.removeChild(s);try{document.body.classList.remove('locked');}catch(e){}if(!document.querySelector('.page')&&!window.__NUR_ERR){var d=document.createElement('div');d.style.cssText='position:fixed;bottom:8px;left:8px;right:8px;z-index:99998;background:#0f5132;color:#f6e7b4;font-size:12px;padding:8px;border-radius:10px;text-align:center';d.textContent='若内容没出来，请下拉刷新一次';document.body.appendChild(d);}}catch(e){}},6000);</script>
-<script>window.__NUR_VER="2026-10-17 23:31";</script><script>window.__NUR_BUILD="2026-10-17 23:31";</script>
+<script>window.__NUR_VER="2026-10-18 19:48";</script><script>window.__NUR_BUILD="2026-10-18 19:48";</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,viewport-fit=cover">
 <meta name="theme-color" content="#0f3d31">
@@ -1032,7 +1032,7 @@ button,.btn,[onclick]{ transition-duration:var(--dur-micro) !important; }
   *{ animation-duration:.01ms !important; transition-duration:.01ms !important; } }
 /* 加载中的按钮文案（skill：说明在做什么，不要"请稍候"）*/
 button[disabled]{ opacity:.55; cursor:default; }
-</style><link rel="stylesheet" href="data/upgrade2.css?v=4.1.0-20261017233152"><style></style><link rel="stylesheet" href="data/library2.css?v=4.1.0-20261017233152"><style></style><link rel="stylesheet" href="data/paper-v3.css?v=4.1.0-20261017233152"><style>
+</style><link rel="stylesheet" href="data/upgrade2.css?v=4.1.0-20261018194834"><style></style><link rel="stylesheet" href="data/library2.css?v=4.1.0-20261018194834"><style></style><link rel="stylesheet" href="data/paper-v3.css?v=4.1.0-20261018194834"><style>
 /* 顶部公告静态呈现，避免长文字被跑马灯截断 */
 .donbar{margin:0!important;padding:9px 16px!important;background:#f5f4ef!important;color:#68675f!important;border-bottom:1px solid #e9e7df!important;font-size:12px!important;font-weight:500!important;white-space:normal!important;overflow:visible!important;line-height:1.6}
 .donbar-in{display:block!important;padding:0!important;animation:none!important;text-align:center;max-width:1240px;margin:auto}
@@ -4773,13 +4773,431 @@ input::placeholder, textarea::placeholder { color: var(--ds-ink-3) !important; }
   :root { --ds-ink-2: #4a4944; --ds-ink-3: #6f6e68; --ds-line: #c9c5b8; }
   html[data-theme="dark"] { --ds-ink-2: #d6d0c2; --ds-ink-3: #a9a296; --ds-line: #4a4438; }
 }
+</style><style id="nour-clarity">/* NOUR Clarity Layer v1
+   Visual-only declutter pass. It keeps every existing node and action,
+   but restores a clear reading hierarchy: title -> reading -> quote -> AI -> tools.
+*/
+
+/* The homepage should read like a library index, not a dashboard of cards. */
+#page-home > .nour-mission {
+  border: 0 !important;
+  border-top: 1px solid var(--ds-line, #e7e4da) !important;
+  border-bottom: 1px solid var(--ds-line, #e7e4da) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  width: min(1180px, calc(100% - 56px)) !important;
+  margin: 0 auto 8px !important;
+  padding: 12px 0 !important;
+}
+#page-home > .nour-mission::before,
+#page-home > .nour-mission .nour-mission-mark {
+  display: none !important;
+}
+#page-home > .nour-mission .nour-mission-copy strong {
+  color: var(--ds-ink, #1f1e1b) !important;
+  font-weight: 650 !important;
+}
+#page-home > .nour-mission .nour-mission-copy span {
+  color: var(--ds-ink-2, #6b6a64) !important;
+}
+#page-home > .nour-mission .nour-mission-actions button {
+  border: 1px solid var(--ds-line, #e7e4da) !important;
+  border-radius: 4px !important;
+  background: transparent !important;
+  color: var(--ds-brand, #0f5132) !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+#page-home > .nour-mission .nour-mission-actions button:first-child {
+  background: var(--ds-brand, #0f5132) !important;
+  color: #fff !important;
+  border-color: var(--ds-brand, #0f5132) !important;
+}
+
+/* Remove decorative focus-stage effects while keeping the real actions. */
+#page-home > .tk-hero .nour-ambient-ring,
+#page-home > .hdr .nour-top-action {
+  display: none !important;
+}
+
+/* Content blocks use rules and whitespace instead of nested boxes. */
+#nourProductHome .nour-product-grid {
+  gap: 32px !important;
+  margin-top: 24px !important;
+}
+#nourProductHome .nour-product-column {
+  gap: 30px !important;
+}
+#nourProductHome .nour-product-section {
+  padding-top: 18px !important;
+}
+#nourProductHome .nour-continue-list,
+#nourProductHome .nour-discovery,
+#nourProductHome .nour-stat-list,
+#nourProductHome .nour-tool-index,
+#nourProductHome .nour-more-tools {
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+#nourProductHome .nour-continue-list,
+#nourProductHome .nour-tool-index {
+  border-top: 1px solid var(--ds-line, #e7e4da) !important;
+}
+#nourProductHome .nour-continue-item,
+#nourProductHome .nour-discovery-block,
+#nourProductHome .nour-stat {
+  border: 0 !important;
+  border-bottom: 1px solid var(--ds-line, #e7e4da) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+#nourProductHome .nour-continue-item {
+  padding: 15px 0 !important;
+}
+#nourProductHome .nour-discovery {
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 0 !important;
+}
+#nourProductHome .nour-discovery-block {
+  min-height: 0 !important;
+  padding: 16px 0 !important;
+}
+#nourProductHome .nour-stat-list {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 0 !important;
+  border-top: 1px solid var(--ds-line, #e7e4da) !important;
+}
+#nourProductHome .nour-stat {
+  padding: 15px 12px 15px 0 !important;
+}
+#nourProductHome .nour-stat + .nour-stat {
+  padding-left: 12px !important;
+  border-left: 1px solid var(--ds-line, #e7e4da) !important;
+}
+#nourProductHome .nour-tool-index button {
+  border-bottom: 1px solid var(--ds-line, #e7e4da) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  padding: 13px 0 !important;
+}
+#nourProductHome .nour-tool-index button:hover {
+  background: var(--ds-surface-2, #f1efe8) !important;
+}
+#nourProductHome .nour-more-tools summary {
+  padding: 12px 0 !important;
+  border-bottom: 1px solid var(--ds-line, #e7e4da) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+#nourProductHome .nour-home-progress {
+  border: 0 !important;
+  border-bottom: 1px solid var(--ds-line, #e7e4da) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 12px 0 !important;
+}
+#nourProductHome .nour-daily-quote-body {
+  border: 0 !important;
+  border-left: 2px solid var(--ds-gold, #a98935) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 8px 0 8px 16px !important;
+}
+#nourProductHome .nour-daily-quote-cn {
+  color: var(--ds-ink-2, #6b6a64) !important;
+}
+
+/* AI stays prominent, but loses the extra dashboard frame. */
+#page-home > #aiSec .ps-ai-card {
+  border: 0 !important;
+  border-top: 1px solid var(--ds-line, #e7e4da) !important;
+  border-bottom: 1px solid var(--ds-line, #e7e4da) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+#page-home > #aiSec .ps-ai-head,
+#page-home > #aiSec #homeAI,
+#page-home > #aiSec .ps-ai-chips,
+#page-home > #aiSec .ps-ai-input {
+  background: transparent !important;
+}
+#page-home > #aiSec #homeAI {
+  border-left: 0 !important;
+}
+
+/* A small, solid nav is quieter and keeps more of the page visible. */
+html[data-theme] .tabbar.nour-primary-nav,
+html[data-theme] .tabbar.nour-four-nav {
+  width: min(420px, calc(100% - 28px)) !important;
+  border-radius: 4px !important;
+  box-shadow: 0 6px 18px rgba(31, 30, 27, .10) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+html[data-theme] .tabbar.nour-primary-nav .tb,
+html[data-theme] .tabbar.nour-four-nav .tb {
+  border-radius: 4px !important;
+}
+
+@media (max-width: 760px) {
+  #page-home > .nour-mission {
+    width: calc(100% - 28px) !important;
+  }
+  #nourProductHome .nour-product-grid {
+    gap: 24px !important;
+    margin-top: 18px !important;
+  }
+  #nourProductHome .nour-product-column {
+    gap: 24px !important;
+  }
+  #nourProductHome .nour-stat-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  #nourProductHome .nour-stat:nth-child(3) {
+    border-top: 1px solid var(--ds-line, #e7e4da) !important;
+    padding-top: 13px !important;
+  }
+  #nourProductHome .nour-stat:nth-child(4) {
+    border-top: 1px solid var(--ds-line, #e7e4da) !important;
+    padding-top: 13px !important;
+  }
+  #nourProductHome .nour-stat:nth-child(odd) {
+    border-left: 0 !important;
+    padding-left: 0 !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #page-home > .nour-mission *,
+  #nourProductHome *,
+  html[data-theme] .tabbar {
+    transition: none !important;
+  }
+}
+
+
+/* Whole-site page contract: quiet paper surfaces outside focus reading. */
+html body > #mCat.page:not(.nour-focus-page),
+html body > #page-search.page:not(.nour-focus-page),
+html body > #page-me.page:not(.nour-focus-page),
+html body > #aiSec.page:not(.nour-focus-page) {
+  background: var(--ds-bg, #f7f5ef) !important;
+  color: var(--ds-ink, #1f1e1b) !important;
+}
+html body > #mCat.page:not(.nour-focus-page) .m-head,
+html body > #page-search.page:not(.nour-focus-page) .pg-h,
+html body > #page-me.page:not(.nour-focus-page) .pg-h {
+  background: var(--ds-bg, #f7f5ef) !important;
+  color: var(--ds-ink, #1f1e1b) !important;
+  border-bottom: 1px solid var(--ds-line, #e7e4da) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+html body > #mCat.page:not(.nour-focus-page) .m-head b,
+html body > #page-search.page:not(.nour-focus-page) .pg-h,
+html body > #page-me.page:not(.nour-focus-page) .pg-h {
+  color: var(--ds-ink, #1f1e1b) !important;
+  letter-spacing: -.01em !important;
+}
+html body > #mCat.page:not(.nour-focus-page) .m-body,
+html body > #page-search.page:not(.nour-focus-page) .m-body,
+html body > #page-me.page:not(.nour-focus-page) .m-body {
+  background: transparent !important;
+  color: var(--ds-ink, #1f1e1b) !important;
+}
+
+/* Library: books remain visual, but the library chrome becomes an index. */
+html body > #mCat.page:not(.nour-focus-page) .bk-side,
+html body > #mCat.page:not(.nour-focus-page) .bk-card,
+html body > #mCat.page:not(.nour-focus-page) .bk-q {
+  background: var(--ds-surface, #fff) !important;
+  border: 1px solid var(--ds-line, #e7e4da) !important;
+  border-radius: 4px !important;
+  box-shadow: none !important;
+}
+html body > #mCat.page:not(.nour-focus-page) .bk-side {
+  padding: 12px !important;
+}
+html body > #mCat.page:not(.nour-focus-page) .bk-cat {
+  border-radius: 4px !important;
+  color: var(--ds-ink-2, #6b6a64) !important;
+}
+html body > #mCat.page:not(.nour-focus-page) .bk-cat.on {
+  background: var(--ds-surface-2, #f1efe8) !important;
+  color: var(--ds-brand, #0f5132) !important;
+}
+html body > #mCat.page:not(.nour-focus-page) .bk-card:hover {
+  transform: none !important;
+  border-color: var(--ds-gold, #a98935) !important;
+  background: var(--ds-surface, #fff) !important;
+}
+html body > #mCat.page:not(.nour-focus-page) .library-back,
+html body > #mCat.page:not(.nour-focus-page) .lib-tabs .lt {
+  border-radius: 4px !important;
+  background: transparent !important;
+  border-color: var(--ds-line, #e7e4da) !important;
+  color: var(--ds-ink-2, #6b6a64) !important;
+}
+html body > #mCat.page:not(.nour-focus-page) .lib-tabs .lt.on {
+  background: var(--ds-brand, #0f5132) !important;
+  border-color: var(--ds-brand, #0f5132) !important;
+  color: #fff !important;
+  box-shadow: none !important;
+}
+
+/* Search and profile: one reading column, no floating glass panels. */
+html body > #page-search.page:not(.nour-focus-page) .srch-big,
+html body > #page-search.page:not(.nour-focus-page) .search-tools button,
+html body > #page-me.page:not(.nour-focus-page) .profile-card,
+html body > #page-me.page:not(.nour-focus-page) .profile-link {
+  background: var(--ds-surface, #fff) !important;
+  border: 1px solid var(--ds-line, #e7e4da) !important;
+  border-radius: 4px !important;
+  box-shadow: none !important;
+  color: var(--ds-ink, #1f1e1b) !important;
+}
+html body > #page-search.page:not(.nour-focus-page) .search-tools button,
+html body > #page-me.page:not(.nour-focus-page) .profile-link {
+  min-height: 42px !important;
+}
+html body > #page-search.page:not(.nour-focus-page) .search-tools button:first-child {
+  color: var(--ds-brand, #0f5132) !important;
+  border-color: var(--ds-brand, #0f5132) !important;
+}
+html body > #page-me.page:not(.nour-focus-page) .profile-card {
+  padding: 20px !important;
+}
+html body > #page-me.page:not(.nour-focus-page) .profile-link:hover,
+html body > #page-search.page:not(.nour-focus-page) .search-tools button:hover {
+  background: var(--ds-surface-2, #f1efe8) !important;
+  transform: none !important;
+}
+
+/* AI page: preserve the real chat and context, remove the dark glass treatment. */
+html body > #aiSec.page:not(.nour-focus-page) {
+  background: var(--ds-bg, #f7f5ef) !important;
+}
+html body > #aiSec.page:not(.nour-focus-page) .nour-ai-intro,
+html body > #aiSec.page:not(.nour-focus-page) .nour-ai-note,
+html body > #aiSec.page:not(.nour-focus-page) .ps-ai-card {
+  color: var(--ds-ink, #1f1e1b) !important;
+}
+html body > #aiSec.page:not(.nour-focus-page) .nour-ai-intro {
+  border-bottom-color: var(--ds-line, #e7e4da) !important;
+}
+html body > #aiSec.page:not(.nour-focus-page) .nour-ai-intro h1 {
+  color: var(--ds-ink, #1f1e1b) !important;
+}
+html body > #aiSec.page:not(.nour-focus-page) .nour-ai-note {
+  border-left-color: var(--ds-gold, #a98935) !important;
+  background: transparent !important;
+}
+html body > #aiSec.page:not(.nour-focus-page) .ps-ai-card {
+  background: var(--ds-surface, #fff) !important;
+  border: 1px solid var(--ds-line, #e7e4da) !important;
+  border-radius: 4px !important;
+  box-shadow: none !important;
+}
+html body > #aiSec.page:not(.nour-focus-page) .ps-ai-head,
+html body > #aiSec.page:not(.nour-focus-page) .ps-ai-chips,
+html body > #aiSec.page:not(.nour-focus-page) .ps-ai-input {
+  background: var(--ds-surface, #fff) !important;
+  border-color: var(--ds-line, #e7e4da) !important;
+}
+html body > #aiSec.page:not(.nour-focus-page) .ps-ai-head,
+html body > #aiSec.page:not(.nour-focus-page) .ps-ai-input {
+  color: var(--ds-ink, #1f1e1b) !important;
+}
+html body > #aiSec.page:not(.nour-focus-page) .ps-ai-msg.bot {
+  background: var(--ds-surface-2, #f1efe8) !important;
+  border-color: var(--ds-line, #e7e4da) !important;
+  color: var(--ds-ink, #1f1e1b) !important;
+}
+html body > #aiSec.page:not(.nour-focus-page) .ps-ai-msg.user {
+  background: var(--ds-brand, #0f5132) !important;
+  border-color: var(--ds-brand, #0f5132) !important;
+  color: #fff !important;
+}
+html body > #aiSec.page:not(.nour-focus-page) .ps-ai-chips button,
+html body > #aiSec.page:not(.nour-focus-page) .ps-ai-input input,
+html body > #aiSec.page:not(.nour-focus-page) .ps-ai-input button {
+  border-radius: 4px !important;
+}
+html body > #aiSec.page:not(.nour-focus-page) .ps-ai-input input {
+  background: var(--ds-surface, #fff) !important;
+  color: var(--ds-ink, #1f1e1b) !important;
+}
+html body > #aiSec.page:not(.nour-focus-page) .ps-ai-input button {
+  background: var(--ds-brand, #0f5132) !important;
+  color: #fff !important;
+}
+
+/* Ordinary utility dialogs share the same paper language; reader/focus stays untouched. */
+html body .modal:not(#mReader):not(.nour-focus-modal) .m-head {
+  background: var(--ds-surface, #fff) !important;
+  color: var(--ds-ink, #1f1e1b) !important;
+  border-bottom: 1px solid var(--ds-line, #e7e4da) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+html body .modal:not(#mReader):not(.nour-focus-modal) .m-body {
+  background: var(--ds-bg, #f7f5ef) !important;
+  color: var(--ds-ink, #1f1e1b) !important;
+}
+html body .modal:not(#mReader):not(.nour-focus-modal) .m-close,
+html body .modal:not(#mReader):not(.nour-focus-modal) .m-back {
+  border-radius: 4px !important;
+  color: var(--ds-brand, #0f5132) !important;
+}
+
+@media (max-width: 760px) {
+  html body > #mCat.page:not(.nour-focus-page) .m-body,
+  html body > #page-search.page:not(.nour-focus-page) .m-body,
+  html body > #page-me.page:not(.nour-focus-page) .m-body {
+    width: calc(100% - 28px) !important;
+  }
+  html body > #aiSec.page:not(.nour-focus-page) {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+  html body > #aiSec.page:not(.nour-focus-page) .ps-ai-card {
+    width: 100% !important;
+  }
+}
+
+
+/* Bounded sentence library controls: full data, small visible DOM. */
+html body #mSentBody .s-more {
+  display: block;
+  width: calc(100% - 24px);
+  margin: 14px auto 22px;
+  padding: 10px 12px;
+  border: 1px solid var(--ds-line, #e7e4da);
+  border-radius: 4px;
+  background: var(--ds-surface, #fff);
+  color: var(--ds-brand, #0f5132);
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+html body #mSentBody .s-more:hover {
+  background: var(--ds-surface-2, #f1efe8);
+  border-color: var(--ds-gold, #a98935);
+}
 </style></head>
 <body>
 <div class="page" id="page-home"><div id="splash"><div class="sp-lamp"></div><div class="sp-ar">نور</div><div class="sp-cn">燃 灯 者</div><div class="sp-bar"><i></i></div></div>
 <div class="bg-pattern"></div>
 <header class="hdr"><div class="glow"></div><div class="arch-wrap"><div class="arch"></div></div><div class="logo">نور</div><div class="logo-sub">Nour · 阿拉伯语学习</div><span class="zh">صامتٌ لكنّه يهدي إلى الطريق</span><div style="display:flex;gap:10px;justify-content:center;align-items:center;margin-top:14px;position:relative;z-index:5"><button id="langBtn" class="lang-btn" onclick="toggleLang()">中文</button></div>
 </header>
-<style>.donbar{overflow:hidden;white-space:nowrap;background:linear-gradient(90deg,#0f5132,#1d7a4f,#0f5132);color:#f6e7b4;font-size:13px;font-weight:700;padding:10px 0;cursor:pointer;margin:6px 0}.donbar-in{display:inline-block;padding-left:100%;animation:donmarq 24s linear infinite}@keyframes donmarq{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}html[data-theme=\'dark\'] .donbar{background:linear-gradient(90deg,#0b2f24,#155c3c,#0b2f24)}</style><div class='donbar' onclick='openDonate()' title='点击支持网站'><div class='donbar-in'>💖 本站由个人自费维护（服务器 · 域名 · AI 全部自掏腰包）· 所有捐款全部用于网站运营与维护 · 感谢每一份心意 · جزاك الله خيرا 💖 点我支持 ｜ 版本 2026-10-17 23:31</div></div><div class="tk-hero" style="max-width:720px;margin:16px auto 4px;padding:0 18px;text-align:center"><div class="nour-welcome-title">今天，从一个阿拉伯语单词开始</div><div class="nour-welcome-sub">查词、听清发音、读例句，所有基础学习工具都可直接使用，不必先打开 AI。</div><div class="native-quick-row"><button type="button" class="native-quick primary" onclick="openDict()"><b>🔎 查一个词</b><small>释义 · 例句 · 朗读</small></button><button type="button" class="native-quick" onclick="showListen()"><b>🔊 听一遍</b><small>阿语原生发音</small></button><button type="button" class="native-quick" onclick="showChallenge()"><b>✍️ 练一题</b><small>词汇 · 拼句</small></button></div></div><section class="vision-cards" aria-label="快速入口">
+<style>.donbar{overflow:hidden;white-space:nowrap;background:linear-gradient(90deg,#0f5132,#1d7a4f,#0f5132);color:#f6e7b4;font-size:13px;font-weight:700;padding:10px 0;cursor:pointer;margin:6px 0}.donbar-in{display:inline-block;padding-left:100%;animation:donmarq 24s linear infinite}@keyframes donmarq{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}html[data-theme=\'dark\'] .donbar{background:linear-gradient(90deg,#0b2f24,#155c3c,#0b2f24)}</style><div class='donbar' onclick='openDonate()' title='点击支持网站'><div class='donbar-in'>💖 本站由个人自费维护（服务器 · 域名 · AI 全部自掏腰包）· 所有捐款全部用于网站运营与维护 · 感谢每一份心意 · جزاك الله خيرا 💖 点我支持 ｜ 版本 2026-10-18 19:48</div></div><div class="tk-hero" style="max-width:720px;margin:16px auto 4px;padding:0 18px;text-align:center"><div class="nour-welcome-title">今天，从一个阿拉伯语单词开始</div><div class="nour-welcome-sub">查词、听清发音、读例句，所有基础学习工具都可直接使用，不必先打开 AI。</div><div class="native-quick-row"><button type="button" class="native-quick primary" onclick="openDict()"><b>🔎 查一个词</b><small>释义 · 例句 · 朗读</small></button><button type="button" class="native-quick" onclick="showListen()"><b>🔊 听一遍</b><small>阿语原生发音</small></button><button type="button" class="native-quick" onclick="showChallenge()"><b>✍️ 练一题</b><small>词汇 · 拼句</small></button></div></div><section class="vision-cards" aria-label="快速入口">
 <button class="vision-card" type="button" onclick="nav('learn')" aria-label="打开世界图书馆"><span class="vc-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 0 4 22.5z"/><path d="M4 5.5v17M8 7h8M8 11h8M8 15h6"/></svg></span><span class="vc-copy"><strong>世界图书馆</strong><small>典籍、历史与中文古籍</small></span><span class="vc-arrow" aria-hidden="true">›</span></button>
 <button class="vision-card" type="button" onclick="showListen()" aria-label="打开阿拉伯语听读练习"><span class="vc-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3Z"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4m-4 0h8"/></svg></span><span class="vc-copy"><strong>阿拉伯语口语</strong><small>听读练习与日常表达</small></span><span class="vc-arrow" aria-hidden="true">›</span></button>
 </section><div style="max-width:880px;margin:14px auto 6px;padding:0 16px"><div class="tk-dict" onclick="openDict()" style="background:linear-gradient(135deg,#0f5132,#1d7a4f 60%,#2f9d68);border-radius:18px;padding:16px 18px;box-shadow:0 10px 26px rgba(15,81,50,.28);cursor:pointer;color:#fff"><div style="display:flex;align-items:center;gap:10px"><div style="font-size:38px">📖</div><div style="flex:1"><div style="font-size:21px;font-weight:900;letter-spacing:.8px">查阿拉伯语单词</div><div style="font-size:13.5px;opacity:.95;margin-top:5px;line-height:1.6">输入阿语 → 中文释义 · 词根 · <b>近义词</b> · <b>反义词</b> · <b>同类词</b> · 例句</div></div><div style="background:#f6e7b4;color:#0f5132;font-weight:900;font-size:16px;padding:12px 20px;border-radius:999px;white-space:nowrap">开始查 ›</div></div></div></div><div class="lib-search"><span>🔍</span><input id="libQ" placeholder="搜索句子、词汇、文本、哲言…（回车）" onkeydown="if(event.key===&#39;Enter&#39;){libSearch(this.value)}"></div><div class="lib-acts" style="max-width:880px;margin:10px auto 0;padding:0 16px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center"><button class="act-btn" style="margin:0" onclick="openSearchAll()">🔎 全站搜索</button><button class="act-btn" style="margin:0;background:#c8a24a;color:#fff;border-color:#c8a24a;font-weight:700" onclick="openDonate()">💖 支持网站</button></div><div class="home-stats"><div><b id="hsBooks">—</b> 部世界典籍</div><div><b id="hsHistory">—</b> 部世界史书</div><div><b id="hsHadith">—</b> 段哲言</div><div><b id="hsReadable">—</b> 部可读全文</div><div><b>6</b> 课语法</div><div style="font-size:11px;color:#a8ada6" id="hsTime"></div></div><div class="home-audio-entry"><button type="button" onclick="showAudioLibrary()"><span>🎧</span><span><b>音频资料库</b><small>FLAC / WAV 无损 · 宣礼 · 系统/真人发音，直接在网页内播放</small></span><strong>打开 ›</strong></button></div><div class="daily-quote" id="quote"><div class="quote-card"><div class="q-ar" id="qAr">العِلْمُ كَنْزٌ لَا يَفْنَىٰ</div><div class="q-cn" id="qCn">知识是永不消逝的宝藏</div></div></div>
@@ -5316,10 +5734,10 @@ input::placeholder, textarea::placeholder { color: var(--ds-ink-3) !important; }
 <div class="s-card" data-cat="jordan_social"><div class="s-ar">خلينا نروح</div><div class="s-tr"><div class="s-en">🇬🇧 Let's go</div><div class="s-cn">🇨🇳 我们走吧</div><div class="s-py">🗣 哈利纳努鲁赫</div></div><div class="s-btns"><button class="s-btn" onclick="ap(this,0,'خلينا نروح')">🔊</button><button class="s-btn" onclick="ap(this,1,'Let\'s go')">🇬🇧</button><button class="s-btn" onclick="toggleFavWeb('خلينا نروح')" title="收藏">☆</button><button class="s-btn" onclick="reviewSent('خلينا نروح')" title="加入间隔复习">📌</button><button class="s-btn" onclick="explainSentence('خلينا نروح')" title="逐词拆解">✂️</button><button class="s-btn" onclick="trCard(this)" title="AI 中译">中</button></div></div>
 <div class="s-card" data-cat="jordan_social"><div class="s-ar">بكرة في حصة؟</div><div class="s-tr"><div class="s-en">🇬🇧 Is there a class tomorrow?</div><div class="s-cn">🇨🇳 明天有课吗？</div><div class="s-py">🗣 布克拉菲海沙</div></div><div class="s-btns"><button class="s-btn" onclick="ap(this,0,'بكرة في حصة؟')">🔊</button><button class="s-btn" onclick="ap(this,1,'Is there a class tomorrow?')">🇬🇧</button><button class="s-btn" onclick="toggleFavWeb('بكرة في حصة؟')" title="收藏">☆</button><button class="s-btn" onclick="reviewSent('بكرة في حصة؟')" title="加入间隔复习">📌</button><button class="s-btn" onclick="explainSentence('بكرة في حصة؟')" title="逐词拆解">✂️</button><button class="s-btn" onclick="trCard(this)" title="AI 中译">中</button></div></div></div></div></div></div>
 <section class="ps-ai" id="aiSec"><div class="ps-ai-card"><div class="ps-ai-head"><div class="ps-ai-head-l"><div class="ps-ai-avatar"></div><span>努尔老师 · نور</span><span id="aiQuota" style="font-size:11px;color:#8a8f88;margin-left:8px;cursor:pointer" onclick="openPay()" title="点击充值/开通"></span></div><span class="ps-en">写文章·翻译·解经·问答</span><button id="aiVoiceToggle" class="ai-voice-toggle" type="button" onclick="nourToggleAutoVoice()" aria-pressed="false">🔈 人声：关</button></div><button class="nour-close" type="button" onclick="closeNourVoice()" aria-label="结束语音对话">完成</button><div class="ps-ai-msgs" id="homeAI"><div class="ps-ai-msg bot">السلام عليكم ورحمة الله! السلام عليكم！我是你的阿拉伯语老师「努尔」（نور）。你可以让我陪你练习对话、翻译阿语、解释课文，或者一起解决学习中的问题。</div></div><div class="ps-ai-chips" id="homeAIChips"></div><div class="ps-ai-input"><div class="home-ai-compose"><textarea id="homeAIIn" rows="1" autocomplete="off" spellcheck="true" aria-label="阿拉伯语学习问题" placeholder="写下你想练习的内容…" oninput="homeAIInputState(this)" onkeydown="homeAIKeydown(event)"></textarea><div class="home-ai-tools"><button type="button" class="home-ai-mode on" id="homeAIFast" onclick="homeAIToggleFast()" title="直接回答，速度更快">快答</button><span class="home-ai-hint">回车发送 · Shift+回车换行</span><span class="home-ai-count" id="homeAICount">就绪</span></div></div><button class="ps-mic" id="homeMic" onclick="homeAIVoice()" title="开始语音练习" aria-label="开始语音练习">🎙</button><button id="homeAISendBtn" class="home-ai-send" onclick="homeAISend()" aria-label="发送问题">发送</button></div></div></section><div class="modal" id="mTalk"><div class="m-head"><span>🎙</span><b>阿语口语陪练 · محادثة</b><button class="m-close" onclick="closeModal('mTalk')">✕</button></div><div class="m-body" id="mTalkBody"></div></div></div><!-- 模态框 --><div class="modal" id="mReader"><div class="m-head"><button class="m-back" onclick="closeModal('mReader')">‹ 返回</button><b id="mReaderTitle">阅读</b><span style="width:52px"></span></div><div class="m-body" id="mReaderBody"></div></div><div class="modal" id="mH6"><div class="m-head"><span>📜</span><b>哲人哲言</b><button class="m-close" onclick="closeModal('mH6')">✕</button></div><div class="m-body" id="mH6Body"></div></div><div class="page library-page" id="mCat" style="display:none"><div class="m-head"><span>◎</span><b>世界图书馆</b><button class="library-back" onclick="nav('home')">首页</button></div><div class="m-body" id="mCatBody"></div></div><div class="modal" id="mSentences"><div class="m-head"><span>📖</span><b>全部句子</b><button class="m-close" onclick="closeModal('mSentences')">✕</button></div><div class="m-search"><input id="mSentSearch" placeholder="🔍 搜索句子..." oninput="renderAllS()"></div><div class="m-body" id="mSentBody"></div><div class="m-count" id="mSentCount"></div></div><div class='modal' id='mDict'><div class='m-head' style='padding:16px 18px'><span style='font-size:24px'>📖</span><b style='font-size:19px'>阿语词典 · قاموس</b><button class='m-close' onclick="closeModal('mDict')">✕</button></div><div class='m-search' style='gap:10px;padding:12px 16px'><input id='dictQ' placeholder='输入阿拉伯语单词（也可输入中文）' style='font-size:19px;font-weight:700;padding:16px 18px;border-radius:14px;border:2px solid #d9d1bc' onkeydown="if(event.key==='Enter')dictSearch()"><button class='s-btn' style='width:auto;padding:16px 18px;font-size:20px;font-weight:800;border-radius:14px' onclick='dictVoice()' title='语音输入（说阿语）'>🎤</button><button class='s-btn' style='width:auto;padding:16px 22px;font-size:17px;font-weight:800;border-radius:14px' onclick='dictSearch()'>查词</button></div><div class='m-body' id='dictBody' style='padding:16px'><div style='text-align:center;padding:18px 6px 8px'><div style='font-size:46px;line-height:1'>📖</div><div style='font-size:16px;font-weight:800;color:#0f5132;margin-top:10px'>输入阿语单词，查中文意思</div><div style='font-size:12.5px;color:#8a8f88;margin-top:6px;line-height:1.8'>同时给出 <b>词根</b> · <b>近义词</b> · <b>反义词</b> · <b>同类词</b> · <b>例句</b></div><div style='font-size:12px;color:#a8ada6;margin:16px 0 8px'>试试这些词 👇</div><div style='display:flex;gap:8px;justify-content:center;flex-wrap:wrap'><span onclick="dictTry('كِتَاب')" style='padding:10px 16px;background:#fff;border:1px solid #e0d8c4;border-radius:999px;font-family:var(--ar-font);font-size:18px;color:#0f5132;cursor:pointer;box-shadow:0 2px 8px rgba(15,81,50,.06)'>كِتَاب</span><span onclick="dictTry('مَاء')" style='padding:10px 16px;background:#fff;border:1px solid #e0d8c4;border-radius:999px;font-family:var(--ar-font);font-size:18px;color:#0f5132;cursor:pointer;box-shadow:0 2px 8px rgba(15,81,50,.06)'>مَاء</span><span onclick="dictTry('ذَهَبَ')" style='padding:10px 16px;background:#fff;border:1px solid #e0d8c4;border-radius:999px;font-family:var(--ar-font);font-size:18px;color:#0f5132;cursor:pointer;box-shadow:0 2px 8px rgba(15,81,50,.06)'>ذَهَبَ</span><span onclick="dictTry('كَبِير')" style='padding:10px 16px;background:#fff;border:1px solid #e0d8c4;border-radius:999px;font-family:var(--ar-font);font-size:18px;color:#0f5132;cursor:pointer;box-shadow:0 2px 8px rgba(15,81,50,.06)'>كَبِير</span></div></div></div></div><div class='modal' id='mGrammar'><div class='m-head'><span>📐</span><b id='mGramHead'>语法课</b><button class='m-close' onclick="closeModal('mGrammar')">✕</button></div><div class='m-body' id='mGramBody' style='padding:14px'></div></div><div class='modal' id='mBelt'><div class='m-head'><span>📰</span><b>一带一路 · 中阿合作</b><button class='m-close' onclick="closeModal('mBelt')">✕</button></div><div class='m-body' id='mBeltBody' style='padding:14px'></div></div><div class='modal' id='mDonate'><div class='m-head'><span>❤️</span><b>支持燃灯者</b><button class='m-close' onclick="closeModal('mDonate')">✕</button></div><div class='m-body' style='padding:18px;text-align:center'><div style='font-size:13px;color:#5a6159;line-height:2'>这个网站是<b>个人自费</b>在维护（服务器 · 域名 · AI）。<br>你的心意会变成 <b>AI 额度</b>，让灯继续亮着 🕯<br><br>如果它帮到了你，欢迎用一份心意<br>让它继续亮下去 🕯</div><div id='donAmts' style='display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:18px 0'></div><button onclick='donShowQr()' style='width:100%;max-width:300px;padding:13px;background:#c8a24a;color:#fff;font-weight:800;font-size:15px;border:0;border-radius:12px;cursor:pointer'>💳 扫码支持</button><div id='donQrBox' style='display:none;margin-top:16px'></div><div style='margin-top:16px;font-size:11px;color:#a8ada6'>支持全凭自愿，感谢每一份心意 · جزاك الله خيرا</div></div></div><style>body.locked .page,body.locked .tabbar{display:none!important}body.locked{overflow:hidden}</style><div id='mLock' style='position:fixed;inset:0;z-index:12000;display:none;flex-direction:column;align-items:center;justify-content:center;padding:26px;background:linear-gradient(165deg,#fbf8f1,#efe7d5);text-align:center'><div style='font-size:46px;line-height:1'>🪔</div><div style='font-size:26px;font-weight:800;color:#0f5132;margin-top:10px'>燃灯者</div><div style='font-family:var(--ar-font);font-size:20px;color:#8a7f72;margin-top:2px'>حامل المصباح</div><div style='font-size:13px;color:#5a6159;margin:18px 0 16px;max-width:300px;line-height:1.7'>燃灯同学 · 阿拉伯学习平台<br><span style='font-size:11px;color:#9aa09a'>付费进入后，全部内容与 AI 都免费</span></div><input id='lockCode' type='hidden' value=''><div id='lockMsg' style='margin-top:12px;font-size:13px;color:#b4553a;min-height:20px;max-width:320px;line-height:1.6'></div><div style='margin-top:18px;font-size:12px;color:#8a8f88'>付费后即可进入 👇</div><div style='margin-top:2px;font-size:11px;color:#a8ada6'>（随缘支持 · 不想支持就点「免费进入」✓）</div><button onclick='lockContact()' style='margin-top:8px;width:100%;max-width:320px;padding:13px;font-size:15px;font-weight:800;color:#fff;background:#c8a24a;border:0;border-radius:14px;cursor:pointer'>🙋 我想拥有这款学习平台</button><div style='margin-top:14px;width:100%;max-width:320px;border-top:1px dashed #e5decc;padding-top:12px'><input id='entryCode' type='hidden' value=''><div id='entryMsg' style='display:none'></div><div id='lockPayBox' style='display:none;margin-top:14px;width:100%;max-width:320px;background:#fff;border:1px solid #e5decc;border-radius:14px;padding:14px;text-align:center'><div style='font-size:12px;color:#5a6159;line-height:1.8;margin-bottom:8px'>本站由站长个人自费维护（服务器 · 域名 · AI 接口 每月都要花钱）<br>免费试用：<b>查词 200 次</b> · 书库 / 句子 / 听力 随便用<br>想无限用：<b>会员 ¥15/月</b> · <b>永久卡 ¥299</b> · 加微信 <b>YsuF0202</b></div><div style='font-size:12px;color:#b4553a;margin-bottom:6px'>请如实填写你实际付了多少钱（会员费自愿支持 · 最低 ¥10）</div><input id='lockAmtIn' type='number' min='1' step='1' placeholder='我付了 ___ 元' style='width:100%;box-sizing:border-box;padding:13px;border:2px solid #d9d1bc;border-radius:12px;text-align:center;font-size:16px;font-weight:700;margin-bottom:10px'><img id='lockQr' src='data/pay_qr.png?v=3' style='display:none;max-width:200px;border-radius:10px;border:1px solid #eee7d8' onerror="this.style.display='none';document.getElementById('lockQrTip').style.display=''"><div id='lockQrTip' style='display:none;font-size:11px;color:#a8ada6'>收款码加载失败，请联系管理员</div><button id='lockShowBtn' onclick='lockShowQr()' style='width:100%;margin-top:6px;padding:13px;background:#c8a24a;color:#fff;font-weight:800;font-size:15px;border:0;border-radius:12px;cursor:pointer'>📷 点这里显示收款码</button><div id='lockPayRest' style='display:none'><input id='lockPayNote' placeholder='付款备注（选填，如你的微信号）' style='width:100%;box-sizing:border-box;margin-top:10px;padding:10px;border:1px solid #d9d1bc;border-radius:10px;font-size:13px'><button onclick='lockClaim()' style='width:100%;margin-top:8px;padding:12px;background:#0f5132;color:#fff;font-weight:800;font-size:14px;border:0;border-radius:12px;cursor:pointer'>✅ 我已付款</button><div id='lockPayMsg' style='margin-top:8px;font-size:12px;color:#5a6159;min-height:16px'></div></div></div><div style='margin-top:28px;font-size:11px;color:#a8ada6'>设备码 <b id='lockDev'>—</b> · <span onclick='copyDev()' style='color:#0f5132;text-decoration:underline;cursor:pointer'>复制</span></div><div style='margin-top:6px;font-size:11px;color:#a8ada6'>燃灯同学 · 阿拉伯学习平台</div></div><div class='modal' id='mDonate'><div class='m-head'><span>❤️</span><b>支持燃灯者</b><button class='m-close' onclick="closeModal('mDonate')">✕</button></div><div class='m-body' style='padding:18px;text-align:center'><div style='font-size:13px;color:#5a6159;line-height:2'>这个网站是<b>个人自费</b>在维护：<br>服务器 · 域名 · AI 费用，全部自捐腰包。<br><b>所有捐款全部用于网站运营与维护</b> 🕯<br><br>如果它帮到了你，欢迎用一份心意<br>让它继续亮下去。</div><div id='donAmts' style='display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:18px 0'></div><button onclick='donShowQr()' style='width:100%;max-width:300px;padding:13px;background:#c8a24a;color:#fff;font-weight:800;font-size:15px;border:0;border-radius:12px;cursor:pointer'>💳 扫码支持</button><div id='donQrBox' style='display:none;margin-top:16px'></div><div style='margin-top:16px;font-size:11px;color:#a8ada6'>支持全凭自愿，感谢每一份心意 · جزاك الله خيرا</div></div></div><div class='modal' id='mVid'><div class='m-head'><span>🎬</span><b>阿语听力 · 视频</b><button class='m-close' onclick="closeModal('mVid')">✕</button></div><div id='vidPlay' style='display:none;background:#111'></div><div class='m-search' id='vidCats' style='flex-wrap:wrap;gap:6px'></div><input id='vidQ' placeholder='🔍 搜索视频标题 / 频道...' oninput='vidFilter()' style='margin:0 12px 8px;width:calc(100% - 24px);padding:10px 12px;border:1px solid #e5decc;border-radius:10px;box-sizing:border-box'><div class='m-body' id='vidBody'></div></div><div class='modal' id='mSearch'><div class='m-head'><span>🔎</span><b>全站搜索</b><button class='m-close' onclick="closeModal('mSearch')">✕</button></div><div class='m-search'><input id='sq' placeholder='搜索句子 / 词汇 / 哲言 / 经典选读 / 书库…' onkeydown="if(event.key==='Enter')doSearchAll()"><button class='s-btn' style='width:auto;padding:8px 14px' onclick='doSearchAll()'>搜索</button></div><div class='m-body' id='sRes' style='padding:8px 12px'></div></div><div class='modal' id='mPay'><div class='m-head'><span>💳</span><b>开通会员 / 充值</b><button class='m-close' onclick="closeModal('mPay')">✕</button></div><div class='m-body' style='padding:14px'><div id='payMine' style='background:#f7f3e9;border:1px solid #e5decc;border-radius:12px;padding:12px;margin-bottom:12px;font-size:13px;color:#12735a'>加载中…</div><div id='payPlans'></div><div style='font-size:12px;color:#5a6159;margin:10px 0 6px'>① 选择付款金额（<b>到账 AI 额度 = 付款额 × 50%</b>，例：付 ¥30 → 到账 ¥15）</div><div id='payAmt' style='display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px'></div><div style='font-size:12px;color:#5a6159;margin:10px 0 6px'>或：用<b>激活码 / 充值码</b>直接兑换（一个码只能用一次）</div><div style='display:flex;gap:8px'><input id='payCode' placeholder='XXXX-XXXX-XXXX' style='flex:1;padding:12px;border:2px solid #d9d1bc;border-radius:12px;font-family:ui-monospace,monospace;text-align:center' onkeydown="if(event.key==='Enter')redeemCode()"><button class='s-btn' style='width:auto;padding:12px 16px;background:#0f5132;color:#fff;font-weight:700;border:0;border-radius:12px' onclick='redeemCode()'>兑换</button></div><div id='payMsg' style='margin-top:10px;font-size:13px;min-height:18px'></div><div id='payQr' style='margin-top:14px;text-align:center'></div><div style='margin-top:14px;border-top:1px dashed #e5decc;padding-top:12px'><div style='font-size:13px;color:#12735a;font-weight:700;margin-bottom:6px'>③ 已付款？点下面按钮通知管理员开通</div><input id='payNote' placeholder='付款备注（可填你的微信号 / 订单号，选填）' style='width:100%;padding:10px;border:1px solid #d9d1bc;border-radius:10px;font-size:13px;margin-bottom:8px'><button onclick='claimPaid()' style='width:100%;padding:13px;background:#c8a24a;color:#fff;font-weight:800;font-size:15px;border:0;border-radius:12px;cursor:pointer'>✅ 我已付款，通知开通</button><div id='payMsg2' style='margin-top:8px;font-size:13px;min-height:18px'></div></div></div></div><div class="modal" id="mInstall"><div class="m-head"><span>📲</span><b>安装到手机 / 电脑</b><button class="m-close" onclick="closeModal('mInstall')">✕</button></div><div class="m-body" style="padding:14px"><div style="background:#f7f3e9;border:1px solid #e5decc;border-radius:12px;padding:12px;margin-bottom:10px"><b>📱 iPhone / iPad</b><div style="font-size:12px;color:#12735a;line-height:1.8;margin-top:4px">用 <b>Safari</b> 打开本页 → 点底部「分享」⬆️ → 选「<b>添加到主屏幕</b>」→ 完成。桌面出现「燃灯者」图标，点开即全屏 App。</div></div><div style="background:#f7f3e9;border:1px solid #e5decc;border-radius:12px;padding:12px;margin-bottom:10px"><b>🤖 安卓</b><div style="font-size:12px;color:#12735a;line-height:1.8;margin-top:4px">用 <b>Chrome</b> 打开本页 → 点右上角「⋮」→ 选「<b>安装应用 / 添加到主屏幕</b>」→ 确认。</div></div><div style="background:#f7f3e9;border:1px solid #e5decc;border-radius:12px;padding:12px;margin-bottom:10px"><b>💻 电脑</b><div style="font-size:12px;color:#12735a;line-height:1.8;margin-top:4px">Chrome / Edge 打开后，地址栏右侧会出现「安装」图标，点一下即变成独立窗口应用。</div></div><div style="background:#0f5132;color:#f6e7b4;border-radius:12px;padding:12px;text-align:center"><div style="font-size:11px;opacity:.8">分享给别人 · شارك التطبيق</div><div style="font-size:15px;font-weight:700;margin-top:4px">https://燃灯同学.com</div></div></div></div><div class="modal" id="mVocab"><div class="m-head"><span>📚</span><b>词汇表</b><button class="m-close" onclick="closeModal('mVocab')">✕</button></div><div class="m-search"><input id="mVocabSearch" placeholder="🔍 搜索词汇..." oninput="renderVocab()"></div><div class="m-body" id="mVocabBody"></div><div class="m-count" id="mVocabCount"></div></div><div class="modal" id="mLibrary"><div class="m-head"><span>📚</span><b>图书馆 · 阿拉伯语文章</b><button class="m-close" onclick="closeModal('mLibrary')">✕</button></div><div class="m-search" style="gap:6px;flex-wrap:wrap"><span style="font-size:10px;color:#999;white-space:nowrap">✨ AI 写文章:</span><button class="s-btn" style="width:auto;padding:4px 10px" onclick="aiWrite('القهوة')">☕ 咖啡</button><button class="s-btn" style="width:auto;padding:4px 10px" onclick="aiWrite('رمضان')">✈️ 旅行</button><button class="s-btn" style="width:auto;padding:4px 10px" onclick="aiWrite('السفر')">✈️ 旅行</button><button class="s-btn" style="width:auto;padding:4px 10px" onclick="aiWrite('القدس')">🕌 历史古城</button><button class="s-btn" style="width:auto;padding:4px 10px" onclick="aiWrite('العلم')">🔬 科学</button><button class="s-btn" style="width:auto;padding:4px 10px" onclick="aiWrite('الربيع')">🌸 春天</button></div><div class="m-body" id="mLibBody"></div><div class="m-count" id="mLibCount"></div></div><div class="modal" id="mExplain"><div class="m-head"><span>✂️</span><b>单词拆解 · AI 逐词解释</b><button class="m-close" onclick="closeModal('mExplain')">✕</button></div><div class="m-body" id="mExplainBody" style="padding:16px"></div></div><div class="modal" id="mQuran"><div class="m-head"><span>🕌</span><b>经典选读 · 114 章</b><button class="m-close" onclick="closeModal('mQuran')">✕</button></div><div class="m-search"><input id="mQuranSearch" placeholder="🔍 搜索章节..." oninput="renderQuranList()"></div><div class="m-body" id="mQuranBody"></div><div class="m-count" id="mQuranCount"></div></div><div class="modal" id="mFlash"><div class="m-head"><span>🃏</span><b id="mFlashHead">闪卡</b><button class="m-close" onclick="closeModal('mFlash')">✕</button></div><div class="m-body" id="mFlashBody"></div></div><div class="modal" id="mQuiz"><div class="m-head"><span>📝</span><b id="mQuizHead">测验</b><button class="m-close" onclick="closeModal('mQuiz')">✕</button></div><div class="m-body" id="mQuizBody"></div></div><div class="modal" id="mWordBook"><div class="m-head"><span>📕</span><b>生词本</b><button class="m-close" onclick="closeModal('mWordBook')">✕</button></div><div class="m-search"><input id="mWbSearch" placeholder="🔍 搜索生词..." oninput="renderWordBook()"></div><div class="m-body" id="mWordBookBody"></div><div class="m-count" id="mWordBookCount"></div></div><div class="modal" id="mAlphabet"><div class="m-head"><span>🔤</span><b id="mAlphabetHead">字母入门</b><button class="m-close" onclick="closeModal('mAlphabet')">✕</button></div><div class="m-body" id="mAlphabetBody" style="padding:16px"></div></div><div class="modal" id="mListen"><div class="m-head"><span>🎧</span><b id="mListenHead">跟读评测</b><button class="m-close" onclick="closeModal('mListen')">✕</button></div><div class="m-body" id="mListenBody" style="padding:16px"></div></div><div class="modal" id="mTheme"><div class="m-head"><span>◐</span><b>外观设置</b><button class="m-close" onclick="closeModal('mTheme')">✕</button></div><div class="m-body" id="mThemeBody" style="padding:16px"></div></div><div class="modal" id="mChallenge"><div class="m-head"><span>⚡</span><b id="mChallengeHead">阿拉伯语闯关</b><button class="m-close" onclick="closeModal('mChallenge')">✕</button></div><div class="m-body" id="mChallengeBody"></div></div><div class="modal" id="mDialog"><div class="m-head"><span>💬</span><b id="mDialogHead">日常对话</b><button class="m-close" onclick="closeModal('mDialog')">✕</button></div><div class="m-body" id="mDialogBody" style="padding:16px"></div></div><div class="modal" id="mHistory"><div class="m-head"><span>📜</span><b id="mHistoryHead">历史库</b><button class="m-close" onclick="closeModal('mHistory')">✕</button></div><div class="m-body" id="mHistoryBody" style="padding:16px"></div></div><div class="modal" id="mHadith"><div class="m-head"><span>📜</span><b id="mHadithHead">哲言库</b><button class="m-close" onclick="closeModal('mHadith')">✕</button></div><div class="m-body" id="mHadithBody" style="padding:16px"></div></div><div class="modal" id="mPrayer"><div class="m-head"><span>🕌</span><b id="mPrayPrayHead">每日一句</b><button class="m-close" onclick="closeModal('mPrayer')">✕</button></div><div class="m-body" id="mPrayerBody" style="padding:16px"></div></div><div class="modal" id="mLogin"><div class="m-head"><span>🔑</span><b>登录 / 注册</b><button class="m-close" onclick="closeModal('mLogin')">✕</button></div><div class="m-body" style="padding:16px"><input id="lUser" placeholder="用户名" style="width:100%;box-sizing:border-box;border:1px solid rgba(201,168,76,.35);border-radius:10px;padding:10px 12px;font-size:13px;margin-bottom:10px;background:#fff"><input id="lPass" type="password" placeholder="密码（至少 4 位）" style="width:100%;box-sizing:border-box;border:1px solid rgba(201,168,76,.35);border-radius:10px;padding:10px 12px;font-size:13px;margin-bottom:12px;background:#fff"><button class="act-btn" style="width:100%;padding:12px;font-size:14px" onclick="webAuth('login')">🔑 登录</button><button class="act-btn" style="width:100%;padding:12px;font-size:14px;margin-top:8px;background:#fff;color:#0f3d31;border:1px solid rgba(201,168,76,.4)" onclick="webAuth('register')">✨ 注册新账号</button><button class="act-btn" style="width:100%;padding:12px;font-size:14px;margin-top:8px;background:linear-gradient(135deg,#a8892e,#c9a84c);color:#fff;border:none" onclick="webActivate()">👑 输入激活码开通会员</button><div style="font-size:10.5px;color:#999;margin-top:12px;line-height:1.7">普通用户每日 AI 对话 20 次；开通会员无限使用。</div></div></div><div class="modal" id="mMusic"><div class="m-head"><span>🎵</span><b>AI 阿拉伯音乐</b><button class="m-close" onclick="closeModal('mMusic')">✕</button></div><div class="m-body" id="mMusicBody" style="padding:16px"></div></div><div class="modal" id="mImage"><div class="m-head"><span>🖼</span><b>AI 画图</b><button class="m-close" onclick="closeModal('mImage')">✕</button></div><div class="m-body" style="padding:16px"><textarea id="imgPrompt" placeholder="描述你想画的画面，例如：暮色中的古城，新月挂在天边，阿拉伯艺术风格，水墨意境" style="width:100%%;box-sizing:border-box;border:1px solid rgba(201,168,76,.35);border-radius:10px;padding:12px;font-size:13px;min-height:70px;background:#fff"></textarea><button class="act-btn" style="width:100%%;padding:12px;font-size:14px;margin-top:10px" onclick="genImage()">🎨 生成图片（约10-30秒）</button><div id="imgStatus" style="font-size:11.5px;color:#a8892e;margin-top:10px;min-height:18px"></div><div id="imgResult" style="margin-top:10px;text-align:center"></div><div style="font-size:10px;color:#8a9c8f;margin-top:10px;line-height:1.7">💡 支持中文描述，越具体越好看。生成后可长按图片保存。</div></div></div><div class="modal" id="mRead"><div class="m-head"><span>📖</span><b id="mReadTitle">文章</b><button class="m-close" onclick="closeModal('mRead')">✕</button></div><div class="m-body" id="mReadBody"></div></div></div><div class="page" id="page-me" style="display:none"><div class="pg-h">我的燃灯</div><div class="pg-wrap profile-wrap"><div id="meBox" class="profile-card"></div><section id="profileActivity" class="profile-card profile-activity"></section><section class="profile-card profile-settings"><h2>学习与设置</h2><button class="profile-link" onclick="updateStats()"><span>学业成就</span><b>›</b></button><button class="profile-link" onclick="showThemeSettings()"><span>外观设置</span><b>›</b></button><button class="profile-link" onclick="showWordBook()"><span>生词本</span><b>›</b></button><button class="profile-link" onclick="showListen()"><span>跟读练习</span><b>›</b></button><button class="profile-link" onclick="webLogout()"><span>退出登录</span><b>›</b></button></section></div></div><div class="page" id="page-search" style="display:none"><div class="pg-h">查单词 &amp; 句子查询</div><div class="pg-wrap search-wrap"><label class="search-label" for="sQ">搜索阿拉伯语、中文或书名</label><input class="srch-big" id="sQ" placeholder="输入 كلمة 或中文释义…" onkeydown="if(event.key===&#39;Enter&#39;){doSearch()}"><div class="search-tools"><button onclick="searchTool(&quot;vocab&quot;)">查单词</button><button onclick="searchTool(&quot;analysis&quot;)">句子分析</button><button onclick="searchTool(&quot;translate&quot;)">全文翻译</button></div><div class="srch-chips"><button class="chip on" data-s="all" onclick="sPick(this)">全部</button><button class="chip" data-s="sent" onclick="sPick(this)">句子</button><button class="chip" data-s="vocab" onclick="sPick(this)">词汇</button><button class="chip" data-s="quran" onclick="sPick(this)">经典文本</button><button class="chip" data-s="lib" onclick="sPick(this)">藏书</button></div><div id="sRes"><div class="srch-tip">输入阿拉伯语或中文，搜索词汇、例句与馆藏。</div></div></div></div><div class="page" id="page-civ" style="display:none"><div class="pg-h">世界文明图谱</div><div class="pg-wrap" id="civWrap"></div></div><nav class="tabbar"><button class="tb on" data-tab="home" onclick="nav('home')"><span class="t-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 0 4 22.5z"/><path d="M4 5.5v17M8 7h8M8 11h8"/></svg></span><span class="t-nm">首页</span></button><button class="tb" data-tab="learn" onclick="nav('learn')"><span class="t-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 0 4 22.5z"/><path d="M4 5.5v17M8 7h8M8 11h8M8 15h6"/></svg></span><span class="t-nm">世界图书馆</span></button><button class="tb" data-tab="search" onclick="nav('search')"><span class="t-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.3"/><path d="m16 16 4.5 4.5"/></svg></span><span class="t-nm">搜索</span></button><button class="tb" data-tab="wordbook" onclick="showWordBook()" aria-label="生词本"><span class="t-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h12v17l-6-3.5-6 3.5z"/></svg></span><span class="t-nm">生词本</span></button><button class="tb" data-tab="me" onclick="nav('me')"><span class="t-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.3"/><path d="M5 21a7 7 0 0 1 14 0"/></svg></span><span class="t-nm">我的</span></button></nav>
-<div class="app-footer" style="text-align:center;padding:18px 16px 80px;font-size:10px;color:#9a9f9c"><div style="margin-bottom:10px"><button class="act-btn" style="margin:0 4px" onclick="showInstall()">📲 安装到手机</button> <button class="act-btn" style="margin:0 4px" onclick="exportData()">💾 导出备份</button> <label class="act-btn" style="display:inline-block;cursor:pointer;margin:0 4px">📂 导入备份<input type="file" accept=".json" style="display:none" onchange="importData(event)"></label></div><div id="serverStatus" style="font-weight:700;margin-bottom:4px">··· 检测服务器 ···</div>حاملُ المِصباح، صامتٌ لكنّه يهدي إلى الطريق · 燃灯者 &nbsp;|&nbsp; v4.1.0 &nbsp;|&nbsp; 句子 34782 句 · 词汇 29110 词 · 文章 7 篇 · 对话 26 场景 &nbsp;|&nbsp; 构建 2026-10-17 23:31</div><script>
+<div class="app-footer" style="text-align:center;padding:18px 16px 80px;font-size:10px;color:#9a9f9c"><div style="margin-bottom:10px"><button class="act-btn" style="margin:0 4px" onclick="showInstall()">📲 安装到手机</button> <button class="act-btn" style="margin:0 4px" onclick="exportData()">💾 导出备份</button> <label class="act-btn" style="display:inline-block;cursor:pointer;margin:0 4px">📂 导入备份<input type="file" accept=".json" style="display:none" onchange="importData(event)"></label></div><div id="serverStatus" style="font-weight:700;margin-bottom:4px">··· 检测服务器 ···</div>حاملُ المِصباح، صامتٌ لكنّه يهدي إلى الطريق · 燃灯者 &nbsp;|&nbsp; v4.1.0 &nbsp;|&nbsp; 句子 34782 句 · 词汇 29110 词 · 文章 7 篇 · 对话 26 场景 &nbsp;|&nbsp; 构建 2026-10-18 19:48</div><script>
 var BUILTIN_SENTENCES = [];
 var BUILTIN_VOCAB = [];
-window.NOUR_ASSET_VERSION = "4.1.0-20261017233152";
+window.NOUR_ASSET_VERSION = "4.1.0-20261018194834";
 window.NOUR_DATA_ASSETS = {sentences: "data/builtin_sentences.js", books: "data/builtin_books.js", quran: "data/builtin_quran.js", hadith: "data/builtin_hadith.js", vocab: "data/builtin_vocab.js", history: "data/builtin_history.js"};
 window.NOUR_DATA_GLOBALS = {sentences: "BUILTIN_SENTENCES", books: "BUILTIN_BOOKS", quran: "BUILTIN_QURAN", hadith: "BUILTIN_HADITH", vocab: "BUILTIN_VOCAB", history: "BUILTIN_HISTORY"};
 window.NOUR_DATA_PROMISES = window.NOUR_DATA_PROMISES || {};
@@ -8278,14 +8696,17 @@ function rdTrans(btn){
   })
   .catch(function(){ btn.textContent = '中译'; alert('翻译失败，请稍后再试'); });
 }
+var SENT_VIEW_PAGE = 0;
+var SENT_VIEW_PAGE_SIZE = 80;
 async function showAllSentences(){
   openModal('mSentences');
+  SENT_VIEW_PAGE = 0;
   var loading = document.getElementById('mSentBody');
   if(loading) loading.innerHTML = '<div style="padding:36px;text-align:center;color:#8a8f88">正在载入句子库…</div>';
   try{ await window.NOUR_loadDataAsset('sentences'); }catch(e){}
   ALL_SENTENCES = window.BUILTIN_SENTENCES || [];
   renderAllS();
-  /* The versioned local asset is the normal full-library path.  Only use the
+  /* The versioned local asset is the normal full-library path. Only use the
      legacy API as an explicit recovery path when that asset is unavailable. */
   if(!ALL_SENTENCES.length){
     try{
@@ -8299,25 +8720,48 @@ async function showAllSentences(){
     }catch(e){}
   }
 }
-function renderAllS(){
+function sentenceMore(){
+  SENT_VIEW_PAGE += 1;
+  renderAllS(true);
+}
+function renderAllS(preservePage){
+  if(!preservePage) SENT_VIEW_PAGE = 0;
   var q = (document.getElementById('mSentSearch').value||'').trim().toLowerCase();
   var list = q ? ALL_SENTENCES.filter(function(s){return s.a.includes(q)||s.e.toLowerCase().includes(q)||s.c.includes(q);}) : ALL_SENTENCES;
   var body = document.getElementById('mSentBody');
+  if(!body) return;
   body.innerHTML = '';
-  list.forEach(function(s){
+  var end = Math.min(list.length, (SENT_VIEW_PAGE + 1) * SENT_VIEW_PAGE_SIZE);
+  var frag = document.createDocumentFragment();
+  for(var i = 0; i < end; i++){
+    var s = list[i] || {};
     var d = document.createElement('div');
     d.className = 's-item';
-    var sa = s.a.replace(/&/g,'&amp;').replace(/'/g,'&#39;').replace(/"/g,'&quot;');
-    var se = s.e.replace(/&/g,'&amp;').replace(/'/g,'&#39;').replace(/"/g,'&quot;');
-    d.innerHTML = '<div class="s-ar">'+sa+'</div><div class="s-tr">🇬🇧 '+se+'<br>🇨🇳 '+s.c+'</div>'+
+    var sa = String(s.a || '').replace(/&/g,'&amp;').replace(/'/g,'&#39;').replace(/"/g,'&quot;');
+    var se = String(s.e || '').replace(/&/g,'&amp;').replace(/'/g,'&#39;').replace(/"/g,'&quot;');
+    d.innerHTML = '<div class="s-ar">'+sa+'</div><div class="s-tr">🇬🇧 '+se+'<br>🇨🇳 '+String(s.c || '')+'</div>'+
       '<div style="display:flex;gap:6px;margin-top:6px;justify-content:flex-end">'+
-'<button class="s-btn" onclick="ap(this,0,&#39;'+sa+'&#39;)">🔊</button>'+
-      '<button class="s-btn" onclick="ap(this,1,&#39;'+se+'&#39;)">🇬🇧</button>'+
-      '</div>';
-    body.appendChild(d);
-  });
-  document.getElementById('mSentCount').textContent = '共 ' + list.length + ' 句';
+      '<button class="s-btn" onclick="ap(this,0,&#39;'+sa+'&#39;)">🔊</button>'+
+      '<button class="s-btn" onclick="ap(this,1,&#39;'+se+'&#39;)">🇬🇧</button></div>';
+    frag.appendChild(d);
+  }
+  if(!list.length){
+    var empty = document.createElement('div');
+    empty.style.cssText = 'padding:36px;text-align:center;color:#8a8f88';
+    empty.textContent = '没有找到匹配句子';
+    frag.appendChild(empty);
+  } else if(end < list.length){
+    var more = document.createElement('button');
+    more.className = 's-more';
+    more.type = 'button';
+    more.textContent = '加载更多（已显示 ' + end + ' / ' + list.length + '）';
+    more.onclick = sentenceMore;
+    frag.appendChild(more);
+  }
+  body.appendChild(frag);
+  document.getElementById('mSentCount').textContent = '共 ' + list.length + ' 句 · 已显示 ' + end + ' 句';
 }
+
 async function showVocab(){
   openModal('mVocab');
   try{ await window.NOUR_loadDataAsset('vocab'); }catch(e){}
@@ -12458,12 +12902,10 @@ function exportData(){
       var nav0=window.nav;
       window.nav=function(tab){
         var result=nav0.apply(this,arguments);
-        setTimeout(function(){
-          var id=tab==='learn'?'mCat':tab==='ai'?'aiSec':tab==='search'?'page-search':tab==='me'?'page-me':'page-home';
-          var el=document.getElementById(id);
-          if(id==='page-home'){clearFocus();return;}
-          if(el) markPage(el);
-        },0);
+        var id=tab==='learn'?'mCat':tab==='ai'?'aiSec':tab==='search'?'page-search':tab==='me'?'page-me':'page-home';
+        var el=document.getElementById(id);
+        if(id==='page-home'){clearFocus();return result;}
+        if(el) markPage(el);
         return result;
       };
     }
@@ -12471,7 +12913,8 @@ function exportData(){
       var open0=window.openModal;
       window.openModal=function(id){
         var result=open0.apply(this,arguments);
-        setTimeout(function(){var el=document.getElementById(id);if(el&&MODAL_IDS[id])markModal(el);},0);
+        var el=document.getElementById(id);
+        if(el&&MODAL_IDS[id]) markModal(el);
         return result;
       };
     }
@@ -12590,5 +13033,5 @@ function exportData(){
     }).observe(document.body, { childList: true, subtree: true });
   } catch (e) {}
 })();
-</script></body><script defer src="data/course.js?v=4.1.0-20261017233152"></script><script defer src="data/belt.js?v=4.1.0-20261017233152"></script><script defer src="data/views2.js?v=4.1.0-20261017233152"></script><script defer src="data/contact.js?v=4.1.0-20261017233152"></script><script defer src="data/dictlimit.js?v=4.1.0-20261017233152"></script><script defer src="data/freeentry.js?v=4.1.0-20261017233152"></script><script defer src="data/permlock.js?v=4.1.0-20261017233152"></script><script defer src="data/audiostop.js?v=4.1.0-20261017233152"></script><script defer src="data/reader-plus.js?v=4.1.0-20261017233152"></script>
+</script></body><script defer src="data/course.js?v=4.1.0-20261018194834"></script><script defer src="data/belt.js?v=4.1.0-20261018194834"></script><script defer src="data/views2.js?v=4.1.0-20261018194834"></script><script defer src="data/contact.js?v=4.1.0-20261018194834"></script><script defer src="data/dictlimit.js?v=4.1.0-20261018194834"></script><script defer src="data/freeentry.js?v=4.1.0-20261018194834"></script><script defer src="data/permlock.js?v=4.1.0-20261018194834"></script><script defer src="data/audiostop.js?v=4.1.0-20261018194834"></script><script defer src="data/reader-plus.js?v=4.1.0-20261018194834"></script>
 </html>

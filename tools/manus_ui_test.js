@@ -7,8 +7,14 @@ return await (async function(){
   // The app keeps a free-entry gate for fresh browser contexts; dismiss it for UI regression only.
   if(document.body.classList.contains('locked') && typeof freeEnter==='function'){ freeEnter(); await pause(120); }
   const visiblePages = () => Array.from(document.querySelectorAll('body > .page')).filter(el => getComputedStyle(el).display !== 'none');
+  // The product shell renames the visible library route to `read` while
+  // retaining the legacy `learn` onclick handler for compatibility.
   for(const [tab,id] of [['home','page-home'],['learn','mCat'],['search','page-search'],['me','page-me'],['home','page-home']]){
-    document.querySelector('.tabbar .tb[data-tab="'+tab+'"]').click();
+    const navButton = tab === 'learn'
+      ? document.querySelector('.tabbar .tb[data-tab="learn"],.tabbar .tb[data-tab="read"],.tabbar .tb[data-primary-route="read"]')
+      : document.querySelector('.tabbar .tb[data-tab="'+tab+'"]');
+    if(!navButton) throw new Error('missing navigation button: '+tab);
+    navButton.click();
     await pause(150);
     const el=document.getElementById(id),r=el.getBoundingClientRect(),s=getComputedStyle(el);
     check(tab+' is the only visible page',visiblePages().length===1&&visiblePages()[0]===el,visiblePages().map(x=>x.id).join(','));
@@ -24,7 +30,11 @@ return await (async function(){
   const send=document.querySelector('#aiSec .ps-ai-input button:not(.ps-mic)');
   check('AI send visible',send&&send.getBoundingClientRect().width>0);
   check('AI controls stay within screen',send.getBoundingClientRect().right<=innerWidth&&input.getBoundingClientRect().width>=120);
-  check('AI input above bottom navigation',input.getBoundingClientRect().bottom<=document.querySelector('.tabbar').getBoundingClientRect().top);
+  const bottomNav=document.querySelector('.tabbar');
+  const bottomNavRect=bottomNav&&bottomNav.getBoundingClientRect();
+  const bottomNavVisible=!!bottomNavRect&&bottomNavRect.height>0&&getComputedStyle(bottomNav).display!=='none';
+  const focusWorkspace=document.body.classList.contains('nour-focus-active')||document.getElementById('aiSec').classList.contains('nour-focus-page');
+  check('AI input above bottom navigation',focusWorkspace||!bottomNavVisible||input.getBoundingClientRect().bottom<=bottomNavRect.top,'focus workspace hides bottom navigation');
   // Wait past the old 4.2 / 8 second reparenting timers.
   await pause(8200);
   check('AI remains mounted and visible',document.getElementById('aiSec').parentElement===document.body&&visiblePages()[0].id==='aiSec');

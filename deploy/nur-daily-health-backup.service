@@ -1,0 +1,16 @@
+[Unit]
+Description=NOUR daily health check and incremental backup
+After=network-online.target nur.service nur-health-monitor.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/nur-daily-health-backup.sh
+User=root
+Group=root
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ReadWritePaths=/var/backups/nur-daily /var/lib/nur-daily-health-backup
+ReadOnlyPaths=/opt/nur /etc/systemd/system

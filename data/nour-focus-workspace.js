@@ -82,12 +82,10 @@
       var nav0=window.nav;
       window.nav=function(tab){
         var result=nav0.apply(this,arguments);
-        setTimeout(function(){
-          var id=tab==='learn'?'mCat':tab==='ai'?'aiSec':tab==='search'?'page-search':tab==='me'?'page-me':'page-home';
-          var el=document.getElementById(id);
-          if(id==='page-home'){clearFocus();return;}
-          if(el) markPage(el);
-        },0);
+        var id=tab==='learn'?'mCat':tab==='ai'?'aiSec':tab==='search'?'page-search':tab==='me'?'page-me':'page-home';
+        var el=document.getElementById(id);
+        if(id==='page-home'){clearFocus();return result;}
+        if(el) markPage(el);
         return result;
       };
     }
@@ -95,7 +93,8 @@
       var open0=window.openModal;
       window.openModal=function(id){
         var result=open0.apply(this,arguments);
-        setTimeout(function(){var el=document.getElementById(id);if(el&&MODAL_IDS[id])markModal(el);},0);
+        var el=document.getElementById(id);
+        if(el&&MODAL_IDS[id]) markModal(el);
         return result;
       };
     }

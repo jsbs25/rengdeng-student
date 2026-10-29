@@ -25,6 +25,22 @@ return await (async function(){
       check(kind + '-requested-on-entry', resources.length >= 1, {resources:resources});
       check(kind + '-request-is-versioned', resources.some(x => /\?v=/.test(x)), {resources:resources});
       check(kind + '-data-loaded', arr.length >= minLength, {length:arr.length});
+      if(kind === 'sentences'){
+        const visible = document.querySelectorAll('#mSentBody .s-item').length;
+        check('sentences-visible-dom-is-bounded', visible <= 80, {visible, total:arr.length});
+        const more = document.querySelector('#mSentBody .s-more');
+        check('sentences-has-load-more', arr.length <= 80 || !!more, {visible, total:arr.length});
+        if(more){
+          more.click(); await pause(80);
+          check('sentences-load-more-renders-next-page', document.querySelectorAll('#mSentBody .s-item').length > visible, {before:visible, after:document.querySelectorAll('#mSentBody .s-item').length});
+        }
+        const needle = String(arr[arr.length - 1] && arr[arr.length - 1].a || '').slice(0, 8).toLowerCase();
+        if(needle){
+          const q = document.getElementById('mSentSearch'); q.value = needle; q.dispatchEvent(new Event('input', {bubbles:true})); await pause(30);
+          check('sentences-search-scans-full-array', document.querySelectorAll('#mSentBody .s-item').length >= 1, {needle, visible:document.querySelectorAll('#mSentBody .s-item').length});
+          q.value = ''; q.dispatchEvent(new Event('input', {bubbles:true}));
+        }
+      }
       return resources.length;
     }catch(e){ out.errors.push(kind + ': ' + String(e && e.stack || e)); return 0; }
   }

@@ -4804,14 +4804,17 @@ function rdTrans(btn){
   })
   .catch(function(){ btn.textContent = '中译'; alert('翻译失败，请稍后再试'); });
 }
+var SENT_VIEW_PAGE = 0;
+var SENT_VIEW_PAGE_SIZE = 80;
 async function showAllSentences(){
   openModal('mSentences');
+  SENT_VIEW_PAGE = 0;
   var loading = document.getElementById('mSentBody');
-  if(loading) loading.innerHTML = '<div style=\"padding:36px;text-align:center;color:#8a8f88\">正在载入句子库…</div>';
+  if(loading) loading.innerHTML = '<div style="padding:36px;text-align:center;color:#8a8f88">正在载入句子库…</div>';
   try{ await window.NOUR_loadDataAsset('sentences'); }catch(e){}
   ALL_SENTENCES = window.BUILTIN_SENTENCES || [];
   renderAllS();
-  /* The versioned local asset is the normal full-library path.  Only use the
+  /* The versioned local asset is the normal full-library path. Only use the
      legacy API as an explicit recovery path when that asset is unavailable. */
   if(!ALL_SENTENCES.length){
     try{
@@ -4825,25 +4828,48 @@ async function showAllSentences(){
     }catch(e){}
   }
 }
-function renderAllS(){
+function sentenceMore(){
+  SENT_VIEW_PAGE += 1;
+  renderAllS(true);
+}
+function renderAllS(preservePage){
+  if(!preservePage) SENT_VIEW_PAGE = 0;
   var q = (document.getElementById('mSentSearch').value||'').trim().toLowerCase();
   var list = q ? ALL_SENTENCES.filter(function(s){return s.a.includes(q)||s.e.toLowerCase().includes(q)||s.c.includes(q);}) : ALL_SENTENCES;
   var body = document.getElementById('mSentBody');
+  if(!body) return;
   body.innerHTML = '';
-  list.forEach(function(s){
+  var end = Math.min(list.length, (SENT_VIEW_PAGE + 1) * SENT_VIEW_PAGE_SIZE);
+  var frag = document.createDocumentFragment();
+  for(var i = 0; i < end; i++){
+    var s = list[i] || {};
     var d = document.createElement('div');
     d.className = 's-item';
-    var sa = s.a.replace(/&/g,'&amp;').replace(/'/g,'&#39;').replace(/"/g,'&quot;');
-    var se = s.e.replace(/&/g,'&amp;').replace(/'/g,'&#39;').replace(/"/g,'&quot;');
-    d.innerHTML = '<div class="s-ar">'+sa+'</div><div class="s-tr">🇬🇧 '+se+'<br>🇨🇳 '+s.c+'</div>'+
+    var sa = String(s.a || '').replace(/&/g,'&amp;').replace(/'/g,'&#39;').replace(/"/g,'&quot;');
+    var se = String(s.e || '').replace(/&/g,'&amp;').replace(/'/g,'&#39;').replace(/"/g,'&quot;');
+    d.innerHTML = '<div class="s-ar">'+sa+'</div><div class="s-tr">🇬🇧 '+se+'<br>🇨🇳 '+String(s.c || '')+'</div>'+
       '<div style="display:flex;gap:6px;margin-top:6px;justify-content:flex-end">'+
-'<button class="s-btn" onclick="ap(this,0,&#39;'+sa+'&#39;)">🔊</button>'+
-      '<button class="s-btn" onclick="ap(this,1,&#39;'+se+'&#39;)">🇬🇧</button>'+
-      '</div>';
-    body.appendChild(d);
-  });
-  document.getElementById('mSentCount').textContent = '共 ' + list.length + ' 句';
+      '<button class="s-btn" onclick="ap(this,0,&#39;'+sa+'&#39;)">🔊</button>'+
+      '<button class="s-btn" onclick="ap(this,1,&#39;'+se+'&#39;)">🇬🇧</button></div>';
+    frag.appendChild(d);
+  }
+  if(!list.length){
+    var empty = document.createElement('div');
+    empty.style.cssText = 'padding:36px;text-align:center;color:#8a8f88';
+    empty.textContent = '没有找到匹配句子';
+    frag.appendChild(empty);
+  } else if(end < list.length){
+    var more = document.createElement('button');
+    more.className = 's-more';
+    more.type = 'button';
+    more.textContent = '加载更多（已显示 ' + end + ' / ' + list.length + '）';
+    more.onclick = sentenceMore;
+    frag.appendChild(more);
+  }
+  body.appendChild(frag);
+  document.getElementById('mSentCount').textContent = '共 ' + list.length + ' 句 · 已显示 ' + end + ' 句';
 }
+
 async function showVocab(){
   openModal('mVocab');
   try{ await window.NOUR_loadDataAsset('vocab'); }catch(e){}
@@ -8049,6 +8075,14 @@ try:
         html = html.replace('</head>', _design_system_css + '</head>', 1)
 except Exception as _design_system_css_err:
     print('nour-design-system.css 注入失败:', _design_system_css_err)
+# NOUR 清晰度层：减少首页嵌套卡片、光晕和重复框架，只改视觉不改功能。
+try:
+    _clarity_css_path = DIR / 'data' / 'nour-clarity.css'
+    if _clarity_css_path.exists():
+        _clarity_css = '<style id="nour-clarity">' + _clarity_css_path.read_text(encoding='utf-8') + '</style>'
+        html = html.replace('</head>', _clarity_css + '</head>', 1)
+except Exception as _clarity_css_err:
+    print('nour-clarity.css 注入失败:', _clarity_css_err)
 # ===== PWA：manifest + 图标（输出到同目录）=====
 import shutil as _sh
 try:
