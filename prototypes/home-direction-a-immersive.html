@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>方案 A · 极简沉浸式知识空间 — 燃灯同学</title>
-<style</title>>
+<title></title>方案 A · 极简沉浸式知识空间 — 燃灯同学</title>
+<style>
   :root {
     --bg: #FFFFFF;
     --bg-2: #F5F5F7;
@@ -15,11 +15,11 @@
     --line: #D2D2D7;
     --line-soft: #E8E8ED;
     --brand: #1B4D3E;
+    --brand-2: #143B2F;
     --brand-soft: rgba(27, 77, 62, 0.07);
     --gold: #B08D40;
     --gold-soft: rgba(176, 141, 64, 0.10);
     --ease: cubic-bezier(.22, 1, .36, 1);
-    --sp: 8px;
     --read: 720px;
     --sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Microsoft YaHei", sans-serif;
     --ar: "AmiriNur", "ScheherazadeNur", "SF Arabic", "Geeza Pro", "Noto Naskh Arabic", serif;
@@ -34,6 +34,7 @@
     --line: #2C2E33;
     --line-soft: #222428;
     --brand: #3CA680;
+    --brand-2: #4FC097;
     --brand-soft: rgba(60, 166, 128, 0.13);
     --gold: #D1B062;
     --gold-soft: rgba(209, 176, 98, 0.14);
@@ -50,14 +51,12 @@
   }
   a { color: var(--brand); text-decoration: none; }
 
-  /* ===== 原型徽章 ===== */
   .proto-badge {
     position: fixed; top: max(14px, env(safe-area-inset-top)); right: max(16px, env(safe-area-inset-right));
     z-index: 60; font-size: 11px; letter-spacing: .08em; color: var(--ink-2);
     padding: 6px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface);
   }
 
-  /* ===== 角落控制（替代传统导航） ===== */
   .corner-controls {
     position: fixed; left: max(16px, env(safe-area-inset-left)); bottom: max(16px, env(safe-area-inset-bottom));
     z-index: 60; display: flex; flex-direction: column; gap: 8px;
@@ -71,7 +70,6 @@
   .ctl:hover { background: var(--bg-2); border-color: var(--ink-3); }
   .ctl svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.7; }
 
-  /* ===== 目录面板 ===== */
   .toc {
     position: fixed; left: max(16px, env(safe-area-inset-left)); bottom: max(76px, calc(env(safe-area-inset-bottom) + 60px));
     z-index: 55; width: min(300px, calc(100vw - 32px)); padding: 8px;
@@ -85,14 +83,12 @@
     color: var(--ink-2); font-size: 14px; font-weight: 500;
   }
   .toc a:hover { background: var(--bg-2); color: var(--ink); }
-  .toc a i { font-style: normal; color: var(--gold); font-size: 13px; width: 20px; text-align: center; }
+  .toc a .idx { font-style: normal; color: var(--gold); font-size: 13px; width: 20px; text-align: center; }
   .toc a.on { background: var(--brand-soft); color: var(--brand); }
 
-  /* ===== 专注模式：压暗非当前段落 ===== */
   body.focus .path-stop { opacity: .16; transition: opacity .5s var(--ease); }
   body.focus .path-stop.is-active { opacity: 1; }
 
-  /* ===== 知识路径 ===== */
   .path { max-width: var(--read); margin: 0 auto; padding: 96px 24px 160px; }
 
   .stop-kicker {
@@ -100,15 +96,16 @@
     letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 18px;
   }
   .stop-kicker::before { content: ""; width: 26px; height: 1px; background: var(--gold); }
-  .stop-kicker b { color: var(--brand); font-weight: 600; }
+  .stop-kicker .n { color: var(--brand); }
+  .stop-kicker .ar { font-family: var(--ar); letter-spacing: 0; text-transform: none; font-size: 13px; }
 
-  /* 首屏：今日原句 */
   .hero { min-height: 72vh; display: flex; flex-direction: column; justify-content: center; gap: 40px; }
   .brand { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; color: var(--ink-2); letter-spacing: .04em; }
   .brand-mark {
     width: 30px; height: 30px; border-radius: 9px; background: var(--brand-soft); color: var(--brand);
     display: grid; place-items: center; font-family: var(--ar); font-size: 16px; font-weight: 700;
   }
+  .brand-ar { font-family: var(--ar); letter-spacing: 0; }
   .hero-ar {
     font-family: var(--ar); direction: rtl; text-align: right; font-size: clamp(40px, 8vw, 72px);
     line-height: 1.9; letter-spacing: 0; color: var(--ink);
@@ -121,13 +118,12 @@
     font: inherit; font-size: 14px; font-weight: 550; cursor: pointer; }
   .btn.primary { background: var(--brand); border-color: var(--brand); color: #fff; }
   .btn:hover { border-color: var(--ink-3); }
-  .btn.primary:hover { background: var(--brand-2, #143B2F); }
+  .btn.primary:hover { background: var(--brand-2); }
 
   .path-stop { padding: 44px 0; border-top: 1px solid var(--line-soft); }
   .stop-title { font-size: clamp(24px, 3vw, 32px); font-weight: 650; letter-spacing: -0.02em; line-height: 1.2; }
   .stop-copy { margin-top: 10px; color: var(--ink-2); font-size: 15px; max-width: 56ch; }
 
-  /* 知识节点：可展开，非卡片堆叠 */
   .nodes { display: grid; gap: 1px; margin-top: 22px; background: var(--line-soft); border: 1px solid var(--line-soft); border-radius: 16px; overflow: hidden; }
   .node { background: var(--surface); }
   .node summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 14px; padding: 15px 18px; }
@@ -138,19 +134,18 @@
   .node[open] .node-more { transform: rotate(45deg); }
   .node-body { padding: 0 18px 16px 58px; display: grid; gap: 8px; }
   .rel { font-size: 13px; color: var(--ink-2); padding: 8px 10px; border-radius: 9px; background: var(--bg-2); }
-  .rel b { color: var(--ink); font-weight: 600; }
-  .rel em { font-style: normal; color: var(--gold); margin-right: 6px; }
+  .rel .k { color: var(--ink); font-weight: 600; margin-right: 6px; }
+  .rel .ar { font-family: var(--ar); color: var(--brand); letter-spacing: 0; }
+  .rel .note { color: var(--ink-2); }
 
-  /* 沉浸式阅读块 */
   .immersive { margin-top: 22px; padding: 28px 26px; border-left: 2px solid var(--gold); background: var(--bg-2); border-radius: 0 16px 16px 0; }
   .immersive p.ar { font-family: var(--ar); direction: rtl; text-align: right; font-size: 22px; line-height: 2.1; letter-spacing: 0; }
   .immersive p.cn { margin-top: 10px; color: var(--ink-2); font-size: 15px; }
 
-  /* 个人成长：安静数字，非仪表盘 */
   .growth { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 22px; }
   .growth div { padding: 18px 16px; background: var(--bg-2); border-radius: 14px; }
-  .growth b { display: block; font-size: 28px; font-weight: 650; letter-spacing: -0.02em; }
-  .growth span { font-size: 12px; color: var(--ink-2); }
+  .growth .num { display: block; font-size: 28px; font-weight: 650; letter-spacing: -0.02em; }
+  .growth .lbl { font-size: 12px; color: var(--ink-2); }
 
   @media (max-width: 640px) {
     .path { padding: 72px 20px 140px; }
@@ -180,17 +175,21 @@
   </div>
 
   <nav class="toc" id="toc">
-    <a href="#hero" data-stop="hero"><i>١</i>今日原句</a>
-    <a href="#</i>language" data-stop="language"><i>٢</i>语言 ·</i> 阿拉伯语</a>
-    <a href="#ai" data-stop="ai"><i>٣</i></i>智能 · 努尔 AI</a>
-    <a href="#classics" data-stop="classics"><i>٤</i>经典 · 古兰经</a>
-    <a href="#library" data-stop="library"><i></i></i>٥</i>典籍 · 世界图书馆</a>
-    <a href="#growth" data-stop="growth"><i>٦</i></i>成长 · 个人知识</a>
+    <a href="#hero" data-stop="hero"><span class="idx">一</span>今日原句</a>
+    <a href="#language" data-stop="language"><span class="idx">二</span>语言 · 阿拉伯语</a>
+    <a href="#ai" data-stop="ai"><span class="idx">三</span>智能 · 努尔 AI</a>
+    <a href="#classics" data-stop="classics"><span class="idx">四</span>经典 · 古兰经</a>
+    <a href="#library" data-stop="library"><span class="idx">五</span>典籍 · 世界图书馆</a>
+    <a href="#growth" data-stop="growth"><span class="idx">六</span>成长 · 个人知识</a>
   </nav>
 
   <main class="path">
     <section class="path-stop hero" id="hero">
-      <div class="brand"><span class="brand-mark" lang="ar" dir="rtl">ن</span>燃灯同学 Rengdeng Student · حامل المصباح</div>
+      <div class="brand">
+        <span class="brand-mark" lang="ar" dir="rtl">ن</span>
+        <span>燃灯同学 Rengdeng Student ·</span>
+        <span class="brand-ar" lang="ar" dir="rtl">حامل المصباح</span>
+      </div>
       <div>
         <h1 class="hero-ar" lang="ar" dir="rtl">العِلْمُ كَنْزٌ لَا يَفْنَىٰ</h1>
         <p class="hero-cn">知识是永不消逝的宝藏</p>
@@ -203,36 +202,48 @@
     </section>
 
     <section class="path-stop" id="language">
-      <div class="stop-kicker"><b>٢</b></b>语言 · اللغة العربية</div>
+      <div class="stop-kicker"><span class="n">二</span><span>语言</span><span class="ar" lang="ar" dir="rtl">اللغة العربية</span></div>
       <h2 class="stop-title">从一句真实的阿拉伯语开始</h2>
       <p class="stop-copy">34,000+ 句带音符语料、29,000+ 高频词、系统语法与间隔复习。点击一句，展开它背后的词根、近反义词与相关典籍。</p>
       <div class="nodes">
         <details class="node">
-          <summary><span class="node-ar" lang="ar" dir="rtl">كِتَاب</span><span class="node-cn">书 · 名词</span><span class="node-more">＋</span></summary>
+          <summary>
+            <span class="node-ar" lang="ar" dir="rtl">كِتَاب</span>
+            <span class="node-cn">书 · 名词</span>
+            <span class="node-more">＋</span>
+          </summary>
           <div class="node-body">
-            <div class="rel"><em>词根</em</em>><b>ك ت</b> ب</b> —— 与“书写”相关</div>
-            <div class="rel"><em>近义</em</em>><b>مُجَلَّد · سِ</b>فْر</b></div>
-            <div class="rel"><em>相关</em>书</em><b></b>语法课 · 词汇表 · 馆藏例句</b></div>
+            <div class="rel"><span class="k">词根</span><span class="ar" lang="ar" dir="rtl">ك ت ب</span><span class="note">—— 与“书写”相关</span></div>
+            <div class="rel"><span class="k">近义</span><span class="ar" lang="ar" dir="rtl">مُجَلَّد · سِفْر</span></div>
+            <div class="rel"><span class="k">相关书</span><span>语法课 · 词汇表 · 馆藏例句</span></div>
           </div>
         </details>
         <details class="node">
-          <summary><span class="node-ar" lang="ar" dir="rtl">ذَهَبَ</span><span class="node-cn">他去 · 过去式动词</span><span class="node-more">＋</span></summary>
+          <summary>
+            <span class="node-ar" lang="ar" dir="rtl">ذَهَبَ</span>
+            <span class="node-cn">他去 · 过去式动词</span>
+            <span class="node-more">＋</span>
+          </summary>
           <div class="node-body">
-            <div class="rel"><em>词根</em></em><b>ذ ه</b> ب</b></div>
-            <div class="rel"><em>变</em>位</em><b></b>ذَهَبْتُ · يَذْهَبُ · اِذْهَبْ</b></div>
+            <div class="rel"><span class="k">词根</span><span class="ar" lang="ar" dir="rtl">ذ ه ب</span></div>
+            <div class="rel"><span class="k">变位</span><span class="ar" lang="ar" dir="rtl">ذَهَبْتُ · يَذْهَبُ · اِذْهَبْ</span></div>
           </div>
         </details>
         <details class="node">
-          <summary><span class="node-ar" lang="ar" dir="rtl">بَكْرَة</span><span class="node-cn">明天 · 口语</span><span class="node-more">＋</span></summary>
+          <summary>
+            <span class="node-ar" lang="ar" dir="rtl">بَكْرَة</span>
+            <span class="node-cn">明天 · 口语</span>
+            <span class="node-more">＋</span>
+          </summary>
           <div class="node-body">
-            <div class="rel"><em>场景</em></em><b>留学生</b>日常口语 · 问候与约见</b></div>
+            <div class="rel"><span class="k">场景</span><span>留学生日常口语 · 问候与约见</span></div>
           </div>
         </details>
       </div>
     </section>
 
     <section class="path-stop" id="ai">
-      <div class="stop-kicker"><b>٣</b>智能</b> · الذكاء</div>
+      <div class="stop-kicker"><span class="n">三</span><span>智能</span><span class="ar" lang="ar" dir="rtl">الذكاء</span></div>
       <h2 class="stop-title">努尔 AI，安静地陪在阅读身边</h2>
       <p class="stop-copy">不是弹窗，也不是聊天框。当你在书里选中一段文字，AI 会在这里给出词形、语法、译文与可核验的来源，围绕你的上下文工作。</p>
       <div class="immersive">
@@ -242,7 +253,7 @@
     </section>
 
     <section class="path-stop" id="classics">
-      <div class="stop-kicker"><b>٤</b></b>经典 · القرآن الكريم</div>
+      <div class="stop-kicker"><span class="n">四</span><span>经典</span><span class="ar" lang="ar" dir="rtl">القرآن الكريم</span></div>
       <h2 class="stop-title">在经典面前，界面退后</h2>
       <p class="stop-copy">114 章、6,236 节原文与中文译注，名家诵读与逐词词形。进入阅读后，除了文字与一条极细的进度线，什么都不剩。</p>
       <div class="immersive">
@@ -252,21 +263,21 @@
     </section>
 
     <section class="path-stop" id="library">
-      <div class="stop-kicker"><b>٥</b></b>典籍 · المكتبة العالمية</div>
+      <div class="stop-kicker"><span class="n">五</span><span>典籍</span><span class="ar" lang="ar" dir="rtl">المكتبة العالمية</span></div>
       <h2 class="stop-title">一座可以走入的世界图书馆</h2>
       <p class="stop-copy">23,000+ 世界典籍、8,400+ 历史文献、伊斯兰经典与中文古籍。阅读器以舒适的宽度呈现中文与阿拉伯语。</p>
     </section>
 
     <section class="path-stop" id="growth">
-      <div class="stop-kicker"><b>٦</b</b>>成长 · النمو</div>
+      <div class="stop-kicker"><span class="n">六</span><span>成长</span><span class="ar" lang="ar" dir="rtl">النمو</span></div>
       <h2 class="stop-title">你的知识，会自己生长</h2>
       <p class="stop-copy">每一次查词、阅读与笔记，都沉淀为可回溯的个人知识脉络。</p>
       <div class="growth">
-        <div><b>128</b></b><span>连续</span>学习天数</span></div>
-        <div><b>3,204</b></b><span>已</span>掌握词汇</span></div>
-        <div><b>17</b><span</b>>阅读中的典籍</span></div>
-        <div><b></b>46</b><span>知识节点</span></div>
-      </div</span>>
+        <div><span class="num">128</span><span class="lbl">连续学习天数</span></div>
+        <div><span class="num">3,204</span><span class="lbl">已掌握词汇</span></div>
+        <div><span class="num">17</span><span class="lbl">阅读中的典籍</span></div>
+        <div><span class="num">46</span><span class="lbl">知识节点</span></div>
+      </div>
     </section>
   </main>
 
@@ -282,7 +293,6 @@
         tocBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
       });
 
-      // 专注模式：压暗非当前段落（滚动时高亮视口中央段落，模拟沉浸）
       var stops = Array.prototype.slice.call(document.querySelectorAll('.path-stop'));
       focusBtn.addEventListener('click', function () {
         var on = document.body.classList.toggle('focus');
@@ -308,7 +318,6 @@
         document.getElementById('language').scrollIntoView({ behavior: 'smooth' });
       });
 
-      // 目录高亮（简单同步）
       var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
       links.forEach(function (a) {
         a.addEventListener('click', function () {
