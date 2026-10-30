@@ -1,418 +1,219 @@
-/* NOUR Clarity Layer v1
-   Visual-only declutter pass. It keeps every existing node and action,
-   but restores a clear reading hierarchy: title -> reading -> quote -> AI -> tools.
-*/
+/* ============================================================================
+   燃灯同学 Rengdeng Student · 清晰度与全站表面协同层 (Clarity Layer v2.0)
+   ----------------------------------------------------------------------------
+   与 data/nour-design-system.css 完全对齐：
+   浅色 #FFFFFF / #F5F5F7 · 主文字 #1D1D1F · 次文字 #86868B · 分割线 #D2D2D7
+   深色 #0B0C0E / #141619 · 主文字 #F5F5F7 · 分割线 #2C2E33
+   作为 build_home.py 最后注入的样式层，负责修正历史样式层的级联顺序冲突。
+   ============================================================================ */
 
-/* The homepage should read like a library index, not a dashboard of cards. */
-#page-home > .nour-mission {
-  border: 0 !important;
-  border-top: 1px solid var(--ds-line, #e7e4da) !important;
-  border-bottom: 1px solid var(--ds-line, #e7e4da) !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  box-shadow: none !important;
-  width: min(1180px, calc(100% - 56px)) !important;
-  margin: 0 auto 8px !important;
-  padding: 12px 0 !important;
-}
-#page-home > .nour-mission::before,
-#page-home > .nour-mission .nour-mission-mark {
-  display: none !important;
-}
-#page-home > .nour-mission .nour-mission-copy strong {
-  color: var(--ds-ink, #1f1e1b) !important;
-  font-weight: 650 !important;
-}
-#page-home > .nour-mission .nour-mission-copy span {
-  color: var(--ds-ink-2, #6b6a64) !important;
-}
-#page-home > .nour-mission .nour-mission-actions button {
-  border: 1px solid var(--ds-line, #e7e4da) !important;
-  border-radius: 4px !important;
-  background: transparent !important;
-  color: var(--ds-brand, #0f5132) !important;
-  box-shadow: none !important;
-  transform: none !important;
-}
-#page-home > .nour-mission .nour-mission-actions button:first-child {
-  background: var(--ds-brand, #0f5132) !important;
-  color: #fff !important;
-  border-color: var(--ds-brand, #0f5132) !important;
-}
+/* ============ 0. 首页 Flex 顺序收口：品牌栏在上、产品壳层紧接其后 ============ */
+#page-home > .hdr { order: 1 !important; }
+#nourProductHome { order: 2 !important; }
 
-/* Remove decorative focus-stage effects while keeping the real actions. */
+/* 隐藏首页旧版混乱横幅与重复入口，交由编辑式四屏统一呈现 */
+#page-home > .nour-mission,
 #page-home > .tk-hero .nour-ambient-ring,
-#page-home > .hdr .nour-top-action {
+#page-home > .hdr .nour-top-action,
+#page-home > .tk-hero .tk-acts,
+#page-home > .tk-hero:after,
+#page-home > .tk-hero:before {
   display: none !important;
 }
 
-/* Content blocks use rules and whitespace instead of nested boxes. */
-#nourProductHome .nour-product-grid {
-  gap: 32px !important;
-  margin-top: 24px !important;
-}
-#nourProductHome .nour-product-column {
-  gap: 30px !important;
-}
-#nourProductHome .nour-product-section {
-  padding-top: 18px !important;
-}
-#nourProductHome .nour-continue-list,
-#nourProductHome .nour-discovery,
-#nourProductHome .nour-stat-list,
-#nourProductHome .nour-tool-index,
-#nourProductHome .nour-more-tools {
-  border: 0 !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  box-shadow: none !important;
-}
-#nourProductHome .nour-continue-list,
-#nourProductHome .nour-tool-index {
-  border-top: 1px solid var(--ds-line, #e7e4da) !important;
-}
-#nourProductHome .nour-continue-item,
-#nourProductHome .nour-discovery-block,
-#nourProductHome .nour-stat {
-  border: 0 !important;
-  border-bottom: 1px solid var(--ds-line, #e7e4da) !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  box-shadow: none !important;
-}
-#nourProductHome .nour-continue-item {
-  padding: 15px 0 !important;
-}
-#nourProductHome .nour-discovery {
-  grid-template-columns: minmax(0, 1fr) !important;
-  gap: 0 !important;
-}
-#nourProductHome .nour-discovery-block {
-  min-height: 0 !important;
-  padding: 16px 0 !important;
-}
-#nourProductHome .nour-stat-list {
-  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-  gap: 0 !important;
-  border-top: 1px solid var(--ds-line, #e7e4da) !important;
-}
-#nourProductHome .nour-stat {
-  padding: 15px 12px 15px 0 !important;
-}
-#nourProductHome .nour-stat + .nour-stat {
-  padding-left: 12px !important;
-  border-left: 1px solid var(--ds-line, #e7e4da) !important;
-}
-#nourProductHome .nour-tool-index button {
-  border-bottom: 1px solid var(--ds-line, #e7e4da) !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  padding: 13px 0 !important;
-}
-#nourProductHome .nour-tool-index button:hover {
-  background: var(--ds-surface-2, #f1efe8) !important;
-}
-#nourProductHome .nour-more-tools summary {
-  padding: 12px 0 !important;
-  border-bottom: 1px solid var(--ds-line, #e7e4da) !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-}
-#nourProductHome .nour-home-progress {
-  border: 0 !important;
-  border-bottom: 1px solid var(--ds-line, #e7e4da) !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  box-shadow: none !important;
-  padding: 12px 0 !important;
-}
-#nourProductHome .nour-daily-quote-body {
-  border: 0 !important;
-  border-left: 2px solid var(--ds-gold, #a98935) !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  box-shadow: none !important;
-  padding: 8px 0 8px 16px !important;
-}
-#nourProductHome .nour-daily-quote-cn {
-  color: var(--ds-ink-2, #6b6a64) !important;
-}
-
-/* AI stays prominent, but loses the extra dashboard frame. */
-#page-home > #aiSec .ps-ai-card {
-  border: 0 !important;
-  border-top: 1px solid var(--ds-line, #e7e4da) !important;
-  border-bottom: 1px solid var(--ds-line, #e7e4da) !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  background: transparent !important;
-}
-#page-home > #aiSec .ps-ai-head,
-#page-home > #aiSec #homeAI,
-#page-home > #aiSec .ps-ai-chips,
-#page-home > #aiSec .ps-ai-input {
-  background: transparent !important;
-}
-#page-home > #aiSec #homeAI {
-  border-left: 0 !important;
-}
-
-/* A small, solid nav is quieter and keeps more of the page visible. */
-html[data-theme] .tabbar.nour-primary-nav,
-html[data-theme] .tabbar.nour-four-nav {
-  width: min(420px, calc(100% - 28px)) !important;
-  border-radius: 4px !important;
-  box-shadow: 0 6px 18px rgba(31, 30, 27, .10) !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-}
-html[data-theme] .tabbar.nour-primary-nav .tb,
-html[data-theme] .tabbar.nour-four-nav .tb {
-  border-radius: 4px !important;
-}
-
-@media (max-width: 760px) {
-  #page-home > .nour-mission {
-    width: calc(100% - 28px) !important;
-  }
-  #nourProductHome .nour-product-grid {
-    gap: 24px !important;
-    margin-top: 18px !important;
-  }
-  #nourProductHome .nour-product-column {
-    gap: 24px !important;
-  }
-  #nourProductHome .nour-stat-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-  }
-  #nourProductHome .nour-stat:nth-child(3) {
-    border-top: 1px solid var(--ds-line, #e7e4da) !important;
-    padding-top: 13px !important;
-  }
-  #nourProductHome .nour-stat:nth-child(4) {
-    border-top: 1px solid var(--ds-line, #e7e4da) !important;
-    padding-top: 13px !important;
-  }
-  #nourProductHome .nour-stat:nth-child(odd) {
-    border-left: 0 !important;
-    padding-left: 0 !important;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  #page-home > .nour-mission *,
-  #nourProductHome *,
-  html[data-theme] .tabbar {
-    transition: none !important;
-  }
-}
-
-
-/* Whole-site page contract: quiet paper surfaces outside focus reading. */
+/* ============ 1. 顶层二级页面统一纸面 / 深色分层 ============ */
 html body > #mCat.page:not(.nour-focus-page),
 html body > #page-search.page:not(.nour-focus-page),
 html body > #page-me.page:not(.nour-focus-page),
 html body > #aiSec.page:not(.nour-focus-page) {
-  background: var(--ds-bg, #f7f5ef) !important;
-  color: var(--ds-ink, #1f1e1b) !important;
+  background: var(--ds-bg, #FFFFFF) !important;
+  color: var(--ds-ink, #1D1D1F) !important;
 }
+
 html body > #mCat.page:not(.nour-focus-page) .m-head,
 html body > #page-search.page:not(.nour-focus-page) .pg-h,
 html body > #page-me.page:not(.nour-focus-page) .pg-h {
-  background: var(--ds-bg, #f7f5ef) !important;
-  color: var(--ds-ink, #1f1e1b) !important;
-  border-bottom: 1px solid var(--ds-line, #e7e4da) !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-}
-html body > #mCat.page:not(.nour-focus-page) .m-head b,
-html body > #page-search.page:not(.nour-focus-page) .pg-h,
-html body > #page-me.page:not(.nour-focus-page) .pg-h {
-  color: var(--ds-ink, #1f1e1b) !important;
-  letter-spacing: -.01em !important;
-}
-html body > #mCat.page:not(.nour-focus-page) .m-body,
-html body > #page-search.page:not(.nour-focus-page) .m-body,
-html body > #page-me.page:not(.nour-focus-page) .m-body {
-  background: transparent !important;
-  color: var(--ds-ink, #1f1e1b) !important;
+  background: var(--ds-surface-elevated, rgba(255, 255, 255, 0.88)) !important;
+  color: var(--ds-ink, #1D1D1F) !important;
+  border-bottom: 1px solid var(--ds-line, #D2D2D7) !important;
+  backdrop-filter: saturate(180%) blur(20px) !important;
+  -webkit-backdrop-filter: saturate(180%) blur(20px) !important;
 }
 
-/* Library: books remain visual, but the library chrome becomes an index. */
+/* ============ 2. 世界图书馆：Apple Books 式陈列与分类浏览 ============ */
 html body > #mCat.page:not(.nour-focus-page) .bk-side,
 html body > #mCat.page:not(.nour-focus-page) .bk-card,
+html body > #mCat.page:not(.nour-focus-page) .bkcard,
 html body > #mCat.page:not(.nour-focus-page) .bk-q {
-  background: var(--ds-surface, #fff) !important;
-  border: 1px solid var(--ds-line, #e7e4da) !important;
-  border-radius: 4px !important;
-  box-shadow: none !important;
+  background: var(--ds-surface, #FFFFFF) !important;
+  border: 1px solid var(--ds-line-subtle, #E8E8ED) !important;
+  border-radius: var(--ds-r-md, 14px) !important;
+  box-shadow: var(--ds-shadow-sm) !important;
+  color: var(--ds-ink, #1D1D1F) !important;
 }
-html body > #mCat.page:not(.nour-focus-page) .bk-side {
-  padding: 12px !important;
-}
+
 html body > #mCat.page:not(.nour-focus-page) .bk-cat {
-  border-radius: 4px !important;
-  color: var(--ds-ink-2, #6b6a64) !important;
+  border-radius: var(--ds-r-sm, 10px) !important;
+  color: var(--ds-ink-2, #86868B) !important;
 }
+
 html body > #mCat.page:not(.nour-focus-page) .bk-cat.on {
-  background: var(--ds-surface-2, #f1efe8) !important;
-  color: var(--ds-brand, #0f5132) !important;
+  background: var(--ds-brand-soft, rgba(27, 77, 62, 0.08)) !important;
+  color: var(--ds-brand, #1B4D3E) !important;
+  font-weight: 600 !important;
 }
-html body > #mCat.page:not(.nour-focus-page) .bk-card:hover {
-  transform: none !important;
-  border-color: var(--ds-gold, #a98935) !important;
-  background: var(--ds-surface, #fff) !important;
-}
+
 html body > #mCat.page:not(.nour-focus-page) .library-back,
 html body > #mCat.page:not(.nour-focus-page) .lib-tabs .lt {
-  border-radius: 4px !important;
-  background: transparent !important;
-  border-color: var(--ds-line, #e7e4da) !important;
-  color: var(--ds-ink-2, #6b6a64) !important;
+  border-radius: var(--ds-r-pill, 999px) !important;
+  background: var(--ds-bg-secondary, #F5F5F7) !important;
+  border: 1px solid var(--ds-line, #D2D2D7) !important;
+  color: var(--ds-ink-2, #86868B) !important;
 }
+
 html body > #mCat.page:not(.nour-focus-page) .lib-tabs .lt.on {
-  background: var(--ds-brand, #0f5132) !important;
-  border-color: var(--ds-brand, #0f5132) !important;
-  color: #fff !important;
-  box-shadow: none !important;
+  background: var(--ds-brand, #1B4D3E) !important;
+  border-color: var(--ds-brand, #1B4D3E) !important;
+  color: #FFFFFF !important;
 }
 
-/* Search and profile: one reading column, no floating glass panels. */
-html body > #page-search.page:not(.nour-focus-page) .srch-big,
-html body > #page-search.page:not(.nour-focus-page) .search-tools button,
-html body > #page-me.page:not(.nour-focus-page) .profile-card,
-html body > #page-me.page:not(.nour-focus-page) .profile-link {
-  background: var(--ds-surface, #fff) !important;
-  border: 1px solid var(--ds-line, #e7e4da) !important;
-  border-radius: 4px !important;
-  box-shadow: none !important;
-  color: var(--ds-ink, #1f1e1b) !important;
-}
-html body > #page-search.page:not(.nour-focus-page) .search-tools button,
-html body > #page-me.page:not(.nour-focus-page) .profile-link {
-  min-height: 42px !important;
-}
-html body > #page-search.page:not(.nour-focus-page) .search-tools button:first-child {
-  color: var(--ds-brand, #0f5132) !important;
-  border-color: var(--ds-brand, #0f5132) !important;
-}
-html body > #page-me.page:not(.nour-focus-page) .profile-card {
-  padding: 20px !important;
-}
-html body > #page-me.page:not(.nour-focus-page) .profile-link:hover,
-html body > #page-search.page:not(.nour-focus-page) .search-tools button:hover {
-  background: var(--ds-surface-2, #f1efe8) !important;
-  transform: none !important;
+/* ============ 3. 阿拉伯语学习工作台：真实进度优先、弱化仪表盘 ============ */
+.study-workspace-intro {
+  margin: 0 0 16px !important;
+  padding: 20px 22px !important;
+  border: 1px solid var(--ds-line-subtle, #E8E8ED) !important;
+  border-radius: var(--ds-r-lg, 20px) !important;
+  background: var(--ds-surface, #FFFFFF) !important;
+  color: var(--ds-ink, #1D1D1F) !important;
+  box-shadow: var(--ds-shadow-sm) !important;
 }
 
-/* AI page: preserve the real chat and context, remove the dark glass treatment. */
-html body > #aiSec.page:not(.nour-focus-page) {
-  background: var(--ds-bg, #f7f5ef) !important;
+.study-workspace-copy small {
+  color: var(--ds-ink-2, #86868B) !important;
+  font-size: 12px !important;
+  letter-spacing: 0.05em !important;
 }
-html body > #aiSec.page:not(.nour-focus-page) .nour-ai-intro,
-html body > #aiSec.page:not(.nour-focus-page) .nour-ai-note,
-html body > #aiSec.page:not(.nour-focus-page) .ps-ai-card {
-  color: var(--ds-ink, #1f1e1b) !important;
+
+.study-workspace-copy h2 {
+  margin: 6px 0 6px !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+  color: var(--ds-ink, #1D1D1F) !important;
 }
-html body > #aiSec.page:not(.nour-focus-page) .nour-ai-intro {
-  border-bottom-color: var(--ds-line, #e7e4da) !important;
+
+.study-workspace-copy p {
+  margin: 0 !important;
+  max-width: 640px !important;
+  color: var(--ds-ink-2, #86868B) !important;
+  font-size: 14px !important;
+  line-height: 1.7 !important;
 }
-html body > #aiSec.page:not(.nour-focus-page) .nour-ai-intro h1 {
-  color: var(--ds-ink, #1f1e1b) !important;
+
+.study-workspace-metrics b {
+  color: var(--ds-ink, #1D1D1F) !important;
+  font-size: 26px !important;
+  font-weight: 700 !important;
 }
-html body > #aiSec.page:not(.nour-focus-page) .nour-ai-note {
-  border-left-color: var(--ds-gold, #a98935) !important;
+
+.study-workspace-metrics span {
+  color: var(--ds-ink-2, #86868B) !important;
+  font-size: 12px !important;
+}
+
+.study-workspace-actions button {
+  min-height: 44px !important;
+  padding: 0 16px !important;
+  border: 1px solid var(--ds-line, #D2D2D7) !important;
+  border-radius: var(--ds-r-pill, 999px) !important;
+  background: var(--ds-surface, #FFFFFF) !important;
+  color: var(--ds-ink, #1D1D1F) !important;
+  font-size: 13px !important;
+  font-weight: 550 !important;
+  transition: border-color 160ms var(--ds-ease, ease), color 160ms var(--ds-ease, ease), background 160ms var(--ds-ease, ease) !important;
+}
+
+.study-workspace-actions button:hover {
+  background: var(--ds-bg-secondary, #F5F5F7) !important;
+  border-color: var(--ds-brand, #1B4D3E) !important;
+  color: var(--ds-brand, #1B4D3E) !important;
+}
+
+/* ============ 4. iOS 设置式个人中心 ============ */
+#page-me .profile-card {
+  background: var(--ds-surface, #FFFFFF) !important;
+  border: 1px solid var(--ds-line-subtle, #E8E8ED) !important;
+  border-radius: var(--ds-r-lg, 20px) !important;
+  box-shadow: var(--ds-shadow-sm) !important;
+  overflow: hidden !important;
+}
+
+#page-me .profile-link {
+  width: 100% !important;
+  min-height: 46px !important;
+  padding: 14px 16px !important;
+  border: 0 !important;
+  border-top: 1px solid var(--ds-line-subtle, #E8E8ED) !important;
   background: transparent !important;
-}
-html body > #aiSec.page:not(.nour-focus-page) .ps-ai-card {
-  background: var(--ds-surface, #fff) !important;
-  border: 1px solid var(--ds-line, #e7e4da) !important;
-  border-radius: 4px !important;
-  box-shadow: none !important;
-}
-html body > #aiSec.page:not(.nour-focus-page) .ps-ai-head,
-html body > #aiSec.page:not(.nour-focus-page) .ps-ai-chips,
-html body > #aiSec.page:not(.nour-focus-page) .ps-ai-input {
-  background: var(--ds-surface, #fff) !important;
-  border-color: var(--ds-line, #e7e4da) !important;
-}
-html body > #aiSec.page:not(.nour-focus-page) .ps-ai-head,
-html body > #aiSec.page:not(.nour-focus-page) .ps-ai-input {
-  color: var(--ds-ink, #1f1e1b) !important;
-}
-html body > #aiSec.page:not(.nour-focus-page) .ps-ai-msg.bot {
-  background: var(--ds-surface-2, #f1efe8) !important;
-  border-color: var(--ds-line, #e7e4da) !important;
-  color: var(--ds-ink, #1f1e1b) !important;
-}
-html body > #aiSec.page:not(.nour-focus-page) .ps-ai-msg.user {
-  background: var(--ds-brand, #0f5132) !important;
-  border-color: var(--ds-brand, #0f5132) !important;
-  color: #fff !important;
-}
-html body > #aiSec.page:not(.nour-focus-page) .ps-ai-chips button,
-html body > #aiSec.page:not(.nour-focus-page) .ps-ai-input input,
-html body > #aiSec.page:not(.nour-focus-page) .ps-ai-input button {
-  border-radius: 4px !important;
-}
-html body > #aiSec.page:not(.nour-focus-page) .ps-ai-input input {
-  background: var(--ds-surface, #fff) !important;
-  color: var(--ds-ink, #1f1e1b) !important;
-}
-html body > #aiSec.page:not(.nour-focus-page) .ps-ai-input button {
-  background: var(--ds-brand, #0f5132) !important;
-  color: #fff !important;
+  color: var(--ds-ink, #1D1D1F) !important;
 }
 
-/* Ordinary utility dialogs share the same paper language; reader/focus stays untouched. */
+#page-me .profile-link b {
+  color: var(--ds-ink-3, #AEAEB2) !important;
+  font-weight: 400 !important;
+}
+
+/* ============ 5. 阅读器与查询浮层跟随全局浅/深色 ============ */
+html[data-theme="light"] body.reading #mReader,
+html[data-theme="light"] body.reading #mReader .m-body {
+  background: var(--ds-bg, #FFFFFF) !important;
+  color: var(--ds-ink, #1D1D1F) !important;
+}
+
+html[data-theme="dark"] body.reading #mReader,
+html[data-theme="dark"] body.reading #mReader .m-body {
+  background: var(--ds-bg, #0B0C0E) !important;
+  color: var(--ds-ink, #F5F5F7) !important;
+}
+
+html[data-theme="light"] body.reading #mReader .rd-paper,
+html[data-theme="light"] body.reading #mReader .rd-page {
+  background: var(--ds-surface, #FFFFFF) !important;
+  color: var(--ds-ink, #1D1D1F) !important;
+  border-color: var(--ds-line-subtle, #E8E8ED) !important;
+}
+
+html[data-theme="dark"] body.reading #mReader .rd-paper,
+html[data-theme="dark"] body.reading #mReader .rd-page {
+  background: var(--ds-surface, #1C1E22) !important;
+  color: var(--ds-ink, #F5F5F7) !important;
+  border-color: var(--ds-line, #2C2E33) !important;
+}
+
+/* ============ 6. 常规工具弹窗统一清爽顶栏与次级底色 ============ */
 html body .modal:not(#mReader):not(.nour-focus-modal) .m-head {
-  background: var(--ds-surface, #fff) !important;
-  color: var(--ds-ink, #1f1e1b) !important;
-  border-bottom: 1px solid var(--ds-line, #e7e4da) !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
+  background: var(--ds-surface-elevated, rgba(255, 255, 255, 0.92)) !important;
+  color: var(--ds-ink, #1D1D1F) !important;
+  border-bottom: 1px solid var(--ds-line, #D2D2D7) !important;
 }
+
 html body .modal:not(#mReader):not(.nour-focus-modal) .m-body {
-  background: var(--ds-bg, #f7f5ef) !important;
-  color: var(--ds-ink, #1f1e1b) !important;
-}
-html body .modal:not(#mReader):not(.nour-focus-modal) .m-close,
-html body .modal:not(#mReader):not(.nour-focus-modal) .m-back {
-  border-radius: 4px !important;
-  color: var(--ds-brand, #0f5132) !important;
+  background: var(--ds-bg-secondary, #F5F5F7) !important;
+  color: var(--ds-ink, #1D1D1F) !important;
 }
 
-@media (max-width: 760px) {
-  html body > #mCat.page:not(.nour-focus-page) .m-body,
-  html body > #page-search.page:not(.nour-focus-page) .m-body,
-  html body > #page-me.page:not(.nour-focus-page) .m-body {
-    width: calc(100% - 28px) !important;
-  }
-  html body > #aiSec.page:not(.nour-focus-page) {
-    padding-left: 12px !important;
-    padding-right: 12px !important;
-  }
-  html body > #aiSec.page:not(.nour-focus-page) .ps-ai-card {
-    width: 100% !important;
-  }
-}
-
-
-/* Bounded sentence library controls: full data, small visible DOM. */
+/* ============ 7. 句子库分页加载按钮 ============ */
 html body #mSentBody .s-more {
   display: block;
   width: calc(100% - 24px);
-  margin: 14px auto 22px;
-  padding: 10px 12px;
-  border: 1px solid var(--ds-line, #e7e4da);
-  border-radius: 4px;
-  background: var(--ds-surface, #fff);
-  color: var(--ds-brand, #0f5132);
+  margin: 16px auto 24px;
+  padding: 12px 16px;
+  border: 1px solid var(--ds-line, #D2D2D7);
+  border-radius: var(--ds-r-md, 14px);
+  background: var(--ds-surface, #FFFFFF);
+  color: var(--ds-brand, #1B4D3E);
   font: inherit;
-  font-size: 12px;
+  font-size: 13px;
+  font-weight: 600;
   cursor: pointer;
-}
-html body #mSentBody .s-more:hover {
-  background: var(--ds-surface-2, #f1efe8);
-  border-color: var(--ds-gold, #a98935);
 }
