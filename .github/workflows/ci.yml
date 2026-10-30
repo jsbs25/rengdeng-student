@@ -6,7 +6,7 @@ on:
 
 jobs:
   verify:
-    name: 网页体检 + 语法检查
+    name: 网页体检、语法与索引契约检查
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -19,9 +19,12 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Python 语法检查（server.py / 主要脚本）
+      - name: Python 语法检查（关键服务与索引脚本）
         run: |
-          python3 -m py_compile server.py admin_panel.py build_home.py openiti_stream.py
+          python3 -m py_compile server.py admin_panel.py build_home.py openiti_stream.py tools/build_dictionary_index.py tools/dictionary_index_test.py
 
       - name: 网页自动体检（重建 + JS/DOM/函数完整性）
         run: python3 tools/verify_web.py
+
+      - name: 字典索引离线契约与重建校验
+        run: python3 tools/dictionary_index_test.py
