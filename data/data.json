@@ -208746,19 +208746,19 @@
   "ar": "لم نتفطن لهذا.",
   "en": "We didn't notice this.",
   "cn": "我们没有注意到这一点。",
-  "cat": "other"
+  "cat": "greeting"
  },
  {
   "ar": "غادر الجزائر جوا.",
   "en": "He left Algeria by plane.",
   "cn": "他乘飞机离开了阿尔及利亚。",
-  "cat": "other"
+  "cat": "travel"
  },
  {
   "ar": "كتب سامي لليلى رسالة حبّ فيها ستّ صفحات.",
   "en": "Sami wrote Layla a six-page love letter.",
   "cn": "萨米给莱拉写了一封六页的情书。",
-  "cat": "other"
+  "cat": "study"
  },
  {
   "ar": "لم أعد أريدها.",
@@ -208806,7 +208806,7 @@
   "ar": "عض لسانه.",
   "en": "He bit his tongue.",
   "cn": "他咬了自己的舌头。",
-  "cat": "other"
+  "cat": "greeting"
  },
  {
   "ar": "أحبّ كتابة الكتب بلغتي.",
@@ -208830,7 +208830,7 @@
   "ar": "البارحة كان عيد ميلادي.",
   "en": "Yesterday was my birthday.",
   "cn": "昨天是我的生日。",
-  "cat": "other"
+  "cat": "daily"
  },
  {
   "ar": "غفوت قبل أن يأتي والدي للمنزل.",
@@ -208848,7 +208848,7 @@
   "ar": "يعرف ياني كل ما يتعلق بالحشرات.",
   "en": "Yani knows everything about insects.",
   "cn": "亚尼了解关于昆虫的一切。",
-  "cat": "other"
+  "cat": "greeting"
  },
  {
   "ar": "لا يمكنني البقاء طويلا اليوم.",
@@ -208866,12 +208866,132 @@
   "ar": "أكل الطفل التمر.",
   "en": "The child ate the dates.",
   "cn": "孩子吃了枣子。",
-  "cat": "other"
+  "cat": "greeting"
  },
  {
   "ar": "زيري في رحلة تخييم.",
   "en": "Ziri is on a camping trip.",
   "cn": "齐里在露营旅行。",
   "cat": "travel"
+ },
+ {
+  "ar": "بحثت في المنزل كله عن تلك الرسالة.",
+  "en": "I searched the whole house for that letter.",
+  "cn": "我找遍了整个房子找那封信。",
+  "cat": "other"
+ },
+ {
+  "ar": "يؤمن فاضل بإله الإسلام.",
+  "en": "Fadel believes in the God of Islam.",
+  "cn": "法德尔信仰伊斯兰教的神。",
+  "cat": "other"
+ },
+ {
+  "ar": "قُتل ٢٩ فلسطينيًا في أحد مساجد الخليل عام ١٩٩٤.",
+  "en": "29 Palestinians were killed in a mosque in Hebron in 1994.",
+  "cn": "1994年，29名巴勒斯坦人在希伯伦的一座清真寺中被杀。",
+  "cat": "other"
+ },
+ {
+  "ar": "زيري أيضا على متن هذه الطائرة.",
+  "en": "Ziri is also on board this plane.",
+  "cn": "齐里也在这架飞机上。",
+  "cat": "travel"
+ },
+ {
+  "ar": "كان سامي يحبّ التّمثيل.",
+  "en": "Sami loved acting.",
+  "cn": "萨米喜欢表演。",
+  "cat": "other"
+ },
+ {
+  "ar": "بقي توم مع ماري.",
+  "en": "Tom stayed with Mary.",
+  "cn": "汤姆和玛丽待在一起。",
+  "cat": "other"
+ },
+ {
+  "ar": "تحدّث فاضل و دانية عن الطقس.",
+  "en": "Fadel and Dania talked about the weather.",
+  "cn": "法德尔和达尼亚谈论了天气。",
+  "cat": "weather"
+ },
+ {
+  "ar": "أهدتني عمتي كتابًا في عيد ميلاد المسيح.",
+  "en": "My aunt gave me a book for Christmas.",
+  "cn": "我阿姨在圣诞节送了我一本书。",
+  "cat": "study"
+ },
+ {
+  "ar": "كيف لك أن تقول ذلك؟",
+  "en": "How can you say that?",
+  "cn": "你怎么能这么说？",
+  "cat": "other"
+ },
+ {
+  "ar": "لماذا تتجاهل ما أقوله؟",
+  "en": "Why do you ignore what I say?",
+  "cn": "你为什么无视我说的话？",
+  "cat": "other"
+ },
+ {
+  "ar": "والدكن مريض.",
+  "en": "Your father is sick.",
+  "cn": "你父亲病了。",
+  "cat": "health"
+ },
+ {
+  "ar": "من فضلك، نادني توم من الآن فصاعدًا.",
+  "en": "Please call me Tom from now on.",
+  "cn": "请从现在起叫我汤姆。",
+  "cat": "other"
+ },
+ {
+  "ar": "وَا أَسَفَاهْ.",
+  "en": "Oh, what a pity!",
+  "cn": "唉，真遗憾！",
+  "cat": "other"
+ },
+ {
+  "ar": "أسرِع! أسرِع! أنا أسمع خطوات أقدام, إختبئ!",
+  "en": "Hurry! Hurry! I hear footsteps, hide!",
+  "cn": "快！快！我听到脚步声，躲起来！",
+  "cat": "other"
+ },
+ {
+  "ar": "ظهر توم و أطلق النار هلى جون.",
+  "en": "Tom appeared and shot John.",
+  "cn": "汤姆出现并向约翰开枪。",
+  "cat": "other"
+ },
+ {
+  "ar": "أين وضعته؟",
+  "en": "Where did you put it?",
+  "cn": "你把它放在哪里了？",
+  "cat": "other"
+ },
+ {
+  "ar": "دخل المسجد.",
+  "en": "He entered the mosque.",
+  "cn": "他进入了清真寺。",
+  "cat": "religion"
+ },
+ {
+  "ar": "هل نحتاج لهدية؟",
+  "en": "Do we need a gift?",
+  "cn": "我们需要一份礼物吗？",
+  "cat": "other"
+ },
+ {
+  "ar": "تلقيت برقية منها",
+  "en": "I received a telegram from her.",
+  "cn": "我收到了她的一封电报。",
+  "cat": "other"
+ },
+ {
+  "ar": "السكرتيرة متعبة من الطباعة.",
+  "en": "The secretary is tired of typing.",
+  "cn": "秘书打字打累了。",
+  "cat": "health"
  }
 ]
