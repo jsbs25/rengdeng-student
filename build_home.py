@@ -7408,12 +7408,26 @@ html += (
     '<div class="pg-h">我的燃灯</div><div class="pg-wrap profile-wrap">'
     '<div id="meBox" class="profile-card"></div>'
     '<section id="profileActivity" class="profile-card profile-activity"></section>'
-    '<section class="profile-card profile-settings"><h2>学习与设置</h2>'
+    '<input id="profileImportFile" type="file" accept=".json" style="display:none" onchange="importData(event)">'
+    '<section class="profile-card profile-group"><h2>学习与复习</h2>'
     '<button class="profile-link" onclick="updateStats()"><span>学业成就</span><b>›</b></button>'
-    '<button class="profile-link" onclick="showThemeSettings()"><span>外观设置</span><b>›</b></button>'
     '<button class="profile-link" onclick="showWordBook()"><span>生词本</span><b>›</b></button>'
     '<button class="profile-link" onclick="showListen()"><span>跟读练习</span><b>›</b></button>'
+    '</section>'
+    '<section class="profile-card profile-group"><h2>外观与语言</h2>'
+    '<button class="profile-link" onclick="showThemeSettings()"><span>外观设置</span><b>›</b></button>'
+    '<button class="profile-link" onclick="toggleLang()"><span>界面语言</span><b>›</b></button>'
+    '</section>'
+    '<section class="profile-card profile-group"><h2>账户与会员</h2>'
+    '<button class="profile-link" onclick="openModal(&#39;mLogin&#39;)"><span>登录 / 注册</span><b>›</b></button>'
+    '<button class="profile-link" onclick="openPay()"><span>会员与 AI 额度</span><b>›</b></button>'
     '<button class="profile-link" onclick="webLogout()"><span>退出登录</span><b>›</b></button>'
+    '</section>'
+    '<section class="profile-card profile-group"><h2>数据与隐私</h2>'
+    '<button class="profile-link" onclick="exportData()"><span>导出备份</span><b>›</b></button>'
+    '<button class="profile-link" onclick="document.getElementById(&#39;profileImportFile&#39;).click()"><span>导入备份</span><b>›</b></button>'
+    '<button class="profile-link" onclick="showInstall()"><span>安装到设备</span><b>›</b></button>'
+    '<p class="profile-help">学习数据仅保存在本机与你的账户，可随时导出或删除。</p>'
     '</section></div></div>'
     '<div class="page" id="page-search" style="display:none">'
     '<div class="pg-h">查单词 &amp; 句子查询</div><div class="pg-wrap search-wrap">'
@@ -8113,6 +8127,15 @@ try:
         html = html.replace('</head>', _reader_ctrl_css + '</head>', 1)
 except Exception as _reader_ctrl_css_err:
     print('nour-reader-controls.css 注入失败:', _reader_ctrl_css_err)
+
+# NOUR 个人中心收口：iOS 式分组 + 身份/足迹/深色补齐。
+try:
+    _profile_css_path = DIR / 'data' / 'nour-profile.css'
+    if _profile_css_path.exists():
+        _profile_css = '<style id="nour-profile">' + _profile_css_path.read_text(encoding='utf-8') + '</style>'
+        html = html.replace('</head>', _profile_css + '</head>', 1)
+except Exception as _profile_css_err:
+    print('nour-profile.css 注入失败:', _profile_css_err)
 # ===== PWA：manifest + 图标（输出到同目录）=====
 import shutil as _sh
 try:

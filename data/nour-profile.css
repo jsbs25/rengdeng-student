@@ -1,0 +1,28 @@
+/* 燃灯同学 · 个人中心 iOS 式分组收口 (Profile v1) */
+#page-me .profile-card { margin: 0 0 16px !important; }
+#page-me .profile-group h2 {
+  margin: 0 0 4px !important; padding: 0 4px 8px !important;
+  font-size: 12px !important; font-weight: 600 !important; letter-spacing: 0.02em !important;
+  color: var(--ds-ink-2, #86868B) !important;
+}
+#page-me .profile-group .profile-link:first-of-type { border-top: 0 !important; }
+#page-me .profile-identity { display: flex; align-items: center; gap: 16px; padding: 2px 0; }
+#page-me .profile-avatar {
+  width: 58px; height: 58px; display: grid; place-items: center; border-radius: 50%;
+  background: radial-gradient(circle at 32% 25%, #f7e5aa, #bd9c4c 38%, #176c53 76%, #10241d);
+  color: #fff5d4; font-family: var(--ds-ar, AmiriNur, serif); font-size: 35px;
+  box-shadow: 0 0 30px rgba(207, 174, 87, 0.18);
+}
+#page-me .profile-greeting { font-size: 19px; font-weight: 650; color: var(--ds-ink, #1D1D1F); }
+#page-me .profile-level { margin-top: 6px; font-size: 12px; letter-spacing: 0.04em; color: var(--ds-ink-2, #86868B); }
+#page-me .footprint-list { display: grid; gap: 0; }
+#page-me .footprint-row { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-top: 1px solid var(--ds-line-subtle, #E8E8ED); }
+#page-me .footprint-row:first-child { border-top: 0; }
+#page-me .footprint-mark { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 10px; background: var(--ds-gold-soft, rgba(176,141,64,.12)); color: var(--ds-gold, #B08D40); }
+#page-me .footprint-row b { display: block; font-size: 13px; font-weight: 550; color: var(--ds-ink, #1D1D1F); }
+#page-me .footprint-row small { display: block; margin-top: 4px; font-size: 11px; color: var(--ds-ink-2, #86868B); }
+#page-me .empty-footprint { margin: 0; font-size: 13px; color: var(--ds-ink-2, #86868B); }
+#page-me .profile-help { padding: 4px 4px 0; font-size: 12px; line-height: 1.7; color: var(--ds-ink-2, #86868B); }
+#page-me .profile-link:focus-visible { outline: 2px solid var(--ds-brand, #1B4D3E); outline-offset: -2px; border-radius: 8px; }
+html[data-theme="dark"] #page-me .profile-avatar { box-shadow: 0 0 30px rgba(207, 174, 87, 0.22); }
+@media (prefers-reduced-motion: reduce) { #page-me * { transition: none !important; } }
