@@ -1,0 +1,27 @@
+/* ============================================================================
+   燃灯同学 · AI 回复 Markdown 样式 (AI Markdown v1)
+   ============================================================================ */
+#homeAI .ps-ai-msg.bot .nour-code {
+  margin: 8px 0; padding: 12px 14px; border-radius: 10px;
+  background: rgba(0, 0, 0, 0.04); border: 1px solid rgba(0, 0, 0, 0.08);
+  overflow-x: auto; font-family: var(--ds-mono, ui-monospace, "SF Mono", Menlo, monospace);
+  font-size: 13px; line-height: 1.6; color: var(--ds-ink, #1D1D1F);
+}
+#homeAI .ps-ai-msg.bot .nour-code code { font-family: inherit; background: none; }
+#homeAI .ps-ai-msg.bot .nour-inline-code {
+  padding: 1px 5px; border-radius: 5px; background: rgba(0, 0, 0, 0.06);
+  font-family: var(--ds-mono, ui-monospace, Menlo, monospace); font-size: 0.9em;
+}
+#homeAI .ps-ai-msg.bot .nour-md-h { margin: 10px 0 4px; line-height: 1.4; font-weight: 650; color: var(--ds-ink, #1D1D1F); }
+#homeAI .ps-ai-msg.bot .nour-md-quote {
+  margin: 8px 0; padding: 2px 0 2px 12px; border-left: 3px solid var(--ds-gold, #B08D40);
+  color: var(--ds-ink-2, #86868B);
+}
+#homeAI .ps-ai-msg.bot .nour-md-list { margin: 6px 0; padding-left: 20px; }
+#homeAI .ps-ai-msg.bot .nour-md-list li { margin: 3px 0; }
+#homeAI .ps-ai-msg.bot a { color: var(--ds-brand, #1B4D3E); text-decoration: underline; }
+html[data-theme="dark"] #homeAI .ps-ai-msg.bot .nour-code {
+  background: rgba(255, 255, 255, 0.06); border-color: rgba(255, 255, 255, 0.12); color: var(--ds-ink, #F5F5F7);
+}
+html[data-theme="dark"] #homeAI .ps-ai-msg.bot .nour-inline-code { background: rgba(255, 255, 255, 0.1); }
+html[data-theme="dark"] #homeAI .ps-ai-msg.bot a { color: var(--ds-brand, #3CA680); }

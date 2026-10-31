@@ -7819,6 +7819,36 @@ except Exception as _reader_ctrl_js_err:
     print('nour-reader-controls.js 读取失败:', _reader_ctrl_js_err)
 if _reader_ctrl_js:
     html = html.replace('</body>', '<script>' + _reader_ctrl_js + '</script></body>', 1)
+
+# NOUR AI Markdown 渲染：机器人回复的 Markdown + 代码高亮 + 中阿混排，纯渲染层增强。
+try:
+    _aimd_js_path = DIR / 'data' / 'nour-ai-markdown.js'
+    _aimd_js = _aimd_js_path.read_text(encoding='utf-8') if _aimd_js_path.exists() else ''
+except Exception as _aimd_js_err:
+    _aimd_js = ''
+    print('nour-ai-markdown.js 读取失败:', _aimd_js_err)
+if _aimd_js:
+    html = html.replace('</body>', '<script>' + _aimd_js + '</script></body>', 1)
+
+# NOUR AI 对话工具：清空对话 + 导出 Markdown 记录，纯前端增强。
+try:
+    _aitools_js_path = DIR / 'data' / 'nour-ai-tools.js'
+    _aitools_js = _aitools_js_path.read_text(encoding='utf-8') if _aitools_js_path.exists() else ''
+except Exception as _aitools_js_err:
+    _aitools_js = ''
+    print('nour-ai-tools.js 读取失败:', _aitools_js_err)
+if _aitools_js:
+    html = html.replace('</body>', '<script>' + _aitools_js + '</script></body>', 1)
+
+# NOUR AI 对话历史持久化：刷新后恢复对话，纯前端。
+try:
+    _aihist_js_path = DIR / 'data' / 'nour-ai-history.js'
+    _aihist_js = _aihist_js_path.read_text(encoding='utf-8') if _aihist_js_path.exists() else ''
+except Exception as _aihist_js_err:
+    _aihist_js = ''
+    print('nour-ai-history.js 读取失败:', _aihist_js_err)
+if _aihist_js:
+    html = html.replace('</body>', '<script>' + _aihist_js + '</script></body>', 1)
 # NOUR 主题执行器：内联 !important 强制关键表面配色（覆盖历史 CSS 层级的级联混乱）。
 try:
     _enforcer_js_path = DIR / 'data' / 'nour-theme-enforcer.js'
@@ -8136,6 +8166,24 @@ try:
         html = html.replace('</head>', _profile_css + '</head>', 1)
 except Exception as _profile_css_err:
     print('nour-profile.css 注入失败:', _profile_css_err)
+
+# NOUR AI Markdown 样式：代码块/行内码/标题/引用/列表，最后注入。
+try:
+    _aimd_css_path = DIR / 'data' / 'nour-ai-markdown.css'
+    if _aimd_css_path.exists():
+        _aimd_css = '<style id="nour-ai-markdown">' + _aimd_css_path.read_text(encoding='utf-8') + '</style>'
+        html = html.replace('</head>', _aimd_css + '</head>', 1)
+except Exception as _aimd_css_err:
+    print('nour-ai-markdown.css 注入失败:', _aimd_css_err)
+
+# NOUR AI 对话工具样式：清空/导出按钮，最后注入。
+try:
+    _aitools_css_path = DIR / 'data' / 'nour-ai-tools.css'
+    if _aitools_css_path.exists():
+        _aitools_css = '<style id="nour-ai-tools">' + _aitools_css_path.read_text(encoding='utf-8') + '</style>'
+        html = html.replace('</head>', _aitools_css + '</head>', 1)
+except Exception as _aitools_css_err:
+    print('nour-ai-tools.css 注入失败:', _aitools_css_err)
 # ===== PWA：manifest + 图标（输出到同目录）=====
 import shutil as _sh
 try:

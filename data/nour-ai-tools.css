@@ -1,0 +1,17 @@
+/* ============================================================================
+   燃灯同学 · AI 对话工具样式 (AI Tools v1)
+   ============================================================================ */
+#aiSec .nour-ai-tools { display: flex; justify-content: flex-end; gap: 6px; padding: 4px 0 2px; }
+#aiSec .nour-ai-tool {
+  min-height: 32px; padding: 0 12px; border: 1px solid var(--ds-line, #D2D2D7); border-radius: 999px;
+  background: var(--ds-surface, #FFFFFF); color: var(--ds-ink-2, #86868B);
+  font: inherit; font-size: 12px; font-weight: 550; cursor: pointer;
+  transition: border-color 160ms ease, color 160ms ease;
+}
+#aiSec .nour-ai-tool:hover { border-color: var(--ds-brand, #1B4D3E); color: var(--ds-brand, #1B4D3E); }
+#aiSec .nour-ai-tool:focus-visible { outline: 2px solid var(--ds-brand, #1B4D3E); outline-offset: 2px; }
+html[data-theme="dark"] #aiSec .nour-ai-tool {
+  background: var(--ds-surface, #1C1E22); color: var(--ds-ink-2, #A1A1A6); border-color: var(--ds-line, #2C2E33);
+}
+@media (max-width: 760px) { #aiSec .nour-ai-tools { justify-content: flex-start; } }
+@media (prefers-reduced-motion: reduce) { #aiSec .nour-ai-tool { transition: none; } }
