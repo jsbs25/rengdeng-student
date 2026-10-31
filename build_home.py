@@ -7860,6 +7860,16 @@ for _nour_lib_name in ('nour-library-recent', 'nour-quran-progress'):
         print(_nour_lib_name + '.js 读取失败:', _nour_lib_js_err)
     if _nour_lib_js:
         html = html.replace('</body>', '<script>' + _nour_lib_js + '</script></body>', 1)
+
+# NOUR 首页学习时间统计：读 nur_minutes，补到第四屏。
+try:
+    _stattime_js_path = DIR / 'data' / 'nour-stat-time.js'
+    _stattime_js = _stattime_js_path.read_text(encoding='utf-8') if _stattime_js_path.exists() else ''
+except Exception as _stattime_js_err:
+    _stattime_js = ''
+    print('nour-stat-time.js 读取失败:', _stattime_js_err)
+if _stattime_js:
+    html = html.replace('</body>', '<script>' + _stattime_js + '</script></body>', 1)
 # NOUR 主题执行器：内联 !important 强制关键表面配色（覆盖历史 CSS 层级的级联混乱）。
 try:
     _enforcer_js_path = DIR / 'data' / 'nour-theme-enforcer.js'
