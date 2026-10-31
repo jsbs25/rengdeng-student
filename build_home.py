@@ -7793,6 +7793,16 @@ except Exception as _focus_js_err:
     print('nour-focus-workspace.js 读取失败:', _focus_js_err)
 if _focus_js:
     html = html.replace('</body>', '<script>' + _focus_js + '</script></body>', 1)
+
+# NOUR 自适应工作模式层：首页发现/阅读/研习/探究四模式，纯呈现层，完全复用现有全局函数。
+try:
+    _adaptive_ws_js_path = DIR / 'data' / 'nour-adaptive-workspace.js'
+    _adaptive_ws_js = _adaptive_ws_js_path.read_text(encoding='utf-8') if _adaptive_ws_js_path.exists() else ''
+except Exception as _adaptive_ws_js_err:
+    _adaptive_ws_js = ''
+    print('nour-adaptive-workspace.js 读取失败:', _adaptive_ws_js_err)
+if _adaptive_ws_js:
+    html = html.replace('</body>', '<script>' + _adaptive_ws_js + '</script></body>', 1)
 # NOUR 主题执行器：内联 !important 强制关键表面配色（覆盖历史 CSS 层级的级联混乱）。
 try:
     _enforcer_js_path = DIR / 'data' / 'nour-theme-enforcer.js'
@@ -8083,6 +8093,15 @@ try:
         html = html.replace('</head>', _clarity_css + '</head>', 1)
 except Exception as _clarity_css_err:
     print('nour-clarity.css 注入失败:', _clarity_css_err)
+
+# NOUR 自适应工作模式样式：作为最后样式层，统一模式切换器与三类工作面板。
+try:
+    _adaptive_ws_css_path = DIR / 'data' / 'nour-adaptive-workspace.css'
+    if _adaptive_ws_css_path.exists():
+        _adaptive_ws_css = '<style id="nour-adaptive-workspace">' + _adaptive_ws_css_path.read_text(encoding='utf-8') + '</style>'
+        html = html.replace('</head>', _adaptive_ws_css + '</head>', 1)
+except Exception as _adaptive_ws_css_err:
+    print('nour-adaptive-workspace.css 注入失败:', _adaptive_ws_css_err)
 # ===== PWA：manifest + 图标（输出到同目录）=====
 import shutil as _sh
 try:
@@ -8114,6 +8133,8 @@ except Exception as _e:
 out = DIR / 'arabic_learning.html'
 if len(sys.argv) > 1:
     out = Path(sys.argv[1])
+# nour-fix-percent: 修正模板中残留的 %% 转义，避免 width:100%% 变成非法 CSS
+html = html.replace('width:100%%', 'width:100%')
 out.write_text(html, encoding='utf-8')
 print(f'✅ 高级版主页生成: {out.stat().st_size/1024:.0f}KB')
 print(f'   句子: {TOTAL_SENT} | 单词: {TOTAL_WORDS} | 分类: {TOTAL_CATS}')
