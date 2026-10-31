@@ -302,6 +302,14 @@ def _to_en(text):
             pass
     return text[:300]
 
+SENSITIVE_STATIC_NAMES = {
+    'users.json', 'codes.json', 'pays.json', 'unlocks.json', 'wx_users.json',
+    'admin_pw.txt', 'ai_key.txt', 'ai_keys.json', 'ai_config.json', 'secret.txt',
+    'openai_realtime_key.txt', 'openai_api_key.txt', 'dict_cn_cache.json',
+}
+SENSITIVE_STATIC_PREFIXES = ('ai_key', 'admin_pw', 'secret', 'server', 'cloud_server', 'admin_panel')
+SENSITIVE_STATIC_SUFFIXES = ('.py', '.pyc', '.sh', '.keystore', '.jks', '.pem', '.key', '.db', '.sqlite', '.log')
+
 class Handler(BaseHTTPRequestHandler):
     def _json(self, data, status=200):
         self.send_response(status)
@@ -327,13 +335,28 @@ class Handler(BaseHTTPRequestHandler):
             self._json({'error': str(e)}, 500)
 
     def _serve(self, path):
-        fp = DIR / path.lstrip("/")
-        if not fp.exists():
-            fp = DIR / "arabic_learning.html"
+        try:
+            from urllib.parse import unquote as _uq
+            path = _uq(path)
+        except Exception:
+            pass
+        if '..' in path:
+            return self._json({'error': 'bad path'}, 400)
         if path.startswith('/music/'):
             fp = Path(music_gen.OUT_DIR) / path[len('/music/'):]
         elif path == '/pay_qr.png':
             fp = Path(DIR) / 'data' / 'pay_qr.png'
+        else:
+            fp = DIR / path.lstrip("/")
+        _nm = fp.name.lower()
+        if (_nm in SENSITIVE_STATIC_NAMES
+                or _nm.startswith(SENSITIVE_STATIC_PREFIXES)
+                or fp.suffix.lower() in SENSITIVE_STATIC_SUFFIXES):
+            return self._json({'error': 'forbidden'}, 403)
+        if fp.is_dir():
+            fp = DIR / "arabic_learning.html"
+        if not fp.exists():
+            fp = DIR / "arabic_learning.html"
         ct = {".html": "text/html; charset=utf-8", ".json": "application/json", ".wav": "audio/wav", ".mp3": "audio/mpeg"}.get(fp.suffix, "application/octet-stream")
         try:
             data = fp.read_bytes()
