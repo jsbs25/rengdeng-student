@@ -7870,6 +7870,16 @@ except Exception as _stattime_js_err:
     print('nour-stat-time.js 读取失败:', _stattime_js_err)
 if _stattime_js:
     html = html.replace('</body>', '<script>' + _stattime_js + '</script></body>', 1)
+
+# NOUR 句子收藏视图，纯前端。
+try:
+    _fav_js_path = DIR / 'data' / 'nour-fav.js'
+    _fav_js = _fav_js_path.read_text(encoding='utf-8') if _fav_js_path.exists() else ''
+except Exception as _fav_js_err:
+    _fav_js = ''
+    print('nour-fav.js 读取失败:', _fav_js_err)
+if _fav_js:
+    html = html.replace('</body>', '<script>' + _fav_js + '</script></body>', 1)
 # NOUR 主题执行器：内联 !important 强制关键表面配色（覆盖历史 CSS 层级的级联混乱）。
 try:
     _enforcer_js_path = DIR / 'data' / 'nour-theme-enforcer.js'
@@ -8215,6 +8225,15 @@ for _nour_lib_name in ('nour-library-recent', 'nour-quran-progress'):
             html = html.replace('</head>', _nour_lib_css + '</head>', 1)
     except Exception as _nour_lib_css_err:
         print(_nour_lib_name + '.css 注入失败:', _nour_lib_css_err)
+
+# NOUR 句子收藏样式，最后注入。
+try:
+    _fav_css_path = DIR / 'data' / 'nour-fav.css'
+    if _fav_css_path.exists():
+        _fav_css = '<style id="nour-fav">' + _fav_css_path.read_text(encoding='utf-8') + '</style>'
+        html = html.replace('</head>', _fav_css + '</head>', 1)
+except Exception as _fav_css_err:
+    print('nour-fav.css 注入失败:', _fav_css_err)
 # ===== PWA：manifest + 图标（输出到同目录）=====
 import shutil as _sh
 try:

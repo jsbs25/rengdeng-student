@@ -1,0 +1,9 @@
+/* ============================================================================
+   燃灯同学 · 句子收藏视图样式 (Favorites v1)
+   ============================================================================ */
+#mFav .m-body { padding: 12px; }
+#mFav .fav-item { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; padding: 12px 14px; border: 1px solid var(--ds-line-subtle, #E8E8ED); border-radius: 12px; background: var(--ds-surface, #FFFFFF); }
+#mFav .fav-ar { flex: 1; min-width: 0; font-family: var(--ds-ar-read, "AmiriNur", serif); font-size: 17px; line-height: 1.7; color: var(--ds-ink, #1D1D1F); direction: rtl; text-align: right; }
+#mFav .fav-item .s-btn { flex: 0 0 auto; }
+html[data-theme="dark"] #mFav .fav-item { background: var(--ds-surface, #1C1E22); border-color: var(--ds-line, #2C2E33); }
+html[data-theme="dark"] #mFav .fav-ar { color: var(--ds-ink, #F5F5F7); }
