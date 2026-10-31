@@ -7849,6 +7849,17 @@ except Exception as _aihist_js_err:
     print('nour-ai-history.js 读取失败:', _aihist_js_err)
 if _aihist_js:
     html = html.replace('</body>', '<script>' + _aihist_js + '</script></body>', 1)
+
+# NOUR 图书馆最近阅读书架 + 古兰经阅读进度，纯前端。
+for _nour_lib_name in ('nour-library-recent', 'nour-quran-progress'):
+    _nour_lib_js_path = DIR / 'data' / (_nour_lib_name + '.js')
+    try:
+        _nour_lib_js = _nour_lib_js_path.read_text(encoding='utf-8') if _nour_lib_js_path.exists() else ''
+    except Exception as _nour_lib_js_err:
+        _nour_lib_js = ''
+        print(_nour_lib_name + '.js 读取失败:', _nour_lib_js_err)
+    if _nour_lib_js:
+        html = html.replace('</body>', '<script>' + _nour_lib_js + '</script></body>', 1)
 # NOUR 主题执行器：内联 !important 强制关键表面配色（覆盖历史 CSS 层级的级联混乱）。
 try:
     _enforcer_js_path = DIR / 'data' / 'nour-theme-enforcer.js'
@@ -8184,6 +8195,16 @@ try:
         html = html.replace('</head>', _aitools_css + '</head>', 1)
 except Exception as _aitools_css_err:
     print('nour-ai-tools.css 注入失败:', _aitools_css_err)
+
+# NOUR 图书馆最近阅读 + 古兰经进度样式，最后注入。
+for _nour_lib_name in ('nour-library-recent', 'nour-quran-progress'):
+    _nour_lib_css_path = DIR / 'data' / (_nour_lib_name + '.css')
+    try:
+        if _nour_lib_css_path.exists():
+            _nour_lib_css = '<style id="' + _nour_lib_name + '">' + _nour_lib_css_path.read_text(encoding='utf-8') + '</style>'
+            html = html.replace('</head>', _nour_lib_css + '</head>', 1)
+    except Exception as _nour_lib_css_err:
+        print(_nour_lib_name + '.css 注入失败:', _nour_lib_css_err)
 # ===== PWA：manifest + 图标（输出到同目录）=====
 import shutil as _sh
 try:

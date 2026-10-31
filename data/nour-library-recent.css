@@ -1,0 +1,20 @@
+/* 图书馆最近阅读 + 古兰经阅读进度 */
+#mCat .nour-recent { margin: 0; padding: 14px 16px 12px; border-bottom: 1px solid var(--ds-line-subtle, #E8E8ED); background: var(--ds-surface, #FFFFFF); }
+#mCat .nour-recent-h { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 10px; }
+#mCat .nour-recent-h span:first-child { font-size: 15px; font-weight: 650; color: var(--ds-ink, #1D1D1F); }
+#mCat .nour-recent-count { font-size: 11px; color: var(--ds-ink-2, #86868B); }
+#mCat .nour-recent-list { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 2px; }
+#mCat .nour-recent-item { flex: 0 0 auto; display: flex; align-items: center; gap: 8px; max-width: 240px; padding: 8px 12px; border: 1px solid var(--ds-line-subtle, #E8E8ED); border-radius: 12px; background: var(--ds-bg-secondary, #F5F5F7); }
+#mCat .nour-recent-mark { flex: 0 0 auto; width: 26px; height: 26px; display: grid; place-items: center; border-radius: 8px; background: var(--ds-gold-soft, rgba(176,141,64,.12)); color: var(--ds-gold, #B08D40); font-size: 12px; font-weight: 700; }
+#mCat .nour-recent-title { font-size: 13px; color: var(--ds-ink, #1D1D1F); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#mCat .nour-recent-time { font-size: 11px; color: var(--ds-ink-3, #AEAEB2); white-space: nowrap; }
+#mCat .nour-recent-empty { font-size: 12px; color: var(--ds-ink-2, #86868B); padding: 6px 0; }
+#mQuranBody .nour-quran-progress { margin: 8px 6px 4px; padding: 12px 14px; border-radius: 12px; background: var(--ds-bg-secondary, #F5F5F7); border: 1px solid var(--ds-line-subtle, #E8E8ED); }
+#mQuranBody .nour-quran-progress-h { display: flex; justify-content: space-between; font-size: 12px; color: var(--ds-ink-2, #86868B); margin-bottom: 8px; }
+#mQuranBody .nour-quran-progress-h span:first-child { font-weight: 650; color: var(--ds-ink, #1D1D1F); }
+#mQuranBody .nour-quran-progress-track { height: 6px; border-radius: 99px; background: rgba(0,0,0,.06); overflow: hidden; }
+#mQuranBody .nour-quran-progress-track i { display: block; height: 100%; border-radius: inherit; background: var(--ds-gold, #B08D40); transition: width .3s ease; }
+html[data-theme="dark"] #mCat .nour-recent, html[data-theme="dark"] #mQuranBody .nour-quran-progress { background: var(--ds-bg-secondary, #141619); border-color: var(--ds-line, #2C2E33); }
+html[data-theme="dark"] #mCat .nour-recent-item { background: var(--ds-surface, #1C1E22); border-color: var(--ds-line, #2C2E33); }
+html[data-theme="dark"] #mQuranBody .nour-quran-progress-track { background: rgba(255,255,255,.1); }
+@media (max-width: 760px) { #mCat .nour-recent-item { max-width: 200px; } }
