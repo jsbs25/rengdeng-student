@@ -7795,6 +7795,16 @@ except Exception as _adaptive_ws_js_err:
     print('nour-adaptive-workspace.js 读取失败:', _adaptive_ws_js_err)
 if _adaptive_ws_js:
     html = html.replace('</body>', '<script>' + _adaptive_ws_js + '</script></body>', 1)
+
+# NOUR 阅读器控制层：字号 + 阅读背景，纯前端增强，复用现有 .rd-bar，不改阅读逻辑。
+try:
+    _reader_ctrl_js_path = DIR / 'data' / 'nour-reader-controls.js'
+    _reader_ctrl_js = _reader_ctrl_js_path.read_text(encoding='utf-8') if _reader_ctrl_js_path.exists() else ''
+except Exception as _reader_ctrl_js_err:
+    _reader_ctrl_js = ''
+    print('nour-reader-controls.js 读取失败:', _reader_ctrl_js_err)
+if _reader_ctrl_js:
+    html = html.replace('</body>', '<script>' + _reader_ctrl_js + '</script></body>', 1)
 # NOUR 主题执行器：内联 !important 强制关键表面配色（覆盖历史 CSS 层级的级联混乱）。
 try:
     _enforcer_js_path = DIR / 'data' / 'nour-theme-enforcer.js'
@@ -8094,6 +8104,15 @@ try:
         html = html.replace('</head>', _adaptive_ws_css + '</head>', 1)
 except Exception as _adaptive_ws_css_err:
     print('nour-adaptive-workspace.css 注入失败:', _adaptive_ws_css_err)
+
+# NOUR 阅读器控制样式：字号变量与四种阅读背景预设，最后注入，覆盖历史阅读器硬编码颜色。
+try:
+    _reader_ctrl_css_path = DIR / 'data' / 'nour-reader-controls.css'
+    if _reader_ctrl_css_path.exists():
+        _reader_ctrl_css = '<style id="nour-reader-controls">' + _reader_ctrl_css_path.read_text(encoding='utf-8') + '</style>'
+        html = html.replace('</head>', _reader_ctrl_css + '</head>', 1)
+except Exception as _reader_ctrl_css_err:
+    print('nour-reader-controls.css 注入失败:', _reader_ctrl_css_err)
 # ===== PWA：manifest + 图标（输出到同目录）=====
 import shutil as _sh
 try:
