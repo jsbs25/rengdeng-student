@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title></title>方案 A · 极简沉浸式知识空间 — 燃灯同学</title>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --bg-2: #F5F5F7;
+    --surface: #FFFFFF;
+    --ink: #1D1D1F;
+    --ink-2: #86868B;
+    --ink-3: #AEAEB2;
+    --line: #D2D2D7;
+    --line-soft: #E8E8ED;
+    --brand: #1B4D3E;
+    --brand-2: #143B2F;
+    --brand-soft: rgba(27, 77, 62, 0.07);
+    --gold: #B08D40;
+    --gold-soft: rgba(176, 141, 64, 0.10);
+    --ease: cubic-bezier(.22, 1, .36, 1);
+    --read: 720px;
+    --sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+    --ar: "AmiriNur", "ScheherazadeNur", "SF Arabic", "Geeza Pro", "Noto Naskh Arabic", serif;
+  }
+  html[data-theme="dark"] {
+    --bg: #0B0C0E;
+    --bg-2: #141619;
+    --surface: #1C1E22;
+    --ink: #F5F5F7;
+    --ink-2: #A1A1A6;
+    --ink-3: #6E6E73;
+    --line: #2C2E33;
+    --line-soft: #222428;
+    --brand: #3CA680;
+    --brand-2: #4FC097;
+    --brand-soft: rgba(60, 166, 128, 0.13);
+    --gold: #D1B062;
+    --gold-soft: rgba(209, 176, 98, 0.14);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: -0.004em;
+  }
+  a { color: var(--brand); text-decoration: none; }
+
+  .proto-badge {
+    position: fixed; top: max(14px, env(safe-area-inset-top)); right: max(16px, env(safe-area-inset-right));
+    z-index: 60; font-size: 11px; letter-spacing: .08em; color: var(--ink-2);
+    padding: 6px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface);
+  }
+
+  .corner-controls {
+    position: fixed; left: max(16px, env(safe-area-inset-left)); bottom: max(16px, env(safe-area-inset-bottom));
+    z-index: 60; display: flex; flex-direction: column; gap: 8px;
+  }
+  .ctl {
+    width: 46px; height: 46px; border-radius: 999px; border: 1px solid var(--line);
+    background: var(--surface); color: var(--ink); display: grid; place-items: center;
+    cursor: pointer; font-size: 17px; box-shadow: 0 6px 20px rgba(0,0,0,.06);
+    transition: background .18s var(--ease), border-color .18s var(--ease);
+  }
+  .ctl:hover { background: var(--bg-2); border-color: var(--ink-3); }
+  .ctl svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.7; }
+
+  .toc {
+    position: fixed; left: max(16px, env(safe-area-inset-left)); bottom: max(76px, calc(env(safe-area-inset-bottom) + 60px));
+    z-index: 55; width: min(300px, calc(100vw - 32px)); padding: 8px;
+    border: 1px solid var(--line); border-radius: 18px; background: var(--surface);
+    box-shadow: 0 20px 50px rgba(0,0,0,.14); transform: translateY(8px); opacity: 0;
+    pointer-events: none; transition: opacity .22s var(--ease), transform .22s var(--ease);
+  }
+  .toc.open { opacity: 1; transform: none; pointer-events: auto; }
+  .toc a {
+    display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: 12px;
+    color: var(--ink-2); font-size: 14px; font-weight: 500;
+  }
+  .toc a:hover { background: var(--bg-2); color: var(--ink); }
+  .toc a .idx { font-style: normal; color: var(--gold); font-size: 13px; width: 20px; text-align: center; }
+  .toc a.on { background: var(--brand-soft); color: var(--brand); }
+
+  body.focus .path-stop { opacity: .16; transition: opacity .5s var(--ease); }
+  body.focus .path-stop.is-active { opacity: 1; }
+
+  .path { max-width: var(--read); margin: 0 auto; padding: 96px 24px 160px; }
+
+  .stop-kicker {
+    display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 600;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 18px;
+  }
+  .stop-kicker::before { content: ""; width: 26px; height: 1px; background: var(--gold); }
+  .stop-kicker .n { color: var(--brand); }
+  .stop-kicker .ar { font-family: var(--ar); letter-spacing: 0; text-transform: none; font-size: 13px; }
+
+  .hero { min-height: 72vh; display: flex; flex-direction: column; justify-content: center; gap: 40px; }
+  .brand { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; color: var(--ink-2); letter-spacing: .04em; }
+  .brand-mark {
+    width: 30px; height: 30px; border-radius: 9px; background: var(--brand-soft); color: var(--brand);
+    display: grid; place-items: center; font-family: var(--ar); font-size: 16px; font-weight: 700;
+  }
+  .brand-ar { font-family: var(--ar); letter-spacing: 0; }
+  .hero-ar {
+    font-family: var(--ar); direction: rtl; text-align: right; font-size: clamp(40px, 8vw, 72px);
+    line-height: 1.9; letter-spacing: 0; color: var(--ink);
+  }
+  .hero-cn { font-size: clamp(18px, 2.4vw, 22px); color: var(--ink-2); margin-top: 4px; }
+  .hero-lead { max-width: 46ch; color: var(--ink-2); font-size: 16px; margin-top: 20px; }
+  .hero-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 30px; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; min-height: 46px; padding: 0 22px;
+    border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+    font: inherit; font-size: 14px; font-weight: 550; cursor: pointer; }
+  .btn.primary { background: var(--brand); border-color: var(--brand); color: #fff; }
+  .btn:hover { border-color: var(--ink-3); }
+  .btn.primary:hover { background: var(--brand-2); }
+
+  .path-stop { padding: 44px 0; border-top: 1px solid var(--line-soft); }
+  .stop-title { font-size: clamp(24px, 3vw, 32px); font-weight: 650; letter-spacing: -0.02em; line-height: 1.2; }
+  .stop-copy { margin-top: 10px; color: var(--ink-2); font-size: 15px; max-width: 56ch; }
+
+  .nodes { display: grid; gap: 1px; margin-top: 22px; background: var(--line-soft); border: 1px solid var(--line-soft); border-radius: 16px; overflow: hidden; }
+  .node { background: var(--surface); }
+  .node summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 14px; padding: 15px 18px; }
+  .node summary::-webkit-details-marker { display: none; }
+  .node-ar { font-family: var(--ar); font-size: 19px; color: var(--brand); letter-spacing: 0; }
+  .node-cn { font-size: 14px; color: var(--ink); }
+  .node-more { margin-left: auto; color: var(--ink-3); font-size: 18px; transition: transform .2s var(--ease); }
+  .node[open] .node-more { transform: rotate(45deg); }
+  .node-body { padding: 0 18px 16px 58px; display: grid; gap: 8px; }
+  .rel { font-size: 13px; color: var(--ink-2); padding: 8px 10px; border-radius: 9px; background: var(--bg-2); }
+  .rel .k { color: var(--ink); font-weight: 600; margin-right: 6px; }
+  .rel .ar { font-family: var(--ar); color: var(--brand); letter-spacing: 0; }
+  .rel .note { color: var(--ink-2); }
+
+  .immersive { margin-top: 22px; padding: 28px 26px; border-left: 2px solid var(--gold); background: var(--bg-2); border-radius: 0 16px 16px 0; }
+  .immersive p.ar { font-family: var(--ar); direction: rtl; text-align: right; font-size: 22px; line-height: 2.1; letter-spacing: 0; }
+  .immersive p.cn { margin-top: 10px; color: var(--ink-2); font-size: 15px; }
+
+  .growth { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 22px; }
+  .growth div { padding: 18px 16px; background: var(--bg-2); border-radius: 14px; }
+  .growth .num { display: block; font-size: 28px; font-weight: 650; letter-spacing: -0.02em; }
+  .growth .lbl { font-size: 12px; color: var(--ink-2); }
+
+  @media (max-width: 640px) {
+    .path { padding: 72px 20px 140px; }
+    .hero { min-height: 60vh; }
+    .growth { grid-template-columns: 1fr 1fr; }
+    .node-body { padding-left: 18px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  }
+  :focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+</style>
+</head>
+<body>
+  <span class="proto-badge">方案 A · 设计原型 · 非功能页面</span>
+
+  <div class="corner-controls">
+    <button class="ctl" id="tocBtn" aria-label="打开知识路径目录" aria-expanded="false">
+      <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+    </button>
+    <button class="ctl" id="focusBtn" aria-label="专注模式" aria-pressed="false">
+      <svg viewBox="0 0 24 24"><path d="M4 4h6M4 4v6M20 4h-6M20 4v6M4 20h6M4 20v-6M20 20h-6M20 20v-6"/></svg>
+    </button>
+    <button class="ctl" id="themeBtn" aria-label="切换深浅色">
+      <svg viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+    </button>
+  </div>
+
+  <nav class="toc" id="toc">
+    <a href="#hero" data-stop="hero"><span class="idx">一</span>今日原句</a>
+    <a href="#language" data-stop="language"><span class="idx">二</span>语言 · 阿拉伯语</a>
+    <a href="#ai" data-stop="ai"><span class="idx">三</span>智能 · 努尔 AI</a>
+    <a href="#classics" data-stop="classics"><span class="idx">四</span>经典 · 古兰经</a>
+    <a href="#library" data-stop="library"><span class="idx">五</span>典籍 · 世界图书馆</a>
+    <a href="#growth" data-stop="growth"><span class="idx">六</span>成长 · 个人知识</a>
+  </nav>
+
+  <main class="path">
+    <section class="path-stop hero" id="hero">
+      <div class="brand">
+        <span class="brand-mark" lang="ar" dir="rtl">ن</span>
+        <span>燃灯同学 Rengdeng Student ·</span>
+        <span class="brand-ar" lang="ar" dir="rtl">حامل المصباح</span>
+      </div>
+      <div>
+        <h1 class="hero-ar" lang="ar" dir="rtl">العِلْمُ كَنْزٌ لَا يَفْنَىٰ</h1>
+        <p class="hero-cn">知识是永不消逝的宝藏</p>
+        <p class="hero-lead">让学习成为一种探索。在语言、经典与人工智能之间，建立属于自己的知识世界。</p>
+      </div>
+      <div class="hero-actions">
+        <button class="btn primary">开始探索 ›</button>
+        <button class="btn" data-goto="language">沿路径前行 ↓</button>
+      </div>
+    </section>
+
+    <section class="path-stop" id="language">
+      <div class="stop-kicker"><span class="n">二</span><span>语言</span><span class="ar" lang="ar" dir="rtl">اللغة العربية</span></div>
+      <h2 class="stop-title">从一句真实的阿拉伯语开始</h2>
+      <p class="stop-copy">34,000+ 句带音符语料、29,000+ 高频词、系统语法与间隔复习。点击一句，展开它背后的词根、近反义词与相关典籍。</p>
+      <div class="nodes">
+        <details class="node">
+          <summary>
+            <span class="node-ar" lang="ar" dir="rtl">كِتَاب</span>
+            <span class="node-cn">书 · 名词</span>
+            <span class="node-more">＋</span>
+          </summary>
+          <div class="node-body">
+            <div class="rel"><span class="k">词根</span><span class="ar" lang="ar" dir="rtl">ك ت ب</span><span class="note">—— 与“书写”相关</span></div>
+            <div class="rel"><span class="k">近义</span><span class="ar" lang="ar" dir="rtl">مُجَلَّد · سِفْر</span></div>
+            <div class="rel"><span class="k">相关书</span><span>语法课 · 词汇表 · 馆藏例句</span></div>
+          </div>
+        </details>
+        <details class="node">
+          <summary>
+            <span class="node-ar" lang="ar" dir="rtl">ذَهَبَ</span>
+            <span class="node-cn">他去 · 过去式动词</span>
+            <span class="node-more">＋</span>
+          </summary>
+          <div class="node-body">
+            <div class="rel"><span class="k">词根</span><span class="ar" lang="ar" dir="rtl">ذ ه ب</span></div>
+            <div class="rel"><span class="k">变位</span><span class="ar" lang="ar" dir="rtl">ذَهَبْتُ · يَذْهَبُ · اِذْهَبْ</span></div>
+          </div>
+        </details>
+        <details class="node">
+          <summary>
+            <span class="node-ar" lang="ar" dir="rtl">بَكْرَة</span>
+            <span class="node-cn">明天 · 口语</span>
+            <span class="node-more">＋</span>
+          </summary>
+          <div class="node-body">
+            <div class="rel"><span class="k">场景</span><span>留学生日常口语 · 问候与约见</span></div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section class="path-stop" id="ai">
+      <div class="stop-kicker"><span class="n">三</span><span>智能</span><span class="ar" lang="ar" dir="rtl">الذكاء</span></div>
+      <h2 class="stop-title">努尔 AI，安静地陪在阅读身边</h2>
+      <p class="stop-copy">不是弹窗，也不是聊天框。当你在书里选中一段文字，AI 会在这里给出词形、语法、译文与可核验的来源，围绕你的上下文工作。</p>
+      <div class="immersive">
+        <p class="ar" lang="ar" dir="rtl">اللُّغَةُ وِعَاءُ الفِكْر</p>
+        <p class="cn">“语言是思想的容器” —— 点选这段文字，努尔会拆解每个词的词根与句法，并给出相关典籍出处。</p>
+      </div>
+    </section>
+
+    <section class="path-stop" id="classics">
+      <div class="stop-kicker"><span class="n">四</span><span>经典</span><span class="ar" lang="ar" dir="rtl">القرآن الكريم</span></div>
+      <h2 class="stop-title">在经典面前，界面退后</h2>
+      <p class="stop-copy">114 章、6,236 节原文与中文译注，名家诵读与逐词词形。进入阅读后，除了文字与一条极细的进度线，什么都不剩。</p>
+      <div class="immersive">
+        <p class="ar" lang="ar" dir="rtl">اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ</p>
+        <p class="cn">“你应当奉你的创造主的名义而宣读” —— 沉浸式阅读示例。</p>
+      </div>
+    </section>
+
+    <section class="path-stop" id="library">
+      <div class="stop-kicker"><span class="n">五</span><span>典籍</span><span class="ar" lang="ar" dir="rtl">المكتبة العالمية</span></div>
+      <h2 class="stop-title">一座可以走入的世界图书馆</h2>
+      <p class="stop-copy">23,000+ 世界典籍、8,400+ 历史文献、伊斯兰经典与中文古籍。阅读器以舒适的宽度呈现中文与阿拉伯语。</p>
+    </section>
+
+    <section class="path-stop" id="growth">
+      <div class="stop-kicker"><span class="n">六</span><span>成长</span><span class="ar" lang="ar" dir="rtl">النمو</span></div>
+      <h2 class="stop-title">你的知识，会自己生长</h2>
+      <p class="stop-copy">每一次查词、阅读与笔记，都沉淀为可回溯的个人知识脉络。</p>
+      <div class="growth">
+        <div><span class="num">128</span><span class="lbl">连续学习天数</span></div>
+        <div><span class="num">3,204</span><span class="lbl">已掌握词汇</span></div>
+        <div><span class="num">17</span><span class="lbl">阅读中的典籍</span></div>
+        <div><span class="num">46</span><span class="lbl">知识节点</span></div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      var toc = document.getElementById('toc');
+      var tocBtn = document.getElementById('tocBtn');
+      var focusBtn = document.getElementById('focusBtn');
+      var themeBtn = document.getElementById('themeBtn');
+
+      tocBtn.addEventListener('click', function () {
+        var open = toc.classList.toggle('open');
+        tocBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+
+      var stops = Array.prototype.slice.call(document.querySelectorAll('.path-stop'));
+      focusBtn.addEventListener('click', function () {
+        var on = document.body.classList.toggle('focus');
+        focusBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+        if (!on) stops.forEach(function (s) { s.classList.remove('is-active'); });
+      });
+      window.addEventListener('scroll', function () {
+        if (!document.body.classList.contains('focus')) return;
+        var mid = window.innerHeight * 0.5, current = stops[0];
+        stops.forEach(function (s) {
+          var r = s.getBoundingClientRect();
+          if (r.top <= mid && r.bottom >= mid) current = s;
+        });
+        stops.forEach(function (s) { s.classList.toggle('is-active', s === current); });
+      });
+
+      themeBtn.addEventListener('click', function () {
+        var h = document.documentElement;
+        h.setAttribute('data-theme', h.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+      });
+
+      document.querySelector('[data-goto="language"]').addEventListener('click', function () {
+        document.getElementById('language').scrollIntoView({ behavior: 'smooth' });
+      });
+
+      var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+      links.forEach(function (a) {
+        a.addEventListener('click', function () {
+          toc.classList.remove('open');
+          tocBtn.setAttribute('aria-expanded', 'false');
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

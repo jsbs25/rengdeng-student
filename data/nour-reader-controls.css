@@ -1,0 +1,82 @@
+/* ============================================================================
+   燃灯同学 · 阅读器控制样式 v2
+   - 仅美化 .nour-rc 常驻快捷入口
+   - 补齐 .rd-theme-sepia / .rd-theme-night 的纸面样式（原 rdTheme 只改了进度条）
+   不覆盖正文 font-size，不引入第二套状态。
+   ============================================================================ */
+
+/* ---------- 快捷入口 ---------- */
+body.reading #mReader .nour-rc {
+  display: inline-flex; align-items: center; gap: 2px; margin-left: auto; padding-left: 8px;
+}
+body.reading #mReader .nour-rc .nour-rc-fs {
+  min-width: 32px; height: 32px; padding: 0 6px; border: 0; border-radius: 8px;
+  background: transparent; color: #485248; font: inherit; font-size: 13px; font-weight: 600;
+  cursor: pointer; transition: background 160ms ease, color 160ms ease;
+}
+body.reading #mReader .nour-rc .nour-rc-fs:hover { background: rgba(31, 91, 70, 0.08); color: var(--nour-reader-accent, #1f5b46); }
+body.reading #mReader .nour-rc .nour-rc-fsval { min-width: 22px; text-align: center; font-size: 12px; font-weight: 600; color: #747970; }
+body.reading #mReader .nour-rc .nour-rc-sep { width: 1px; height: 18px; margin: 0 4px; background: rgba(31, 53, 42, 0.15); }
+body.reading #mReader .nour-rc .nour-rc-swatch {
+  width: 20px; height: 20px; padding: 0; border-radius: 50%; border: 1px solid rgba(31, 53, 42, 0.18);
+  cursor: pointer; box-shadow: inset 0 0 0 2px #fff;
+}
+body.reading #mReader .nour-rc .nour-rc-swatch.on { outline: 2px solid var(--nour-reader-gold, #b88d43); outline-offset: 1px; }
+body.reading #mReader .nour-rc .nour-rc-swatch[data-bg="paper"] { background: #fffdf7; }
+body.reading #mReader .nour-rc .nour-rc-swatch[data-bg="sepia"] { background: #f3e8d0; }
+body.reading #mReader .nour-rc .nour-rc-swatch[data-bg="night"] { background: #1c201d; }
+
+/* 纸面边框随主题变量变化（默认值与历史硬编码一致） */
+body.reading #mReader .rd-paper .rd-page { border-color: var(--nour-reader-paper-line, #e7e1d5) !important; }
+
+/* ---------- 补齐 rdTheme 的纸面样式 ---------- */
+body.reading #mReader.rd-theme-sepia {
+  --nour-reader-stage: #e7dcc4;
+  --nour-reader-paper: #f6edd7;
+  --nour-reader-paper-line: #e2d3b4;
+  --nour-reader-ink: #3a3226;
+  --nour-reader-muted: #7c715d;
+}
+body.reading #mReader.rd-theme-night {
+  --nour-reader-stage: #111410;
+  --nour-reader-paper: #1b1f1b;
+  --nour-reader-paper-line: #2a2f29;
+  --nour-reader-ink: #d7dcd4;
+  --nour-reader-muted: #8b918a;
+  --nour-reader-accent: #57b58a;
+  --nour-reader-gold: #d1b062;
+}
+body.reading #mReader.rd-theme-night { background: rgba(6, 9, 7, 0.6) !important; }
+body.reading #mReader.rd-theme-night .m-head {
+  background: rgba(24, 28, 25, 0.94) !important; color: #dfe4dc !important;
+  border-color: rgba(210, 220, 205, 0.12) !important;
+}
+body.reading #mReader.rd-theme-night .m-head b { color: #dfe4dc !important; }
+body.reading #mReader.rd-theme-night .m-body { background: var(--nour-reader-stage) !important; }
+body.reading #mReader.rd-theme-night .rd-paper .rd-page { border-color: #2a2f29 !important; }
+body.reading #mReader.rd-theme-night .rd-paper .rd-bar {
+  background: rgba(27, 31, 28, 0.9) !important; border-color: rgba(210, 220, 205, 0.12) !important;
+}
+body.reading #mReader.rd-theme-night .rd-paper .rd-bar .rd-ic { color: #aeb7ad !important; }
+body.reading #mReader.rd-theme-night .rd-paper .rd-head { color: #8b918a !important; border-bottom-color: #2a2f29 !important; }
+body.reading #mReader.rd-theme-night .rd-paper .rd-foot { color: #7a8078 !important; }
+body.reading #mReader.rd-theme-night .rd-paper .rd-prog { background: rgba(210, 220, 205, 0.12) !important; }
+body.reading #mReader.rd-theme-night .nour-rc .nour-rc-fs { color: #aeb7ad; }
+body.reading #mReader.rd-theme-night .nour-rc .nour-rc-fs:hover { background: rgba(87, 181, 138, 0.14); color: #7fd0a8; }
+body.reading #mReader.rd-theme-night .nour-rc .nour-rc-fsval { color: #8b918a; }
+body.reading #mReader.rd-theme-night .nour-rc .nour-rc-sep { background: rgba(210, 220, 205, 0.16); }
+body.reading #mReader.rd-theme-night .nour-rc .nour-rc-swatch { box-shadow: inset 0 0 0 2px #1b1f1b; border-color: rgba(210, 220, 205, 0.3); }
+
+/* ---------- 焦点与响应式 ---------- */
+body.reading #mReader .nour-rc .nour-rc-fs:focus-visible,
+body.reading #mReader .nour-rc .nour-rc-swatch:focus-visible { outline: 2px solid var(--nour-reader-accent, #1f5b46); outline-offset: 2px; }
+@media (max-width: 760px) {
+  body.reading #mReader .nour-rc .nour-rc-fs { min-width: 30px; height: 30px; font-size: 12px; }
+  body.reading #mReader .nour-rc .nour-rc-swatch { width: 18px; height: 18px; }
+}
+@media (max-width: 420px) {
+  body.reading #mReader .nour-rc .nour-rc-swatch { width: 16px; height: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.reading #mReader .nour-rc * { transition: none !important; }
+}

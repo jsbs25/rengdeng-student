@@ -7347,14 +7347,6 @@ html += (
     "<div style='margin-top:28px;font-size:11px;color:#a8ada6'>设备码 <b id='lockDev'>—</b> · <span onclick='copyDev()' style='color:#0f5132;text-decoration:underline;cursor:pointer'>复制</span></div>"
     "<div style='margin-top:6px;font-size:11px;color:#a8ada6'>燃灯同学 · 阿拉伯学习平台</div>"
     '</div>'
-    "<div class='modal' id='mDonate'><div class='m-head'><span>❤️</span><b>支持燃灯者</b><button class='m-close' onclick=\"closeModal('mDonate')\">✕</button></div>"
-    "<div class='m-body' style='padding:18px;text-align:center'>"
-    "<div style='font-size:13px;color:#5a6159;line-height:2'>这个网站是<b>个人自费</b>在维护：<br>服务器 · 域名 · AI 费用，全部自捐腰包。<br><b>所有捐款全部用于网站运营与维护</b> 🕯<br><br>如果它帮到了你，欢迎用一份心意<br>让它继续亮下去。</div>"
-    "<div id='donAmts' style='display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:18px 0'></div>"
-    "<button onclick='donShowQr()' style='width:100%;max-width:300px;padding:13px;background:#c8a24a;color:#fff;font-weight:800;font-size:15px;border:0;border-radius:12px;cursor:pointer'>💳 扫码支持</button>"
-    "<div id='donQrBox' style='display:none;margin-top:16px'></div>"
-    "<div style='margin-top:16px;font-size:11px;color:#a8ada6'>支持全凭自愿，感谢每一份心意 · جزاك الله خيرا</div>"
-    "</div></div>"
     "<div class='modal' id='mVid'><div class='m-head'><span>🎬</span><b>阿语听力 · 视频</b><button class='m-close' onclick=\"closeModal('mVid')\">✕</button></div>"
     "<div id='vidPlay' style='display:none;background:#111'></div>"
     "<div class='m-search' id='vidCats' style='flex-wrap:wrap;gap:6px'></div>"
@@ -7793,6 +7785,26 @@ except Exception as _focus_js_err:
     print('nour-focus-workspace.js 读取失败:', _focus_js_err)
 if _focus_js:
     html = html.replace('</body>', '<script>' + _focus_js + '</script></body>', 1)
+
+# NOUR 自适应工作模式层：首页发现/阅读/研习/探究四模式，纯呈现层，完全复用现有全局函数。
+try:
+    _adaptive_ws_js_path = DIR / 'data' / 'nour-adaptive-workspace.js'
+    _adaptive_ws_js = _adaptive_ws_js_path.read_text(encoding='utf-8') if _adaptive_ws_js_path.exists() else ''
+except Exception as _adaptive_ws_js_err:
+    _adaptive_ws_js = ''
+    print('nour-adaptive-workspace.js 读取失败:', _adaptive_ws_js_err)
+if _adaptive_ws_js:
+    html = html.replace('</body>', '<script>' + _adaptive_ws_js + '</script></body>', 1)
+
+# NOUR 阅读器控制层：字号 + 阅读背景，纯前端增强，复用现有 .rd-bar，不改阅读逻辑。
+try:
+    _reader_ctrl_js_path = DIR / 'data' / 'nour-reader-controls.js'
+    _reader_ctrl_js = _reader_ctrl_js_path.read_text(encoding='utf-8') if _reader_ctrl_js_path.exists() else ''
+except Exception as _reader_ctrl_js_err:
+    _reader_ctrl_js = ''
+    print('nour-reader-controls.js 读取失败:', _reader_ctrl_js_err)
+if _reader_ctrl_js:
+    html = html.replace('</body>', '<script>' + _reader_ctrl_js + '</script></body>', 1)
 # NOUR 主题执行器：内联 !important 强制关键表面配色（覆盖历史 CSS 层级的级联混乱）。
 try:
     _enforcer_js_path = DIR / 'data' / 'nour-theme-enforcer.js'
@@ -8083,6 +8095,24 @@ try:
         html = html.replace('</head>', _clarity_css + '</head>', 1)
 except Exception as _clarity_css_err:
     print('nour-clarity.css 注入失败:', _clarity_css_err)
+
+# NOUR 自适应工作模式样式：作为最后样式层，统一模式切换器与三类工作面板。
+try:
+    _adaptive_ws_css_path = DIR / 'data' / 'nour-adaptive-workspace.css'
+    if _adaptive_ws_css_path.exists():
+        _adaptive_ws_css = '<style id="nour-adaptive-workspace">' + _adaptive_ws_css_path.read_text(encoding='utf-8') + '</style>'
+        html = html.replace('</head>', _adaptive_ws_css + '</head>', 1)
+except Exception as _adaptive_ws_css_err:
+    print('nour-adaptive-workspace.css 注入失败:', _adaptive_ws_css_err)
+
+# NOUR 阅读器控制样式：字号变量与四种阅读背景预设，最后注入，覆盖历史阅读器硬编码颜色。
+try:
+    _reader_ctrl_css_path = DIR / 'data' / 'nour-reader-controls.css'
+    if _reader_ctrl_css_path.exists():
+        _reader_ctrl_css = '<style id="nour-reader-controls">' + _reader_ctrl_css_path.read_text(encoding='utf-8') + '</style>'
+        html = html.replace('</head>', _reader_ctrl_css + '</head>', 1)
+except Exception as _reader_ctrl_css_err:
+    print('nour-reader-controls.css 注入失败:', _reader_ctrl_css_err)
 # ===== PWA：manifest + 图标（输出到同目录）=====
 import shutil as _sh
 try:
@@ -8114,6 +8144,8 @@ except Exception as _e:
 out = DIR / 'arabic_learning.html'
 if len(sys.argv) > 1:
     out = Path(sys.argv[1])
+# nour-fix-percent: 修正模板中残留的 %% 转义，避免 width:100%% 变成非法 CSS
+html = html.replace('width:100%%', 'width:100%')
 out.write_text(html, encoding='utf-8')
 print(f'✅ 高级版主页生成: {out.stat().st_size/1024:.0f}KB')
 print(f'   句子: {TOTAL_SENT} | 单词: {TOTAL_WORDS} | 分类: {TOTAL_CATS}')

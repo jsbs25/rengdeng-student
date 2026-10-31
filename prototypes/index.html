@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>燃</title>灯同学 · 首页设计探索原型</title>
+<style>
+  :root {
+    --bg:#F5F5F7; --surface:#FFFFFF; --ink:#1D1D1F; --ink-2:#86868B; --line:#D2D2D7;
+    --brand:#1B4D3E; --gold:#B08D40; --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC",sans-serif;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:var(--sans); background:var(--bg); color:var(--ink); line-height:1.7; -webkit-font-smoothing:antialiased; }
+  .wrap { width:min(1080px, calc(100% - 40px)); margin:0 auto; padding:56px 0 96px; }
+  header h1 { font-size:34px; font-weight:700; letter-spacing:-.02em; }
+  header p { color:var(--ink-2); margin-top:10px; max-width:60ch; }
+  .grid { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:18px; margin-top:36px; }
+  .card { background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:24px; display:flex; flex-direction:column; gap:12px; text-decoration:none; color:inherit; transition:box-shadow .2s ease, border-color .2s ease; }
+  .card:hover { border-color:var(--brand); box-shadow:0 16px 40px rgba(0,0,0,.08); }
+  .card .tag { font-size:11px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--gold); }
+  .card h2 { font-size:20px; font-weight:650; letter-spacing:-.01em; }
+  .card p { font-size:14px; color:var(--ink-2); }
+  .card .open { margin-top:auto; color:var(--brand); font-weight:600; font-size:14px; }
+  .note { margin-top:28px; padding:16px 18px; border:1px solid var(--line); border-radius:14px; background:var(--surface); font-size:13px; color:var(--ink-2); }
+  @media (max-width:820px){ .grid{grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>燃灯</h1>同学 · 首页设计探索原型</h1>
+      <p>三种</p>在信息架构、空间布局、导航方式与交互逻辑上真正不同的原创方向。均为自包含 HTML，可直接双击打开。</p>
+    </header>
+    <div class="grid">
+      <a class="card" href="home-direction-a-immersive.html">
+        <span class="tag">方案 A</span>
+        <h2>极简沉浸式知识空间</h2>
+        <p>几乎没有</h2></p>固定导航，内容是一条可以行走的「知识路径」；知识实体是可展开的节点而非卡片，并提供专注模式与角落目录。</p>
+        <span class="open">打开方案 A ›</span>
+      </a>
+      <a class="card" href="home-direction-b-adaptive.html">
+        <span class="tag">方案 B</span>
+        <h2>自适应动态知识环境</h2>
+        <p>界面随「</h2></p>阅读 / 研习 / 探究」三种任务自然变形：情境侧栏、中央画布与知识关系图谱随之切换，并支持多任务置顶。</p>
+        <span class="open">打开方案 B ›</span>
+      </a>
+      <a class="card" href="home-direction-c-editorial.html">
+        <span class="tag">方案 C</span>
+        <h2></h2>编辑式知识探索空间</h2>
+        <p>像翻阅一部典籍杂志</p>：以「卷」组织章节，非对称编辑网格 + 词→句→书→史→人物的相关发现链条贯穿其中。</p>
+        <span class="open">打开方案 C ›</span>
+      </a>
+    </div>
+    <p class="note">说明：这些是<strong>纯视觉与交互原型</strong>，不连接后端、</strong>不读写数据，仅用于方向评审。正式落地会接入现有功能与数据，并经过五轮评审。</p>
+  </div>
+</body>
+</html>
